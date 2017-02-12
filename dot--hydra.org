@@ -43,14 +43,14 @@ This is where I got the idea for using horizontal key-chords.
   a s d f g h j k l ; ' 
 #+end_example
 
-On a standard keyboard with staggered rows of keys, it's very easy to
-press keys on two rows at the same time.  This gives you combinations
-including /1q/, /5t/ or /8i/.  You just have to remember the number or
-the letter and you get the companion character for free.  This works
-well for the top two rows, as well as the top row and the third row
-(eg. /1a/, /3d/, /6h/).
-
-
+On a standard keyboard with staggered rows of keys it's very easy to
+press keys on two rows at the same time with one hand.  This gives you
+combinations including /1q/, /5t/ or /8i/.  You just have to remember
+the number or the letter and you get the companion character for free.
+This works well for the top two rows, as well as the top row and the
+third row (eg. /1a/, /3d/, /6h/).  I suppose if you exhaust those, you
+can start using triple-key chords eg. /1qa/, /2ws/, /3ed/....  I hope
+it won't come to that :)
 
 #+begin_src emacs-lisp
 ;; Key Chords =============================================
