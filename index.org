@@ -1,0 +1,54 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+TITLE: Deerpig's dot emacs
+#+STARTUP: showall
+#+PROPERTY: filename
+  :PROPERTIES:
+  :Name: /home/deerpig/proj/deerpig/dot-emacs/index.org
+  :Created: 2017-02-12T11:39@Prek Leap (11.642600N-104.919210W)
+  :ID: e22cd45b-0e72-4b0f-ba1b-a0d4c4d3c90f
+  :URL:
+  :END:
+#+INCLUDE: ./inc/head.org
+#+INCLUDE: ./inc/macros.org
+
+{{{breadcrumbs}}}
+
+#+HTML: <div class="outline-2" id="meta">
+| *Author*  | Brad Collins <brad@chenla.org>             |
+| *Date*    | {{{time(%Y-%m-%d %H:%M:%S)}}}              |
+#+HTML: </div>
+
+#+TOC: headlines 4
+
+
+* Status of This Document
+
+The latest version of this document is: src_sh[:results value]{git describe --abbrev=0 --tags}
+
+#+HTML: <div class="notice notice-info">
+*Changes since the last version*
+
+#+HTML: <ul>
+
+#+BEGIN_SRC sh :exports results :results value html :var TAG="v00.01.02"
+  RES='git log $TAG...HEAD --pretty="<li>%s</li>\n" -- (file-name-nondirectory (buffer-file-name))'
+  if [ -z $RES ]; then
+    RES="<li>no changes</li>"
+  fi
+  echo $RES
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT html
+<li>no changes</li>
+#+END_EXPORT
+
+#+HTML: </ul>
+#+HTML: </div>
+
+* Introduction
+
+
+ - [[./dot--hydra.org][Hydra]]
+
+
