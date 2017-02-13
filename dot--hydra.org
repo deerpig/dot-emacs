@@ -485,6 +485,17 @@ timeout that exits the hydra if nothing is chosen.
 
 ** Twittering Mode Hydra
 
+I tend to use Twitter in bursts, and even then, mostly when I tweet
+breaking news that is happening in Cambodia.  The noise level on
+Twitter is annoying, and the tendency for many people to include an
+image for /every/ tweet they send greatly reduces its utility for me.
+So Twittering mode is a great way of using twitter without being
+bombarded with every bloody cat picture or whatever they are eating
+for lunch.  A couple of years ago I unsubbed from anyone who used the
+an annoying adjective like "yummy" together with "veggie" together
+with some kind of food, as in "I just had a yummy veggie pizza".  Food
+should not be a fetish or an ideology.
+
 This wonderful hydra was taken from the Hydra wiki, and was an
 inspiration for how creative and powerful /hints/ can be.  I've see
 other hydras that have obviously been inspired by this hydra as well.
