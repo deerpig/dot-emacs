@@ -245,12 +245,11 @@ character is inserted and the hydra exits.
   ("<SPC>" nil nil))
 #+end_src
 
-** Hydra Calendar & Weekdays
+** Calendar & Weekdays Hydra
 
-This hydra is designed for entering a Hanzi/Kanji
-date string within the hydra.  To make this work we
-explicitly set numbers in the hydra so that numbers
-are not treated as prefix arguments -- this might be
+This hydra is designed for entering a Hanzi/Kanji date string within
+the hydra.  To make this work we explicitly set numbers in the hydra
+so that numbers are not treated as prefix arguments -- this might be
 something that helm is doing not hydra....
 
 #+begin_example
@@ -275,7 +274,8 @@ correspond to the english meaning for each character.
 
 [1] Think payday--'the eagle flys on friday'
 
-For more info see: http://www.cjvlang.com/Dow/index.html
+For more info about Japanese and Chinese weekday names see:
+[http://www.cjvlang.com/Dow/index.html]
 
 Japanese days of the week can be swapped out for:
 
@@ -291,6 +291,9 @@ Personally I think the Chinese names are too long winded, obvious and
 boring (numbers 1-6) and the english have lost the associated
 mythology and link to the planets that they once had.  That and IMHO
 the names are not as elegant or evocative as the Japanese YMMV.
+
+This hydra uses the pink /color/ that doesn't exit until you press
+<SPC>. 
 
 #+begin_src emacs-lisp
 ;; calendar & weekday hydra --------------------------------
