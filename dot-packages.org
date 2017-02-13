@@ -377,6 +377,14 @@ This works, I think....
 
 ** Helm Recoll
 
+This took more than a little tweaking to get to work.
+
+Install recoll -- need to link to or include install instructions...
+
+See: [[https://github.com/emacs-helm/helm-recoll]]
+
+Open file using external program using C-c C-x
+
 #+begin_src emacs-lisp
 
  ;; helm-recoll ----------------------------------------------
