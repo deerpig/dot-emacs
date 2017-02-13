@@ -76,7 +76,6 @@ it won't come to that :)
     ))
 #+end_src
 
-
 * Hydra Package
 
 #+begin_src emacs-lisp
@@ -281,7 +280,7 @@ the names are not as elegant or evocative as the Japanese YMMV.
   Α [_A_] Β [_B_] Γ [_G_] Δ [_D_] Ε [_E_] Ζ [_Z_] Η [_H_] Θ [_Q_] Ι [_I_] Κ [_K_] Λ [_l_] Μ [_M_]
   Ν [_N_] Ξ [_X_] Ο [_O_] Π [_P_] Ρ [_R_] Σ [_S_] Τ [_T_] Υ [_U_] Φ [_J_] Χ [_C_] Ψ [_Y_] Ω [_W_]
  ╭─────────┐
-  Quit  [_q_]
+  Quit  [_<ESC>_]
 "
   ("a" (lambda () (interactive) (insert "α")))
   ("b" (lambda () (interactive) (insert "β")))
@@ -334,7 +333,7 @@ the names are not as elegant or evocative as the Japanese YMMV.
   ("Y" (lambda () (interactive) (insert "Ψ")))
   ("W" (lambda () (interactive) (insert "Ω")))
   ("<SPC>" (lambda () (interactive) (insert " ")))
-  ("q" nil nil))
+  ("<ESC>" nil nil))
 #+end_src
 
 * Math & Logic Hydra
