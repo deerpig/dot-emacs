@@ -5,13 +5,13 @@
 
 * Introduction
 
-There are a number of different ways of adding packages to Emacs.  
-
-
+There are a number of different ways of adding packages to Emacs, each
+method is a built on top another.  It isn't a bad idea to take  a
+minute to look at how we got to where we are today.
 
 ** Primordial Software Management
 
-Install by hand :: Until just a few years ago this was the only way to
+Install by hand.  Until just a few years ago this was the only way to
 add things to emacs.  You put your code in a directory relative to
 '.emacs-lisp' or '.emacs.d' directories and then add the path to that
 directory in your init file and then either 'require' or 'load' the
@@ -50,9 +50,10 @@ What's next, is there a /rapture/ or at at least a Singularity we can
 look forward to?  These things are unknown.  However we would be
 remiss to not mention what is likely the embryonic seed from which the
 Singularity will emerge from, and that of course is Orgmode and Org
-Babel.
+Babel and how it has made possible both Literate Programing and
+Literate Computing...
 
-
+** How Use-Package Works
 
 * Packages
 :PROPERTIES:
