@@ -130,6 +130,14 @@ IRC.  Here is an example of the workflow:
     window.
   - Press the <SPC> key to exit the Hydra.
 
+This hyra uses the pink /color/ so multiple commands can be invoked in
+the hydra without exiting.  If I need to simply split or move between
+two window when editing, C-x o and C-x 0 and the C-x 5 commands work
+well as one offs.  It's when you have to do a lot of moving and
+splitting that this hydra really shines.
+
+The <SPC> spacebar is used to exit the hydra.
+
 #+begin_src emacs-lisp
 ;; hydra-window --------------------------------------------
 ;;
@@ -161,13 +169,14 @@ IRC.  Here is an example of the workflow:
 #+RESULTS:
 : hydra-window/body
 
-** Hydra Unicode
+** Unicode Character Hydra
 
 Everyone has a set of odd characters they need to insert into
 documents from time to time.  I not only write code, but work with a
-lot of 19th century scholarly texts.  It was common practice to
-include quotes in the original greek, latin, french and german without
-providing a translation (cheeky bastards).
+lot of 19th century scholarly texts.  It was common practice up
+through the late 20th century to include quotes in the original greek,
+latin, french and german without providing a translation (cheeky
+bastards).
 
 European diacritics are easy enough to insert using emacs' C-x 8.  And
 Hanzi/Kanji have their own input methods.  But for puncuation
@@ -178,6 +187,9 @@ Hydra.
 We have a lot of special purpose hydras for inserting things, but this
 is the general catch-all for anything that doesn't fit in it's own
 specialized hydra.
+
+This hydra uses the blue /color/ so that when an item is chosen the
+character is inserted and the hydra exits.
 
 #+begin_src emacs-lisp
 ;; hydra unicode -------------------------------------------
