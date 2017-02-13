@@ -423,10 +423,18 @@ strings.
 
 ** Math & Logic Hydra
 
+I typically don't use a lot of math symbols in running text, if I need
+to include a formula, LaTex is the way to go.  However, I often use
+logic symbols in running text, thus this hydra.
+
+This hydra is blue /color/ so the hydra exits after choosing a key.  
+You can explicitly exit the hydra using <SPC> and there is a 30 second
+timeout that exits the hydra if nothing is chosen.
+
 #+begin_src emacs-lisp :tangle emacs-hydra.el
 ;; hydra math & logic --------------------------------------
 
-(defhydra hydra-logic (:color blue :hint nil)
+(defhydra hydra-logic (:color blue :hint nil :timeout 30)
   "
                                                                  ╭───────┐
                                                                  │ Math  │
