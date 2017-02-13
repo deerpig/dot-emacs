@@ -65,8 +65,11 @@ setup.  When everything is finished I will switch over to doing things
 Feedback Is Welcome!
 
 * Table of Contexts
-
- - 
+ 
+ - dot.emacs
+ - [[./dot-packages.org][Packages]]
+ - Helm
+ - Mu4e
  - [[./dot-hydra.org][Hydra Config]]
 
 
