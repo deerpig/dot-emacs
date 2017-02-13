@@ -485,6 +485,15 @@ timeout that exits the hydra if nothing is chosen.
 
 ** Twittering Mode Hydra
 
+This wonderful hydra was taken from the Hydra wiki, and was an
+inspiration for how creative and powerful /hints/ can be.  I've see
+other hydras that have obviously been inspired by this hydra as well.
+
+Twittering mode has a lot of commands, and I always forget how to
+retweet follow links and look up profiles.  This hyra is the perfect
+cheat sheet for the occasional user to get the most out of Twittering
+Mode.
+
 #+begin_src emacs-lisp
 ;; hydra twittering ----------------------------------------
 
