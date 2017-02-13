@@ -1,3 +1,9 @@
+;; Hydra ===============================================
+;; See https://github.com/abo-abo/hydra#awesome-docstring
+
+(use-package hydra
+  :ensure t  )
+
 ;; Key Chords =============================================
 
 (use-package key-chord
@@ -20,26 +26,18 @@
     (key-chord-define-global "0p"     'hydra-calendar/body)
     ))
 
-;; Hydra ===============================================
-;; See https://github.com/abo-abo/hydra#awesome-docstring
-
-(use-package hydra
-  :ensure t  )
-(require 'hydra-examples)
-
 ;; hydra-window --------------------------------------------
 ;;
 ;; hydra for managing windows
 
-
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
          Move                    Resize            Split
-╭────────────────────────────────────────────────────────────────┐
+╭─────────────────────────────────────────────────────────────┐
          ^_<up>_^                    ^_C-<up>_^            [_v_]ertical
           ^^▲^^                         ^^▲^^              [_h_]orizontal
  _<left>_ ◀   ▶ _<right>_    _C-<left>_ ◀   ▶ _C-<right>_
-          ^^▼^^                         ^^▼^^
+          ^^▼^^                         ^^▼^^              ╭──────────┐
         ^_<down>_^                  ^_C-<down>_^           quit : [_SPC_]
 "
   ("<left>" windmove-left)
@@ -216,7 +214,7 @@
 
 ;; hydra math & logic --------------------------------------
 
-(defhydra hydra-logic (:color blue :hint nil)
+(defhydra hydra-logic (:color blue :hint nil :timeout 30)
   "
                                                                  ╭───────┐
                                                                  │ Math  │
@@ -322,38 +320,6 @@
        ("Y"          twittering-push-tweet-onto-kill-ring)
        ("a"          twittering-toggle-activate-buffer))
 
-;; hydra join lines ----------------------------------------
-
-(defhydra hydra-join-lines (:timeout 5)
-  ("<up>" join-line)
-  ("<down>" (join-line 1))
-  ("t" join-line)
-  ("n" (join-line 1))
-  ("<SPC>" nil nil))
-
-;; hydra transpose ------------------------------------------
-
-(defhydra hydra-transpose (:color red  :timeout 5)
-    "Transpose"
-    ("c" transpose-chars "characters")
-    ("w" transpose-words "words")
-    ("o" org-transpose-words "Org mode words")
-    ("l" transpose-lines "lines")
-    ("s" transpose-sentences "sentences")
-    ("e" org-transpose-elements "Org mode elements")
-    ("p" transpose-paragraphs "paragraphs")
-    ("t" org-table-transpose-table-at-point "Org mode table")
-    ("q" nil "cancel" :color blue))
-
-
-(defun ora-ex-point-mark ()
-  (interactive)
-  (if rectangle-mark-mode
-      (exchange-point-and-mark)
-    (let ((mk (mark)))
-      (rectangle-mark-mode 1)
-      (goto-char mk))))
-
 ;; hydra rectangle -----------------------------------------
 ;;
 ;; rectangle editing is very cool, but it's one of those
@@ -391,3 +357,35 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
   ("o" nil nil))
 
 (global-set-key (kbd "C-x SPC") 'hydra-rectangle/body)
+
+;; hydra join lines ----------------------------------------
+
+(defhydra hydra-join-lines (:timeout 5)
+  ("<up>" join-line)
+  ("<down>" (join-line 1))
+  ("t" join-line)
+  ("n" (join-line 1))
+  ("<SPC>" nil nil))
+
+;; hydra transpose ------------------------------------------
+
+(defhydra hydra-transpose (:color red  :timeout 5)
+    "Transpose"
+    ("c" transpose-chars "characters")
+    ("w" transpose-words "words")
+    ("o" org-transpose-words "Org mode words")
+    ("l" transpose-lines "lines")
+    ("s" transpose-sentences "sentences")
+    ("e" org-transpose-elements "Org mode elements")
+    ("p" transpose-paragraphs "paragraphs")
+    ("t" org-table-transpose-table-at-point "Org mode table")
+    ("q" nil "cancel" :color blue))
+
+
+(defun ora-ex-point-mark ()
+  (interactive)
+  (if rectangle-mark-mode
+      (exchange-point-and-mark)
+    (let ((mk (mark)))
+      (rectangle-mark-mode 1)
+      (goto-char mk))))
