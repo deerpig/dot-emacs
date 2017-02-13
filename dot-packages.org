@@ -88,7 +88,23 @@ work. See https://github.com/rolandwalker/unicode-fonts/#quickstart
 #+end_src
 
 
-** Winmove 
+** Color Theme: Gruvbox
+
+Emacs packages provided a nice way to add color schemes to Emacs.
+Previously there was a theme manager application which bundled a lot
+of themes together and provided an interface to choose one.
+
+[[https://github.com/greduan/emacs-theme-gruvbox][Gruvbox Theme]] is one of the new generation of emacs color themes
+designed to work equally well in terminal windows as they do in X11.
+There is obviously a great deal of love lavished on these themes and
+all of the hard work that went into them has paid off.  Modern emacs
+is far more than an editor, and these themes cover the base editor and
+add-on packages including Helm, Mu4e etc
+
+I had been a holdout for a number of years, clinging to the theme I'd 
+been using for nearly a decade; 'calm-forest'.  There are still a few
+things in Gruvbox that I thought worked better in calm-forest, but all
+in all this theme is really fucking good.  YMMV.
 
 #+begin_src emacs-lisp
 
@@ -101,6 +117,8 @@ work. See https://github.com/rolandwalker/unicode-fonts/#quickstart
   (load-theme 'gruvbox t))
 
 #+end_src
+
+** Winmove
 
 
 ;; Winmove =================================================
