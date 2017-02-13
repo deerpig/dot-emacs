@@ -339,6 +339,16 @@ This hydra uses the pink /color/ that doesn't exit until you press
  
 ** Greek Alphabet Hydra
 
+This hydra is largely untested, the key-bindings are based on several
+key-mappings I used before for greek characters.  I expect to need to
+input a number of classical greek quotes in an upcoming project so we
+will see how well this works then.  In the mean time, any feedback on
+how to improve this would be very welcome.
+
+This is the only hydra where I use <ESC> escape key to exit the
+hydra.  This is because both 'q' and <SPC> are used for composing
+strings.
+
 #+begin_src emacs-lisp :tangle emacs-hydra.el
 
 ;; hydra greek ---------------------------------------------
