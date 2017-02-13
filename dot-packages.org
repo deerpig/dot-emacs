@@ -99,7 +99,7 @@ designed to work equally well in terminal windows as they do in X11.
 There is obviously a great deal of love lavished on these themes and
 all of the hard work that went into them has paid off.  Modern emacs
 is far more than an editor, and these themes cover the base editor and
-add-on packages including Helm, Mu4e etc
+add-on packages including Helm, Mu4e etc.
 
 I had been a holdout for a number of years, clinging to the theme I'd 
 been using for nearly a decade; 'calm-forest'.  There are still a few
@@ -120,6 +120,7 @@ in all this theme is really fucking good.  YMMV.
 
 ** Winmove
 
+#+begin_src emacs-lisp
 
 ;; Winmove =================================================
 
@@ -132,8 +133,14 @@ in all this theme is really fucking good.  YMMV.
   ;; wrap around at edges
   (setq windmove-wrap-around t))
 
+#+end_src
+
+** Avy Jump Mode
+
+#+begin_src emacs-lisp
 
 ;; Avy Jump Mode ===========================================
+
 (use-package avy
   :ensure t
   :config
@@ -141,6 +148,17 @@ in all this theme is really fucking good.  YMMV.
   (global-set-key (kbd "C-,") 'avy-goto-char-2)
   (global-set-key (kbd "C-.") 'avy-goto-word-1))
 
+#+end_src
+
+** UUID Generators
+
+See [[rfc:4122][RFC4122]]
+
+M-x uuidgen inserts a uuid -- but I haven't worked out how to call
+this programically -- for now just doing it using (org-new-id)
+
+
+#+begin_src emacs-lisp
 ;; UUID Generators =========================================
 ;; See [[rfc:4122][RFC4122]]
 ;; M-x uuidgen inserts a uuid -- but I haven't worked out
@@ -150,6 +168,19 @@ in all this theme is really fucking good.  YMMV.
 (use-package uuidgen
   :ensure t
   )
+
+#+end_src
+
+** WC-Org
+
+Displays word count in modeline of org buffers.
+
+Can be customized using `defcustom wc-linemode-format'
+
+See http://ireal.blog/?p=6722
+
+
+#+begin_src emacs-lisp
 
 ;; WC-Org ==================================================
 ;; (add-hook 'org-mode-hook 'wc-mode)
@@ -161,6 +192,19 @@ in all this theme is really fucking good.  YMMV.
   :ensure t
   )
 
+#+end_src
+
+
+** Powerline
+
+Powerline can be thought of as eye-candy, but it's very nice eye-candy
+that (at least for me) makes the command line far more readable.  I
+remember when I first installed it, before packages, and it took me
+almost a whole day to get it to work.  Now it's just three lines of
+config...
+
+#+begin_src emacs-lisp
+
 ;; Powerline ===============================================
 (use-package powerline
   :ensure t
@@ -169,6 +213,25 @@ in all this theme is really fucking good.  YMMV.
   (setq powerline-color1 "#C05800")
   (setq powerline-color2 "#839496")
   (setq powerline-arrow-shape 'arrow))
+
+#+end_src
+
+** eShell
+
+I am one of those people who admire eshell and yet have never gotten
+into the habit of using it on a regular basis. I now use [[https://github.com/Guake/guake][Guake]]
+pulldown terminal emulator outside of emacs.
+
+I think once I start using tramp more in my workflow for managing
+servers I will start to use eShell more.  But for now...
+
+When I do start to use eShell in earnest, these links are a good place
+to start:
+
+ - [[http://cestlaz.github.io/posts/using-emacs-27-shell/#.WKFrkbMxVph][Using Emacs - 27 - shell and eshell]] | C'est la Z
+ - [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell]] Mastering Emacs
+
+#+begin_src emacs-lisp
 
 ;; eshell ===================================================
 (use-package eshell-git-prompt
@@ -186,9 +249,27 @@ in all this theme is really fucking good.  YMMV.
 (setq eshell-visual-subcommands
       '(("git" "log" "l" "diff" "show")))
 
+#+end_src
 
+** EMMS
+
+EMMS is the Emacs Multi-Media System.  EMMS has been around a while
+and is still in active development.  I've played with it a couple of
+times, but it doesn't seem to be to handle very large media
+collections like mine.  My music alone is nearly two terrabytes.
+
+Every other year or so, I stumble across it and try it again.  At the
+moment it doesn't fit my needs so it's commented out until next time.
+
+Good places to start, when /playing/ around with it:
+
+  - [[https://www.gnu.org/software/emms/][Emacs Multimedia System]] | EMMS Home on gnu.org
+  - [[https://www.emacswiki.org/emacs/EMMS][EMMS]] | Emacs Wiki
+
+#+begin_src emacs-lisp
 
 ;; emms ====================================================
+
 ;;(use-package emms
 ;;  :ensure t
 ;;  :config
@@ -198,9 +279,28 @@ in all this theme is really fucking good.  YMMV.
 ;;    (setq emms-playlist-buffer-name "Music-EMMS")
 ;;    (setq emms-source-file-default-directory "/media/deerpig/green/music")))
 
+#+end_src
 
+** HELM Related Packages
 
+Helm will have a whole file dedicated to helm stuff.  When I first
+started this file, I wanted a place to put helm packages that were
+installed using use-package.
+
+Helm seems to be one of the few packages that is so complex and
+interconnected with everything else that a lot of config is difficult
+to get to work within use-package,
+
+The packages included here will be moved to that file when I take the
+plunge.
+
+#+begin_src emacs-lisp
 ;; HELM ====================================================
+#+end_src
+
+** Helm Unicode
+
+#+begin_src emacs-lisp
 
 ;; Helm-unicode --------------------------------------------
 ;; to use, M-x helm-unicode and type name of unicode character
@@ -208,6 +308,13 @@ in all this theme is really fucking good.  YMMV.
  (use-package helm-unicode
    :ensure t
    )
+
+#+end_src
+
+** Helm Bibltex
+
+
+#+begin_src emacs-lisp
 
 ;; Helm-bibtex ---------------------------------------------
 
@@ -228,6 +335,11 @@ in all this theme is really fucking good.  YMMV.
   (setq bibtex-completion-notes-path "~/org/bibnotes.org")
   (setq bibtex-completion-additional-search-fields '(tags))
   )
+
+#+end_src
+
+
+** 
 
 ;; Org-Ref =================================================
 ;; 
