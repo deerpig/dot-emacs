@@ -29,11 +29,25 @@ etc. all fall into the same category.
 :PROPERTIES:
 :tangle: emacs-hydra.el
 :END:
+
+** Hydra Package
+
+Homepage:  [[https://github.com/abo-abo/hydra#awesome-docstring][Hydra | Github]]
+
+Install the Hydra Package:
+
+#+begin_src emacs-lisp
+;; Hydra ===============================================
+;; See https://github.com/abo-abo/hydra#awesome-docstring
+
+(use-package hydra
+  :ensure t  )
+#+end_src
 ** Key Chords
 
-The biggest problem with Hydra is coming up with key-bindings for each
-Hydra and then remembering those key-bindings... This is a non-trivial
-problem.
+The biggest challenge with Hydra is coming up with key-bindings for
+each Hydra and then remembering those key-bindings... This is a
+non-trivial problem.
 
 This is where key chords come on.  I first tried key chords a few
 years ago, but quickly found that if you aren't /very/ careful, they
@@ -83,18 +97,38 @@ it won't come to that :)
     ))
 #+end_src
 
-** Hydra Package
-
-#+begin_src emacs-lisp
-;; Hydra ===============================================
-;; See https://github.com/abo-abo/hydra#awesome-docstring
-
-(use-package hydra
-  :ensure t  )
-(require 'hydra-examples)
-#+end_src
-
 ** Hydra Window Management
+
+I use /Bunsen Labs Linux/ (formally known as CrunchBang Linux)
+which is Debian running OpenBox window manager with some very nice
+integration and customization.  Openbox allows you do do practically
+all window management using the keyboard.  I bind all window moving
+and resizing commands using the <WIN> (windows key).  Once I've opened
+emacs I can resize the frame using Openbox as I want it.  But after
+that all windows within the emacs frame must be managed using emacs.
+
+The WinMove package provides a very nice way of moving around windows
+using arrow keys.  But finding an unused key-binding is difficult.
+The OpenBox + arrow key commands use <WIN> and Org-Mode uses arrow-key
+combination for moving stuff around, setting dates, priorities and
+toggling TODO states.
+
+This Hydra provides an interface for splitting windows and moving
+between windows using the arrow keys.
+
+The most common use case for this is when I set up a Frame for using
+IRC.  Here is an example of the workflow:
+
+  - Create a new frame C-x 5 2 and move it to it's own desktop using
+    <WIN> key commands in Openbox.
+  - Start IRC with M-x irc, which logs into two different irc servers
+    and the Slack irc gateway.  
+  - Invoke the Hydra using the keychord '2w' and split the frame up to
+    four to six different ways.
+  - Use the c-<arrow> keys to move to each window, and M-x b which
+    opens the buffer list in Helm and to choose the chat room for each
+    window.
+  - Press the <SPC> key to exit the Hydra.
 
 #+begin_src emacs-lisp
 ;; hydra-window --------------------------------------------
