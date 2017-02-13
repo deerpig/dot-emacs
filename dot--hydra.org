@@ -567,6 +567,18 @@ Mode.
 
 ** Hydra Rectangle Mode
 
+Emacs rectangle editing is one of the things that sets emacs apart
+from nearly any other tool.  I don't rectangles that often but when I
+do they save a significant amount of time
+
+This hydra was another gem from the hydra wiki. See: 
+
+  - [http://oremacs.com/2015/02/25/rectangle-hydra/]
+  - [http://cestlaz.github.io/posts/using-emacs-27-rectangles/#.WJ542LMxVpi]
+
+The author sez the ascii art in the hydra is a cat, but it looks more
+like the Cat Bus in Totorro :)
+
 #+begin_src emacs-lisp
 ;; hydra rectangle -----------------------------------------
 ;;
