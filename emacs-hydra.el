@@ -1,65 +1,3 @@
-#+TITLE:Dot Emacs: Hydra
-#+AUTHOR: Brad Collins
-#+EMAIL: brad@chenla.la
-#+PROPERTY: tangle emacs-hydra.el
-
-* Introduction
-
-I was late to drink the hydra cool-aid.  It always sounded like a
-great idea, but it just didn't click until recently.
-
-Like many Emacs folks, over the years I have written any number of
-functions that provided insert stuff.  And other functions to provide
-menus to insert stuff -- especially unicode characters that I can't
-remember the names of.
-
-I've pretty replaced much all of the insert functions (or will soon)
-replaced them using yasnippet and Helm provides a great interface to
-inserting snippets, but this doesn't help to insert obscure unicode
-characters.  That was my in for Hydra.
-
-Since then, I realized that since I there are any number of Emacs
-commands that I use, but use infrequently enough that I don't remember
-the commands.  This is especially true for things like Twittering Mode
-that as a huge number of powerful commands which I keep in a cheat sheet.
-But Twit i just an example.  Calc, Rectangle Mode, Window Management,
-etc. all fall into the same category.
-
-* Hydras
-:PROPERTIES:
-:tangle: emacs-hydra.el
-:END:
-** Key Chords
-
-The biggest problem with Hydra is coming up with key-bindings for each
-Hydra and then remembering those key-bindings... This is a non-trivial
-problem.
-
-This is where key chords come on.  I first tried key chords a few
-years ago, but quickly found that if you aren't /very/ careful, they
-get invoked when you type quickly.  Playing with delay settings for
-chords didn't really help much.  I spent weeks trying any number of
-combinations -- but still ended up invoking chords when I typed.  I
-finally hit on the idea of using key-patterns rather than memnomic key
-combinations.  It's not difficult to remember a shape of something.
-This is where I got the idea for using horizontal key-chords.
-
-#+begin_example
-1 2 3 4 5 6 7 8 9 0 - =
- q w e r t y u i o p [ ]
-  a s d f g h j k l ; ' 
-#+end_example
-
-On a standard keyboard with staggered rows of keys it's very easy to
-press keys on two rows at the same time with one hand.  This gives you
-combinations including /1q/, /5t/ or /8i/.  You just have to remember
-the number or the letter and you get the companion character for free.
-This works well for the top two rows, as well as the top row and the
-third row (eg. /1a/, /3d/, /6h/).  I suppose if you exhaust those, you
-can start using triple-key chords eg. /1qa/, /2ws/, /3ed/....  I hope
-it won't come to that :)
-
-#+begin_src emacs-lisp
 ;; Key Chords =============================================
 
 (use-package key-chord
@@ -81,22 +19,14 @@ it won't come to that :)
     (key-chord-define-global "9o"     'hydra-greek/body)
     (key-chord-define-global "0p"     'hydra-calendar/body)
     ))
-#+end_src
 
-** Hydra Package
-
-#+begin_src emacs-lisp
 ;; Hydra ===============================================
 ;; See https://github.com/abo-abo/hydra#awesome-docstring
 
 (use-package hydra
   :ensure t  )
 (require 'hydra-examples)
-#+end_src
 
-** Hydra Window Management
-
-#+begin_src emacs-lisp
 ;; hydra-window --------------------------------------------
 ;;
 ;; hydra for managing windows
@@ -123,11 +53,7 @@ it won't come to that :)
   ("C-<left>" hydra-move-splitter-left)
   ("C-<right>" hydra-move-splitter-right)
   ("SPC" nil))
-#+end_src
 
-** Hydra Unicode
-
-#+begin_src emacs-lisp
 ;; hydra unicode -------------------------------------------
 
 (defhydra hydra-unicode (:color blue :hint nil)
@@ -179,56 +105,7 @@ it won't come to that :)
   ("7" (lambda () (interactive) (insert "™"))) ;; trademark
   ("8" (lambda () (interactive) (insert "©"))) ;; copyright
   ("<SPC>" nil nil))
-#+end_src
 
-** Hydra Calendar & Weekdays
-
-This hydra is designed for entering a Hanzi/Kanji
-date string within the hydra.  To make this work we
-explicitly set numbers in the hydra so that numbers
-are not treated as prefix arguments -- this might be
-something that helm is doing not hydra....
-
-#+begin_example
-2017年02月11日 (土)  2017-02-11 (Sat)
-#+end_example
-
-The letters used in the hydra to invoke the days of the week
-correspond to the english meaning for each character.
-
-  |    | hydra | english   | planet               | meaning              |
-  |----+-------+-----------+----------------------+----------------------|
-  | 年 | Y     | Year      |                      |                      |
-  | 月 | M     | Month     | moon                 | lunar month          |
-  | 日 | D     | Day       | sun                  | solar day            |
-  | 日 | s     | sunday    | male   陽 yáng, /yō/ | sun                  |
-  | 月 | m     | monday    | female 陰 yīn, /in/  | moon                 |
-  | 火 | f     | tuesday   | mars                 | fire                 |
-  | 水 | w     | wednesday | Mercury              | water                |
-  | 木 | t     | thursday  | Jupiter              | tree or wood         |
-  | 金 | g     | friday    | Venus                | gold[1]              |
-  | 土 | e     | saturday  | earth                | ground/element earth |
-
-[1] Think payday--'the eagle flys on friday'
-
-For more info see: http://www.cjvlang.com/Dow/index.html
-
-Japanese days of the week can be swapped out for:
-
-Chinese:
-
-   星期日 星期天 星期一 星期二 星期三 星期四 星期五 星期六
-
-English:
-
-   Sun Mon Tue Wed Thu Fri Sat (or euro equiv) 
-
-Personally I think the Chinese names are too long winded, obvious and
-boring (numbers 1-6) and the english have lost the associated
-mythology and link to the planets that they once had.  That and IMHO
-the names are not as elegant or evocative as the Japanese YMMV.
-
-#+begin_src emacs-lisp
 ;; calendar & weekday hydra --------------------------------
 
 ;; This hydra is designed for entering a Hanzi/Kanji
@@ -268,11 +145,6 @@ the names are not as elegant or evocative as the Japanese YMMV.
   ("8" (lambda () (interactive) (insert "8")))    ;;
   ("9" (lambda () (interactive) (insert "9")))    ;;
   ("<SPC>" nil nil))
-#+end_src
- 
-** Greek Alphabet Hydra
-
-#+begin_src emacs-lisp :tangle emacs-hydra.el
 
 ;; hydra greek ---------------------------------------------
 
@@ -342,14 +214,6 @@ the names are not as elegant or evocative as the Japanese YMMV.
   ("<SPC>" (lambda () (interactive) (insert " ")))
   ("<ESC>" nil nil))
 
-#+end_src
-
-#+RESULTS:
-: hydra-greek/body
-
-** Math & Logic Hydra
-
-#+begin_src emacs-lisp :tangle emacs-hydra.el
 ;; hydra math & logic --------------------------------------
 
 (defhydra hydra-logic (:color blue :hint nil)
@@ -399,11 +263,7 @@ the names are not as elegant or evocative as the Japanese YMMV.
   ("v" (lambda () (interactive) (insert "⊉")))
   ("w" (lambda () (interactive) (insert "⋄")))
   ("<SPC>" nil nil))
-#+end_src
 
-** Twittering Mode Hydra
-
-#+begin_src emacs-lisp
 ;; hydra twittering ----------------------------------------
 
 (defhydra hydra-twittering (:color blue :hint nil  :timeout 10)
@@ -461,14 +321,7 @@ the names are not as elegant or evocative as the Japanese YMMV.
        ("y"          twittering-push-uri-onto-kill-ring)
        ("Y"          twittering-push-tweet-onto-kill-ring)
        ("a"          twittering-toggle-activate-buffer))
-#+end_src
 
-** Hydra Join Lines
-
-This hydra is from the Hydra Wiki.  Still needs to be integrated into
-my workflow.
-
-#+begin_src emacs-lisp
 ;; hydra join lines ----------------------------------------
 
 (defhydra hydra-join-lines (:timeout 5)
@@ -477,14 +330,7 @@ my workflow.
   ("t" join-line)
   ("n" (join-line 1))
   ("<SPC>" nil nil))
-#+end_src
 
-** Emacs Transpose
-
-This hydra is from the Hydra Wiki.  Good stuff, but still not sure how
-I'm going to integrate.
-
-#+begin_src emacs-lisp
 ;; hydra transpose ------------------------------------------
 
 (defhydra hydra-transpose (:color red  :timeout 5)
@@ -507,11 +353,7 @@ I'm going to integrate.
     (let ((mk (mark)))
       (rectangle-mark-mode 1)
       (goto-char mk))))
-#+end_src
 
-** Hydra Rectangle Mode
-
-#+begin_src emacs-lisp
 ;; hydra rectangle -----------------------------------------
 ;;
 ;; rectangle editing is very cool, but it's one of those
@@ -549,5 +391,3 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
   ("o" nil nil))
 
 (global-set-key (kbd "C-x SPC") 'hydra-rectangle/body)
-#+end_src
-
