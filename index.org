@@ -68,7 +68,7 @@ Feedback Is Welcome!
  
  - dot.emacs
  - [[./dot-packages.org][Packages]]
- - Helm
+ - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra Config]]
 
