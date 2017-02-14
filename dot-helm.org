@@ -48,6 +48,8 @@ we'll leave this as is for now.
 
 #+end_src
 
+** Set default window
+
 Set the default window for helm buffer to display results on the left
 side.  This works well if you have a large screen, if you are using a
 laptop screen it's better to use 'below'.
@@ -60,7 +62,7 @@ You can set the variable to: ‘below’, ‘above’, ‘left’ or ‘right’
 (setq helm-split-window-default-side 'left)
 #+end_src
 
-Set key-bindings.
+** Set key-bindings.
 
 In install instructions, I've seen the following comment a number of
 times:
@@ -131,7 +133,7 @@ Use <tab> to perform persistent action
 
 #+end_src
 
-Helm Mini
+** Helm Mini
 
 I had set this key-binding above for recent buffers and here it is
 rebound for helm mini.  Commenting out until I work out a new
@@ -141,7 +143,7 @@ key-binding for mini -- if I actually need it....
 ;;(global-set-key (kbd "C-x b") 'helm-mini)
 #+end_src
 
-Set matching options
+** Set matching options
 
 #+begin_src emacs-lisp
 (setq helm-M-x-fuzzy-match t 
@@ -152,14 +154,17 @@ Set matching options
 
 #+end_src
 
+** Surfraw
+
 Set up helm to use the external application /surfraw/ and set up to
 use the /Duck Duck Go/ search engine
 
 #+begin_src emacs-lisp
-(setq helm-surfraw-default-browser-function nil)
-      helm-surfraw-duckduckgo-url "https://duckduckgo.com/?q=%s&kae=t&k5=2&kp=-1"
+(setq helm-surfraw-default-browser-function nil
+      helm-surfraw-duckduckgo-url "https://duckduckgo.com/?q=%s&kae=t&k5=2&kp=-1")
 #+end_src
 
+** External applications
 
 External applications for opening media.
 
@@ -170,7 +175,7 @@ Open file using external program using C-c C-x
 
 (setq helm-external-programs-associations
       (quote (("pdf"  . "evince")
-	      ("ps"   . "evince")
+	      ("ps"   . "evince")d
 	      ("djvu" . "djview")
 	      ("mobi" . "fbreader")
 	      ("epub" . "fbreader")
@@ -186,6 +191,8 @@ Open file using external program using C-c C-x
 	      ("mkv"  . "vlc"))))
 
 #+end_src
+
+** Misc
 
 Might need to unset this some time in the future.
 
