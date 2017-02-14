@@ -49,27 +49,35 @@ The latest version of this document is: src_sh[:results value]{git describe --ab
 * Introduction
 
 I've been threatening to convert my emacs init into literate
-org-mode.  This is where all the damage will be available for all the
-world to see.
+org-mode for a couple of years now.  This is is where all
+the damage will be available for all the world to see.
 
 The proper way of doing this is to evaluate all the elisp blocks when
 starting emacs.  However, I don't expect to be able to do this for
 quite some time.  I have a loooooooong ways to go before I'll have
 everything moved over.
 
-So for now, I will be tangling each file that I convert to org-mode
-and export the elisp to a file that can be read by my existing init
-setup.  When everything is finished I will switch over to doing things
-/the right way/.
+So for now, I tangle each file that I convert to org-mode
+and then create a soft link to my home directory where it is
+included by my .emacs file.  When everything is finished I
+will switch over to doing things /the right way/.
+
+I am pretty sure that once I am done I will have almost
+nothing left in my old ~/emacs-list directory any longer.
+That's the goal at least.
 
 Feedback Is Welcome!
 
 * Table of Contexts
  
  - dot.emacs
- - [[./dot-packages.org][Packages]]
+ - Org Mode
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
- - [[./dot-hydra.org][Hydra Config]]
+ - [[./dot-hydra.org][Hydra]]
+ - [[./dot-packages.org][Packages]]
 
+** legacy code
+
+- Gnus
 
