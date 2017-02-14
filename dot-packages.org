@@ -542,6 +542,8 @@ When I do tackle it, this is where to begin:
 
 ** SSH
 
+#+begin_src emacs-lisp
+
 ;; SSH =====================================================
 
 ;; may or may not help emacs not prompt for ssh key passphrases
@@ -552,17 +554,92 @@ When I do tackle it, this is where to begin:
   (exec-path-from-shell-copy-env "SSH_AGENT_PID")
   (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
 
-** Git
+#+end_src
 
-;; GIT =====================================================
+** Which Key
+
+which-key is a minor mode for Emacs that displays the key bindings
+following your currently entered incomplete command (a prefix) in a
+popup.
+
+This cuts down on the need for a many hydras.  I love hydra but it's
+better at creating little alternate universes to do specialized
+things.
+
+home: [[https://github.com/justbur/emacs-which-key][emacs-which-key]] | github
+      [[http://irreal.org/blog/?p=5156][Which Key]] | Irreal
+
+#+begin_src emacs-lisp
+(use-package which-key
+  :ensure t
+  :config 
+  (which-key-setup-side-window-right)
+  (which-key-mode)
+)
+#+end_src
+
+#+RESULTS:
+: t
+
+** Git Packages
+
+#+begin_src emacs-lisp
+;; GIT Packages ============================================
+#+end_src
+
+** Magit
+
+Magit, along with Orgmode and Helm have transformed the way I use
+Emacs more than perhaps any other.  But there is a learning curve --
+but most of that learning curve is getting your head around Git and
+how to /think/ in Git and make it part of nearly every moment of your
+workflow. 
+
+Magit actually makes learning and integrating Git into your life far
+easier, even though I still only use a fraction of the power of what
+Git and Magit can do.
+
+Hmmmm. for someone who doesn't like learning tech skills from YouTube,
+there sure are a lot of emacs videos of late.  The thing is, the
+videos /aren't/ a good to learn new things.  But they are good at
+showing what's possible and demonstrate workflow that is difficult to
+do in a document.
+
+Git is one of those subjects where videos can help visualize workflow
+and useage patterns.  And if you think I'm rationalizing.... well,
+that's my story and I'm sticking to it.
+
+More info & Videos: 
+
+  - [[https://www.youtube.com/watch?v=D1SJ6mFWYyA][Productive Emacs: Magit]] | YouTube
+
+I'm starting to get the hang of simple rebasing, but squashing and
+splitting are still beyond me.  These are good places to start:
+
+  - [[https://www.youtube.com/watch?v=vQO7F2Q9DwA&feature=youtu.be][Magit Rebasing]] | YouTube
+  - [[http://irreal.org/blog/?p=5514][Rewriting Git History with Rebase in Magit]] | Irreal
+
+Merging diffs is the bane of my existence.  I'm still struggling to
+effectively use both smerge and ediff in Magit.  These links are good
+starting places:
+
+  - [[http://irreal.org/blog/?p=5651][Merging with smerge]] | Irreal
+  - [[https://coderwall.com/p/mcrwag/use-magit-ediff-to-resolve-merge-conflicts][Use magit-ediff to resolve merge conflicts]] | Coderwall
+ 
+
+#+begin_src emacs-lisp
+
+;; Magit ---------------------------------------------------
+
 (use-package magit
   :ensure t
   :bind
   ("C-x g" . magit-status)
   ("C-x M-g" . magit-dispatch-popup))
 
+#+end_src
 
-;; Git-Gutter ===============================================
+;; Git-Gutter ----------------------------------------------
 ;; :home: https://github.com/syohex/emacs-git-gutter
 (use-package git-gutter
   :ensure t
@@ -573,7 +650,7 @@ When I do tackle it, this is where to begin:
   (add-hook 'ruby-mode-hook 'git-gutter-mode)
   (add-hook 'python-mode-hook 'git-gutter-mode))
 
-;; Magithub ================================================
+;; Magithub ------------------------------------------------
 ;; SEE: http://jr0cket.co.uk/2017/02/spacemacs-using-magit-with-github.html
 ;;
 ;; requires installation of hub, see: https://hub.github.com/
@@ -583,6 +660,8 @@ When I do tackle it, this is where to begin:
 ;;   :ensure t
 ;;   :after magit
 ;;   :config (magithub-feature-autoinject t))
+
+
 
 ;; YASNIPPET ================================================
 
