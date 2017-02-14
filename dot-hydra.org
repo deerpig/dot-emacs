@@ -29,7 +29,12 @@ etc. all fall into the same category.
 :PROPERTIES:
 :tangle: emacs-hydra.el
 :END:
+** File Header
 
+#+begin_src emacs-lisp
+;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
+;; Emacs Hydra Files
+#+end_src
 ** Hydra Package
 
 Homepage:  [[https://github.com/abo-abo/hydra#awesome-docstring][Hydra | Github]]
