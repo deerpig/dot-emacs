@@ -1,33 +1,5 @@
-#+TITLE:Dot Emacs: Hydra
-#+AUTHOR: Brad Collins
-#+EMAIL: brad@chenla.la
-#+PROPERTY: tangle emacs-mu4e.el
-
-* Introduction
-* Mu4e Config
-:PROPERTIES:
-:tangle: emacs-mu4e.el
-:END:
-** File Header
-
-#+begin_src emacs-lisp
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
 ;; Emacs Mu4e Configuration
-
-#+end_src
-
-** Mu4e Package
-
-Follow instructions to download and install the /mu/ search engine which
-is bundled with /mu4e/:
-
-  [[http://www.djcbsoftware.nl/code/mu/mu4e/Installation.html][Mu4e 0.9.18 user manual: Installation]]
-
-You will need to install an app to synchronize imap mailboxes.  We're
-using [[https://sourceforge.net/p/isync/isync/ci/master/tree/][mbsync]] but many people use /offlineIMAP/ and I used fetchmail
-for many years without complaint.
-
-#+begin_src emacs-lisp
 
 ;; mu4e ===========================================
 
@@ -36,26 +8,11 @@ for many years without complaint.
 (require 'mu4e)
 (require 'org-mu4e)
 
-#+end_src
-
-Set application names.
-
-#+begin_src emacs-lisp
 (setq mu4e-get-mail-command "mbsync -a"
       mu4e-mu-binary (executable-find "mu"))
 
-#+end_src
-
-Set directory name for attachments.
-
-#+begin_src emacs-lisp
 (setq mu4e-attachment-dir  "~/Downloads")
 
-#+end_src
-
-Set Names and email addresses.
-
-#+begin_src emacs-lisp
 (setq mu4e-user-mail-address-list
       '("brad@chenla.la"
 	    "deerpig@gmail.com"
@@ -65,11 +22,6 @@ Set Names and email addresses.
       user-mail-address "brad@chenla.la"
       mail-host-address "chenla.la")
 
-#+end_src
-
-Misc settings.
-
-#+begin_src emacs-lisp
 (setq ;;mu4e-sent-messages-behavior 'delete
       ;; don't show info about indexing new messages
       mu4e-hide-index-messages t
@@ -78,11 +30,6 @@ Misc settings.
       mu4e-view-image-max-width 800
       ;; start in non-queuing mode)
 
-#+end_src
-
-Set up outgoing mail using /ssmtp/.
-
-#+begin_src emacs-lisp
 (setq smtpmail-queue-mail nil
       smtpmail-queue-dir "~/Maildir/queue/"
       message-kill-buffer-on-exit t ;; kill sent msg buffers
@@ -95,28 +42,12 @@ Set up outgoing mail using /ssmtp/.
       ;;mail-envelope-from 'header
       ;;message-sendmail-envelope-from 'header)
 
-#+end_src
-
-At the moment I don't automate downloads, but I will likely try to set
-this up again in the future.
-
-#+begin_src emacs-lisp
 (setq mu4e-update-interval nil
       org-mu4e-link-query-in-header-mode nil)
-#+end_src
 
-Open URLs in the default external browser by hitting <return> when the
-point is on a link.
-
-#+begin_src emacs-lisp
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
 
-#+end_src
-
-Now set up the bookmarks that are shown on the main screen:
-
-#+begin_src emacs-lisp
 ;; The bookmarks for the main screen
 (setq mu4e-bookmarks
           `(;;(,(mlh-mu4e-unread-mail-query) "New messages"         ?b)
@@ -130,11 +61,6 @@ Now set up the bookmarks that are shown on the main screen:
             ("maildir:/chenla/INBOX OR maildir:/gmail/INBOX OR maildir:/path/INBOX"
              "All Mail" ?a)))
 
-#+end_src
-
-Finally set up sig files.
-
-#+begin_src emacs-lisp
 ;; if you set this to nil so signature is not included by default
 ;; you can include in message with C-c C-w
 (setq mu4e-compose-signature-auto-include t)
@@ -143,5 +69,3 @@ Finally set up sig files.
 			       (buffer-string)))
 ;; message-signature-file NOT used by mu4e
 (setq message-signature-file "~/.dotfiles/signature")
-
-#+end_src
