@@ -28,7 +28,8 @@
       ;; attempt to show images
       mu4e-view-show-images t
       mu4e-view-image-max-width 800
-      ;; start in non-queuing mode)
+      ;; start in non-queuing mode
+)
 
 (setq smtpmail-queue-mail nil
       smtpmail-queue-dir "~/Maildir/queue/"
@@ -40,7 +41,8 @@
       ;; to send. Might not be needed b/c of mlh-msmtp
       ;;mail-specify-envelope-from t
       ;;mail-envelope-from 'header
-      ;;message-sendmail-envelope-from 'header)
+      ;;message-sendmail-envelope-from 'header
+)
 
 (setq mu4e-update-interval nil
       org-mu4e-link-query-in-header-mode nil)
