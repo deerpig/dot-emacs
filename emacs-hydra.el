@@ -2,7 +2,10 @@
 ;; See https://github.com/abo-abo/hydra#awesome-docstring
 
 (use-package hydra
-  :ensure t  )
+  :ensure t  
+  :config
+(require 'hydra-examples) ;; needed for hydra-move-splitter
+)
 
 ;; Key Chords =============================================
 

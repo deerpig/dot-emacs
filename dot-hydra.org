@@ -41,8 +41,15 @@ Install the Hydra Package:
 ;; See https://github.com/abo-abo/hydra#awesome-docstring
 
 (use-package hydra
-  :ensure t  )
+  :ensure t  
+  :config
+(require 'hydra-examples) ;; needed for hydra-move-splitter
+)
 #+end_src
+
+#+RESULTS:
+: t
+
 ** Key Chords
 
 The biggest challenge with Hydra is coming up with key-bindings for
