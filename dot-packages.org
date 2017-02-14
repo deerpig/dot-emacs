@@ -639,6 +639,19 @@ starting places:
 
 #+end_src
 
+** Git Gutter
+
+Git gutter is a minor mode that indicates lines, in the left-side
+/gutter/ of the window that have been added or deleted or changed
+since the last comit in a Git repository.
+
+After you've used this for a couple of days you start to wonder how
+you ever lived without it.
+
+:home: https://github.com/syohex/emacs-git-gutter
+
+#+begin_src emacs-lisp
+
 ;; Git-Gutter ----------------------------------------------
 ;; :home: https://github.com/syohex/emacs-git-gutter
 (use-package git-gutter
@@ -649,6 +662,17 @@ starting places:
   ;; add hook if you want to only use for specific modes
   (add-hook 'ruby-mode-hook 'git-gutter-mode)
   (add-hook 'python-mode-hook 'git-gutter-mode))
+
+#+end_src
+
+** Magithub
+
+Magithub allows you to create new repos in GitHub from within emacs.
+I haven't really felt the need for this, though lately I'm been
+creating a lot of new GitHub repos.  But I still have it commented out
+until I feel the need.
+
+#+begin_src emacs-lisp
 
 ;; Magithub ------------------------------------------------
 ;; SEE: http://jr0cket.co.uk/2017/02/spacemacs-using-magit-with-github.html
@@ -661,19 +685,24 @@ starting places:
 ;;   :after magit
 ;;   :config (magithub-feature-autoinject t))
 
+#+end_src
 
+** Yas-snippet 
 
+Clone AndreaCrotti's yasnippet collection:
+
+   https://github.com/AndreaCrotti/yasnippet-snippets.git 
+
+I put the directories under the ~/.dotfiles/emacs.d/ directory so that
+snippets are kept in sync between boxes.  yasmate snippets end in an
+underscore -- so in an org file, dot_ and then <TAB> will insert the
+snippets.  Install all custom snippets into the snippets directory
+when you hit C-c C-c when you create a new snippet and then run M-x
+yas-reload-all.  M-x yasnippet-describe-tables will show available
+snippets for the mode you are in.
+
+#+begin_src emacs-lisp
 ;; YASNIPPET ================================================
-
-;; clone AndreaCrotti's yasnippet collection:
-;; https://github.com/AndreaCrotti/yasnippet-snippets.git I put the
-;; directories under the ~/.dotfiles/emacs.d/ directory so that
-;; snippets are kept in sync between boxes.  yasmate snippets end in
-;; an underscore -- so in an org file, dot_ and then <TAB> will insert
-;; the snippets.  Install all custom snippets into the snippets
-;; directory when you hit C-c C-c when you create a new snippet and
-;; then run M-x yas-reload-all.  M-x yasnippet-describe-tables will
-;; show available snippets for the mode you are in.
 
 (use-package yasnippet
   :ensure t
@@ -690,11 +719,42 @@ starting places:
   ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
   )
 
+#+end_src
+
+** Helm Yasnippet
+
+I've found that if you've drunk the helm cool-aid, this is easier to
+use than trying to remember snippet names.  Snippets are listed
+according to which mode you are working in, so if I am in orgmode I
+will only see org snippets.  Very helpful.
+
+#+begin_src emacs-lisp
+
 ;; Helm Yasnippet ------------------------------------------
+
 (use-package helm-c-yasnippet
   :ensure t
   :config
   (global-set-key (kbd "C-c y") 'helm-yas-complete))
+
+#+end_src
+
+** Dired Ranger
+
+I have been a long-time user of the kde orthodox filemanger called
+Krusader.  But I'm finding myself using Dired more than Krusader.  The
+two pane approach to file management is very good for copying things
+between directories.  Dired Ranger provides keybindings to treat two
+dired windows in the same frames like it was an orthodox file
+manager.  Krusader ssh support has some what crapped out and is a pain
+in the ass if a directory is password protected.  Tramp makes all of
+this very easy, you can even bookmark and link to remote directories
+using Tramp so I am using this more and more.  The only thing I'm
+still using Krusader for is when moving very large files -- I can
+leave it running in another workspace and I don't have to wait for
+emacs to finish before doing something else.
+
+#+begin_src emacs-lisp
 
 ;; Dired Ranger ============================================
 
@@ -709,6 +769,10 @@ starting places:
               ("W" . dired-ranger-copy)
               ("X" . dired-ranger-move)
               ("Y" . dired-ranger-paste)))
+
+#+end_src
+
+** PHP
 
 ;; PHP =====================================================
 (use-package php-mode
@@ -740,6 +804,7 @@ starting places:
 ;; Boxquote =================================================
 (use-package boxquote
   :ensure t )
+
 ;; Lorem ipsum ==============================================
 (use-package lorem-ipsum
   :ensure t)
