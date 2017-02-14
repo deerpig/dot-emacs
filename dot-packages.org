@@ -774,6 +774,7 @@ emacs to finish before doing something else.
 
 ** PHP
 
+
 #+begin_src emacs-lisp
 
 ;; PHP =====================================================
@@ -915,13 +916,14 @@ the Gruvbox section.
 
 #+begin_src emacs-lisp
 
-;; HTML, XML & CSS Packages ================================
+;; HTML & XML Packages ================================
 
 #+end_src
 
 ** nXML Mode
 
-nXML Mode should be now part of emacs
+nXML Mode should be now part of emacs -- mXML is still best for
+working with XML, but Web-Mode is better for WebDev.
 
 ** HTML Tidy
 
@@ -935,18 +937,36 @@ nXML Mode should be now part of emacs
 
 #+end_src
 
+** RelaxNG
 
-;; RelaxNG Mode 
+
+#+begin_src emacs-lisp
+
+;; RelaxNG Mode --------------------------------------------
+
 (use-package rnc-mode
   :ensure t
   )
 
-;; Htmlize
+#+end_src
+
+** Htmlize
+
+#+begin_src emacs-lisp
+
+;; Htmlize -------------------------------------------------
+
 (use-package htmlize
   :ensure t
   )
 
-;; Web-Mode
+#+end_src
+
+
+** Web Mode
+
+#+begin_src emacs-lisp
+;; Web-Mode ------------------------------------------------
 ;;
 ;; Replacement for html mode.
 ;;
@@ -966,33 +986,25 @@ nXML Mode should be now part of emacs
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-auto-quoting t))
 
-;; CSV Mode ================================================
-(use-package csv-mode
-  :ensure t
-  )
+#+end_src
 
-;; Lisp & Scheme ===========================================
+** CSS Packages 
 
-;; Quack
-(use-package quack
-  :ensure t
-  )
+#+begin_src emacs-lisp
 
-;; Slime
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
-  (setq slime-contribs '(slime-fancy))
-  )
+;; CSS Packages ============================================
 
-;; Picolisp
-(use-package picolisp-mode
-  :ensure t
-  )
+#+end_src
 
-;; CSS =====================================================
-;;Rainbow mode 
+** Rainbow Mode
+
+Once you start using it, you wonder how you every worked with CSS
+without it....
+
+#+begin_src emacs-lisp
+
+;; Rainbow mode --------------------------------------------
+
 (use-package rainbow-mode
   :ensure t
   :config
@@ -1002,7 +1014,15 @@ nXML Mode should be now part of emacs
 	       (rainbow-mode 1)))
   )
 
-;; CSS Mode 
+#+end_src
+
+** CSS Mode
+
+
+#+begin_src emacs-lisp
+
+;; CSS Mode ------------------------------------------------
+
 (use-package css-mode
   :ensure t
   :init
@@ -1012,14 +1032,78 @@ nXML Mode should be now part of emacs
     (cons '("\\.css\\'" . css-mode) auto-mode-alist))
   )
 
+#+end_src
+
+** CSV Mode
+
+#+begin_src emacs-lisp
+
+;; CSV Mode ================================================
+
+(use-package csv-mode
+  :ensure t
+  )
+
+#+end_src
+
+** Lisp & Scheme Packages
+
+#+begin_src emacs-lisp
+
+;; Lisp & Scheme Packages ==================================
+
+#+end_src
+
+** Quack
+
+#+begin_src emacs-lisp
+
+;; Quack ---------------------------------------------------
+
+(use-package quack
+  :ensure t
+  )
+
+#+end_src
+
+
+** Slime 
+
+#+begin_src emacs-lisp
+
+;; Slime ---------------------------------------------------
+
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
+  (setq slime-contribs '(slime-fancy))
+  )
+
+#+end_src
+
+** Picolisp
+
+#+begin_src emacs-lisp
+
+;; Picolisp -------------------------------------------------
+
+(use-package picolisp-mode
+  :ensure t
+  )
+
+#+end_src
+
 ;; findr ===================================================
 (use-package findr
   :ensure t
   )
+
 ;; wwtime ==================================================
 (use-package wwtime
   :ensure t
   )
+
 ;; JSON ====================================================
 (use-package json
   :ensure t
@@ -1031,6 +1115,7 @@ nXML Mode should be now part of emacs
 (use-package chef-mode
   :ensure t
   )
+
 ;; Cucumber (edit .feature files)
 (use-package feature-mode
   :ensure t)
