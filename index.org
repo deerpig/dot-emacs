@@ -70,14 +70,20 @@ Feedback Is Welcome!
 
 * Table of Contexts
  
- - dot.emacs
+ - Dot Emacs
  - Org Mode
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra]]
  - [[./dot-packages.org][Packages]]
+ - Yassnippet
 
 ** legacy code
 
 - Gnus
+- BBDB
 
+* Endgame
+
+Eventually I hope to expand the scope of this repo to
+include all of my dot files.  But first things first.
