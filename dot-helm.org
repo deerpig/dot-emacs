@@ -4,6 +4,24 @@
 #+PROPERTY: tangle emacs-helm.el
 
 * Introduction
+
+Helm an incremental completion and selection narrowing framework for
+emacs.  Helm completely transforms the way you use emacs.  It can do
+anything and almost already does everything.
+
+There is a learning curve and it's not for everyone.  Even many people
+who like the concept of completion windows find Helm to be too heavy.
+For them there is Ivy, Council and Swiper.
+
+  - [[http://oremacs.com/2015/04/09/counsel-completion/][Complete stuff with Counsel]] | (or emacs
+  - There is a good [[https://www.reddit.com/r/emacs/comments/3o36sc/what_do_you_prefer_ido_or_helm/][discussion of IDO and Helm on reddit]]
+
+There is a /lot/ written about Helm and more extensions than you can
+shake a stick at.  These should get you started though:
+
+  - Helm Home: [[https://github.com/emacs-helm/helm][emacs-helm/helm]] | Github
+  - [[http://thescratchcastle.com/posts/emacs-and-helm.html][Why I Use Helm and Why You Should Too]] | The Scratch Castle
+
 * Helm Settings
 :PROPERTIES:
 :tangle: emacs-helm.el
@@ -18,25 +36,57 @@
 
 ** Load Helm
 
+This should be changed to use-package -- but I think I had issues
+before with version conflicts in MELPA and the package manager, so
+we'll leave this as is for now.
 
+#+begin_src emacs-lisp
 ;; Helm ====================================================
 
 (require 'helm)
 (require 'helm-config)
 
-;;(helm-mode 1)
+#+end_src
+
+Set the default window for helm buffer to display results on the left
+side.  This works well if you have a large screen, if you are using a
+laptop screen it's better to use 'below'.
+
+You can set the variable to: ‘below’, ‘above’, ‘left’ or ‘right’.
+
+#+begin_src emacs-lisp
+;; set default window for helm buffer to display
+;; can be ‘below’, ‘above’, ‘left’ or ‘right’.
+(setq helm-split-window-default-side 'left)
+#+end_src
+
+Set key-bindings.
+
+In install instructions, I've seen the following comment a number of
+times:
+
+#+begin_src emacs-lisp
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 
-;; set default window for helm buffer to display
-;; can be ‘below’, ‘above’, ‘left’ or ‘right’.
-(setq helm-split-window-default-side 'left)
+#+end_src
 
+However, I almost never used the command.  I finally hit on the idea
+of using the <menu> key as the default prefix.  It works well, I
+invoke this command every few minutes, so dedicating a whole key to it
+is justified.
+
+#+begin_src emacs-lisp
 (global-set-key (kbd "<menu>") 'helm-command-prefix)
 
 ;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+#+end_src
+
+Map common emacs commands to their Hellm equivalent.
+
+#+begin_src emacs-lisp
 ;; Map common emacs commands to their Helm equiv.
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -45,7 +95,15 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
  (when (executable-find "curl")
    (setq helm-google-suggest-use-curl-p t))
-;; helm-command-map key-bindings
+#+end_src
+
+Now set the =helm-command-map= which are all commands that are
+available after pressing the <menu> key.  There are other commands
+that are not listed here which are build into helm.
+
+#+begin_src emacs-lisp
+
+;; helm-command-map key-bindings ---------------------------
 ;; h -- org agenda headings
 ;; r -- regexp
 ;; f -- open file
@@ -63,15 +121,51 @@
 (define-key helm-command-map (kbd ".") 'helm-multi-swoop-all)
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
 
+#+end_src
 
-(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-(setq helm-completion-in-region-fuzzy-match t)
-(setq helm-locate-fuzzy-match t)
+Use <tab> to perform persistent action
 
+#+begin_src emacs-lisp
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+
+#+end_src
+
+Helm Mini
+
+I had set this key-binding above for recent buffers and here it is
+rebound for helm mini.  Commenting out until I work out a new
+key-binding for mini -- if I actually need it....
+
+#+begin_src emacs-lisp
+;;(global-set-key (kbd "C-x b") 'helm-mini)
+#+end_src
+
+Set matching options
+
+#+begin_src emacs-lisp
+(setq helm-M-x-fuzzy-match t 
+      helm-completion-in-region-fuzzy-match t
+      helm-locate-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+
+#+end_src
+
+Set up helm to use the external application /surfraw/ and set up to
+use the /Duck Duck Go/ search engine
+
+#+begin_src emacs-lisp
 (setq helm-surfraw-default-browser-function nil)
-(setq helm-surfraw-duckduckgo-url "https://duckduckgo.com/?q=%s&kae=t&k5=2&kp=-1")
+      helm-surfraw-duckduckgo-url "https://duckduckgo.com/?q=%s&kae=t&k5=2&kp=-1"
+#+end_src
 
 
+External applications for opening media.
+
+Open file using external program using C-c C-x
+
+#+begin_src emacs-lisp
 ;; Helm open file using external program using C-c C-x
 
 (setq helm-external-programs-associations
@@ -91,13 +185,10 @@
 	      ("mp3"  . "vlc")
 	      ("mkv"  . "vlc"))))
 
+#+end_src
 
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+Might need to unset this some time in the future.
 
-(global-set-key (kbd "C-x b") 'helm-mini)
-
-(setq helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match    t)
-
+#+begin_src emacs-lisp
 ;;(helm-mode 1)
+#+end_src
