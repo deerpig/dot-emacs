@@ -1094,41 +1094,111 @@ without it....
 
 #+end_src
 
+** Findr
+
+Do we need this?  Using Helm as find interface
+
+#+begin_src emacs-lisp
+
 ;; findr ===================================================
+
 (use-package findr
   :ensure t
   )
+
+#+end_src
+
+
+** WWTime
+
+#+begin_src emacs-lisp
 
 ;; wwtime ==================================================
 (use-package wwtime
   :ensure t
   )
 
+#+end_src
+
+** JSON 
+
+Move up with WebDev?
+
+#+begin_src emacs-lisp
+
 ;; JSON ====================================================
+
 (use-package json
   :ensure t
   )
 
+
+#+end_src
+
+** Chef & Cucumber
+#+begin_src emacs-lisp
+
 ;; Chef & Cucumber =========================================
 
-;; Chef
+#+end_src
+
+
+** Chef
+
+#+begin_src emacs-lisp
+
+;; Chef ----------------------------------------------------
+
 (use-package chef-mode
   :ensure t
   )
 
-;; Cucumber (edit .feature files)
+#+end_src
+
+** Cucumber
+#+begin_src emacs-lisp
+
+;; Cucumber ------------------------------------------------
+
+;; (edit .feature files)
 (use-package feature-mode
   :ensure t)
 
+#+end_src
+
+** Emacs Lisp Development
+#+begin_src emacs-lisp
+
 ;; Emacs Lisp Development ==================================
 
-;; Cask (project package management for elisp)
+#+end_src
+
+** Cask
+#+begin_src emacs-lisp
+
+;; Cask ----------------------------------------------------
+
+;; (project package management for elisp)
 (use-package cask
   :ensure t
   )
 
-;; Ecukes (cucumber like tests for elisp)
+#+end_src
+
+
+** Ecukes
+
+
+#+begin_src emacs-lisp
+
+;; Ecukes --------------------------------------------------
+
+;; (cucumber like tests for elisp)
 (use-package ecukes
   :ensure t
   )
+
+#+end_src
+
+
 
