@@ -1051,8 +1051,11 @@ I'm no longer using Beamer, but the code may be of use someday:
 #+end_src
 
 
+** Whitespace
 
+Haven't used this in a while -- perhaps it should be put into a hydra?
 
+#+begin_src emacs-lisp
 (defun whack-whitespace (arg)
       "Delete all white space from point to the next word.  With prefix ARG
     delete across newlines as well.  The only danger in this is that you
@@ -1064,9 +1067,11 @@ I'm no longer using Beamer, but the code may be of use someday:
         (re-search-forward regexp nil t)
         (replace-match "" nil nil)))
 
+#+end_src
 
-;;(require 'org-writers-room)
+** Babel Language Evaluation
 
+#+begin_src emacs-lisp
 ;; Enable language evulation in Org Babel
 
 (org-babel-do-load-languages
@@ -1088,17 +1093,45 @@ I'm no longer using Beamer, but the code may be of use someday:
 
 (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
 
-;; add man page url
+#+end_src
+
+** Org Man Page
+
+Does this work?
+
+#+begin_src emacs-lisp
+;; add man page url -----------------------------------------
 (provide 'org-man)
 
+#+end_src
 
-;; org word count ==========
+** Org Word Count
 
-(add-hook 'org-mode-hook 'wc-mode)
+While this is very cool, my mode line has far too much crap in it.
+When I want to see a word count it's easy enough to run =wc= by hand.
 
-;; org mime ================
+Commented out.
+
+#+begin_src emacs-lisp
+
+;; org word count ------------------------------------------
+
+;;(add-hook 'org-mode-hook 'wc-mode)
+
+#+end_src
+
+** Org MIME
+
+This code converts org markup into proper mime multipart
+messages. This can be called in an org buffer or in a message buffer.
+
+See:
+
+  [[http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/][Sending html emails from org-mode with org-mime]]
+
+#+begin_src emacs-lisp
+;; org mime -------------------------------------
 ;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
-
 
 (require 'org-mime)
 
@@ -1118,8 +1151,6 @@ I'm no longer using Beamer, but the code may be of use someday:
   (org-mime-send-subtree
    (or (org-entry-get nil "MAIL_FMT" org-mime-use-property-inheritance) 'org))
   (message-goto-to))
-
-
 
 ;;(subject (or (funcall mp "MAIL_SUBJECT") (nth 4 (org-heading-components))))
 ;;(to (funcall mp "MAIL_TO"))
@@ -1214,8 +1245,13 @@ I'm no longer using Beamer, but the code may be of use someday:
                 (mapconcat 'identity images "\n")))))
     (mapc #'mml-attach-file files)))
 
+#+end_src
 
-;; Use org-ids in org-links
+
+** Org IDs in Links
+
+
+;; Use org-ids in org-links --------------------------------
 
 (setq org-id-track-globally t)
 (setq org-id-link-to-org-use-id 'use-existing)
