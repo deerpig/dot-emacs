@@ -583,6 +583,525 @@ headings and headings as well.
 
 #+end_src
 
+** Insert Epoch
+
+This function will be used for setting version numbers in BMF.
+
+#+begin_src emacs-lisp
+(defun insert-epoch ()
+  "Insert time in seconds from the J2000.0 epoch in
+   sec.microseconds, by subtracting unix-time"
+  (interactive)
+  (insert (number-to-string (round (- (string-to-number
+     (shell-command-to-string "date +%s")) 946727935))))
+  (insert (shell-command-to-string "date +.%N"))
+  (when (looking-at "^$") ; when shell command has extra newline, delete it
+   (delete-backward-char 1))
+  )
+#+end_src
+
+** Jekyll Projects
+
+This section needs to be broken up and better documented.
+
+#+begin_src emacs-lisp
+;; Jekyll Projects =========================================
+
+(setq org-html-htmlize-output-type 'css)
+
+(require 'ox-publish)
+(setq org-publish-project-alist
+      (quote (("orgai-docs"
+	       :base-directory "~/proj/path/ERP-Doc/org/"
+	       :base-extension "org"
+	       :publishing-directory "~/proj/path/orgai-www/"
+	       :recursive t
+	       :publishing-function org-html-publish-to-html
+	       :headline-levels 6
+	       :html-extension "html")
+	      ("orgai-static"
+	       :base-directory "~/proj/path/ERP-Doc/org/"
+	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
+	       :publishing-directory "~/proj/path/orgai-www/"
+	       :recursive t
+	       :publishing-function org-publish-attachment)
+
+	      ("orgai" :components ("orgai-docs" "orgai-static"))
+
+	      ("deerpig-docs"
+	       :base-directory "~/proj/deerpig/deerpig-install/"
+	       :base-extension "org"
+	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :recursive t
+	       :publishing-function org-html-publish-to-html
+	       :headline-levels 4
+	       :html-extension "html")
+       
+	      ("deerpig-static"
+	       :base-directory "~/proj/deerpig/deerpig-install/"
+	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
+	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :recursive t
+	       :publishing-function org-publish-attachment)
+       
+	      ("deerpig" :components ("deerpig-docs" "deerpig-static"))
+
+
+	      ("core-docs"
+	       :base-directory "~/proj/chenla/core-docs/"
+	       :base-extension "org"
+	       :publishing-directory "~/proj/chenla/core-html/"
+	       :recursive t
+	       :publishing-function org-html-publish-to-html
+	       :headline-levels 4
+	       :html-extension "html")
+
+	      
+	      ("core-static"
+	       :base-directory "~/proj/chenla/core-docs/"
+	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
+	       :publishing-directory "~/proj/chenla/core-html/"
+	       :recursive t
+	       :publishing-function org-publish-attachment)
+       
+	      ("core" :components ("core-docs" "core-static"))
+	      )))
+
+;; Deploy projects -----------------------------------------
+
+(defun deploy (name)
+  "Build and deploy local websites using shell script to call
+   orgmode and git.  Scripts are kept in ~/.dotfiles/ and
+   linked to ~/bin/"
+  (interactive "cdeploy: (c)ore (l)a (d)eerpig")
+  (shell-command     (cond ((equal name ?c) "cored")
+			   ((equal name ?l) "betad")
+			   ((equal name ?d) "deerd"))))
+
+;; delete 2 blank spaces at top of files
+;; when publishing
+
+;; (add-hook 'org-publish-after-export-hook
+;; 	  '(lambda nil
+;; 	     (goto-char (point-min))
+;; 	     (while (re-search-forward "^\n\n---" nil t)
+;; 	       (replace-match "---"))
+;;   ))
+
+#+end_src
+
+** Export Subtree
+
+#+begin_src emacs-lisp
+;; Export for Jekyll subtrees ------------------------------
+
+(load-file "~/emacs-lisp/ox-jekyll-subtree.el")
+(autoload 'endless/export-to-blog "jekyll-once")
+(setq org-jekyll-use-src-plugin t)
+
+(defun deerpig/set-blog-var ()
+  "pull values for #+BLOGDIR and #+BASEURL and replace settings for 
+   endless/blog-dir and endless/blog-base-url so that we can use 
+   ox-jekyll-subtree for multiple blogs...."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (search-forward "#+BLOGDIR:")
+    (forward-char 1)
+    (setq endless/blog-dir
+	  (buffer-substring-no-properties (point) (line-end-position)))
+    (goto-char (point-min)) 
+    (search-forward "#+BASEURL:")
+    (forward-char 1)
+    (setq endless/blog-base-url
+	  (buffer-substring-no-properties (point) (line-end-position)))
+
+    ))
+
+;; Obviously, these two need to be changed for your blog.
+(setq endless/blog-base-url "http://chenla.org/")
+(setq endless/blog-dir (expand-file-name "~/proj/chenla/chenla-org/"))
+#+end_src
+
+
+** Whitespace
+
+Haven't used this in a while -- perhaps it should be put into a hydra?
+
+#+begin_src emacs-lisp
+(defun whack-whitespace (arg)
+      "Delete all white space from point to the next word.  With prefix ARG
+    delete across newlines as well.  The only danger in this is that you
+    don't have to actually be at the end of a word to make it work.  It
+    skips over to the next whitespace and then whacks it all to the next
+    word."
+      (interactive "P")
+      (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+        (re-search-forward regexp nil t)
+        (replace-match "" nil nil)))
+
+#+end_src
+
+** Babel Language Evaluation
+
+#+begin_src emacs-lisp
+;; Enable language evulation in Org Babel
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ditaa .t)
+   (dot . t)
+   (R . t)
+   (shell . t)
+   (python . t)
+   (ruby . t)
+   (lisp  . t)
+   (scheme . t)
+   (calc . t)
+   (plantuml . t)
+   ))
+
+(setq org-confirm-babel-evaluate nil)
+
+(add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
+
+#+end_src
+
+** Org Man Page
+
+Does this work?
+
+#+begin_src emacs-lisp
+;; add man page url -----------------------------------------
+(provide 'org-man)
+
+#+end_src
+
+** Org Word Count
+
+While this is very cool, my mode line has far too much crap in it.
+When I want to see a word count it's easy enough to run =wc= by hand.
+
+Commented out.
+
+#+begin_src emacs-lisp
+
+;; org word count ------------------------------------------
+
+;;(add-hook 'org-mode-hook 'wc-mode)
+
+#+end_src
+
+** Org MIME
+
+This code converts org markup into proper mime multipart
+messages. This can be called in an org buffer or in a message buffer.
+
+See:
+
+  [[http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/][Sending html emails from org-mode with org-mime]]
+
+#+begin_src emacs-lisp
+;; org mime -------------------------------------
+;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
+
+(require 'org-mime)
+
+(defun org-mime-org-buffer-htmlize ()
+  "Create an email buffer containing the current org-mode file
+  exported to html and encoded in both html and in org formats as
+  mime alternatives."
+  (interactive)
+  (org-mime-send-buffer 'html)
+  (message-goto-to))
+
+(defun org-mime-subtree ()
+  "Create an email buffer containing the current org-mode subtree
+  exported to a org format or to the format specified by the
+  MAIL_FMT property of the subtree."
+  (interactive)
+  (org-mime-send-subtree
+   (or (org-entry-get nil "MAIL_FMT" org-mime-use-property-inheritance) 'org))
+  (message-goto-to))
+
+;;(subject (or (funcall mp "MAIL_SUBJECT") (nth 4 (org-heading-components))))
+;;(to (funcall mp "MAIL_TO"))
+;;(cc (funcall mp "MAIL_CC"))
+;;(bcc (funcall mp "MAIL_BCC"))
+
+;; sending mime mail from within mu4e compose
+
+(defun mu4e-compose-org-mail ()
+ (interactive)
+ (mu4e-compose-new)
+ (org-mu4e-compose-org-mode))
+
+(defun htmlize-and-send ()
+  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
+  (interactive)
+  (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
+    (org-mime-htmlize) 
+    (message-send-and-exit)))
+
+(add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
+
+
+(defun compose-html-org ()
+  (interactive)
+  (compose-mail)
+  (message-goto-body)
+  (setq *compose-html-org* t)
+  (org-mode))
+
+(defun org-htmlize-and-send ()
+  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
+  (interactive)
+  
+  (when *compose-html-org*
+    (setq *compose-html-org* nil)
+    (message-mode)
+    (org-mime-htmlize) 
+    (message-send-and-exit)))
+
+(add-hook 'org-ctrl-c-ctrl-c-hook 'org-htmlize-and-send t)
+
+
+(defun org-mime-compose (body fmt file &optional to subject headers)
+  (require 'message)
+  (let ((bhook
+         (lambda (body fmt)
+           (let ((hook (intern (concat "org-mime-pre-"
+                                       (symbol-name fmt)
+                                       "-hook"))))
+             (if (> (eval `(length ,hook)) 0)
+                 (with-temp-buffer
+                   (insert body)
+                   (goto-char (point-min))
+                   (eval `(run-hooks ',hook))
+                   (buffer-string))
+               body))))
+        (fmt (if (symbolp fmt) fmt (intern fmt)))
+        (files (org-element-map (org-element-parse-buffer) 'link
+                 (lambda (link)
+                   (when (string= (org-element-property :type link) "file")
+                     (file-truename (org-element-property :path link)))))))
+    (compose-mail to subject headers nil)
+    (message-goto-body)
+    (cond
+     ((eq fmt 'org)
+      (require 'ox-org)
+      (insert (org-export-string-as
+               (org-babel-trim (funcall bhook body 'org)) 'org t)))
+     ((eq fmt 'ascii)
+      (require 'ox-ascii)
+      (insert (org-export-string-as
+               (concat "#+Title:\n" (funcall bhook body 'ascii)) 'ascii t)))
+     ((or (eq fmt 'html) (eq fmt 'html-ascii))
+      (require 'ox-ascii)
+      (require 'ox-org)
+      (let* ((org-link-file-path-type 'absolute)
+             ;; we probably don't want to export a huge style file
+             (org-export-htmlize-output-type 'inline-css)
+             (org-html-with-latex 'dvipng)
+             (html-and-images
+              (org-mime-replace-images
+               (org-export-string-as (funcall bhook body 'html) 'html t)))
+             (images (cdr html-and-images))
+             (html (org-mime-apply-html-hook (car html-and-images))))
+        (insert (org-mime-multipart
+                 (org-export-string-as
+                  (org-babel-trim
+                   (funcall bhook body (if (eq fmt 'html) 'org 'ascii)))
+                  (if (eq fmt 'html) 'org 'ascii) t)
+                 html)
+                (mapconcat 'identity images "\n")))))
+    (mapc #'mml-attach-file files)))
+
+#+end_src
+
+
+** Org IDs in Links
+
+
+#+begin_src emacs-lisp
+;; Use org-ids in org-links --------------------------------
+
+(setq org-id-track-globally t)
+(setq org-id-link-to-org-use-id 'use-existing)
+(org-id-update-id-locations) ;; updates id-index
+
+#+end_src
+
+** Function: Recursively Find org files
+
+Recursively find .org files in provided directory.
+
+Snarfed from:
+
+  [[http://stackoverflow.com/questions/11384516/how-to-make-all-org-files-under-a-folder-added-in-agenda-list-automatically/11384907#11384907][How to make all org-files under a folder added in agenda-list automatically?]] Stack Overflow
+
+#+begin_src emacs-lisp
+;; recursively find .org files in provided directory
+;; modified from an Emacs Lisp Intro example
+;;
+;; Snarfed From: http://stackoverflow.com/a/11384907
+
+(defun deerpig/find-org-file-recursively (&optional directory filext)
+  "Return .org and .org_archive files recursively from DIRECTORY.
+If FILEXT is provided, return files with extension FILEXT instead."
+  (interactive "DDirectory: ")
+  (let* (org-file-list
+	 (case-fold-search t)	      ; filesystems are case sensitive
+	 (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
+	 (filext (or filext "org$\\\|org_archive"))
+	 (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+	 (cur-dir-list (directory-files directory t file-name-regex)))
+    ;; loop over directory listing
+    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+      (cond
+       ((file-regular-p file-or-dir) ; regular files
+	(if (string-match fileregex file-or-dir) ; org files
+	    (add-to-list 'org-file-list file-or-dir)))
+       ((file-directory-p file-or-dir)
+	(dolist (org-file (deerpig/find-org-file-recursively file-or-dir filext)
+			  org-file-list) ; add files found to result
+	  (add-to-list 'org-file-list org-file)))))))
+
+#+end_src
+
+** Search Extra Files
+
+#+begin_src emacs-lisp
+
+;; (setq org-agenda-text-search-extra-files
+;;       '(agenda-archives
+;;         "~/org/pinboard.org"
+;;         "~/org/subdir/textfile1.txt"))
+
+(setq org-agenda-text-search-extra-files
+      (append (deerpig/find-org-file-recursively "~/org/" "org")
+              (deerpig/find-org-file-recursively "~/proj/" "org")))
+
+
+#+end_src
+
+
+** Function: Add Org-Id to all headings in a file
+
+Snarfed this from:
+
+  [[http://stackoverflow.com/questions/13340616/assign-ids-to-every-entry-in-org-mode][Assign IDs to every entry in Org-mode]] | Stack Overflow
+
+I would eventually like be able to change the heading levels, so that
+you can just add ids to level one or level two headings.
+
+#+begin_src emacs-lisp
+;; Add Org-ID to Headings in File --------------------------
+
+(defun deerpig/org-add-id-to-headings ()
+  "Insert and org-id to all headings in file at point that do not
+have an id"
+  (interactive)
+   (require 'org-id)
+   (save-excursion
+      (goto-char (point-max))
+      (while (outline-previous-heading)
+        (org-id-get-create)))
+  )
+
+#+end_src
+
+** Org Reveal
+
+Reveal is a powerful HTML presentation framework.  Org Reveal makes it
+easy to create Reveal presentations using orgmode.
+
+This is my current favorite tool for making presentations in orgmode
+and will become by default method for creating presentations.
+
+  - [[http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WKPOW9UxVpi][Using Reveal.js presentations]] | C'est la Z
+  - [[https://scottnesbitt.io/2017/01/24/org-reveal/][Creating slides with Emacs org-mode and Reveal.js]] | Open Source Musings
+  - [[https://github.com/hakimel/reveal.js][hakimel/reveal.js]] | Github Home
+  - [[http://lab.hakim.se/reveal-js/#/][reveal.js]] | The HTML Presentation Framework
+  - [[https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md][reveal.js/README.md]] | Github
+  - [[https://github.com/yjwen/org-reveal/wiki/Yasnippet-integration][Yasnippet org-reveal integration]] | Github
+
+#+begin_src emacs-lisp
+
+;; Org Reveal ==============================================
+;;
+
+(use-package ox-reveal
+  :ensure ox-reveal
+  :config
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+  (setq org-reveal-mathjax t)
+  (setq org-reveal-note-key-char t)
+ )
+;; note that htmlize has already been loaded elsewhere...
+
+#+end_src
+
+** Beamer Presentations
+
+I'm no longer using Beamer, but the code may be of use someday:
+
+#+begin_src emacs-lisp
+;; allow for export=>beamer by placing
+;; #+LaTeX_CLASS: beamer in org files
+;; (unless (boundp 'org-export-latex-classes)
+;;   (setq org-export-latex-classes nil))
+;; (add-to-list 'org-export-latex-classes
+;;   ;; beamer class, for presentations
+;;   '("beamer"
+;;      "\\documentclass[11pt]{beamer}\n
+;;       \\mode<{{{beamermode}}}>\n
+;;       \\usetheme{{{{beamertheme}}}}\n
+;;       \\usecolortheme{{{{beamercolortheme}}}}\n
+;;       \\beamertemplateballitem\n
+;;       \\setbeameroption{show notes}
+;;       \\usepackage[utf8]{inputenc}\n
+;;       \\usepackage[T1]{fontenc}\n
+;;       \\usepackage{hyperref}\n
+;;       \\usepackage{color}
+;;       \\usepackage{listings}
+;;       \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+;;   frame=single,
+;;   basicstyle=\\small,
+;;   showspaces=false,showstringspaces=false,
+;;   showtabs=false,
+;;   keywordstyle=\\color{blue}\\bfseries,
+;;   commentstyle=\\color{red},
+;;   }\n
+;;       \\usepackage{verbatim}\n
+;;       \\institute{{{{beamerinstitute}}}}\n          
+;;        \\subject{{{{beamersubject}}}}\n"
+
+;;      ("\\section{%s}" . "\\section*{%s}")
+     
+;;      ("\\begin{frame}[fragile]\\frametitle{%s}"
+;;        "\\end{frame}"
+;;        "\\begin{frame}[fragile]\\frametitle{%s}"
+;;        "\\end{frame}")))
+
+;;   ;; letter class, for formal letters
+
+;;   (add-to-list 'org-export-latex-classes
+
+;;   '("letter"
+;;      "\\documentclass[11pt]{letter}\n
+;;       \\usepackage[utf8]{inputenc}\n
+;;       \\usepackage[T1]{fontenc}\n
+;;       \\usepackage{color}"
+     
+;;      ("\\section{%s}" . "\\section*{%s}")
+;;      ("\\subsection{%s}" . "\\subsection*{%s}")
+;;      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;;      ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;;      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+#+end_src
 ** Insert Functions
 
 I'll be going through all of this and moving most into yasnippets or
@@ -849,521 +1368,3 @@ sunsetting the ones I don't use.
 
 #+end_src
 
-
-** Insert Epoch
-
-This function will be used for setting version numbers in BMF.
-
-#+begin_src emacs-lisp
-(defun insert-epoch ()
-  "Insert time in seconds from the J2000.0 epoch in
-   sec.microseconds, by subtracting unix-time"
-  (interactive)
-  (insert (number-to-string (round (- (string-to-number
-     (shell-command-to-string "date +%s")) 946727935))))
-  (insert (shell-command-to-string "date +.%N"))
-  (when (looking-at "^$") ; when shell command has extra newline, delete it
-   (delete-backward-char 1))
-  )
-#+end_src
-
-** Jekyll Projects
-
-This section needs to be broken up and better documented.
-
-#+begin_src emacs-lisp
-;; Jekyll Projects =========================================
-
-(setq org-html-htmlize-output-type 'css)
-
-(require 'ox-publish)
-(setq org-publish-project-alist
-      (quote (("orgai-docs"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
-	       :base-extension "org"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-html-publish-to-html
-	       :headline-levels 6
-	       :html-extension "html")
-	      ("orgai-static"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
-	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-publish-attachment)
-
-	      ("orgai" :components ("orgai-docs" "orgai-static"))
-
-	      ("deerpig-docs"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
-	       :base-extension "org"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
-	       :recursive t
-	       :publishing-function org-html-publish-to-html
-	       :headline-levels 4
-	       :html-extension "html")
-       
-	      ("deerpig-static"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
-	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
-	       :recursive t
-	       :publishing-function org-publish-attachment)
-       
-	      ("deerpig" :components ("deerpig-docs" "deerpig-static"))
-
-
-	      ("core-docs"
-	       :base-directory "~/proj/chenla/core-docs/"
-	       :base-extension "org"
-	       :publishing-directory "~/proj/chenla/core-html/"
-	       :recursive t
-	       :publishing-function org-html-publish-to-html
-	       :headline-levels 4
-	       :html-extension "html")
-
-	      
-	      ("core-static"
-	       :base-directory "~/proj/chenla/core-docs/"
-	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/chenla/core-html/"
-	       :recursive t
-	       :publishing-function org-publish-attachment)
-       
-	      ("core" :components ("core-docs" "core-static"))
-	      )))
-
-;; Deploy projects -----------------------------------------
-
-(defun deploy (name)
-  "Build and deploy local websites using shell script to call
-   orgmode and git.  Scripts are kept in ~/.dotfiles/ and
-   linked to ~/bin/"
-  (interactive "cdeploy: (c)ore (l)a (d)eerpig")
-  (shell-command     (cond ((equal name ?c) "cored")
-			   ((equal name ?l) "betad")
-			   ((equal name ?d) "deerd"))))
-
-;; delete 2 blank spaces at top of files
-;; when publishing
-
-;; (add-hook 'org-publish-after-export-hook
-;; 	  '(lambda nil
-;; 	     (goto-char (point-min))
-;; 	     (while (re-search-forward "^\n\n---" nil t)
-;; 	       (replace-match "---"))
-;;   ))
-
-#+end_src
-
-** Export Subtree
-
-#+begin_src emacs-lisp
-;; Export for Jekyll subtrees ------------------------------
-
-(load-file "~/emacs-lisp/ox-jekyll-subtree.el")
-(autoload 'endless/export-to-blog "jekyll-once")
-(setq org-jekyll-use-src-plugin t)
-
-(defun deerpig/set-blog-var ()
-  "pull values for #+BLOGDIR and #+BASEURL and replace settings for 
-   endless/blog-dir and endless/blog-base-url so that we can use 
-   ox-jekyll-subtree for multiple blogs...."
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (search-forward "#+BLOGDIR:")
-    (forward-char 1)
-    (setq endless/blog-dir
-	  (buffer-substring-no-properties (point) (line-end-position)))
-    (goto-char (point-min)) 
-    (search-forward "#+BASEURL:")
-    (forward-char 1)
-    (setq endless/blog-base-url
-	  (buffer-substring-no-properties (point) (line-end-position)))
-
-    ))
-
-;; Obviously, these two need to be changed for your blog.
-(setq endless/blog-base-url "http://chenla.org/")
-(setq endless/blog-dir (expand-file-name "~/proj/chenla/chenla-org/"))
-#+end_src
-
-** Beamer Presentations
-
-I'm no longer using Beamer, but the code may be of use someday:
-
-#+begin_src emacs-lisp
-;; allow for export=>beamer by placing
-;; #+LaTeX_CLASS: beamer in org files
-;; (unless (boundp 'org-export-latex-classes)
-;;   (setq org-export-latex-classes nil))
-;; (add-to-list 'org-export-latex-classes
-;;   ;; beamer class, for presentations
-;;   '("beamer"
-;;      "\\documentclass[11pt]{beamer}\n
-;;       \\mode<{{{beamermode}}}>\n
-;;       \\usetheme{{{{beamertheme}}}}\n
-;;       \\usecolortheme{{{{beamercolortheme}}}}\n
-;;       \\beamertemplateballitem\n
-;;       \\setbeameroption{show notes}
-;;       \\usepackage[utf8]{inputenc}\n
-;;       \\usepackage[T1]{fontenc}\n
-;;       \\usepackage{hyperref}\n
-;;       \\usepackage{color}
-;;       \\usepackage{listings}
-;;       \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
-;;   frame=single,
-;;   basicstyle=\\small,
-;;   showspaces=false,showstringspaces=false,
-;;   showtabs=false,
-;;   keywordstyle=\\color{blue}\\bfseries,
-;;   commentstyle=\\color{red},
-;;   }\n
-;;       \\usepackage{verbatim}\n
-;;       \\institute{{{{beamerinstitute}}}}\n          
-;;        \\subject{{{{beamersubject}}}}\n"
-
-;;      ("\\section{%s}" . "\\section*{%s}")
-     
-;;      ("\\begin{frame}[fragile]\\frametitle{%s}"
-;;        "\\end{frame}"
-;;        "\\begin{frame}[fragile]\\frametitle{%s}"
-;;        "\\end{frame}")))
-
-;;   ;; letter class, for formal letters
-
-;;   (add-to-list 'org-export-latex-classes
-
-;;   '("letter"
-;;      "\\documentclass[11pt]{letter}\n
-;;       \\usepackage[utf8]{inputenc}\n
-;;       \\usepackage[T1]{fontenc}\n
-;;       \\usepackage{color}"
-     
-;;      ("\\section{%s}" . "\\section*{%s}")
-;;      ("\\subsection{%s}" . "\\subsection*{%s}")
-;;      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-;;      ("\\paragraph{%s}" . "\\paragraph*{%s}")
-;;      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-#+end_src
-
-
-** Whitespace
-
-Haven't used this in a while -- perhaps it should be put into a hydra?
-
-#+begin_src emacs-lisp
-(defun whack-whitespace (arg)
-      "Delete all white space from point to the next word.  With prefix ARG
-    delete across newlines as well.  The only danger in this is that you
-    don't have to actually be at the end of a word to make it work.  It
-    skips over to the next whitespace and then whacks it all to the next
-    word."
-      (interactive "P")
-      (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
-        (re-search-forward regexp nil t)
-        (replace-match "" nil nil)))
-
-#+end_src
-
-** Babel Language Evaluation
-
-#+begin_src emacs-lisp
-;; Enable language evulation in Org Babel
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (ditaa .t)
-   (dot . t)
-   (R . t)
-   (shell . t)
-   (python . t)
-   (ruby . t)
-   (lisp  . t)
-   (scheme . t)
-   (calc . t)
-   (plantuml . t)
-   ))
-
-(setq org-confirm-babel-evaluate nil)
-
-(add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
-
-#+end_src
-
-** Org Man Page
-
-Does this work?
-
-#+begin_src emacs-lisp
-;; add man page url -----------------------------------------
-(provide 'org-man)
-
-#+end_src
-
-** Org Word Count
-
-While this is very cool, my mode line has far too much crap in it.
-When I want to see a word count it's easy enough to run =wc= by hand.
-
-Commented out.
-
-#+begin_src emacs-lisp
-
-;; org word count ------------------------------------------
-
-;;(add-hook 'org-mode-hook 'wc-mode)
-
-#+end_src
-
-** Org MIME
-
-This code converts org markup into proper mime multipart
-messages. This can be called in an org buffer or in a message buffer.
-
-See:
-
-  [[http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/][Sending html emails from org-mode with org-mime]]
-
-#+begin_src emacs-lisp
-;; org mime -------------------------------------
-;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
-
-(require 'org-mime)
-
-(defun org-mime-org-buffer-htmlize ()
-  "Create an email buffer containing the current org-mode file
-  exported to html and encoded in both html and in org formats as
-  mime alternatives."
-  (interactive)
-  (org-mime-send-buffer 'html)
-  (message-goto-to))
-
-(defun org-mime-subtree ()
-  "Create an email buffer containing the current org-mode subtree
-  exported to a org format or to the format specified by the
-  MAIL_FMT property of the subtree."
-  (interactive)
-  (org-mime-send-subtree
-   (or (org-entry-get nil "MAIL_FMT" org-mime-use-property-inheritance) 'org))
-  (message-goto-to))
-
-;;(subject (or (funcall mp "MAIL_SUBJECT") (nth 4 (org-heading-components))))
-;;(to (funcall mp "MAIL_TO"))
-;;(cc (funcall mp "MAIL_CC"))
-;;(bcc (funcall mp "MAIL_BCC"))
-
-;; sending mime mail from within mu4e compose
-
-(defun mu4e-compose-org-mail ()
- (interactive)
- (mu4e-compose-new)
- (org-mu4e-compose-org-mode))
-
-(defun htmlize-and-send ()
-  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
-  (interactive)
-  (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
-    (org-mime-htmlize) 
-    (message-send-and-exit)))
-
-(add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
-
-
-(defun compose-html-org ()
-  (interactive)
-  (compose-mail)
-  (message-goto-body)
-  (setq *compose-html-org* t)
-  (org-mode))
-
-(defun org-htmlize-and-send ()
-  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
-  (interactive)
-  
-  (when *compose-html-org*
-    (setq *compose-html-org* nil)
-    (message-mode)
-    (org-mime-htmlize) 
-    (message-send-and-exit)))
-
-(add-hook 'org-ctrl-c-ctrl-c-hook 'org-htmlize-and-send t)
-
-
-(defun org-mime-compose (body fmt file &optional to subject headers)
-  (require 'message)
-  (let ((bhook
-         (lambda (body fmt)
-           (let ((hook (intern (concat "org-mime-pre-"
-                                       (symbol-name fmt)
-                                       "-hook"))))
-             (if (> (eval `(length ,hook)) 0)
-                 (with-temp-buffer
-                   (insert body)
-                   (goto-char (point-min))
-                   (eval `(run-hooks ',hook))
-                   (buffer-string))
-               body))))
-        (fmt (if (symbolp fmt) fmt (intern fmt)))
-        (files (org-element-map (org-element-parse-buffer) 'link
-                 (lambda (link)
-                   (when (string= (org-element-property :type link) "file")
-                     (file-truename (org-element-property :path link)))))))
-    (compose-mail to subject headers nil)
-    (message-goto-body)
-    (cond
-     ((eq fmt 'org)
-      (require 'ox-org)
-      (insert (org-export-string-as
-               (org-babel-trim (funcall bhook body 'org)) 'org t)))
-     ((eq fmt 'ascii)
-      (require 'ox-ascii)
-      (insert (org-export-string-as
-               (concat "#+Title:\n" (funcall bhook body 'ascii)) 'ascii t)))
-     ((or (eq fmt 'html) (eq fmt 'html-ascii))
-      (require 'ox-ascii)
-      (require 'ox-org)
-      (let* ((org-link-file-path-type 'absolute)
-             ;; we probably don't want to export a huge style file
-             (org-export-htmlize-output-type 'inline-css)
-             (org-html-with-latex 'dvipng)
-             (html-and-images
-              (org-mime-replace-images
-               (org-export-string-as (funcall bhook body 'html) 'html t)))
-             (images (cdr html-and-images))
-             (html (org-mime-apply-html-hook (car html-and-images))))
-        (insert (org-mime-multipart
-                 (org-export-string-as
-                  (org-babel-trim
-                   (funcall bhook body (if (eq fmt 'html) 'org 'ascii)))
-                  (if (eq fmt 'html) 'org 'ascii) t)
-                 html)
-                (mapconcat 'identity images "\n")))))
-    (mapc #'mml-attach-file files)))
-
-#+end_src
-
-
-** Org IDs in Links
-
-
-;; Use org-ids in org-links --------------------------------
-
-(setq org-id-track-globally t)
-(setq org-id-link-to-org-use-id 'use-existing)
-(org-id-update-id-locations) ;; updates id-index
-
-
-** Function: Recursively Find org files
-
-Recursively find .org files in provided directory.
-
-Snarfed from:
-
-  [[http://stackoverflow.com/questions/11384516/how-to-make-all-org-files-under-a-folder-added-in-agenda-list-automatically/11384907#11384907][How to make all org-files under a folder added in agenda-list automatically?]] Stack Overflow
-
-#+begin_src emacs-lisp
-;; recursively find .org files in provided directory
-;; modified from an Emacs Lisp Intro example
-;;
-;; Snarfed From: http://stackoverflow.com/a/11384907
-
-(defun deerpig/find-org-file-recursively (&optional directory filext)
-  "Return .org and .org_archive files recursively from DIRECTORY.
-If FILEXT is provided, return files with extension FILEXT instead."
-  (interactive "DDirectory: ")
-  (let* (org-file-list
-	 (case-fold-search t)	      ; filesystems are case sensitive
-	 (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backup files
-	 (filext (or filext "org$\\\|org_archive"))
-	 (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
-	 (cur-dir-list (directory-files directory t file-name-regex)))
-    ;; loop over directory listing
-    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
-      (cond
-       ((file-regular-p file-or-dir) ; regular files
-	(if (string-match fileregex file-or-dir) ; org files
-	    (add-to-list 'org-file-list file-or-dir)))
-       ((file-directory-p file-or-dir)
-	(dolist (org-file (deerpig/find-org-file-recursively file-or-dir filext)
-			  org-file-list) ; add files found to result
-	  (add-to-list 'org-file-list org-file)))))))
-
-#+end_src
-
-** Search Extra Files
-
-#+begin_src emacs-lisp
-
-;; (setq org-agenda-text-search-extra-files
-;;       '(agenda-archives
-;;         "~/org/pinboard.org"
-;;         "~/org/subdir/textfile1.txt"))
-
-(setq org-agenda-text-search-extra-files
-      (append (deerpig/find-org-file-recursively "~/org/" "org")
-              (deerpig/find-org-file-recursively "~/proj/" "org")))
-
-
-#+end_src
-
-
-** Function: Add Org-Id to all headings in a file
-
-Snarfed this from:
-
-  [[http://stackoverflow.com/questions/13340616/assign-ids-to-every-entry-in-org-mode][Assign IDs to every entry in Org-mode]] | Stack Overflow
-
-I would eventually like be able to change the heading levels, so that
-you can just add ids to level one or level two headings.
-
-#+begin_src emacs-lisp
-;; Add Org-ID to Headings in File --------------------------
-
-(defun deerpig/org-add-id-to-headings ()
-  "Insert and org-id to all headings in file at point that do not
-have an id"
-  (interactive)
-   (require 'org-id)
-   (save-excursion
-      (goto-char (point-max))
-      (while (outline-previous-heading)
-        (org-id-get-create)))
-  )
-
-#+end_src
-
-** Org Reveal
-
-Reveal is a powerful HTML presentation framework.  Org Reveal makes it
-easy to create Reveal presentations using orgmode.
-
-This is my current favorite tool for making presentations in orgmode
-and will become by default method for creating presentations.
-
-  - [[http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WKPOW9UxVpi][Using Reveal.js presentations]] | C'est la Z
-  - [[https://scottnesbitt.io/2017/01/24/org-reveal/][Creating slides with Emacs org-mode and Reveal.js]] | Open Source Musings
-  - [[https://github.com/hakimel/reveal.js][hakimel/reveal.js]] | Github Home
-  - [[http://lab.hakim.se/reveal-js/#/][reveal.js]] | The HTML Presentation Framework
-  - [[https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md][reveal.js/README.md]] | Github
-  - [[https://github.com/yjwen/org-reveal/wiki/Yasnippet-integration][Yasnippet org-reveal integration]] | Github
-
-#+begin_src emacs-lisp
-
-;; Org Reveal ==============================================
-;;
-
-(use-package ox-reveal
-  :ensure ox-reveal
-  :config
-  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-  (setq org-reveal-mathjax t)
-  (setq org-reveal-note-key-char t)
- )
-;; note that htmlize has already been loaded elsewhere...
-
-#+end_src
