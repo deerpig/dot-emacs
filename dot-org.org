@@ -1120,6 +1120,16 @@ Commented out.
 (setq org-id-link-to-org-use-id 'use-existing)
 (org-id-update-id-locations) ;; updates id-index
 
+
+** Function: Recursively Find org files
+
+Recursively find .org files in provided directory.
+
+Snarfed from:
+
+  [[http://stackoverflow.com/questions/11384516/how-to-make-all-org-files-under-a-folder-added-in-agenda-list-automatically/11384907#11384907][How to make all org-files under a folder added in agenda-list automatically?]] Stack Overflow
+
+#+begin_src emacs-lisp
 ;; recursively find .org files in provided directory
 ;; modified from an Emacs Lisp Intro example
 ;;
@@ -1146,7 +1156,11 @@ If FILEXT is provided, return files with extension FILEXT instead."
 			  org-file-list) ; add files found to result
 	  (add-to-list 'org-file-list org-file)))))))
 
+#+end_src
 
+** Search Extra Files
+
+#+begin_src emacs-lisp
 
 ;; (setq org-agenda-text-search-extra-files
 ;;       '(agenda-archives
@@ -1156,6 +1170,9 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (setq org-agenda-text-search-extra-files
       (append (deerpig/find-org-file-recursively "~/org/" "org")
               (deerpig/find-org-file-recursively "~/proj/" "org")))
+
+
+#+end_src
 
 
 ** Function: Add Org-Id to all headings in a file
@@ -1182,11 +1199,6 @@ have an id"
   )
 
 #+end_src
-
-
-;; =========================================================
-;; Org Use-Package Items
-;; ---------------------------------------------------------
 
 ** Org Reveal
 
