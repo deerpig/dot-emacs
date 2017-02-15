@@ -4,6 +4,14 @@
 #+PROPERTY: tangle emacs-org.el
 
 * Introduction
+
+The file '~/.emacs-org' that the code in this file uses is getting
+quite long in the tooth.  I know that things are getting more than a
+little crufty here.
+
+Once we get things ported and tangled and confirm that I haven't
+broken anything I'll slowly go through and uncruft.
+
 * Org Mode
 :PROPERTIES:
 :tangle: emacs-org.el
