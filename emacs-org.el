@@ -9,11 +9,30 @@
 (setq org-modules 
        (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
 
+;; Enable language evulation in Org Babel
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ditaa .t)
+   (dot . t)
+   (R . t)
+   (shell . t)
+   (python . t)
+   (ruby . t)
+   (lisp  . t)
+   (scheme . t)
+   (calc . t)
+   (plantuml . t)
+   ))
+
+(setq org-confirm-babel-evaluate nil)
+
+(add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
+
 ;; Org Bullets ---------------------------------------------
 
-(use-package org-bullets
-  :ensure t
-  :config
+(require 'org-bullets)
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
     ;; Change bullet list
@@ -24,7 +43,7 @@
     ;; Change the ellipsis that indicates hidden content
     ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
     (set-face-attribute 'org-ellipsis nil :underline nil)
-    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷)
+    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷
 
 (define-key global-map "\M-\C-r" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -460,27 +479,6 @@
         (re-search-forward regexp nil t)
         (replace-match "" nil nil)))
 
-;; Enable language evulation in Org Babel
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (ditaa .t)
-   (dot . t)
-   (R . t)
-   (shell . t)
-   (python . t)
-   (ruby . t)
-   (lisp  . t)
-   (scheme . t)
-   (calc . t)
-   (plantuml . t)
-   ))
-
-(setq org-confirm-babel-evaluate nil)
-
-(add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
-
 ;; add man page url -----------------------------------------
 (provide 'org-man)
 
@@ -490,118 +488,6 @@
 
 ;; org mime -------------------------------------
 ;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
-
-(require 'org-mime)
-
-(defun org-mime-org-buffer-htmlize ()
-  "Create an email buffer containing the current org-mode file
-  exported to html and encoded in both html and in org formats as
-  mime alternatives."
-  (interactive)
-  (org-mime-send-buffer 'html)
-  (message-goto-to))
-
-(defun org-mime-subtree ()
-  "Create an email buffer containing the current org-mode subtree
-  exported to a org format or to the format specified by the
-  MAIL_FMT property of the subtree."
-  (interactive)
-  (org-mime-send-subtree
-   (or (org-entry-get nil "MAIL_FMT" org-mime-use-property-inheritance) 'org))
-  (message-goto-to))
-
-;;(subject (or (funcall mp "MAIL_SUBJECT") (nth 4 (org-heading-components))))
-;;(to (funcall mp "MAIL_TO"))
-;;(cc (funcall mp "MAIL_CC"))
-;;(bcc (funcall mp "MAIL_BCC"))
-
-;; sending mime mail from within mu4e compose
-
-(defun mu4e-compose-org-mail ()
- (interactive)
- (mu4e-compose-new)
- (org-mu4e-compose-org-mode))
-
-(defun htmlize-and-send ()
-  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
-  (interactive)
-  (when (member 'org~mu4e-mime-switch-headers-or-body post-command-hook)
-    (org-mime-htmlize) 
-    (message-send-and-exit)))
-
-(add-hook 'org-ctrl-c-ctrl-c-hook 'htmlize-and-send t)
-
-
-(defun compose-html-org ()
-  (interactive)
-  (compose-mail)
-  (message-goto-body)
-  (setq *compose-html-org* t)
-  (org-mode))
-
-(defun org-htmlize-and-send ()
-  "When in an org-mu4e-compose-org-mode message, htmlize and send it."
-  (interactive)
-  
-  (when *compose-html-org*
-    (setq *compose-html-org* nil)
-    (message-mode)
-    (org-mime-htmlize) 
-    (message-send-and-exit)))
-
-(add-hook 'org-ctrl-c-ctrl-c-hook 'org-htmlize-and-send t)
-
-
-(defun org-mime-compose (body fmt file &optional to subject headers)
-  (require 'message)
-  (let ((bhook
-         (lambda (body fmt)
-           (let ((hook (intern (concat "org-mime-pre-"
-                                       (symbol-name fmt)
-                                       "-hook"))))
-             (if (> (eval `(length ,hook)) 0)
-                 (with-temp-buffer
-                   (insert body)
-                   (goto-char (point-min))
-                   (eval `(run-hooks ',hook))
-                   (buffer-string))
-               body))))
-        (fmt (if (symbolp fmt) fmt (intern fmt)))
-        (files (org-element-map (org-element-parse-buffer) 'link
-                 (lambda (link)
-                   (when (string= (org-element-property :type link) "file")
-                     (file-truename (org-element-property :path link)))))))
-    (compose-mail to subject headers nil)
-    (message-goto-body)
-    (cond
-     ((eq fmt 'org)
-      (require 'ox-org)
-      (insert (org-export-string-as
-               (org-babel-trim (funcall bhook body 'org)) 'org t)))
-     ((eq fmt 'ascii)
-      (require 'ox-ascii)
-      (insert (org-export-string-as
-               (concat "#+Title:\n" (funcall bhook body 'ascii)) 'ascii t)))
-     ((or (eq fmt 'html) (eq fmt 'html-ascii))
-      (require 'ox-ascii)
-      (require 'ox-org)
-      (let* ((org-link-file-path-type 'absolute)
-             ;; we probably don't want to export a huge style file
-             (org-export-htmlize-output-type 'inline-css)
-             (org-html-with-latex 'dvipng)
-             (html-and-images
-              (org-mime-replace-images
-               (org-export-string-as (funcall bhook body 'html) 'html t)))
-             (images (cdr html-and-images))
-             (html (org-mime-apply-html-hook (car html-and-images))))
-        (insert (org-mime-multipart
-                 (org-export-string-as
-                  (org-babel-trim
-                   (funcall bhook body (if (eq fmt 'html) 'org 'ascii)))
-                  (if (eq fmt 'html) 'org 'ascii) t)
-                 html)
-                (mapconcat 'identity images "\n")))))
-    (mapc #'mml-attach-file files)))
 
 ;; Use org-ids in org-links --------------------------------
 
