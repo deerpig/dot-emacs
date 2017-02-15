@@ -558,15 +558,22 @@ Why is this in the emacs-org file?
 
 #+begin_src emacs-lisp
 
-;; BibTex Mode Stuff =======================================
+;; BibTex Mode Stuff ---------------------------------------
 
 (setq bibtex-autokey-year-length 4)
 
 #+end_src
 
+** Org Abbreviations
 
+This is very useful.  But I will have to revisit how I use them as we
+start integrating BMF topicspaces into the config.
 
-;; Org Abbreviations =======================================
+These are set globally, but they can be set for single files and
+headings and headings as well.
+
+#+begin_src emacs-lisp
+;; Org Abbreviations ---------------------------------------
 
   (setq org-link-abbrev-alist
        '(("bug"  . "http://bugs.chenla.org/support/issue")
@@ -574,6 +581,14 @@ Why is this in the emacs-org file?
          ;;("wiki" . "http://en.wikipedia.org/wiki/")
          ("rfc"  . "http://tools.ietf.org/html/")))
 
+#+end_src
+
+** Insert Functions
+
+I'll be going through all of this and moving most into yasnippets or
+sunsetting the ones I don't use.
+
+#+begin_src emacs-lisp
 ;; ================================
 ;; Insert Fuctions
 ;; ================================
@@ -830,6 +845,16 @@ Why is this in the emacs-org file?
 	(insert ":Unihan:   \n")
 	(insert ":Zongwhen: \n\n"))
 
+
+
+#+end_src
+
+
+** Insert Epoch
+
+This function will be used for setting version numbers in BMF.
+
+#+begin_src emacs-lisp
 (defun insert-epoch ()
   "Insert time in seconds from the J2000.0 epoch in
    sec.microseconds, by subtracting unix-time"
@@ -840,13 +865,15 @@ Why is this in the emacs-org file?
   (when (looking-at "^$") ; when shell command has extra newline, delete it
    (delete-backward-char 1))
   )
+#+end_src
 
+** Jekyll Projects
 
+This section needs to be broken up and better documented.
 
+#+begin_src emacs-lisp
+;; Jekyll Projects =========================================
 
-;;===========================
-;; Jekyll Projects
-;;=========================== 
 (setq org-html-htmlize-output-type 'css)
 
 (require 'ox-publish)
@@ -907,8 +934,7 @@ Why is this in the emacs-org file?
 	      ("core" :components ("core-docs" "core-static"))
 	      )))
 
-
-;; Deploy projects
+;; Deploy projects -----------------------------------------
 
 (defun deploy (name)
   "Build and deploy local websites using shell script to call
@@ -957,6 +983,10 @@ Why is this in the emacs-org file?
 ;; 	     (while (re-search-forward "^\n\n---" nil t)
 ;; 	       (replace-match "---"))
 ;;   ))
+
+
+
+#+end_src
 
 
 
