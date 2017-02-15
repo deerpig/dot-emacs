@@ -71,7 +71,7 @@ Feedback Is Welcome!
 * Table of Contexts
  
  - Dot Emacs
- - Org Mode
+ - [[./dot-org.org][Org Mode]]
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra]]
