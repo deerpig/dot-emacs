@@ -1,0 +1,17 @@
+#+TITLE:Dot Emacs: Org Mode
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+PROPERTY: tangle emacs-org.el
+
+* Introduction
+* Org Mode
+:PROPERTIES:
+:tangle: emacs-org.el
+:END:
+** File Header
+
+#+begin_src emacs-lisp
+;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
+;; Emacs Org Mode Configuration
+
+#+end_src
