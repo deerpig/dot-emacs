@@ -43,6 +43,7 @@ Load org mode
 (require 'org)
 #+end_src
 
+
 ** Enable Modules
 
 We need to go through this list and weed out unused or obsolete
@@ -51,7 +52,6 @@ modules.
 #+begin_src emacs-lisp
 (setq org-modules 
        (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
-
 
 #+end_src
 
@@ -86,7 +86,7 @@ Change the default bullet list and ellipsis. See:
     ;; Change the ellipsis that indicates hidden content
     ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
     (set-face-attribute 'org-ellipsis nil :underline nil)
-    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷
+    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷)
 #+end_src
 
 ** Key Bindings
@@ -308,12 +308,14 @@ Commented out.
  (cons (concat "\\[\\[file:\\(~?" iimage-mode-image-filename-regex "\\)\\]")  1))
 ;; add a hook so we can display images on load
 (add-hook 'org-mode-hook '(lambda () (org-turn-on-iimage-in-org)))
+
 ;;function to setup images for display on load
 (defun org-turn-on-iimage-in-org ()
   "display images in your org file"
   (interactive)
   (turn-on-iimage-mode)
   (set-face-underline-p 'org-link nil))
+
 ;;function to toggle images in a org bugger
 (defun org-toggle-iimage-in-org ()
   "display images in your org file"
@@ -507,7 +509,7 @@ See:
     (after delete-capture-frame activate)  
   "Advise capture-destroy to close the frame"  
   (if (equal "capture" (frame-parameter nil 'name))  
-    (delete-frame)))  
+    (delete-frame)))
 
 ;;(use-package nofletaa
 
@@ -920,9 +922,7 @@ See:
 
 #+end_src
 
-
 ** Org IDs in Links
-
 
 #+begin_src emacs-lisp
 ;; Use org-ids in org-links --------------------------------
@@ -1033,7 +1033,7 @@ and will become by default method for creating presentations.
 ;;
 
 (use-package ox-reveal
-  :ensure ox-reveal
+  :ensure t
   :config
   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
   (setq org-reveal-mathjax t)
