@@ -945,7 +945,22 @@ This section needs to be broken up and better documented.
 			   ((equal name ?l) "betad")
 			   ((equal name ?d) "deerd"))))
 
-;; Jekyll wrapper for org export
+;; delete 2 blank spaces at top of files
+;; when publishing
+
+;; (add-hook 'org-publish-after-export-hook
+;; 	  '(lambda nil
+;; 	     (goto-char (point-min))
+;; 	     (while (re-search-forward "^\n\n---" nil t)
+;; 	       (replace-match "---"))
+;;   ))
+
+#+end_src
+
+** Export Subtree
+
+#+begin_src emacs-lisp
+;; Export for Jekyll subtrees ------------------------------
 
 (load-file "~/emacs-lisp/ox-jekyll-subtree.el")
 (autoload 'endless/export-to-blog "jekyll-once")
@@ -973,23 +988,13 @@ This section needs to be broken up and better documented.
 ;; Obviously, these two need to be changed for your blog.
 (setq endless/blog-base-url "http://chenla.org/")
 (setq endless/blog-dir (expand-file-name "~/proj/chenla/chenla-org/"))
-
-;; delete 2 blank spaces at top of files
-;; when publishing
-
-;; (add-hook 'org-publish-after-export-hook
-;; 	  '(lambda nil
-;; 	     (goto-char (point-min))
-;; 	     (while (re-search-forward "^\n\n---" nil t)
-;; 	       (replace-match "---"))
-;;   ))
-
-
-
 #+end_src
 
+** Beamer Presentations
 
+I'm no longer using Beamer, but the code may be of use someday:
 
+#+begin_src emacs-lisp
 ;; allow for export=>beamer by placing
 ;; #+LaTeX_CLASS: beamer in org files
 ;; (unless (boundp 'org-export-latex-classes)
@@ -1042,6 +1047,10 @@ This section needs to be broken up and better documented.
 ;;      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 ;;      ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ;;      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+#+end_src
+
+
 
 
 (defun whack-whitespace (arg)
