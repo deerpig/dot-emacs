@@ -43,6 +43,18 @@ Load org mode
 (require 'org)
 #+end_src
 
+** Enable Modules
+
+We need to go through this list and weed out unused or obsolete
+modules.
+
+#+begin_src emacs-lisp
+(setq org-modules 
+       (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
+
+
+#+end_src
+
 ** Org Bullets
 
 Use Org Bullets with some funky unicode bullets:
@@ -77,16 +89,13 @@ Change the default bullet list and ellipsis. See:
     (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷
 #+end_src
 
+** Key Bindings
 
-
-(setq org-src-fontify-natively 't)
-
-
-
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
+#+begin_src emacs-lisp
 (define-key global-map "\M-\C-r" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
+
+#+end_src
 
 ** Open Agenda Other Window
 
@@ -141,18 +150,6 @@ This is not only useful in Org, I use this in mu4e buffers as well.
 
 #+end_src
 
-** Enable Modules
-
-We need to go through this list and weed out unused or obsolete
-modules.
-
-#+begin_src emacs-lisp
-(setq org-modules 
-       (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
-
-
-#+end_src
-
 ** Set Directories
 
 #+begin_src emacs-lisp
@@ -164,7 +161,9 @@ modules.
 
 ** Misc Settings
 
-Set a bunch of variables;;
+I'm sure there is cruft lurking somewhere in there here variables....
+
+Set a bunch of variables:
 
 #+begin_src emacs-lisp
 (setq org-agenda-include-diary t
@@ -181,19 +180,20 @@ Set a bunch of variables;;
       org-agenda-start-on-weekday 1
       ;; Show one week in weekly agenda view
       org-agenda-span 8
-      org-deadline-warning-days 30)
+      org-deadline-warning-days 30
+      org-src-fontify-natively 't
+      ;; Display tags farther right
+      org-agenda-tags-column -102)
+
+;; Enable display of the time grid so we can see the 
+;; marker for the current time
+
+(setq org-agenda-time-grid 
+     (quote ((daily today remove-match)
+     #("----------------" 0 16 (org-heading t))
+     (0900 1100 1300 1500 1700))))
 
 #+end_src
-
-
-;; Enable display of the time grid so we can see the marker for the current time
-(setq org-agenda-time-grid (quote ((daily today remove-match)
-                                   #("----------------" 0 16 (org-heading t))
-                                   (0900 1100 1300 1500 1700))))
-
-;; Display tags farther right
-(setq org-agenda-tags-column -102)
-
 
 ** Org Weather
 
@@ -215,7 +215,7 @@ Set a bunch of variables;;
 #+end_src
 
 
-** Narrow/Widen Subtree
+** Function: Narrow/Widen Subtree
 
 Not sure if I'm using this or now -- I can't recall using the
 keybindings in some time -- I never can remember anything in emacs
@@ -263,7 +263,7 @@ Commenting out for now....
 
 #+end_src
 
-** Use org-mode in message buffers
+** Org-mode in message buffers
 
 This sounded like a good idea, but in practice is got in the way more
 than it helped.
@@ -296,44 +296,12 @@ Commented out.
 
 #+end_src
 
+** Display Images
 
-;; (setq org-agenda-custom-commands
-;;       (quote (("w" "Tasks waiting on something" tags "WAITING/!"
-;;                ((org-use-tag-inheritance nil)
-;;                 (org-agenda-todo-ignore-scheduled nil)
-;;                 (org-agenda-todo-ignore-deadlines nil)
-;;                 (org-agenda-todo-ignore-with-date nil)
-;;                 (org-agenda-overriding-header "Waiting Tasks")))
-;;               ("r" "Refile New Notes and Tasks" tags "LEVEL=1+REFILE"
-;;                ((org-agenda-todo-ignore-with-date nil)
-;;                 (org-agenda-todo-ignore-deadlines nil)
-;;                 (org-agenda-todo-ignore-scheduled nil)
-;;                 (org-agenda-overriding-header "Tasks to Refile")))
-;;               ("N" "Notes" tags "NOTE"
-;;                ((org-agenda-overriding-header "Notes")))
-;;               ("n" "Next" tags-todo "-WAITING-CANCELLED/!NEXT"
-;;                ((org-agenda-overriding-header "Next Tasks")))
-;;               ("p" "Projects" tags-todo "LEVEL=2-REFILE|LEVEL=1+REFILE/!-DONE-CANCELLED"
-;;                ((org-agenda-skip-function 'bh/skip-non-projects)
-;;                 (org-agenda-overriding-header "Projects")))
-;;               ("o" "Other (Non-Project) tasks" tags-todo "LEVEL=2-REFILE|LEVEL=1+REFILE/!-DONE-CANCELLED"
-;;                ((org-agenda-skip-function 'bh/skip-projects)
-;;                 (org-agenda-overriding-header "Other Non-Project Tasks")))
-;;               ("A" "Tasks to be Archived" tags "LEVEL=2-REFILE/DONE|CANCELLED"
-;;                ((org-agenda-overriding-header "Tasks to Archive")))
-;;               ("h" "Habits" tags "STYLE=\"habit\""
-;;                ((org-agenda-todo-ignore-with-date nil)
-;;                 (org-agenda-todo-ignore-scheduled nil)
-;;                 (org-agenda-todo-ignore-deadlines nil)
-;;                 (org-agenda-overriding-header "Habits")))
-;;               ("#" "Stuck Projects" tags-todo "LEVEL=2-REFILE|LEVEL=1+REFILE/!-DONE-CANCELLED"
-;;                ((org-agenda-skip-function 'bh/skip-non-stuck-projects)
-;;                 (org-agenda-overriding-header "Stuck Projects")))
-;;               )))
+#+begin_src emacs-lisp
 
+;; Display images in org mode ------------------------------
 
-;; -- Display images in org mode
-;; enable image mode first
 (iimage-mode)
 ;;add the org file link format to the iimage mode regex
 (add-to-list 'iimage-mode-image-regex-alist
@@ -355,10 +323,12 @@ Commented out.
       (set-face-underline-p 'org-link t))
   (call-interactively 'iimage-mode))
 
-;; org-archive-subtree I have this function bound to C-S-a with a call like
-;; this:
+#+end_src
 
-     ; Tags with fast selection keys
+
+** Org Tag List
+
+#+begin_src emacs-lisp
 (setq org-tag-alist (quote (
 			    ("@errand" . ?e)
 			    ("@blog"   . ?b)
@@ -368,31 +338,64 @@ Commented out.
 			    ("@call"   . ?c)
 			    ("@email"  . ?m)
 			      )))
+#+end_src
 
+** Org Templates
 
-;; There is a bug in org-reveal that only allows upper case NOTES.
-;; make motes upper case until there is a fix
+There is a bug in org-reveal that only allows upper case NOTES.  make
+Notes upper case until there is a fix.
+
+#+begin_src emacs-lisp
+
 (add-to-list 'org-structure-template-alist
 	     '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
 
+#+end_src
+
+
+** Ignore Heading
+
+Use the tag :ignore: on a heading and org will export the content of a
+subheading but not export the title!  Very cool!
+
+#+begin_src emacs-lisp
 ;; use the tag :ignore: on a heading and org will export the content
 ;; of a subheading but not export the title!  Very cool!
 
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 
+#+end_src
+
+** Single Tags
+
+Allow setting single tags without the menu
+
+#+begin_src emacs-lisp
   ; Allow setting single tags without the menu
   (setq org-fast-tag-selection-single-key (quote expert))
     
   ; For tag searches ignore tasks with scheduled and deadline dates
   (setq org-agenda-tags-todo-honor-ignore-options t)
 
+#+end_src
+
+** Todo Keywords, Faces & Triggers
+
+Set Keywords:
+
+#+begin_src emacs-lisp
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(x)" "|" "WORK(w)" "DONE(d)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING" "DELEGATED")
 	      (sequence "NOTES(n)" "QUOTE(q)" "EMAIL" "LINK")
 	      )))
 
+#+end_src
+
+Set Faces for keywords:
+
+#+begin_src emacs-lisp
 (setq org-todo-keyword-faces
       '(("TODO"      :foreground "red"          :weight bold)
         ("NEXT"      :foreground "blue"         :weight bold) 
@@ -409,6 +412,11 @@ Commented out.
        ;; ("EMAIL"     :foreground "maroon"       :weight bold)
 	))
 
+#+end_src
+
+Triggers:
+
+#+begin_src emacs-lisp
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("ARCHIVE" . t))
               ;;("DONE"      ("ARCHIVE" . t))
@@ -423,11 +431,11 @@ Commented out.
 ;;               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
 ;;               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
+#+end_src
 
-;; Org Contacts ============================================
+** Org Capture
 
-(require 'org-contacts)
-
+#+begin_src emacs-lisp
 ;; Org Capture =============================================
 
 ;; I use C-c c to start capture mode
@@ -466,8 +474,22 @@ Commented out.
 ;;	      ("c" "Contacts" entry (file "~/org/contacts.org")
 ;;	       "* %(org-contacts-template-name)\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:    %\1 %\1\n:EMAIL: %(org-contacts-template-email)\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
 
+#+end_src
+
+** Open Capture in Other Frame
+
+This has become a /very/ important part of my workflow.  I can no open a
+capture window using =<win>-r= outside of emacs.  This is very useful
+when adding references and contacts.  I've found that I am using
+capture far more than I did when it opened in an existing frame,
+though I still do that as well when I am in emacs.
+
+See:
+
+  [[http://cestlaz.github.io/posts/using-emacs-24-capture-2/#.WKPa_NUxVpg][Org Capture 2]] | C'est la Z
 
 
+#+begin_src emacs-lisp
 ;; Open Capture In Other Frame -----------------------------
 ;; In Openbox rc.xml bind:
 ;;    emacsclient -ne "(make-capture-frame)"
@@ -497,9 +519,29 @@ Commented out.
   (delete-other-windows)
   (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
     (org-capture)))
-	      
+
+#+end_src
+
+
+** Org Contacts
+
+Change to use-package?
+
+#+begin_src emacs-lisp
+
+;; Org Contacts ============================================
+
 (require 'org-contacts)
 
+#+end_src
+
+	      
+** Open Agenda in Other Window
+
+For years I opened agenda in a separate frame.  But when using a large
+screen it's easier to work with if agenda opens in the frame on the left.
+
+#+begin_src emacs-lisp
 ;; open agenda in other window
 ;; Options:
 ;;    reorganize-frame   :: show two windows in current frame
@@ -508,9 +550,21 @@ Commented out.
 ;;    other-frame        :: open in other frame
 (setq org-agenda-window-setup 'other-window)
 
+#+end_src
+
+** BibTex Mode
+
+Why is this in the emacs-org file?
+
+#+begin_src emacs-lisp
+
 ;; BibTex Mode Stuff =======================================
 
 (setq bibtex-autokey-year-length 4)
+
+#+end_src
+
+
 
 ;; Org Abbreviations =======================================
 
