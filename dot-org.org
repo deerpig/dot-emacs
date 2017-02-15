@@ -107,27 +107,59 @@ Change the default bullet list and ellipsis. See:
 #+begin_src emacs-lisp
 ;; Helm Org ------------------------------------------------
 (require 'helm-org)
-;; Helm Org Agenda Headings --------------------------------
+
 ;;(define-key global-map "" 'helm-org-agenda-files-headings)
 ;;(define-key helm-map (kbd "C-c C-t") 'helm-org-agenda-files-headings)
 ;;(define-key map (kbd "t")  'helm-org-agenda-files-headings)
 
 #+end_src
 
+** Store Links
+
+This is not only useful in Org, I use this in mu4e buffers as well.
+
+#+begin_src emacs-lisp
 ;; Store a link to window or heading at point
 ;; Can then be inserted using C-c M-l
 (global-set-key "\C-c\M-s" 'org-store-link)
 
+#+end_src
+
+** Timestamps
+
+#+begin_src emacs-lisp
 ;; Toggle active/inactive timestamps
 (global-set-key "\C-c\C-x=" 'org-toggle-timestamp-type)
 
-Set a bunch of variables;;
+#+end_src
+
+** Enable Modules
+
+We need to go through this list and weed out unused or obsolete
+modules.
+
+#+begin_src emacs-lisp
+(setq org-modules 
+       (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
+
+
+#+end_src
+
+** Set Directories
 
 #+begin_src emacs-lisp
 (setq org-directory "~/org"
       org-default-notes-file "~/org/refile.org"
-      org-agenda-diary-file  "~/org/diary.org"
-      org-agenda-include-diary t
+      org-agenda-diary-file  "~/org/diary.org")
+
+#+end_src
+
+** Misc Settings
+
+Set a bunch of variables;;
+
+#+begin_src emacs-lisp
+(setq org-agenda-include-diary t
       org-enforce-todo-dependencies t
       org-cycle-separator-lines 0
       org-use-fast-todo-selection t
@@ -155,7 +187,7 @@ Set a bunch of variables;;
 (setq org-agenda-tags-column -102)
 
 
-Org Weather
+** Org Weather
 
 #+begin_src emacs-lisp
 
@@ -175,23 +207,37 @@ Org Weather
 #+end_src
 
 
+** Narrow/Widen Subtree
+
+Not sure if I'm using this or now -- I can't recall using the
+keybindings in some time -- I never can remember anything in emacs
+using the Function Keys.
+
+Commenting out for now....
+
+#+begin_src emacs-lisp
 ;; Narrow to subtree & widen
-(global-set-key (kbd "<f5>") 'bh/org-todo)
+;;(global-set-key (kbd "<f5>") 'bh/org-todo)
 
-(defun bh/org-todo ()
-  (interactive)
-  (org-narrow-to-subtree)
-  (org-show-todo-tree nil))
+;;(defun bh/org-todo ()
+;;  (interactive)
+;;  (org-narrow-to-subtree)
+;;  (org-show-todo-tree nil))
 
-(global-set-key (kbd "<S-f5>") 'bh/widen)
+;;(global-set-key (kbd "<S-f5>") 'bh/widen)
 
-(defun bh/widen ()
-  (interactive)
-  (widen)
+;;(defun bh/widen ()
+;;  (interactive)
+;;  (widen)
   ;;(org-reveal)
-  )
+;;  )
 
+#+end_src
 
+** Refile Targets
+
+#+begin_src emacs-lisp
+;; Refile Targets ------------------------------------------
 ;;; Use agenda files as primary refile targets
 
 (defun deerpig/org-buffer-files ()
@@ -207,17 +253,30 @@ Org Weather
 	(org-agenda-files . (:maxlevel . 1))
 	))
 
+#+end_src
 
-;; enable org-mode in gnus message buffers
+** Use org-mode in message buffers
+
+This sounded like a good idea, but in practice is got in the way more
+than it helped.
+
+Commented out.
+
+#+begin_src emacs-lisp
+;; enable org-mode in message buffers
 ;; (setq message-mode-hook
 ;;       (quote (orgstruct++-mode
 ;;               (lambda nil (setq fill-column 72))
 ;;               turn-on-auto-fill
 ;;               bbdb-define-all-aliases)))
 
+#+end_src
 
+** Habits
+
+
+#+begin_src emacs-lisp
 ;; Enable habit tracking (and a bunch of other modules)
-(setq org-modules (quote (org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)))
 
 (require 'org-habit)
 (setq org-habit-show-habits-only-for-today t)
@@ -226,6 +285,8 @@ Org Weather
 (setq org-global-properties (quote (("STYLE_ALL" . "habit"))))
 ; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
+
+#+end_src
 
 
 ;; (setq org-agenda-custom-commands
