@@ -1178,14 +1178,26 @@ have an id"
 ;;
 ;; ---------------------------------------------------------
 
+
+** Org Reveal
+
+Reveal is a powerful HTML presentation framework.  Org Reveal makes it
+easy to create Reveal presentations using orgmode.
+
+This is my current favorite tool for making presentations in orgmode
+and will become by default method for creating presentations.
+
+  - [[http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WKPOW9UxVpi][Using Reveal.js presentations]] | C'est la Z
+  - [[https://scottnesbitt.io/2017/01/24/org-reveal/][Creating slides with Emacs org-mode and Reveal.js]] | Open Source Musings
+  - [[https://github.com/hakimel/reveal.js][hakimel/reveal.js]] | Github Home
+  - [[http://lab.hakim.se/reveal-js/#/][reveal.js]] | The HTML Presentation Framework
+  - [[https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md][reveal.js/README.md]] | Github
+  - [[https://github.com/yjwen/org-reveal/wiki/Yasnippet-integration][Yasnippet org-reveal integration]] | Github
+
+#+begin_src emacs-lisp
+
 ;; Org Reveal ==============================================
 ;;
-;; - http://cestlaz.github.io/posts/using-emacs-11-reveal/#.WIgQAbMxVph 
-;; - https://scottnesbitt.io/2017/01/24/org-reveal/ 
-;; - https://github.com/hakimel/reveal.js
-;; - http://lab.hakim.se/reveal-js 
-;; - https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md 
-;; - https://github.com/yjwen/org-reveal/wiki/Yasnippet-integration  
 
 (use-package ox-reveal
   :ensure ox-reveal
@@ -1194,5 +1206,6 @@ have an id"
   (setq org-reveal-mathjax t)
   (setq org-reveal-note-key-char t)
  )
+;; note that htmlize has already been loaded elsewhere...
 
-;; htmlize has already been loaded above...
+#+end_src
