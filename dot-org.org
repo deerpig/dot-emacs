@@ -1157,9 +1157,18 @@ If FILEXT is provided, return files with extension FILEXT instead."
       (append (deerpig/find-org-file-recursively "~/org/" "org")
               (deerpig/find-org-file-recursively "~/proj/" "org")))
 
-;; Add Org-ID to Headings in File
-;;
-;; snarfed from: http://stackoverflow.com/questions/13340616/assign-ids-to-every-entry-in-org-mode
+
+** Function: Add Org-Id to all headings in a file
+
+Snarfed this from:
+
+  [[http://stackoverflow.com/questions/13340616/assign-ids-to-every-entry-in-org-mode][Assign IDs to every entry in Org-mode]] | Stack Overflow
+
+I would eventually like be able to change the heading levels, so that
+you can just add ids to level one or level two headings.
+
+#+begin_src emacs-lisp
+;; Add Org-ID to Headings in File --------------------------
 
 (defun deerpig/org-add-id-to-headings ()
   "Insert and org-id to all headings in file at point that do not
@@ -1172,12 +1181,12 @@ have an id"
         (org-id-get-create)))
   )
 
+#+end_src
+
+
 ;; =========================================================
 ;; Org Use-Package Items
-;;
-;;
 ;; ---------------------------------------------------------
-
 
 ** Org Reveal
 
