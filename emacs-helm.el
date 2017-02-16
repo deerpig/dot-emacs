@@ -80,3 +80,9 @@
 	      ("mkv"  . "vlc"))))
 
 ;;(helm-mode 1)
+
+(use-package helm-tramp
+  :ensure t
+  :config
+  (setq tramp-default-method "ssh")
+  (defalias 'exit-tramp 'tramp-cleanup-all-buffers))
