@@ -1,7 +1,7 @@
 #+TITLE:Dot Emacs: Helm Settings
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
-#+PROPERTY: tangle emacs-helm.el
+#+PROPERTY: header-args    :results drawer  :tangle emacs-helm.el
 
 * Introduction
 
@@ -23,9 +23,6 @@ shake a stick at.  These should get you started though:
   - [[http://thescratchcastle.com/posts/emacs-and-helm.html][Why I Use Helm and Why You Should Too]] | The Scratch Castle
 
 * Helm Settings
-:PROPERTIES:
-:tangle: emacs-helm.el
-:END:
 ** File Header
 
 #+begin_src emacs-lisp
