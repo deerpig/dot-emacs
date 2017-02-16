@@ -1,7 +1,7 @@
 #+TITLE:Dot Emacs:  Packages
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
-#+PROPERTY: tangle emacs-packages.el
+#+PROPERTY: header-args    :results drawer  :tangle emacs-org.el
 
 * Introduction
 
@@ -56,10 +56,6 @@ Literate Computing...
 ** How Use-Package Works
 
 * Packages
-:PROPERTIES:
-:tangle: emacs-packages.el
-:END:
-
 ** File Header 
 
 #+begin_src emacs-lisp
