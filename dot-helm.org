@@ -59,6 +59,11 @@ You can set the variable to: ‘below’, ‘above’, ‘left’ or ‘right’
 (setq helm-split-window-default-side 'left)
 #+end_src
 
+#+RESULTS:
+:RESULTS:
+left
+:END:
+
 ** Set key-bindings.
 
 In install instructions, I've seen the following comment a number of
@@ -71,6 +76,11 @@ times:
 
 #+end_src
 
+#+RESULTS:
+:RESULTS:
+nil
+:END:
+
 However, I almost never used the command.  I finally hit on the idea
 of using the <menu> key as the default prefix.  It works well, I
 invoke this command every few minutes, so dedicating a whole key to it
@@ -82,6 +92,11 @@ is justified.
 ;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
 
 Map common emacs commands to their Hellm equivalent.
 
