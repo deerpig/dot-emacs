@@ -1,3 +1,6 @@
+;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
+;; Emacs Hydra Files
+
 ;; Hydra ===============================================
 ;; See https://github.com/abo-abo/hydra#awesome-docstring
 
