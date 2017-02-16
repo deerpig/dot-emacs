@@ -45,6 +45,7 @@
 (define-key helm-command-map (kbd ",") 'helm-swoop)
 (define-key helm-command-map (kbd ".") 'helm-multi-swoop-all)
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
+(define-key helm-command-map (kbd "u") 'helm-tramp)
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal

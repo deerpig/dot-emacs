@@ -119,7 +119,7 @@ that are not listed here which are build into helm.
 (define-key helm-command-map (kbd ",") 'helm-swoop)
 (define-key helm-command-map (kbd ".") 'helm-multi-swoop-all)
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
-
+(define-key helm-command-map (kbd "u") 'helm-tramp)
 #+end_src
 
 Use <tab> to perform persistent action
