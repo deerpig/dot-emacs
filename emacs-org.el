@@ -118,22 +118,6 @@
 (setq org-weather-format "Weather: %desc, %tmin-%tmax%tu, %h%hu, %s%su")
 (org-weather-refresh)
 
-;; Narrow to subtree & widen
-;;(global-set-key (kbd "<f5>") 'bh/org-todo)
-
-;;(defun bh/org-todo ()
-;;  (interactive)
-;;  (org-narrow-to-subtree)
-;;  (org-show-todo-tree nil))
-
-;;(global-set-key (kbd "<S-f5>") 'bh/widen)
-
-;;(defun bh/widen ()
-;;  (interactive)
-;;  (widen)
-  ;;(org-reveal)
-;;  )
-
 ;; Refile Targets ------------------------------------------
 ;;; Use agenda files as primary refile targets
 
@@ -149,13 +133,6 @@
 	("~/org/quotes.org" :maxlevel . 1)
 	(org-agenda-files . (:maxlevel . 1))
 	))
-
-;; enable org-mode in message buffers
-;; (setq message-mode-hook
-;;       (quote (orgstruct++-mode
-;;               (lambda nil (setq fill-column 72))
-;;               turn-on-auto-fill
-;;               bbdb-define-all-aliases)))
 
 ;; Enable habit tracking (and a bunch of other modules)
 
@@ -482,12 +459,11 @@
 ;; add man page url -----------------------------------------
 (provide 'org-man)
 
-;; org word count ------------------------------------------
+;; Use org-ids in org-links --------------------------------
 
-;;(add-hook 'org-mode-hook 'wc-mode)
-
-;; org mime -------------------------------------
-;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
+(setq org-id-track-globally t)
+(setq org-id-link-to-org-use-id 'use-existing)
+(org-id-update-id-locations) ;; updates id-index
 
 ;; Use org-ids in org-links --------------------------------
 
@@ -554,59 +530,6 @@ have an id"
   (setq org-reveal-note-key-char t)
  )
 ;; note that htmlize has already been loaded elsewhere...
-
-;; allow for export=>beamer by placing
-;; #+LaTeX_CLASS: beamer in org files
-;; (unless (boundp 'org-export-latex-classes)
-;;   (setq org-export-latex-classes nil))
-;; (add-to-list 'org-export-latex-classes
-;;   ;; beamer class, for presentations
-;;   '("beamer"
-;;      "\\documentclass[11pt]{beamer}\n
-;;       \\mode<{{{beamermode}}}>\n
-;;       \\usetheme{{{{beamertheme}}}}\n
-;;       \\usecolortheme{{{{beamercolortheme}}}}\n
-;;       \\beamertemplateballitem\n
-;;       \\setbeameroption{show notes}
-;;       \\usepackage[utf8]{inputenc}\n
-;;       \\usepackage[T1]{fontenc}\n
-;;       \\usepackage{hyperref}\n
-;;       \\usepackage{color}
-;;       \\usepackage{listings}
-;;       \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
-;;   frame=single,
-;;   basicstyle=\\small,
-;;   showspaces=false,showstringspaces=false,
-;;   showtabs=false,
-;;   keywordstyle=\\color{blue}\\bfseries,
-;;   commentstyle=\\color{red},
-;;   }\n
-;;       \\usepackage{verbatim}\n
-;;       \\institute{{{{beamerinstitute}}}}\n          
-;;        \\subject{{{{beamersubject}}}}\n"
-
-;;      ("\\section{%s}" . "\\section*{%s}")
-     
-;;      ("\\begin{frame}[fragile]\\frametitle{%s}"
-;;        "\\end{frame}"
-;;        "\\begin{frame}[fragile]\\frametitle{%s}"
-;;        "\\end{frame}")))
-
-;;   ;; letter class, for formal letters
-
-;;   (add-to-list 'org-export-latex-classes
-
-;;   '("letter"
-;;      "\\documentclass[11pt]{letter}\n
-;;       \\usepackage[utf8]{inputenc}\n
-;;       \\usepackage[T1]{fontenc}\n
-;;       \\usepackage{color}"
-     
-;;      ("\\section{%s}" . "\\section*{%s}")
-;;      ("\\subsection{%s}" . "\\subsection*{%s}")
-;;      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-;;      ("\\paragraph{%s}" . "\\paragraph*{%s}")
-;;      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;; ================================
 ;; Insert Fuctions
