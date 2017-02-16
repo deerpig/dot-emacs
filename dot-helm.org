@@ -198,6 +198,10 @@ Might need to unset this some time in the future.
 #+end_src
 ** Helm Tramp
 
+Lists hosts in ~/.ssh/config and allows you to connect.
+
+See [[https://github.com/masasam/emacs-helm-tramp][masasam/emacs-helm-tramp: Tramp with helm interface]]
+
 #+begin_src emacs-lisp
 (use-package helm-tramp
   :ensure t
