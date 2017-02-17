@@ -1,6 +1,50 @@
+#+TITLE:Dot Emacs: Helm Settings
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+PROPERTY: header-args    :results drawer  :tangle emacs-helm.el
+
+* Introduction
+
+#+begin_quote
+"Pray!"
+
+Recruits: [chanting] "This is my rifle. There are many others like it,
+but this one is mine. My rifle is my best friend. It is my life. I
+must master it as I must master my life. Without me, my rifle is
+useless. Without my rifle, I am useless. I must fire my rifle true. I
+must shoot straighter than my enemy, who is trying to kill me. I must
+shoot him before he shoots me. I will. Before God I swear this creed:
+my rifle and myself are defenders of my country, we are the masters of
+our enemy, we are the saviors of my life. So be it, until there is no
+enemy, but peace. Amen."
+
+-- Rifleman's Creed
+   Full Metal Jacket | 1987
+   [[https://www.youtube.com/watch?v=Hgd2F2QNfEE][Rifleman's Creed]] | YouTube
+
+Now write some elisp code that replaces 
+
+  - "rifle"        with "emacs"
+  - "God"          with "Root"
+  - "fire"         with "execute"
+  - "shoot"        with "code"
+  - "shoot him"    with "commit my code first so"
+  - "he shoots me" with "others can work on more interesting problems"
+#+end_quote
+
+Da intro goes here.
 
 
+#+begin_quote
+This is my rifle!
+This is my gun!
 
+This is for fighting!
+This is for fun!
+
+-- Full Metal Jacket | 1987
+   [[https://www.youtube.com/watch?v=4kU0XCVey_U][This Is My Rifle. This Is My Gun]] | YouTube
+#+end_quote
 
 
 
@@ -17,11 +61,13 @@ So keep customize stuff in it's own file and then add that file to git
 ignore.
 
 #+begin_src emacs-lisp
+
 ;; Customizations ==========================================
 ;; keep all emacs customizations in file that is not
 ;; part of the repo.
 (setq custom-file "~/.emacs-custom")
 (load custom-file 'noerror)
+
 #+end_src
 
 * Private
