@@ -1,0 +1,32 @@
+
+
+
+
+
+
+* Customizations
+
+Emacs has a bit of an annoying habit of adding things to your init
+file without telling you.  This becomes a problem when you keep your
+init file in version control and then use the init file for multiple
+machines.  Most of the time this is an inconvienence because you are
+having to commit things that emacs has added, not you.  But it also
+can be a pain-in-the-ass when it causes commit conflicts.
+
+So keep customize stuff in it's own file and then add that file to git
+ignore.
+
+#+begin_src emacs-lisp
+;; Customizations ==========================================
+;; keep all emacs customizations in file that is not
+;; part of the repo.
+(setq custom-file "~/.emacs-custom")
+(load custom-file 'noerror)
+#+end_src
+
+* Private
+
+Like in customize, we need to keep things like passwords and API keys
+out of the main init file which is in a public github repo.
+
+The solution is to encrypt the file using gpg.
