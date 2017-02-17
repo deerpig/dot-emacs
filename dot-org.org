@@ -154,7 +154,6 @@ org-agenda
 other-window
 :END:
 
-
 ** Org Speed Commands
 
 #+begin_src emacs-lisp
@@ -373,7 +372,6 @@ Commented out.
 :RESULTS:
 nil
 :END:
-
 
 ** Habits
 
@@ -650,7 +648,6 @@ Triggers:
 ;;	       "* %(org-contacts-template-name)\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:    %\1 %\1\n:EMAIL: %(org-contacts-template-email)\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
 
 #+end_src
-
 
 
 ** Open Capture in Other Frame
