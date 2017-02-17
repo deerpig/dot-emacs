@@ -28,17 +28,41 @@ Now write some elisp code that replaces
   - "God"          with "Root"
   - "fire"         with "execute"
   - "shoot"        with "code"
+  - "country"      with "open source software"
+  - "our enemy"    with "this universe, the wind of time is flowing
+                         relative to me, it's all a figment of my mind"
   - "shoot him"    with "commit my code first so"
   - "he shoots me" with "others can work on more interesting problems"
+  - "peace"        with "Microsoft and Oracle"
+  - the Emacs Hacker's Creed
+
 #+end_quote
 
 The quotes from /Full Metal Jacket/ are only half in jest.  The
-recruits are trained with M1 Carbiness.  These are single shot
-(they have a magazine? so what do you call them) rifiles.  They are
-bog standard refiles  -- learn the basics, the use M-16s in the field.
+recruits are trained with M1 Carbines.  These are single shot
+(they have a magazine? so what do you call them) rifles.  They are
+bog standard rifles  -- learn the basics, the use M-16s in the field.
 
 The M1 is bog standard emacs, start with that, learn that, master
-that.  What I did was force myself to use emacs in a shell on a remote
+that.  Learn to pull it apart, and put it back together again with
+your eyes closed.  Teach your fingers to do things the same as you
+touch type -- without thinking, committing the basics to muscle memory.
+
+Why? because there will be countless times when you use emacs without
+all the fancy-ass customizations you've made.  When you are ssh'd into
+a remote computer, when you are logged in root on a computer you
+forgot to put your init on, when you've done something dumb and
+screwed up your init file and you are dropped back into vanilla emacs
+with a white background and menus and the ugly tool bar until you can
+debug whatever you screwed up before you can get back your evil-mode
+key-bindings and the illusion that you are using /spacemacs/ instead
+of a heavily pre-tweaked emacs that emulates Vim.  You should be as
+fluid in standard emacs as you are in your custom environment.  You
+don't need a mouse, or menus or scrollbars or even font-locking
+(colours).  All you need is emacs.
+
+
+What I did was force myself to use emacs in a shell on a remote
 computer for the first month.  No mouse, no fancy init -- everything
 out of the box until I understood better what I was doing.  You end up
 customizing stuff within a day or so, but nothing crazy.
