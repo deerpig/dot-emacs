@@ -41,7 +41,7 @@ Now write some elisp code that replaces
 The quotes from /Full Metal Jacket/ are only half in jest.  The
 recruits are trained with M1 Carbines.  These are single shot
 (they have a magazine? so what do you call them) rifles.  They are
-bog standard rifles  -- learn the basics, the use M-16s in the field.
+bog standard rifles  -- learn the basics, then use M-16s in the field.
 
 The M1 is bog standard emacs, start with that, learn that, master
 that.  Learn to pull it apart, and put it back together again with
@@ -50,17 +50,18 @@ touch type -- without thinking, committing the basics to muscle memory.
 
 Why? because there will be countless times when you use emacs without
 all the fancy-ass customizations you've made.  When you are ssh'd into
-a remote computer, when you are logged in root on a computer you
+a remote computer, when you are logged in as root on a computer you
 forgot to put your init on, when you've done something dumb and
 screwed up your init file and you are dropped back into vanilla emacs
-with a white background and menus and the ugly tool bar until you can
-debug whatever you screwed up before you can get back your evil-mode
-key-bindings and the illusion that you are using /spacemacs/ instead
-of a heavily pre-tweaked emacs that emulates Vim.  You should be as
-fluid in standard emacs as you are in your custom environment.  You
-don't need a mouse, or menus or scrollbars or even font-locking
-(colours).  All you need is emacs.
-
+with a white background with the splash screen and menus and the ugly
+tool bar until you can debug whatever you screwed up before you can
+get back your evil-mode key-bindings and the illusion that you are
+using /spacemacs/ instead of a heavily pre-tweaked emacs that emulates
+Vim.  You should be as fluid in standard emacs as you are in your
+custom environment.  You don't need a mouse, or menus or scrollbars or
+even font-locking (colours).  A master customizes his tools and work
+environment to suit her workflow, but can work just as well without
+them.  All you need is emacs.
 
 What I did was force myself to use emacs in a shell on a remote
 computer for the first month.  No mouse, no fancy init -- everything
