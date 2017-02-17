@@ -8,7 +8,7 @@
 #+begin_quote
 "Pray!"
 
-Recruits: [chanting] "This is my rifle. There are many others like it,
+/Recruits/: [chanting] "This is my rifle. There are many others like it,
 but this one is mine. My rifle is my best friend. It is my life. I
 must master it as I must master my life. Without me, my rifle is
 useless. Without my rifle, I am useless. I must fire my rifle true. I
@@ -20,7 +20,7 @@ enemy, but peace. Amen."
 
 -- Rifleman's Creed
    Full Metal Jacket | 1987
-   [[https://www.youtube.com/watch?v=Hgd2F2QNfEE][Rifleman's Creed]] | YouTube
+   [[https://www.youtube.com/watch?v=Hgd2F2QNfEE][Rifleman's Creed]]  | YouTube
 
 Now write some elisp code that replaces 
 
@@ -32,7 +32,26 @@ Now write some elisp code that replaces
   - "he shoots me" with "others can work on more interesting problems"
 #+end_quote
 
-Da intro goes here.
+The quotes from /Full Metal Jacket/ are only half in jest.  The
+recruits are trained with M1 Carbiness.  These are single shot
+(they have a magazine? so what do you call them) rifiles.  They are
+bog standard refiles  -- learn the basics, the use M-16s in the field.
+
+The M1 is bog standard emacs, start with that, learn that, master
+that.  What I did was force myself to use emacs in a shell on a remote
+computer for the first month.  No mouse, no fancy init -- everything
+out of the box until I understood better what I was doing.  You end up
+customizing stuff within a day or so, but nothing crazy.
+
+   then
+
+Come back here and look at what I've got -- this is the M-16 version,
+it's higher powered, but it can be finicky and unreliable unless you
+know what you're doing.  (yeah yeah I know, I'm beginning to streach this
+metaphor a bit thin).
+
+You /can/ use the M16 first, but you will be better off if you master
+the M1 before you take on the high powered stuff.
 
 
 #+begin_quote
