@@ -70,8 +70,8 @@ Feedback Is Welcome!
 
 * Table of Contexts
  
- - Dot Emacs
- - [[./dot-org.org][Org Mode]]
+ - [[./dot-emacs.org][Dot Emacs]] init file - this loads first
+ - [[./dot-org.org][Org]]
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra]]
