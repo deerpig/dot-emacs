@@ -118,5 +118,38 @@
 	("\\.tif\\'"  "viewnior")
 	("\\.tiff\\'"  "viewnior")))
 
+(require 'dired-single)
+
+;; Resize the mini buffer automatically
+;; (defun start-minibuffer()
+;;   (progn
+;;     (require `rsz-mini)
+;;     (resize-minibuffer-mode)))
+
+(defun my-dired-init ()
+  "Bunch of stuff to run for dired, either immediately or when it's
+  loaded."
+  ;; <add other stuff here>
+  (define-key dired-mode-map [return] 'joc-dired-single-buffer)
+  (define-key dired-mode-map [mouse-1] 'joc-dired-single-buffer-mouse)
+  (define-key dired-mode-map "^"
+    (function
+       (lambda nil (interactive) (joc-dired-single-buffer "..")))))
+
+(defun start-singledired()
+  (progn
+    (require 'dired-single)
+    (if (boundp 'dired-mode-map)
+        (my-dired-init)
+      ;; it's not loaded yet, so add our bindings to the load-hook
+      (add-hook 'dired-load-hook 'my-dired-init))))
+
+;;preview files in dired
+;; (use-package peep-dired
+;;   :ensure t
+;;   :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
+;;   :bind (:map dired-mode-map
+;;               ("P" . peep-dired)))
+
 #+end_src
 
