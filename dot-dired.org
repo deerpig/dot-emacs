@@ -3,7 +3,33 @@
 #+EMAIL: brad@chenla.la
 #+PROPERTY: header-args    :results drawer  :tangle emacs-dired.el
 
-* Introduction
+* Dired
+
+Dired is a big deal in Emacs.  It's a full featured file manager that
+can trim your beard, bake a pie and even freeze icecream if you don't
+forcibly stop it from doing so.
+
+There are a few things that Dired can do that blow away any GUI file
+manager.  One of my personal favorites is [[https://masteringemacs.org/article/wdired-editable-dired-buffers][WDired]] which turns Dired
+listings into /Editable Dired Buffers/.  Needless to say, this is one
+of those features you will finding your self using constantly.
+
+Another is to be able to run shell commands on marked files.
+
+#+begin_quote
+Of all the hidden gems in Dired, this is one of my favourites: the
+ability to run arbitrary shell commands on marked files – and if it’s
+a file extension known to Dired, it will suggest a default action:
+untarring .tar.gz files; displaying .pdf files; and much more!
+
+-- [[https://masteringemacs.org/article/dired-shell-commands-find-xargs-replacement][Dired Shell Commands: The find & xargs replacement]] - Mastering Emacs
+#+end_quote
+
+We use one aspect of this feature to guess which external application
+to open a file with, which we have set below.
+
+We have also set up Dired-Ranger which adds functionality of copying
+and moving files between windows like in an orthodox file manager.
 
 ** Header
 
@@ -181,30 +207,54 @@ Commented Out.
 ;;       (concat dired-omit-files "\\|^\\..+$"))
 
 #+end_src
+** Recursive Delete
 
-** --------------------------
+I believe that `top' is the default setting, but I am leaving this
+here to remind me....
+
+#+begin_quote
+Whether Dired deletes directories recursively.  If nil, Dired will not
+delete non-empty directories.  ‘always’ means to delete non-empty
+directories recursively, without asking.  This is dangerous!
+
+‘top’ means to ask for each top-level directory specified by the Dired
+deletion command, and delete its subdirectories without asking.
+
+-- dired-recursive-deletes docstring
+#+end_quote
 
 #+begin_src emacs-lisp
 
-
-(global-set-key "\C-c\C-b" 'browse-url-of-dired-file)
+;; Recursive Deletes ======================================
 
 (setq dired-recursive-deletes 'top)
+#+end_src
 
-;;; Dired Sort menu
+** Dired Sort Menu
+
+#+begin_src emacs-lisp
+
+;; Dired Sort Menu =========================================
+
 (add-hook 'dired-load-hook
            (lambda () (require 'dired-sort-menu)))
 
 ;; set scroll so that it scrolls the page one line at a time
 (setq scroll-step 1)
 
-;; Hide uninteresting files including dot files
-;; M-o toggles between hidden and all files
-
-(random t)
-
 #+end_src
 
+** Open file in Browser
+
+Useful if I can /ever/ remember the bloody key-binding... perhaps it
+should be moved into a hydra?
+
+#+begin_src emacs-lisp
+;; Open file at point in Browser ===========================
+
+(global-set-key "\C-c\C-b" 'browse-url-of-dired-file)
+
+#+end_src
 
 ** Dired Jump
 
@@ -267,6 +317,39 @@ to invoke it every time....
   (set-buffer-modified-p nil))
 
  (add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+#+end_src
+
+** Dired Ranger
+
+I have been a long-time user of the kde orthodox filemanger called
+Krusader.  But I'm finding myself using Dired more than Krusader.  The
+two pane approach to file management is very good for copying things
+between directories.  Dired Ranger provides keybindings to treat two
+dired windows in the same frames like it was an orthodox file
+manager.  Krusader ssh support has some what crapped out and is a pain
+in the ass if a directory is password protected.  Tramp makes all of
+this very easy, you can even bookmark and link to remote directories
+using Tramp so I am using this more and more.  The only thing I'm
+still using Krusader for is when moving very large files -- I can
+leave it running in another workspace and I don't have to wait for
+emacs to finish before doing something else.
+
+#+begin_src emacs-lisp
+
+;; Dired Ranger ============================================
+
+; In a dired buffer, mark multiple files and then hit W to copy them.  Go
+; to another directory and mark more files and hit C-u W to add Now go to
+; the target directory and hit X to move to or Y to copy the files to the
+; target
+
+(use-package dired-ranger
+  :ensure t
+  :bind (:map dired-mode-map
+              ("W" . dired-ranger-copy)
+              ("X" . dired-ranger-move)
+              ("Y" . dired-ranger-paste)))
 
 #+end_src
 

@@ -540,39 +540,6 @@ snippets for the mode you are in.
 
 #+end_src
 
-** Dired Ranger
-
-I have been a long-time user of the kde orthodox filemanger called
-Krusader.  But I'm finding myself using Dired more than Krusader.  The
-two pane approach to file management is very good for copying things
-between directories.  Dired Ranger provides keybindings to treat two
-dired windows in the same frames like it was an orthodox file
-manager.  Krusader ssh support has some what crapped out and is a pain
-in the ass if a directory is password protected.  Tramp makes all of
-this very easy, you can even bookmark and link to remote directories
-using Tramp so I am using this more and more.  The only thing I'm
-still using Krusader for is when moving very large files -- I can
-leave it running in another workspace and I don't have to wait for
-emacs to finish before doing something else.
-
-#+begin_src emacs-lisp
-
-;; Dired Ranger ============================================
-
-; In a dired buffer, mark multiple files and then hit W to copy them.  Go
-; to another directory and mark more files and hit C-u W to add Now go to
-; the target directory and hit X to move to or Y to copy the files to the
-; target
-
-(use-package dired-ranger
-  :ensure t
-  :bind (:map dired-mode-map
-              ("W" . dired-ranger-copy)
-              ("X" . dired-ranger-move)
-              ("Y" . dired-ranger-paste)))
-
-#+end_src
-
 ** PHP
 
 
