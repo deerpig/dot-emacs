@@ -255,6 +255,22 @@ wise not to make assumptions about language settings.
 
 #+end_src
 
+* Frames Windows & Buffers
+
+Display the visited file's path in the frame title.  If you have
+multiple windows, the path of the file in the window that is focused
+will be displayed.
+
+#+begin_src emacs-lisp
+
+;; Display path in frame title =============================
+ (setq frame-title-format
+       '((:eval (if (buffer-file-name)
+		    (abbreviate-file-name (buffer-file-name))
+		  "%b"))))
+#+end_src
+
+
 * Default Font
 
 #+begin_src emacs-lisp
@@ -468,3 +484,51 @@ workflow.
 #+end_src
 
 
+* Emacs Desktop
+
+Desktop provides session management.  I've had most of these setting
+in place since.... well, forever.
+
+See:
+
+  - [[https://www.emacswiki.org/emacs?action=browse;oldid=DeskTop;id=Desktop][Desktop]] | EmacsWiki
+
+#+begin_src emacs-lisp
+
+;; Emacs Desktop ===========================================
+;; save a list of open files in ~/.emacs.desktop
+;; save the desktop file automatically if it already exists
+(setq desktop-save 'if-exists)
+(desktop-save-mode 1)
+
+(setq desktop-buffers-not-to-save
+(concat "\\("
+       "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
+       "\\|\\.emacs.*\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb"
+       "\\)$"))
+
+(add-to-list 'desktop-modes-not-to-save 'dired-mode)
+(add-to-list 'desktop-modes-not-to-save 'Info-mode)
+(add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
+(add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+(add-to-list 'desktop-modes-not-to-save 'magit-mode)
+;; should add twittering, eirc, elfeed?
+
+
+;; save a bunch of variables to the desktop file
+;; for lists specify the len of the maximal saved data also
+(setq desktop-globals-to-save		
+      (append '((extended-command-history . 30)
+                (file-name-history        . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (shell-command-history    . 50)
+                tags-file-name
+                register-alist)))
+#+end_src
