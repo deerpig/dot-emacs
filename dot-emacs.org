@@ -107,7 +107,7 @@ XEmacs.  But XEmacs was very popular in its day and was known for
 being more innovative and responsive to users needs and with a faster
 release cycle than the glacial-bordering-on-tectonic release pace that
 emacs was stuck in between 1987 and 1993 when Emacs 19 was finally
-released.
+released and Emacs began its comeback.
 
 When I started using Emacs, XEmacs was still at the top of their game,
 but it still smelled like a fork to me... I tried Gnu Emacs and never
@@ -464,5 +464,68 @@ workflow.
         ;; Add Later
 
 	))
+
+#+end_src
+
+
+* BMF Development
+
+Burr mode wasn't half bad.  But this was before OrgMode.  I wanted to
+use muse/planner to compose burrs, but we ended up only using it to
+display them.  Everything was encoded in XML and then converted for
+display into muse.
+
+I am starting to rewrite this from scratch as an extension to org-mode
+with no plans to use XML at all.  Well, that's not entirely true --
+there will eventually be export to XML for interoperability and
+possible use an archival format.
+
+I also began work on using Skribe as a composition format, but I could
+never get Skribe working in Scheme and even today, I've never had any
+luck getting the new Guile port to work on any of my boxes.
+
+I like the idea of using Org as the composition format and then
+lisp property lists for the index.  Skribe ended up being as complex
+a composition syntax as xml.  Using a wiki language solves a lot of
+those problems.
+
+A lot of this stuff required muse-mode and planner mode.
+
+It's not being tangled at the moment but I will keep it around in case
+I need to look at the code in the future and figure out how it worked.
+
+#+begin_src emacs-lisp  :tangle no
+
+;; Burr Mode ===============================================
+
+;; Load YAML Mode for Burrs
+(require 'burr-mode)
+;; (require 'burr-to-html)
+(require 'burr-to-blosxom)
+(require 'chenla-config)
+(require 'yaml-mode)
+(require 'burr-vc)
+(require 'burr-pg-convert)
+(require 'burr-langcode)
+(require 'scribe-to-sxml)
+(require 'scribe)
+
+(autoload 'skribe-mode "skribe.el" "Skribe mode." t)
+
+;; this variable requires a trailing slash....
+(setq planner-bxid-path "~/work/bram/")
+
+(global-set-key "\C-h\C-b" 'burr-subfield-help)
+(global-set-key [(control f12)] 'burr-mode)
+(global-set-key [(control f11)] 'planner-mode)
+(global-set-key [(control f5)] 'insert-bxid-planner-links)
+
+(autoload 'burr-mode "burr-mode" "YAML Burr Editing Mode" t)
+(add-to-list 'auto-mode-alist '("\\.yml$" . burr-mode))
+(add-to-list 'auto-mode-alist '("\\.wiki$" . moinmoin-mode))
+(add-to-list 'auto-mode-alist '("\\.wikm$" . wikipedia-mode))
+(add-to-list 'auto-mode-alist '("\\.skb$" . scribe-mode))
+(add-to-list 'auto-mode-alist '("\\.bmf$" . emacs-lisp-mode))
+(add-hook 'burr-mode-user-hook 'turn-on-font-lock)
 
 #+end_src
