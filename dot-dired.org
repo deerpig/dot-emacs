@@ -191,9 +191,35 @@ Commented Out.
 
 (setq dired-recursive-deletes 'top)
 
+;;; Dired Sort menu
+(add-hook 'dired-load-hook
+           (lambda () (require 'dired-sort-menu)))
+
+;; set scroll so that it scrolls the page one line at a time
+(setq scroll-step 1)
+
+;; Hide uninteresting files including dot files
+;; M-o toggles between hidden and all files
+
+(random t)
+
+#+end_src
+
+
+** Dired Jump
+
+Can't remember using the key bindings, so not tangled.  If this was
+done automatically it would be great, but not if you have to remember
+to invoke it every time....
+
+#+begin_src emacs-lisp  :tangle no
+
+;; Dired Jump ==============================================
+
 ;;; Autoload `dired-jump' and `dired-jump-other-window'.
 ;;; We autoload from FILE dired.el.  This will then load dired-x.el
 ;;; and hence define `dired-jump' and `dired-jump-other-window'.
+
 (define-key global-map "\C-x\C-j" 'dired-jump)
 (define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
 
@@ -206,20 +232,6 @@ Commented Out.
 
 (autoload (quote dired-jump-other-window) "dired" "\
      Like \\[dired-jump] (dired-jump) but in other window." t nil)
-
-
-
-;;; Dired Sort menu
-(add-hook 'dired-load-hook
-           (lambda () (require 'dired-sort-menu)))
-
-;; set scroll so that it scrolls the page one line at a time
-(setq scroll-step 1)
-
-;; Hide uninteresting files including dot files
-;; M-o toggles between hidden and all files
-
-(random t)
 
 #+end_src
 
