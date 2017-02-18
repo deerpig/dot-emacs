@@ -99,6 +99,72 @@ This is for fun!
 
 #+end_src
 
+* The Bare Minimum
+
+Set the basic settings that drive you crazy in vanilla emacs out of
+the box.  These settings are for newbies, but even after a few days of
+using emacs you should set:
+
+  - no splash screen
+  - no scratch buffer message
+  - no tool bar
+  - no menu bar
+  - no scroll bar
+  - answer yes and now questions with y and n
+  - no tabs
+  - no tabs! (in case you didn't hear me the first time)
+
+And finally, enable flashing parenthesis, which is very helpful when
+you are trying to debug a broken init file on startup....
+
+
+
+#+begin_src emacs-lisp
+  ;; THE BARE MINIMUM ========================================
+
+  ;; no tool bar
+  (tool-bar-mode 0)
+
+  ;; no menu bar
+  (menu-bar-mode 0)
+
+  ;; no scroll bar
+  (scroll-bar-mode -1)
+
+  ;; The follwing settings constitute a minimum .emacs file for using
+  ;; emacs on remote servers.
+
+  ;; no scratch message
+  (setq initial-scratch-message nil)
+
+  ;; get rid of yes-or-no questions - y or n is enough
+  (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ;; No, please, no tabs in my programs!
+  (setq indent-tabs-mode nil)
+
+  ;; I kinda know my emacs
+  (setq inhibit-startup-message t)
+
+  ;; flash matching parenthesis
+  (require 'flash-paren)
+  (flash-paren-mode 1)
+
+#+end_src
+
+That feels better already.
+
+
+
+
+
+* Emacs Server
+
+#+begin_src emacs-lisp
+;; Start the emacs-client ==================================
+(server-start)
+#+end_src
+
 * External Paths
 
 #+begin_src emacs-lisp
@@ -164,6 +230,20 @@ This is for fun!
 	     '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
+#+end_src
+
+* Use Package
+
+
+
+#+begin_src emacs-lisp
+
+;; Use-package =============================================
+
+(unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+
 #+end_src
 
 * Customizations
