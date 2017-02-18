@@ -1,6 +1,3 @@
-host freenode port nickserv user deerpig password vegetasucks
-host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password "keyelementsg.TK1ri6Z2InjMn6XcJYqI"
-
 ;; Deerpig's Crufty .emacs
 ;; This dot emacs is a poor example
 
@@ -131,14 +128,21 @@ host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password "keyele
 (setq custom-file "~/.emacs-custom")
 (load custom-file 'noerror)
 
-(require 'auth-source)
+(setq auth-source-debug t)
 
-(setq
- auth-sources '(default
-                 "secrets:session"
-                 "secrets:Login"
-                 "~/.authinfo" )
- epa-file-cache-passphrase-for-symmetric-encryption t)
+(use-package auth-source
+  :config
+  (setq
+   auth-sources '(
+                  ;; default
+                  ;; "secrets:session"
+                  ;; "secrets:Login"
+                  "~/.authinfo"
+                  )
+   epa-file-cache-passphrase-for-symmetric-encryption t
+   ;; need the following to avoid dbus compiling error
+   auth-source-debug 'trivia
+   ))
 
 ;; Load literate Org files =================================
 
@@ -298,26 +302,3 @@ host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password "keyele
                 (shell-command-history    . 50)
                 tags-file-name
                 register-alist)))
-
-;; RCIRC ============================================
-;; Register Nick on IRC Servers
-
-(rcirc-track-minor-mode 1)
-(setq rcirc-default-nick "deerpig")
-(setq rcirc-default-user-name "deerpig")
-(setq rcirc-default-full-name "Brad Collins")
-
-(setq rcirc-server-alist
-      '(("irc.freenode.net"           :channels ("#emacs" "#chenla"))
-  	("irc.chenla.org"             :channels ("#chenla"))
-      ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
-   	       :password ,(cadr (auth-source-user-and-password "keyelementsg.irc.slack.com"))
-   	       :channels ("#general" "random"))
-
-
-;; ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
-;; 	                            :password "keyelementsg.TK1ri6Z2InjMn6XcJYqI"
-;; 	                              :channels ("#general" "random"))
-
-;; (setq rcirc-authinfo '(("freenode" nickserv "deerpig" "vegetasucks")
-;; 		       ("keyelementsg.irc.slack.com" nickserv "deerpig" "keyelementsg.TK1ri6Z2InjMn6XcJYqI")))

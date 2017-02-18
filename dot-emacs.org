@@ -1,7 +1,7 @@
 #+TITLE:Dot Emacs: Dot Emacs
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
-#+PROPERTY: header-args    :results drawer  :tangle emacs-helm.el
+#+PROPERTY: header-args    :results drawer  :tangle emacs-dot.el
 
 * Introduction
 
@@ -350,11 +350,44 @@ ignore.
 Like in customize, we need to keep things like passwords and API keys
 out of the main init file which is in a public github repo.
 
-The solution is to encrypt the file using gpg.
+This turned out to be a bit tricky.  The following sources helped, and
+clues to getting it to finally word were found on StackExchange.
 
-At the moment I only have a weather API in my emacs config, all email
-accounts and password info is in other applications.  So setting this
-up is on my TODO list but isn't high priority.
+  - [[https://www.gnu.org/software/emacs/manual/html_node/auth/Help-for-users.html#Help-for-users][Emacs auth-source Library 0.3: Help for users]]
+  - [[https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources][Keeping Secrets in Emacs with GnuPG and Auth Sources]] | Mastering Emacs
+  - [[http://emacs.stackexchange.com/questions/12660/peculiar-error-triggered-when-calling-erc-org2blog-from-windows-os-x][Peculiar Error triggered when calling ERC, org2blog]]  | Emacs Stack Exchange
+  - [[http://emacs.stackexchange.com/questions/10207/how-to-get-org2blog-to-use-authinfo-gpg][org mode - How to get org2blog to use .authinfo.gpg]]  | Emacs Stack Exchange
+
+The next step will be to encrypt .authinfo....
+
+
+#+begin_src emacs-lisp
+
+(setq auth-source-debug t)
+
+(use-package auth-source
+  :config
+  (setq
+   auth-sources '(
+                  ;; default
+                  ;; "secrets:session"
+                  ;; "secrets:Login"
+                  "~/.authinfo"
+                  )
+   epa-file-cache-passphrase-for-symmetric-encryption t
+   ;; need the following to avoid dbus compiling error
+   auth-source-debug 'trivia
+   ))
+
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
+
+
 
 * Load Init Files
 
@@ -589,9 +622,18 @@ See:
 #+end_src
 * Rcirc
 
+The rcirc client is pretty good.  I have it set up to automatically
+log in to three servers, and pull passwords from .authinfo.
 
-#+begin_src emacs-lisp
-  ;; RCIRC ============================================
+ - [[http://www.shakthimaan.com/posts/2016/06/23/rcirc/news.html][GNU Emacs - rcirc IRC client]] | Shakthimaan's Blog
+ - [[http://emacs.stackexchange.com/questions/10207/how-to-get-org2blog-to-use-authinfo-gpg][org mode - How to get org2blog to use .authinfo.gpg]]  | Emacs Stack Exchange
+ - [[http://emacs.stackexchange.com/questions/12660/peculiar-error-triggered-when-calling-erc-org2blog-from-windows-os-x][Peculiar Error triggered when calling ERC, org2blog]]  | Emacs Stack Exchange
+
+From the code, it's pretty easy to see who I am and where I hang out....
+
+
+#+begin_src emacs-lisp :tangle no
+  ;; RCIRC =================================================
   ;; Register Nick on IRC Servers
 
   (rcirc-track-minor-mode 1)
@@ -600,39 +642,19 @@ See:
   (setq rcirc-default-full-name "Brad Collins")
 
   (setq rcirc-server-alist
-	'(("irc.freenode.net"           :channels ("#emacs" "#chenla"))
+     ;; the backtick is important
+	`(("irc.freenode.net" :password ,(cadr (auth-source-user-and-password "irc.freenode.net")) 
+                                      :channels ("#emacs" "#chenla"))
   	  ("irc.chenla.org"             :channels ("#chenla"))
-	  ("keyelementsg.irc.slack.com" :encryption tls
-			 	        :channels ("#general" "random"))))
-
-
-  ;; ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
-  ;; 	                            :password "keyelementsg.TK1ri6Z2InjMn6XcJYqI"
-  ;; 	                              :channels ("#general" "random"))
-
-  ;; (setq rcirc-authinfo '(("freenode" nickserv "deerpig" "vegetasucks")
-  ;; 		       ("keyelementsg.irc.slack.com" nickserv "deerpig" "keyelementsg.TK1ri6Z2InjMn6XcJYqI")))
-
-
-  (defadvice rcirc (before rcirc-read-from-authinfo activate)
-    "Allow rcirc to read authinfo from ~/.authinfo.gpg via the auth-source API.
-  This doesn't support the chanserv auth method"
-    (unless arg
-  (dolist (p (auth-source-search :port '("nickserv" "bitlbee" "quakenet")
-     :require '(:port :user :secret)))
-    (let ((secret (plist-get p :secret))
-  (method (intern (plist-get p :port))))
-  (add-to-list 'rcirc-authinfo
-   (list (plist-get p :host)
-     method
-     (plist-get p :user)
-     (if (functionp secret)
-     (funcall secret)
-   secret)))))))
+        ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
+   	         :password ,(cadr (auth-source-user-and-password "keyelementsg.irc.slack.com"))
+   	         :channels ("#general" "random"))
+                 ))
 
 #+end_src
 
-#+begin_src  :tangle ~/.authinfo
-host freenode port nickserv user deerpig password vegetasucks
-host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password keyelementsg.TK1ri6Z2InjMn6XcJYqI
-#+end_src
+#+RESULTS:
+:RESULTS:
+((irc.freenode.net :password vegetasucks :channels (#emacs #chenla)) (irc.chenla.org :channels (#chenla)) (keyelementsg.irc.slack.com :port 6697 :encryption tls :password keyelementsg.TK1ri6Z2InjMn6XcJYqI :channels (#general random)))
+:END:
+
