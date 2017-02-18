@@ -970,3 +970,47 @@ Move up with WebDev?
 
 
 
+** Expand-Region
+
+  - [[https://github.com/magnars/expand-region.el][Expand-Region.el]] | GitHub
+  - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
+
+#+begin_src emacs-lisp
+
+;; Expand Region ===========================================
+;; expand the marked region in semantic increments 
+;; (negative prefix to reduce region)
+
+(use-package expand-region
+:ensure t
+:config 
+(global-set-key (kbd "C-=") 'er/expand-region))
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
+
+** Hungry Delete
+
+  - [[https://github.com/nflath/hungry-delete][hungry-delete]] | GitHub
+  - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
+
+#+begin_src emacs-lisp
+
+;; Hungry Delete ===========================================
+;; deletes all the whitespace when you hit backspace or delete
+(use-package hungry-delete
+:ensure t
+:config
+(global-hungry-delete-mode))
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
+
