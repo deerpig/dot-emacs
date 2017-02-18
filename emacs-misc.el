@@ -1,51 +1,3 @@
-#+TITLE:Dot Emacs:  Miscellaneous
-#+AUTHOR: Brad Collins
-#+EMAIL: brad@chenla.la
-#+PROPERTY: header-args    :results drawer  :tangle emacs-misc.el
-
-* Introduction
-
-This is an odd collection of functions that I have found or written
-myself to do little, useful things.
-
-
-* Insert Stuff
-
-Various functions to insert things.
-
-#+begin_src emacs-lisp :tangle no
-;; %:a  weekday name: `Monday'.		%#A gives uppercase: `MONDAY'
-;; %3a  abbreviated weekday: `Mon'.	%3A gives uppercase: `MON'
-;; %:b  month name: `January'.		%#B gives uppercase: `JANUARY'
-;; %3b  abbreviated month: `Jan'.	%3B gives uppercase: `JAN'
-;; %02d day of month
-;; %02H 24-hour clock hour
-;; %02I 12-hour clock hour
-;; %02m month number
-;; %02M minute
-;; %#p  `am' or `pm'.			%P  gives uppercase: `AM' or `PM'
-;; %02S seconds
-;; %w   day number of week, Sunday is 0
-;; %02y 2-digit year: `97'		%:y 4-digit year: `1997'
-;; %z   time zone name: `est'.		%Z  gives uppercase: `EST'
-
-;; Non-date items:
-;; %%   a literal percent character: `%'
-;; %f   file name without directory	%F  gives absolute pathname
-;; %s   system name
-;; %u   user's login name		%U  user's full name
-;; %h   mail host name
-#+end_src
-
-
-** defun insert-stuff
-
-Written long before Hydra and heavily used for a few years.
-
-Will eventually turn this into a Hydra
-
-#+begin_src emacs-lisp
-
 ;; Insert Stuff ============================================
 
 (defun insert-stuff (name)
@@ -67,16 +19,6 @@ Will eventually turn this into a Hydra
                  ((equal name ?r) (burr-replace-url))
 		(t ((equal name ?i)(format-time-string "%Y-%02m-%02dT%02H:%02M"))))))
 (global-set-key [f1] 'insert-stuff)
-
-#+end_src
-
-
-
-** =========================================================
-
-#+begin_src emacs-lisp
-
-
 
 ;; Inserts the date in the format 
 (defun insert-email-address ()
@@ -132,4 +74,3 @@ Will eventually turn this into a Hydra
                                     ?-))
   (comment-region (point-at-bol) (point-at-eol))
   (newline))
-#+end_src
