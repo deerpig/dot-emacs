@@ -192,6 +192,19 @@ That feels better already.
 #+begin_src emacs-lisp
 ;; Start the emacs-client ==================================
 (server-start)
+
+;; emacsclient stuff to automatically open new frame and close and
+;; clean everything up after you've finished
+
+(add-hook 'server-switch-hook
+	  (lambda nil
+	    (let ((server-buf (current-buffer)))
+	      (bury-buffer)
+	      (switch-to-buffer-other-frame server-buf))))
+
+(add-hook 'server-done-hook 'delete-frame)
+(add-hook 'server-done-hook (lambda nil (kill-buffer nil)))
+
 #+end_src
 
 * External Paths
@@ -332,12 +345,16 @@ ignore.
 
 #+end_src
 
-* Private
+* Private & Secrets
 
 Like in customize, we need to keep things like passwords and API keys
 out of the main init file which is in a public github repo.
 
 The solution is to encrypt the file using gpg.
+
+At the moment I only have a weather API in my emacs config, all email
+accounts and password info is in other applications.  So setting this
+up is on my TODO list but isn't high priority.
 
 * Load Init Files
 
@@ -357,7 +374,42 @@ At the moment we are still loading tangled files.
 #+end_src
 
 
-* Browse Url Applications
+* Browsers
+** Default Browser
+
+Not long ago I was using Conkeror which was build on top of firefox
+and all was good for a while and then it wasn't.  Development stopped
+and bitrot began to creep in.  So I moved over to Iceweasel (Debian's
+rebranding of firefox) with the /Firemacs/ plug-in to provide emacs
+key-bindings.  Not as good as Conkeror but useable.  And now recently
+Debian and Mozilla found a way to play nice with each other again and
+Debian is moving back to Firefox, which they now bundle as firefox-esr
+which I now use with the /KeySnail/ plugin.  KeySnail is pretty damn
+good and has brought back almost all of the goodness that had been
+lost when Conkeror had been left for dead in a ditch on the side of
+the road.
+
+On the horizon is WebKit-GTK support from /within/ emacs.  There are
+so many people drooling over the prospect of being able to do
+graphical browsing /inside/ emacs that it is threatening to become a
+public health concern.  I would be surprised if this support becomes
+useable for another year at least.  So until then firefox and keysnail
+will do nicely.
+
+#+begin_src emacs-lisp
+
+;; Set the Default Browser =================================
+;;
+;; use firefox as default browser
+;; (setq browse-url-browser-function 'browse-url-firefox)
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+
+#+end_src
+
+
+** Browse Url Applications
 
 Open *EVERYTHING* in firefox.
 
@@ -375,7 +427,7 @@ with attitide....
 
 #+end_src
 
-* Browse Apropos 
+** Browse Apropos 
 
 At the moment I don't have any of these bound to any keys, I've been
 using helm's surfraw integration.
@@ -482,6 +534,9 @@ workflow.
 	))
 
 #+end_src
+
+
+
 
 
 * Emacs Desktop
