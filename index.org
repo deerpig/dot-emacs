@@ -72,14 +72,15 @@ Feedback Is Welcome!
  
  - [[./dot-emacs.org][Dot Emacs]] init file - this loads first
  - [[./dot-org.org][Org]]
+ - Dired
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra]]
  - [[./dot-packages.org][Packages]]
  - Yassnippet
-
+ - [[./dot-misc.org][Miscellaneous]]
 ** legacy code
-
+- [[./emacs-burrs.org][BMF]]
 - Gnus
 - BBDB
 
