@@ -39,97 +39,6 @@
 
 #+end_src
 
-* --------------------------
-
-#+begin_src emacs-lisp
-
-
-
-(setq diredp-hide-details-initially-flag nil)
-
-;; Omit uninteresting files in dired
-;; use M-o (toggle-omit-files) to show dot, and other files
-
-;;(setq-default dired-omit-files-p nil) ; this is buffer-local variable
-
-;;(setq dired-omit-files
-;;       (concat dired-omit-files "\\|^\\..+$"))
-
-;; Dired Details
-;; (require 'dired-details)
-;; (dired-details-install)
-
-(global-set-key "\C-c\C-b" 'browse-url-of-dired-file)
-
-(setq dired-recursive-deletes 'top)
-
-;; Default for `ls switches' in Dired C-u s
-;; Must contain `l'.  Hide group, owner, and make file sizes
-;; human readable.  Adding an `a' will show hidden dot-files.
-
-(setq dired-listing-switches "-la")
-
-(add-hook 'dired-mode-hook
-	  (lambda ()
-	    ;; Set dired-x buffer-local variables here.  For example:
-	    ;; (dired-omit-mode 1)
-	    ))
-
-(defun make-parent-directory ()
-  "Make sure the directory of `buffer-file-name' exists."
-  (make-directory (file-name-directory buffer-file-name) t))
-
-(add-hook 'find-file-not-found-functions #'make-parent-directory)
-
-
-;;; Autoload `dired-jump' and `dired-jump-other-window'.
-;;; We autoload from FILE dired.el.  This will then load dired-x.el
-;;; and hence define `dired-jump' and `dired-jump-other-window'.
-(define-key global-map "\C-x\C-j" 'dired-jump)
-(define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
-
-(autoload (quote dired-jump) "dired" "\
-     Jump to Dired buffer corresponding to current buffer.
-     If in a file, Dired the current directory and move to file's line.
-     If in Dired already, pop up a level and goto old directory's line.
-     In case the proper Dired file line cannot be found, refresh the Dired
-     buffer and try again." t nil)
-
-(autoload (quote dired-jump-other-window) "dired" "\
-     Like \\[dired-jump] (dired-jump) but in other window." t nil)
-
-
-;; list directories first in dired
-
-(defun sof/dired-sort ()
-  "Dired sort hook to list directories first."
-  (save-excursion
-   (let (buffer-read-only)
-     (forward-line 2) ;; beyond dir. header  
-     (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
-  (and (featurep 'xemacs)
-       (fboundp 'dired-insert-set-properties)
-       (dired-insert-set-properties (point-min) (point-max)))
-  (set-buffer-modified-p nil))
-
- (add-hook 'dired-after-readin-hook 'sof/dired-sort)
-
-;;; Dired Sort menu
-(add-hook 'dired-load-hook
-           (lambda () (require 'dired-sort-menu)))
-
-;; set scroll so that it scrolls the page one line at a time
-(setq scroll-step 1)
-
-;; Hide uninteresting files including dot files
-;; M-o toggles between hidden and all files
-
-(random t)
-
-
-
-#+end_src
-
 ** Guess Shell Command 
 
 I had forgotten about this command.  In Dired, apply shell command to
@@ -197,6 +106,155 @@ helps keep the number of Dired buffers down....
         (my-dired-init)
       ;; it's not loaded yet, so add our bindings to the load-hook
       (add-hook 'dired-load-hook 'my-dired-init))))
+
+#+end_src
+
+** Hiding Details & ls Switches
+
+Over the years I have revisited this problem over and over, but keep
+coming back to ls switches.  All other methods are commented out.
+
+*** Show Details by Default
+
+#+begin_src emacs-lisp
+
+;; Show Details by Default =================================
+
+(setq diredp-hide-details-initially-flag nil)
+
+#+end_src
+
+*** ls Switches
+
+This is my most common way of showing/hiding files in dired lists.
+There are other methods but this is as fast as the others and has most
+of the power of the ls command going for it.
+
+Default for `ls switches' in Dired C-u s
+
+Must contain `l'.  Hide group, owner, and make file sizes
+human readable.  Adding an `a' will show hidden dot-files.
+
+#+begin_src emacs-lisp
+
+;; ls Switches =============================================
+
+;; Default for `ls switches' in Dired C-u s
+;; Must contain `l'.  Hide group, owner, and make file sizes
+;; human readable.  Adding an `a' will show hidden dot-files.
+
+(setq dired-listing-switches "-la")
+#+end_src
+
+*** Dired Details
+
+I've tried this a number of times and keep going back to using ls
+switches.  
+
+Commented out for now.
+
+#+begin_src emacs-lisp
+
+;; Dired Details ===========================================
+
+;; (require 'dired-details)
+;; (dired-details-install)
+
+#+end_src
+
+*** Uninteresting Files
+
+I've also played around with this on several occasions and in the end
+keep going back to ls switches.
+
+Commented Out.
+
+#+begin_src emacs-lisp
+;; Uninteresting Files =====================================
+
+;; Omit uninteresting files in dired
+;; use M-o (toggle-omit-files) to show dot, and other files
+
+;;(setq-default dired-omit-files-p nil) ; this is buffer-local variable
+
+;;(setq dired-omit-files
+;;       (concat dired-omit-files "\\|^\\..+$"))
+
+#+end_src
+
+** --------------------------
+
+#+begin_src emacs-lisp
+
+
+(global-set-key "\C-c\C-b" 'browse-url-of-dired-file)
+
+(setq dired-recursive-deletes 'top)
+
+;;; Autoload `dired-jump' and `dired-jump-other-window'.
+;;; We autoload from FILE dired.el.  This will then load dired-x.el
+;;; and hence define `dired-jump' and `dired-jump-other-window'.
+(define-key global-map "\C-x\C-j" 'dired-jump)
+(define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
+
+(autoload (quote dired-jump) "dired" "\
+     Jump to Dired buffer corresponding to current buffer.
+     If in a file, Dired the current directory and move to file's line.
+     If in Dired already, pop up a level and goto old directory's line.
+     In case the proper Dired file line cannot be found, refresh the Dired
+     buffer and try again." t nil)
+
+(autoload (quote dired-jump-other-window) "dired" "\
+     Like \\[dired-jump] (dired-jump) but in other window." t nil)
+
+
+
+;;; Dired Sort menu
+(add-hook 'dired-load-hook
+           (lambda () (require 'dired-sort-menu)))
+
+;; set scroll so that it scrolls the page one line at a time
+(setq scroll-step 1)
+
+;; Hide uninteresting files including dot files
+;; M-o toggles between hidden and all files
+
+(random t)
+
+#+end_src
+
+** Make Parent Directory
+
+#+begin_src emacs-lisp
+
+;; Make Parent Directory ===================================
+
+(defun make-parent-directory ()
+  "Make sure the directory of `buffer-file-name' exists."
+  (make-directory (file-name-directory buffer-file-name) t))
+
+(add-hook 'find-file-not-found-functions #'make-parent-directory)
+
+#+end_src
+
+** List Directories First
+
+#+begin_src emacs-lisp
+
+;; List Directories First ==================================
+
+(defun sof/dired-sort ()
+  "Dired sort hook to list directories first."
+  (save-excursion
+   (let (buffer-read-only)
+     (forward-line 2) ;; beyond dir. header  
+     (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+  (and (featurep 'xemacs)
+       (fboundp 'dired-insert-set-properties)
+       (dired-insert-set-properties (point-min) (point-max)))
+  (set-buffer-modified-p nil))
+
+ (add-hook 'dired-after-readin-hook 'sof/dired-sort)
 
 #+end_src
 
