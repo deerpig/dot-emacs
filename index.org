@@ -76,6 +76,7 @@ Feedback Is Welcome!
  - [[./dot-helm.org][Helm]]
  - [[./dot-mu4e.org][Mu4e]]
  - [[./dot-hydra.org][Hydra]]
+ - [[./dot-irc.org][IRC]]
  - [[./dot-packages.org][Packages]]
  - Yassnippet
  - [[./dot-misc.org][Miscellaneous]]

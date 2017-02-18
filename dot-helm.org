@@ -135,6 +135,7 @@ that are not listed here which are build into helm.
 (define-key helm-command-map (kbd ".") 'helm-multi-swoop-all)
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
 (define-key helm-command-map (kbd "u") 'helm-tramp)
+(define-key helm-command-map (kbd "T") 'helm-world-time)
 #+end_src
 
 Use <tab> to perform persistent action
@@ -229,3 +230,28 @@ See [[https://github.com/masasam/emacs-helm-tramp][masasam/emacs-helm-tramp: Tra
 :RESULTS:
 t
 :END:
+** Helm World Time
+
+Displays list of time zones and their current times.
+
+- [[http://wenshanren.org/?p=658][Emacs: Display World Time]] | 肉 山博客 (Wenshan's Blog)
+- [[http://en.wikipedia.org/wiki/List_of_tz_database_time_zones][List of Time Zones]] | Wikipedia
+
+
+#+begin_src emacs-lisp
+
+;; Helm World Time =========================================
+;; see http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+;; for list of time zones
+
+(setq display-time-world-list
+      '(("America/Los_Angeles" "San Diego")
+        ("America/New_York" "Boston")
+        ("Europe/London" "London")
+        ("Asia/Hong_Kong" "Hong Kong")
+        ("Asia/Bangkok" "Bangkok")
+        ("Asia/Tokyo" "Osaka")))
+
+  (global-set-key (kbd "C-c T") 'display-time-world)
+
+#+end_src
