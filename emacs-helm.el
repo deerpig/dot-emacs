@@ -1,89 +1,330 @@
-;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
-;; Emacs Helm Configuration
+host freenode port nickserv user deerpig password vegetasucks
+host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password keyelementsg.TK1ri6Z2InjMn6XcJYqI
 
-;; Helm ====================================================
+;; Deerpig's Crufty .emacs
+;; This dot emacs is a poor example
 
-(require 'helm)
-(require 'helm-config)
+;; I don't use XEmacs ======================================  
+;; This file does not work with XEmacs.
+(when (featurep 'xemacs)
+  (error "This .emacs file does not work with XEmacs."))
 
-;; set default window for helm buffer to display
-;; can be ‘below’, ‘above’, ‘left’ or ‘right’.
-(setq helm-split-window-default-side 'left)
+;; THE BARE MINIMUM ========================================
 
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+;; first lets get rid of the gui crutches for newbies
 
-(global-set-key (kbd "<menu>") 'helm-command-prefix)
+;; no tool bar
+(tool-bar-mode 0)
 
-;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
+;; no menu bar
+(menu-bar-mode 0)
 
-;; Map common emacs commands to their Helm equiv.
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x r b") 'helm-bookmarks)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
- (when (executable-find "curl")
-   (setq helm-google-suggest-use-curl-p t))
+;; no scroll bar
+(scroll-bar-mode -1)
 
-;; helm-command-map key-bindings ---------------------------
-;; h -- org agenda headings
-;; r -- regexp
-;; f -- open file
-;; s -- search
-;; m -- man pages
-;; l -- locate
-;; y -- yasnippet
-(define-key helm-command-map (kbd "h") 'helm-org-agenda-files-headings)
-(define-key helm-command-map (kbd "b") 'helm-bibtex)
-(define-key helm-command-map (kbd "z") 'helm-select-action) ;list actions
-(define-key helm-command-map (kbd "j") 'helm-bookmarks)
-(define-key helm-command-map (kbd "d") 'helm-dash)
-(define-key helm-command-map (kbd "r") 'helm-recoll)
-(define-key helm-command-map (kbd ",") 'helm-swoop)
-(define-key helm-command-map (kbd ".") 'helm-multi-swoop-all)
-(define-key helm-command-map (kbd "y") 'helm-yas-complete)
-(define-key helm-command-map (kbd "u") 'helm-tramp)
+;; The follwing settings constitute a minimum .emacs file for using
+;; emacs on remote servers.
 
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
-(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+;; no scratch message
+(setq initial-scratch-message nil)
 
-;;(global-set-key (kbd "C-x b") 'helm-mini)
+;; get rid of yes-or-no questions - y or n is enough
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-(setq helm-M-x-fuzzy-match t 
-      helm-completion-in-region-fuzzy-match t
-      helm-locate-fuzzy-match t
-      helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match    t)
+;; No, please, no tabs in my programs!
+(setq indent-tabs-mode nil)
 
-(setq helm-surfraw-default-browser-function nil
-      helm-surfraw-duckduckgo-url "https://duckduckgo.com/?q=%s&kae=t&k5=2&kp=-1")
+;; I kinda know my emacs
+(setq inhibit-startup-message t)
 
-;; Helm open file using external program using C-c C-x
+;; flash matching parenthesis
+(require 'flash-paren)
+(flash-paren-mode 1)
 
-(setq helm-external-programs-associations
-      (quote (("pdf"  . "evince")
-	      ("ps"   . "evince")d
-	      ("djvu" . "djview")
-	      ("mobi" . "fbreader")
-	      ("epub" . "fbreader")
-	      ("gif"  . "viewnior")
-	      ("jpg"  . "viewnior")
-	      ("jpeg" . "viewnior")
-	      ("png"  . "viewnior")
-	      ("tif"  . "viewnior")
-	      ("tiff" . "viewnior")
-	      ("mp4"  . "vlc")
-	      ("wav"  . "vlc")
-	      ("mp3"  . "vlc")
-	      ("mkv"  . "vlc"))))
+;; Start the emacs-client ==================================
+(server-start)
 
-;;(helm-mode 1)
+;; emacsclient stuff to automatically open new frame and close and
+;; clean everything up after you've finished
 
-(use-package helm-tramp
-  :ensure t
-  :config
-  (setq tramp-default-method "ssh")
-  (defalias 'exit-tramp 'tramp-cleanup-all-buffers))
+(add-hook 'server-switch-hook
+	  (lambda nil
+	    (let ((server-buf (current-buffer)))
+	      (bury-buffer)
+	      (switch-to-buffer-other-frame server-buf))))
+
+(add-hook 'server-done-hook 'delete-frame)
+(add-hook 'server-done-hook (lambda nil (kill-buffer nil)))
+
+;; External path search ====================================
+
+(add-to-list 'load-path "~/emacs-lisp")
+(add-to-list 'load-path "~/emacs-lisp/test")
+(add-to-list 'load-path "~/emacs-lisp/emacs-wiki-deerpig")
+(add-to-list 'load-path "~/emacs-lisp/docs")
+(add-to-list 'load-path "~/emacs-lisp/uri")
+(add-to-list 'load-path "~/emacs-lisp/remember")
+(add-to-list 'load-path "~/emacs-lisp/psgml")
+(add-to-list 'load-path "~/emacs-lisp/ecb")
+(add-to-list 'load-path "~/emacs-lisp/semantic")
+(add-to-list 'load-path "~/emacs-lisp/tex")
+(add-to-list 'load-path "~/emacs-lisp/ses")
+(add-to-list 'load-path "~/emacs-lisp/burr")
+(add-to-list 'load-path "~/emacs-lisp/sxml-mode")
+(add-to-list 'load-path "~/emacs-lisp/xpath")
+
+(add-to-list 'load-path (expand-file-name "~/emacs-lisp/w3/lisp"))
+(add-to-list 'load-path "~/emacs-lisp/elib-1.0")
+(add-to-list 'load-path "~/emacs-lisp/regexp-info")
+(add-to-list 'load-path "~/emacs-lisp/edb")
+(add-to-list 'load-path "~/emacs-lisp/xtla")
+(add-to-list 'load-path "~/emacs-lisp/wl/elmo")
+(add-to-list 'load-path "~/emacs-lisp/etask")
+(add-to-list 'load-path "~/emacs-lisp/burs")
+(add-to-list 'load-path "~/emacs-lisp/atom-blogger")
+
+(add-to-list 'load-path "~/emacs-lisp/emacs-atom-api")
+(add-to-list 'load-path "~/emacs-lisp/nxhtml")
+(add-to-list 'load-path "~/emacs-lisp/hyperbole")
+(add-to-list 'load-path "~/emacs-lisp/emacs-jabber")
+(add-to-list 'load-path "~/emacs-lisp/jd-el")
+(add-to-list 'load-path "~/emacs-lisp/google-contacts")
+(add-to-list 'load-path "~/emacs-lisp/multiple-cursors.el")
+(add-to-list 'load-path "~/emacs-lisp/emacs-async")
+
+;; Prefer UTF-8 over Latin-1 ===============================
+
+(set-language-environment 'english)
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; Display path in frame title =============================
+ (setq frame-title-format
+       '((:eval (if (buffer-file-name)
+		    (abbreviate-file-name (buffer-file-name))
+		  "%b"))))
+
+;; set the default font ====================================
+
+(set-default-font "Deja Vu Sans Mono-12")
+ ;;(set-fontset-font (frame-parameter nil 'font)
+ ;;   'han '("cwTeXHeiBold" . "unicode-bmp"))
+
+;; Package Manager & Repositories ==========================
+(eval-when-compile
+  (require 'package))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+
+(package-initialize)
+
+;; Use-package =============================================
+
+(unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+
+;; Customizations ==========================================
+;; keep all emacs customizations in file that is not
+;; part of the repo.
+(setq custom-file "~/.emacs-custom")
+(load custom-file 'noerror)
+
+;; Load literate Org files =================================
+
+(load "~/.emacs-user-info")
+(load "~/.emacs-helm")
+(load "~/.emacs-packages")
+(load "~/.emacs-hydra")
+(load "~/.emacs-mu4e")
+(load "~/.emacs-org")
+
+;; Set the Default Browser =================================
+;;
+;; use firefox as default browser
+;; (setq browse-url-browser-function 'browse-url-firefox)
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+
+(defvar browse-url-firefox-program 'firefox)
+(defvar browse-url-kde-program 'firefox)
+(defvar browse-url-gnome-moz-program 'firefox)
+(defvar browse-url-mozilla-program 'firefox)
+(defvar browse-url-galeon-program 'firefox)
+(defvar browse-url-netscape-program 'firefox)
+(defvar browse-url-mosaic-program 'firefox)
+(defvar browse-url-xterm-program 'firefox)
+
+;; Browse Apropos URL ======================================
+
+(require 'browse-apropos-url)
+(provide 'browse-url)
+(require 'thingatpt+)
+
+;; Choose commands that mirror DuckDuckGo !bang commands when
+;; possible.  !bang should go to search on a site.  !!bangbang should
+;; just be a shortcut to a url.  If it's not a search link, default
+;; both single and double bang prefix to home page.
+
+(setq apropos-url-alist
+      '( ;; DuckDuckGo is default search engine.
+	("^\??:? +\\(.*\\)" .       ;; "?" defaults to DuckDuckGo
+	 "http://duckduckgo.com/?q=\\1")
+	("^!ddg?:? +\\(.*\\)" .     ;; DuckDuckGo Search
+	 "http://duckduckgo.com/?q=\\1")
+        ("^!!ddg"                   ;; DuckDuckGo Home Page
+	 "http://duckduckgo.com")
+	("^!bang$" .                ;; DuckDuckGo !bang Page
+	 "http://duckduckgo.com/bang.html")
+        ;; Google Sites ;;;;;;;;;;;;;;;;;;;;;;
+	("^gw?:? +\\(.*\\)" .
+         "http://www.google.com/search?q=\\1")
+	("^!g?:? +\\(.*\\)" . 	    ;; Google Web Search
+	 "http://www.google.com/search?q=\\1")
+        ("^!!g$" . 	            ;; Google Home Page
+	 "http://google.com/")
+        ("^!reader?:? +\\(.*\\)" .  ;; Search Google Reader
+         "http://www.google.com/reader/view/#search/\\1")
+        ("^!!reader$" .             ;; Google Reader Home
+         "http://reader.google.com/")
+        ("^!!voice$" .              ;; Google Voice
+         "http://voice.google.com/")
+	("^!!gmail$" .              ;; GMail
+	 "http://mail.google.com/")
+	("^!gi:? +\\(.*\\)" .       ;; Google Images
+	 "http://images.google.com/images?sa=N&tab=wi&q=\\1")
+	("^!!gi$" .                 ;; Google Images
+	 "http://images.google.com/")
+	("^!gg:? +\\(.*\\)" .       ;; Google Groups
+	 "http://groups.google.com/groups?q=\\1")
+        ("^!gn:? +\\(.*\\)" .       ;; Google News Search
+         "http://news.google.com/news?sa=N&tab=dn&q=\\1")
+        ("^!!gn$" .                 ;; Google News Home
+         "http://news.google.com/")
+	;;Blekko ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ("^!blekko?:? +\\(.*\\)" .  ;; Blekko Search
+	 "http://blekko.com/ws/+\\1")
+	("^!!blekko$" .             ;; Blekko Home
+	 "http://blekko.com/")
+        ;; Tech News ;;;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!/\.$" . ;; Slashdot Home
+         "http://www.slashdot.org")
+	("^!!/\.$" . ;; Slashdot Home
+         "http://www.slashdot.org")
+        ("^!bb$" . ;; Boing Boing Home
+         "http://boingboing.net")
+        ("^!!bb$" . ;; Boing Boing Home
+         "http://boingboing.net")
+        ;; Emacs ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!emacs:? +\\(.*\\)" . ;; Emacs Wiki Search
+         "http://www.emacswiki.org/cgi-bin/wiki?search=\\1")
+        ("^!!emacs$" . ;; Emacs Wiki Home
+         "http://www.emacswiki.org")
+        ;;Hacker News ;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!hn:? +\\(.*\\)" . ;; Hacker News Search
+	"http://www.hnsearch.com/search#request/all&q=\\1")
+	("^!!hn$" . ;; Hacker News Home
+	"http://news.ycombinator.com")
+	;;Torrent Search ;;;;;;;;;;;;;;;;;;;;
+	("^!tpb:? +\\(.*\\)" . ;;The Pirate Bay
+	"http://thepiratebay.com/search/\\1")
+	("^!demon:? +\\(.*\\)" . ;; Demonoid Search
+	"https://www.demonoid.me/files/?query=\\1" )
+	("^!demonoid:? +\\(.*\\)" . ;; Demonoid Search
+	"https://www.demonoid.me/files/?query=\\1" )
+	("^!isohunt:? +\\(.*\\)" . ;;ISOHunt
+	"https://isohunt.com/torrents/?ihq=\\1" )
+	("^!cheggit:? +\\(.*\\)" . ;;Cheggit Search
+	"http://cheggit.net/browsetorrents.php?filter=all%3A%5B\\1" )
+	("^!!cheggit:? +\\(.*\\)" . ;;Cheggit Home
+	"http://cheggit.net/browsetorrents.php" )
+	("^!jpop:? +\\(.*\\)" . ;; JPopSuki Artist Search
+	"http://jpopsuki.eu/torrents.php?action=advanced&artistname=\\1" )
+	;; Content Companies ;;;;;;;;;;;;;;;;;
+	("^!amazon:? +\\(.*\\)" . ;; Amazon
+	"http://www.amazon.com/s/?&field-keywords=\\1" )
+	("^!imdb:? +\\(.*\\)" . ;; IMDB
+	"http://www.imdb.com/find?s=all&q=\\1" )
+        ("^!tmdb:? +\\(.*\\)" . ;; The Movie Database
+	"http://www.themoviedb.org/search?search=\\1")
+        ;; Add Later
+
+	))
+
+;; Emacs Desktop ===========================================
+;; save a list of open files in ~/.emacs.desktop
+;; save the desktop file automatically if it already exists
+(setq desktop-save 'if-exists)
+(desktop-save-mode 1)
+
+(setq desktop-buffers-not-to-save
+(concat "\\("
+       "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
+       "\\|\\.emacs.*\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb"
+       "\\)$"))
+
+(add-to-list 'desktop-modes-not-to-save 'dired-mode)
+(add-to-list 'desktop-modes-not-to-save 'Info-mode)
+(add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
+(add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+(add-to-list 'desktop-modes-not-to-save 'magit-mode)
+;; should add twittering, eirc, elfeed?
+
+
+;; save a bunch of variables to the desktop file
+;; for lists specify the len of the maximal saved data also
+(setq desktop-globals-to-save		
+      (append '((extended-command-history . 30)
+                (file-name-history        . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (shell-command-history    . 50)
+                tags-file-name
+                register-alist)))
+
+;; RCIRC ============================================
+;; Register Nick on IRC Servers
+
+(rcirc-track-minor-mode 1)
+(setq rcirc-default-nick "deerpig")
+(setq rcirc-default-user-name "deerpig")
+(setq rcirc-default-full-name "Brad Collins")
+
+(setq rcirc-server-alist
+      '(("irc.freenode.net"           :channels ("#emacs" "#chenla"))
+  	("irc.chenla.org"             :channels ("#chenla"))
+	("keyelementsg.irc.slack.com" :encryption tls
+			 	      :channels ("#general" "random"))))
+
+
+;; ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
+;; 	                            :password "keyelementsg.TK1ri6Z2InjMn6XcJYqI"
+;; 	                              :channels ("#general" "random"))
+
+;; (setq rcirc-authinfo '(("freenode" nickserv "deerpig" "vegetasucks")
+;; 		       ("keyelementsg.irc.slack.com" nickserv "deerpig" "keyelementsg.TK1ri6Z2InjMn6XcJYqI")))
+
+
+(defadvice rcirc (before rcirc-read-from-authinfo activate)
+  "Allow rcirc to read authinfo from ~/.authinfo.gpg via the auth-source API.
+This doesn't support the chanserv auth method"
+  (unless arg
+(dolist (p (auth-source-search :port '("nickserv" "bitlbee" "quakenet")
+   :require '(:port :user :secret)))
+  (let ((secret (plist-get p :secret))
+(method (intern (plist-get p :port))))
+(add-to-list 'rcirc-authinfo
+ (list (plist-get p :host)
+   method
+   (plist-get p :user)
+   (if (functionp secret)
+   (funcall secret)
+ secret)))))))

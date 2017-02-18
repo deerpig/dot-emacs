@@ -587,3 +587,52 @@ See:
                 tags-file-name
                 register-alist)))
 #+end_src
+* Rcirc
+
+
+#+begin_src emacs-lisp
+  ;; RCIRC ============================================
+  ;; Register Nick on IRC Servers
+
+  (rcirc-track-minor-mode 1)
+  (setq rcirc-default-nick "deerpig")
+  (setq rcirc-default-user-name "deerpig")
+  (setq rcirc-default-full-name "Brad Collins")
+
+  (setq rcirc-server-alist
+	'(("irc.freenode.net"           :channels ("#emacs" "#chenla"))
+  	  ("irc.chenla.org"             :channels ("#chenla"))
+	  ("keyelementsg.irc.slack.com" :encryption tls
+			 	        :channels ("#general" "random"))))
+
+
+  ;; ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
+  ;; 	                            :password "keyelementsg.TK1ri6Z2InjMn6XcJYqI"
+  ;; 	                              :channels ("#general" "random"))
+
+  ;; (setq rcirc-authinfo '(("freenode" nickserv "deerpig" "vegetasucks")
+  ;; 		       ("keyelementsg.irc.slack.com" nickserv "deerpig" "keyelementsg.TK1ri6Z2InjMn6XcJYqI")))
+
+
+  (defadvice rcirc (before rcirc-read-from-authinfo activate)
+    "Allow rcirc to read authinfo from ~/.authinfo.gpg via the auth-source API.
+  This doesn't support the chanserv auth method"
+    (unless arg
+  (dolist (p (auth-source-search :port '("nickserv" "bitlbee" "quakenet")
+     :require '(:port :user :secret)))
+    (let ((secret (plist-get p :secret))
+  (method (intern (plist-get p :port))))
+  (add-to-list 'rcirc-authinfo
+   (list (plist-get p :host)
+     method
+     (plist-get p :user)
+     (if (functionp secret)
+     (funcall secret)
+   secret)))))))
+
+#+end_src
+
+#+begin_src  :tangle ~/.authinfo
+host freenode port nickserv user deerpig password vegetasucks
+host keyelementsg.irc.slack.com port 6697 nickserv user deerpig password keyelementsg.TK1ri6Z2InjMn6XcJYqI
+#+end_src
