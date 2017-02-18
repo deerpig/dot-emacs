@@ -255,3 +255,198 @@ Displays list of time zones and their current times.
   (global-set-key (kbd "C-c T") 'display-time-world)
 
 #+end_src
+** HELM Related Packages
+
+Helm will have a whole file dedicated to helm stuff.  When I first
+started this file, I wanted a place to put helm packages that were
+installed using use-package.
+
+Helm seems to be one of the few packages that is so complex and
+interconnected with everything else that a lot of config is difficult
+to get to work within use-package,
+
+The packages included here will be moved to that file when I take the
+plunge.
+
+#+begin_src emacs-lisp
+;; HELM ====================================================
+#+end_src
+
+** Helm Unicode
+
+Look up unicode characters using helm interface
+
+#+begin_src emacs-lisp
+
+;; Helm-unicode --------------------------------------------
+;; to use, M-x helm-unicode and type name of unicode character
+;; (in caps?).
+ (use-package helm-unicode
+   :ensure t
+   )
+
+#+end_src
+
+** Helm Bibtex
+
+Look up BibTex entries in local BibTex database using helm interface.
+
+#+begin_src emacs-lisp
+
+;; Helm-bibtex ---------------------------------------------
+
+;;"~/org/ref.bib"
+
+(use-package helm-bibtex
+  :ensure t
+  :init
+  (autoload 'helm-bibtex "helm-bibtex" "" t)
+  (setq bibtex-completion-bibliography '("~/org/biblio.bib" "~/org/ref.org"))
+  (setq bibtex-completion-pdf-field "file")
+  ;;(setq bibtex-completion-additional-search-fields '(keywords))
+  (setq bibtex-completion-pdf-symbol "⌘")
+  (setq bibtex-completion-notes-symbol "✎")
+  (setq bibtex-completion-pdf-open-function
+	(lambda (fpath)
+	  (call-process "okular" nil 0 nil fpath)))
+  (setq bibtex-completion-notes-path "~/org/bibnotes.org")
+  (setq bibtex-completion-additional-search-fields '(tags))
+  )
+
+#+end_src
+
+
+** Helm Dictionary
+
+Never got this to work -- I filed a bug report and it looks like there
+is a conflict somewhere in my helm config.
+
+I will eventually get this sorted out but until then it will stay
+commented out.
+
+#+begin_src emacs-lisp
+
+;; helm-dictionary -----------------------------------------
+
+;; (use-package helm-dictionary
+;;    :ensure t
+;;    )
+
+#+end_src
+
+** Helm Wordnet
+
+This works, I think....
+
+#+begin_src emacs-lisp
+
+;; helm-wordnet ---------------------------------------------
+;; requires local install of wordnet
+
+ (use-package helm-wordnet
+   :ensure t
+   )
+
+#+end_src
+
+** Helm Recoll
+
+This took more than a little tweaking to get to work.
+
+Install recoll -- need to link to or include install instructions...
+
+See: [[https://github.com/emacs-helm/helm-recoll]]
+
+Open file using external program using C-c C-x
+
+#+begin_src emacs-lisp
+
+ ;; helm-recoll ----------------------------------------------
+ ;; (use-package helm-recoll
+ ;;   :ensure t
+ ;;   :config
+ ;;   (helm-recoll-create-source "org" "~/.recoll/org")
+ ;;   (helm :sources '(helm-source-recoll-org))
+ ;;   (helm-recoll-create-source "proj" "~/.recoll/proj")
+ ;;   (helm :sources '(helm-source-recoll-proj))
+ ;;   (helm-recoll-create-source "doc" "~/.recoll/doc")
+ ;;   (helm :sources '(helm-source-recoll-doc)))
+
+;; 
+;; https://github.com/emacs-helm/helm-recoll
+;; Open file using external program using C-c C-x
+
+(use-package helm-recoll
+  :commands helm-recoll
+  :init (setq helm-recoll-directories
+	      '(("org"  . "~/.recoll/org")
+		("proj" . "~/.recoll/proj")
+		("doc"  . "~/.recoll/doc"))))
+
+#+end_src
+
+** Helm Dash
+
+#+begin_src emacs-lisp
+
+;; Helm Dash -----------------------------------------------
+(use-package helm-dash
+  :ensure t
+  :init
+  (setq helm-dash-docsets-path "~/.docsets")
+  (setq helm-dash-common-docsets
+	  '("Bootstrap 3" "Jekyll" "Font_Awesome"
+	    "HTML" "CSS" "LaTeX" "Chef" "Vagrant" "Docker"
+	    "R" "Python 2" "Python 3" "SciPy" "Ruby"
+	    "Common Lisp" "Emacs Lisp" "Racket"
+	    "Bash" "Apache_HTTP_Server"))
+)
+
+#+end_src
+
+** Helm Swoop
+
+#+begin_src emacs-lisp
+
+;; Helm Swoop ----------------------------------------------
+
+(use-package helm-swoop  
+  :ensure t
+  :config
+  ;; keybindings
+  (global-set-key (kbd "C-M-,") 'helm-swoop)
+  (global-set-key (kbd "C-M-.") 'helm-multi-swoop-all)
+  ;; isearch uses to helm-swoop
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+  ;; From helm-swoop to helm-multi-swoop-all
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  ;; Save buffer when helm-multi-swoop-edit complete
+  (setq helm-multi-swoop-edit-save t)
+  ;; If this value is t, split window inside the current window
+  (setq helm-swoop-split-with-multiple-windows nil)
+  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+  (setq helm-swoop-split-direction 'split-window-horizontally)
+  ;; If nil, you can slightly boost invoke speed in exchange for text color
+  (setq helm-swoop-speed-or-color t)
+  ;; Locate unix command used
+  (setq helm-locate-command "locate %s -e -A --regex %s"))
+
+#+end_src
+
+** Helm Yasnippet
+
+I've found that if you've drunk the helm cool-aid, this is easier to
+use than trying to remember snippet names.  Snippets are listed
+according to which mode you are working in, so if I am in orgmode I
+will only see org snippets.  Very helpful.
+
+#+begin_src emacs-lisp
+
+;; Helm Yasnippet ------------------------------------------
+
+(use-package helm-c-yasnippet
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c y") 'helm-yas-complete))
+
+#+end_src
