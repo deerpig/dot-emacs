@@ -122,6 +122,8 @@ you are trying to debug a broken init file on startup....
 #+begin_src emacs-lisp
   ;; THE BARE MINIMUM ========================================
 
+  ;; first lets get rid of the gui crutches for newbies
+
   ;; no tool bar
   (tool-bar-mode 0)
 
