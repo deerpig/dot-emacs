@@ -91,6 +91,13 @@ This is for fun!
 #+end_quote
 
 
+* Header
+
+#+begin_src emacs-lisp
+;; Deerpig's Crufty .emacs
+;; This dot emacs is a poor example 
+
+#+end_src
 
 * External Paths
 
@@ -135,6 +142,29 @@ This is for fun!
 
 #+end_src
 
+* Default Font
+
+#+begin_src emacs-lisp
+;; set the default font ====================================
+
+(set-default-font "Deja Vu Sans Mono-12")
+ ;;(set-fontset-font (frame-parameter nil 'font)
+ ;;   'han '("cwTeXHeiBold" . "unicode-bmp"))
+#+end_src
+
+* Package & Melpa
+
+#+begin_src emacs-lisp
+
+;; Package Manager & Repositories ==========================
+(eval-when-compile
+  (require 'package))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+
+(package-initialize)
+#+end_src
 
 * Customizations
 
@@ -173,6 +203,7 @@ At the moment we are still loading tangled files.
 
 ;; Load literate Org files =================================
 
+(load "~/.emacs-user-info")
 (load "~/.emacs-helm")
 (load "~/.emacs-packages")
 (load "~/.emacs-hydra")
