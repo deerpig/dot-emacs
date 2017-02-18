@@ -92,106 +92,6 @@
 ;;    (setq emms-playlist-buffer-name "Music-EMMS")
 ;;    (setq emms-source-file-default-directory "/media/deerpig/green/music")))
 
-;; HELM ====================================================
-
-;; Helm-unicode --------------------------------------------
-;; to use, M-x helm-unicode and type name of unicode character
-;; (in caps?).
- (use-package helm-unicode
-   :ensure t
-   )
-
-;; Helm-bibtex ---------------------------------------------
-
-;;"~/org/ref.bib"
-
-(use-package helm-bibtex
-  :ensure t
-  :init
-  (autoload 'helm-bibtex "helm-bibtex" "" t)
-  (setq bibtex-completion-bibliography '("~/org/biblio.bib" "~/org/ref.org"))
-  (setq bibtex-completion-pdf-field "file")
-  ;;(setq bibtex-completion-additional-search-fields '(keywords))
-  (setq bibtex-completion-pdf-symbol "⌘")
-  (setq bibtex-completion-notes-symbol "✎")
-  (setq bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (call-process "okular" nil 0 nil fpath)))
-  (setq bibtex-completion-notes-path "~/org/bibnotes.org")
-  (setq bibtex-completion-additional-search-fields '(tags))
-  )
-
-;; helm-dictionary -----------------------------------------
-
-;; (use-package helm-dictionary
-;;    :ensure t
-;;    )
-
-;; helm-wordnet ---------------------------------------------
-;; requires local install of wordnet
-
- (use-package helm-wordnet
-   :ensure t
-   )
-
-;; helm-recoll ----------------------------------------------
- ;; (use-package helm-recoll
- ;;   :ensure t
- ;;   :config
- ;;   (helm-recoll-create-source "org" "~/.recoll/org")
- ;;   (helm :sources '(helm-source-recoll-org))
- ;;   (helm-recoll-create-source "proj" "~/.recoll/proj")
- ;;   (helm :sources '(helm-source-recoll-proj))
- ;;   (helm-recoll-create-source "doc" "~/.recoll/doc")
- ;;   (helm :sources '(helm-source-recoll-doc)))
-
-;; 
-;; https://github.com/emacs-helm/helm-recoll
-;; Open file using external program using C-c C-x
-
-(use-package helm-recoll
-  :commands helm-recoll
-  :init (setq helm-recoll-directories
-	      '(("org"  . "~/.recoll/org")
-		("proj" . "~/.recoll/proj")
-		("doc"  . "~/.recoll/doc"))))
-
-;; Helm Dash -----------------------------------------------
-(use-package helm-dash
-  :ensure t
-  :init
-  (setq helm-dash-docsets-path "~/.docsets")
-  (setq helm-dash-common-docsets
-	  '("Bootstrap 3" "Jekyll" "Font_Awesome"
-	    "HTML" "CSS" "LaTeX" "Chef" "Vagrant" "Docker"
-	    "R" "Python 2" "Python 3" "SciPy" "Ruby"
-	    "Common Lisp" "Emacs Lisp" "Racket"
-	    "Bash" "Apache_HTTP_Server"))
-)
-
-;; Helm Swoop ----------------------------------------------
-
-(use-package helm-swoop  
-  :ensure t
-  :config
-  ;; keybindings
-  (global-set-key (kbd "C-M-,") 'helm-swoop)
-  (global-set-key (kbd "C-M-.") 'helm-multi-swoop-all)
-  ;; isearch uses to helm-swoop
-  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-  ;; From helm-swoop to helm-multi-swoop-all
-  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-  ;; Save buffer when helm-multi-swoop-edit complete
-  (setq helm-multi-swoop-edit-save t)
-  ;; If this value is t, split window inside the current window
-  (setq helm-swoop-split-with-multiple-windows nil)
-  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-  (setq helm-swoop-split-direction 'split-window-horizontally)
-  ;; If nil, you can slightly boost invoke speed in exchange for text color
-  (setq helm-swoop-speed-or-color t)
-  ;; Locate unix command used
-  (setq helm-locate-command "locate %s -e -A --regex %s"))
-
 ;; Org-Ref =================================================
 ;; 
 ;; Org-ref is for interactively adding references to org documents
@@ -282,27 +182,6 @@
   ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
   ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
   )
-
-;; Helm Yasnippet ------------------------------------------
-
-(use-package helm-c-yasnippet
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c y") 'helm-yas-complete))
-
-;; Dired Ranger ============================================
-
-; In a dired buffer, mark multiple files and then hit W to copy them.  Go
-; to another directory and mark more files and hit C-u W to add Now go to
-; the target directory and hit X to move to or Y to copy the files to the
-; target
-
-(use-package dired-ranger
-  :ensure t
-  :bind (:map dired-mode-map
-              ("W" . dired-ranger-copy)
-              ("X" . dired-ranger-move)
-              ("Y" . dired-ranger-paste)))
 
 ;; PHP =====================================================
 

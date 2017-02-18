@@ -31,6 +31,10 @@ to open a file with, which we have set below.
 We have also set up Dired-Ranger which adds functionality of copying
 and moving files between windows like in an orthodox file manager.
 
+I know that I just use a fraction of Dired's features, so I do
+recommend spending some time reading the Info Manual for Dired,
+Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki page]] for Dired.
+
 ** Header
 
 #+begin_src emacs-lisp
@@ -132,6 +136,9 @@ helps keep the number of Dired buffers down....
         (my-dired-init)
       ;; it's not loaded yet, so add our bindings to the load-hook
       (add-hook 'dired-load-hook 'my-dired-init))))
+
+;; Enabled single dired when browsing directory
+(setq enable-singledired t)
 
 #+end_src
 
@@ -366,6 +373,12 @@ so for now not tangled.
    :ensure t
    :defer t ; don't access `dired-mode-map' until `peep-dired' is loaded
    :bind (:map dired-mode-map
-               ("P" . peep-dired)))
+               ("P" . peep-dired))
+   :config
+   (setq peep-dired-cleanup-on-disable t)
+   ;;(setq peep-dired-cleanup-eagerly t)
+   (setq peep-dired-ignored-extensions '("mkv" "iso" "mp4" "avi" "wmv"))
+   (define-key dired-mode-map [P] 'peep-dired)
+)
 
 #+end_src

@@ -78,6 +78,7 @@ Feedback Is Welcome!
  - [[./dot-hydra.org][Hydra]]
  - [[./dot-irc.org][IRC]]
  - [[./dot-packages.org][Packages]]
+ - [[./dot-lisp.org][Lisp]]
  - Yassnippet
  - [[./dot-misc.org][Miscellaneous]]
 ** legacy code
