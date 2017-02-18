@@ -1,0 +1,122 @@
+#+TITLE:Dot Emacs: Dired
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+PROPERTY: header-args    :results drawer  :tangle emacs-dired.el
+
+* Introduction
+
+
+#+begin_src emacs-lisp
+;;  DIRED ============================================================
+;;; Dired+
+(setq diredp-hide-details-initially-flag nil)
+(require 'dired+)
+
+;;; Load dired-x stuff
+(require 'dired-x)
+
+(add-hook 'dired-load-hook 
+          (function (lambda ()
+                      (load "dired-x")
+                      ;; Set dired-x variables here.  For example:
+                      ;; (setq dired-guess-shell-gnutar "gtar")
+                      (setq dired-omit-files-p t)
+                      ;; (setq dired-x-hands-off-my-keys nil)
+                      )))
+
+;; Omit uninteresting files in dired
+;; use M-o (toggle-omit-files) to show dot, and other files
+
+;;(setq-default dired-omit-files-p nil) ; this is buffer-local variable
+
+;;(setq dired-omit-files
+;;       (concat dired-omit-files "\\|^\\..+$"))
+
+;; Dired Details
+;; (require 'dired-details)
+;; (dired-details-install)
+
+(global-set-key "\C-c\C-b" 'browse-url-of-dired-file)
+
+(setq dired-recursive-deletes 'top)
+
+;; Default for `ls switches' in Dired C-u s
+;; Must contain `l'.  Hide group, owner, and make file sizes
+;; human readable.  Adding an `a' will show hidden dot-files.
+
+(setq dired-listing-switches "-la")
+
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    ;; Set dired-x buffer-local variables here.  For example:
+	    ;; (dired-omit-mode 1)
+	    ))
+
+(defun make-parent-directory ()
+  "Make sure the directory of `buffer-file-name' exists."
+  (make-directory (file-name-directory buffer-file-name) t))
+
+(add-hook 'find-file-not-found-functions #'make-parent-directory)
+
+
+;;; Autoload `dired-jump' and `dired-jump-other-window'.
+;;; We autoload from FILE dired.el.  This will then load dired-x.el
+;;; and hence define `dired-jump' and `dired-jump-other-window'.
+(define-key global-map "\C-x\C-j" 'dired-jump)
+(define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
+
+(autoload (quote dired-jump) "dired" "\
+     Jump to Dired buffer corresponding to current buffer.
+     If in a file, Dired the current directory and move to file's line.
+     If in Dired already, pop up a level and goto old directory's line.
+     In case the proper Dired file line cannot be found, refresh the Dired
+     buffer and try again." t nil)
+
+(autoload (quote dired-jump-other-window) "dired" "\
+     Like \\[dired-jump] (dired-jump) but in other window." t nil)
+
+
+;; list directories first in dired
+
+(defun sof/dired-sort ()
+  "Dired sort hook to list directories first."
+  (save-excursion
+   (let (buffer-read-only)
+     (forward-line 2) ;; beyond dir. header  
+     (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+  (and (featurep 'xemacs)
+       (fboundp 'dired-insert-set-properties)
+       (dired-insert-set-properties (point-min) (point-max)))
+  (set-buffer-modified-p nil))
+
+ (add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+;;; Dired Sort menu
+(add-hook 'dired-load-hook
+           (lambda () (require 'dired-sort-menu)))
+
+;; set scroll so that it scrolls the page one line at a time
+(setq scroll-step 1)
+
+;; Hide uninteresting files including dot files
+;; M-o toggles between hidden and all files
+
+(random t)
+
+
+;;guess shell command by file extension.
+(setq dired-guess-shell-alist-user
+      '(("\\.pdf\\'"  "evince")
+	("\\.ps\\'"   "evince")
+	("\\.djvu\\'" "djview")
+	("\\.mobi\\'" "fbreader")
+	("\\.epub\\'" "fbreader")
+	("\\.gif\\'"  "evince")
+	("\\.jpg\\'"  "viewnior")
+	("\\.jpeg\\'"  "viewnior")
+	("\\.png\\'"  "viewnior")
+	("\\.tif\\'"  "viewnior")
+	("\\.tiff\\'"  "viewnior")))
+
+#+end_src
+

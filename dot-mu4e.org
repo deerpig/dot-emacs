@@ -1,7 +1,7 @@
-#+TITLE:Dot Emacs: Hydra
+#+TITLE:Dot Emacs: Mu4e
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
-#+PROPERTY: header-args    :results drawer  :tangle emacs-org.el
+#+PROPERTY: header-args    :results drawer  :tangle emacs-mu4e.el
 
 * Introduction
 * Mu4e Config
