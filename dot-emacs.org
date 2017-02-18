@@ -99,6 +99,38 @@ This is for fun!
 
 #+end_src
 
+* Xemacs
+
+Ah XEmacs (previously known as Lucid Emacs).  Many of you reading this
+may not have even heard of the great emacs fork that resulted in
+XEmacs.  But XEmacs was very popular in its day and was known for
+being more innovative and responsive to users needs and with a faster
+release cycle than the glacial-bordering-on-tectonic release pace that
+emacs was stuck in between 1987 and 1993 when Emacs 19 was finally
+released.
+
+When I started using Emacs, XEmacs was still at the top of their game,
+but it still smelled like a fork to me... I tried Gnu Emacs and never
+looked back.
+
+XEmacs is now all but extinct (it's last release was in 2009), with
+all development now having shifted back into Gnu Emac, but I
+keep this snippet here in remembrance of things past.
+
+For the curious:
+
+  - [[https://en.wikipedia.org/wiki/XEmacs][XEmacs]] | Wikipedia
+  - [[http://www.xemacs.org/][XEmacs: The next generation of Emacs]] 
+
+#+begin_src emacs-lisp
+
+;; I don't use XEmacs ======================================  
+;; This file does not work with XEmacs.
+(when (featurep 'xemacs)
+  (error "This .emacs file does not work with XEmacs."))
+
+#+end_src
+
 * The Bare Minimum
 
 Set the basic settings that drive you crazy in vanilla emacs out of
@@ -117,9 +149,8 @@ using emacs you should set:
 And finally, enable flashing parenthesis, which is very helpful when
 you are trying to debug a broken init file on startup....
 
-
-
 #+begin_src emacs-lisp
+
   ;; THE BARE MINIMUM ========================================
 
   ;; first lets get rid of the gui crutches for newbies
@@ -155,10 +186,6 @@ you are trying to debug a broken init file on startup....
 #+end_src
 
 That feels better already.
-
-
-
-
 
 * Emacs Server
 
@@ -207,12 +234,31 @@ That feels better already.
 (add-to-list 'load-path "~/emacs-lisp/multiple-cursors.el")
 (add-to-list 'load-path "~/emacs-lisp/emacs-async")
 
+#+end_src
+
+* Default Encoding & Language
+
+UTF-8 could now be the default preference in emacs, but it can't hurt
+to make sure.
+
+I also explicitly set the language to english.  This may not be
+needed, but since I've lived in Asia for the last 30 years, I found it
+wise not to make assumptions about language settings.
+
+#+begin_src emacs-lisp
+
+;; Prefer UTF-8 over Latin-1 ===============================
+
+(set-language-environment 'english)
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 
 #+end_src
 
 * Default Font
 
 #+begin_src emacs-lisp
+
 ;; set the default font ====================================
 
 (set-default-font "Deja Vu Sans Mono-12")
