@@ -6,12 +6,14 @@
 * Introduction
 
 This is an odd collection of functions that I have found or written
-myself to do little, useful things.
+myself to do little trivial but useful things.
 
 
 * Insert Stuff
 
 Various functions to insert things.
+
+Use this from the documentation as a cheat sheet for formating things.
 
 #+begin_src emacs-lisp :tangle no
 ;; %:a  weekday name: `Monday'.		%#A gives uppercase: `MONDAY'

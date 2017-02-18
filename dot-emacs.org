@@ -145,6 +145,7 @@ using emacs you should set:
   - answer yes and now questions with y and n
   - no tabs
   - no tabs! (in case you didn't hear me the first time)
+  - no ring/bell/beep
 
 And finally, enable flashing parenthesis, which is very helpful when
 you are trying to debug a broken init file on startup....
@@ -163,6 +164,9 @@ you are trying to debug a broken init file on startup....
 
   ;; no scroll bar
   (scroll-bar-mode -1)
+
+  ;; Disable the silly ring
+  (setq ring-bell-function '(lambda()))
 
   ;; The follwing settings constitute a minimum .emacs file for using
   ;; emacs on remote servers.
@@ -619,5 +623,45 @@ See:
                 (shell-command-history    . 50)
                 tags-file-name
                 register-alist)))
+
+;; Save/Read the desktop
+(desktop-load-default)
+(desktop-read)
+
 #+end_src
 
+* Calendar & Diary
+
+#+begin_src emacs-lisp
+;; Calendar Style
+(setq european-calendar-style t)
+
+;; work-around for error message:
+;;  void-function fancy-diary-display
+(setq diary-display-function 'diary-fancy-display)
+
+#+end_src
+
+* Info
+
+#+begin_src emacs-lisp
+;; Regexp Info Manual ======================================
+(require 'info)
+(setq Info-default-directory-list 
+      (cons "~/emacs-lisp/regexp-info" Info-default-directory-list))
+
+(setq Info-default-directory-list 
+      (cons "~/emacs-lisp/burs" Info-default-directory-list))
+
+
+;; Elisp tutorial and manual ===============================
+(require 'info)
+(setq Info-default-directory-list 
+      (cons "/usr/local/info" Info-default-directory-list))
+
+(setq Info-default-directory-list 
+     (cons "~/emacs-lisp/docs" Info-default-directory-list))
+
+
+
+#+end_src
