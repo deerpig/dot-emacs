@@ -399,3 +399,19 @@
 (use-package ecukes
   :ensure t
   )
+
+;; Expand Region ===========================================
+;; expand the marked region in semantic increments 
+;; (negative prefix to reduce region)
+
+(use-package expand-region
+:ensure t
+:config 
+(global-set-key (kbd "C-=") 'er/expand-region))
+
+;; Hungry Delete ===========================================
+;; deletes all the whitespace when you hit backspace or delete
+(use-package hungry-delete
+:ensure t
+:config
+(global-hungry-delete-mode))

@@ -1,24 +1,4 @@
-#+TITLE:Dot Emacs: Lisp
-#+AUTHOR: Brad Collins
-#+EMAIL: brad@chenla.la
-#+PROPERTY: header-args    :results drawer  :tangle emacs-lisp.el
-
-* Introduction
-
-
-* Lisp & Scheme Packages
-
-** Header
-
-#+begin_src emacs-lisp
-
 ;; Lisp & Scheme Packages ==================================
-
-#+end_src
-
-** Pretty Lambdas
-
-#+begin_src emacs-lisp
 
 ;; Pretty Lambdas ==========================================
 
@@ -28,24 +8,12 @@
 	  (0 (progn (compose-region (match-beginning 1) (match-end 1)
 				    ,(make-char 'greek-iso8859-7 107))
 		    nil))))))
-#+end_src
-
-** Quack
-
-#+begin_src emacs-lisp
 
 ;; Quack ---------------------------------------------------
 
 (use-package quack
   :ensure t
   )
-
-#+end_src
-
-
-** Slime
-
-#+begin_src emacs-lisp
 
 ;; Slime ---------------------------------------------------
 
@@ -56,22 +24,11 @@
   (setq slime-contribs '(slime-fancy))
   )
 
-#+end_src
-
-** Picolisp
-
-#+begin_src emacs-lisp
-
 ;; Picolisp -------------------------------------------------
 
 (use-package picolisp-mode
   :ensure t
   )
-
-#+end_src
-** Emacs Lisp
-
-#+begin_src emacs-lisp
 
 ;; Emacs Lisp ==============================================
 
@@ -85,6 +42,3 @@
 	     ;; Default to auto-indent on Enter
 	     (define-key emacs-lisp-mode-map [(control j)] 'newline)
 	     (define-key emacs-lisp-mode-map [(control m)] 'newline-and-indent)))
-
-
-#+end_src

@@ -814,54 +814,6 @@ without it....
 
 #+end_src
 
-** Lisp & Scheme Packages
-
-#+begin_src emacs-lisp
-
-;; Lisp & Scheme Packages ==================================
-
-#+end_src
-
-** Quack
-
-#+begin_src emacs-lisp
-
-;; Quack ---------------------------------------------------
-
-(use-package quack
-  :ensure t
-  )
-
-#+end_src
-
-
-** Slime 
-
-#+begin_src emacs-lisp
-
-;; Slime ---------------------------------------------------
-
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
-  (setq slime-contribs '(slime-fancy))
-  )
-
-#+end_src
-
-** Picolisp
-
-#+begin_src emacs-lisp
-
-;; Picolisp -------------------------------------------------
-
-(use-package picolisp-mode
-  :ensure t
-  )
-
-#+end_src
-
 ** Findr
 
 Do we need this?  Using Helm as find interface
@@ -956,7 +908,6 @@ Move up with WebDev?
 
 ** Ecukes
 
-
 #+begin_src emacs-lisp
 
 ;; Ecukes --------------------------------------------------
@@ -967,8 +918,6 @@ Move up with WebDev?
   )
 
 #+end_src
-
-
 
 ** Expand-Region
 
@@ -1013,4 +962,5 @@ t
 :RESULTS:
 t
 :END:
+
 
