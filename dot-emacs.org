@@ -1,4 +1,4 @@
-#+TITLE:Dot Emacs: Helm Settings
+#+TITLE:Dot Emacs: Dot Emacs
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
 #+PROPERTY: header-args    :results drawer  :tangle emacs-helm.el
@@ -92,6 +92,50 @@ This is for fun!
 
 
 
+* External Paths
+
+#+begin_src emacs-lisp
+
+;; External path search ====================================
+
+(add-to-list 'load-path "~/emacs-lisp")
+(add-to-list 'load-path "~/emacs-lisp/test")
+(add-to-list 'load-path "~/emacs-lisp/emacs-wiki-deerpig")
+(add-to-list 'load-path "~/emacs-lisp/docs")
+(add-to-list 'load-path "~/emacs-lisp/uri")
+(add-to-list 'load-path "~/emacs-lisp/remember")
+(add-to-list 'load-path "~/emacs-lisp/psgml")
+(add-to-list 'load-path "~/emacs-lisp/ecb")
+(add-to-list 'load-path "~/emacs-lisp/semantic")
+(add-to-list 'load-path "~/emacs-lisp/tex")
+(add-to-list 'load-path "~/emacs-lisp/ses")
+(add-to-list 'load-path "~/emacs-lisp/burr")
+(add-to-list 'load-path "~/emacs-lisp/sxml-mode")
+(add-to-list 'load-path "~/emacs-lisp/xpath")
+
+(add-to-list 'load-path (expand-file-name "~/emacs-lisp/w3/lisp"))
+(add-to-list 'load-path "~/emacs-lisp/elib-1.0")
+(add-to-list 'load-path "~/emacs-lisp/regexp-info")
+(add-to-list 'load-path "~/emacs-lisp/edb")
+(add-to-list 'load-path "~/emacs-lisp/xtla")
+(add-to-list 'load-path "~/emacs-lisp/wl/elmo")
+(add-to-list 'load-path "~/emacs-lisp/etask")
+(add-to-list 'load-path "~/emacs-lisp/burs")
+(add-to-list 'load-path "~/emacs-lisp/atom-blogger")
+
+(add-to-list 'load-path "~/emacs-lisp/emacs-atom-api")
+(add-to-list 'load-path "~/emacs-lisp/nxhtml")
+(add-to-list 'load-path "~/emacs-lisp/hyperbole")
+(add-to-list 'load-path "~/emacs-lisp/emacs-jabber")
+(add-to-list 'load-path "~/emacs-lisp/jd-el")
+(add-to-list 'load-path "~/emacs-lisp/google-contacts")
+(add-to-list 'load-path "~/emacs-lisp/multiple-cursors.el")
+(add-to-list 'load-path "~/emacs-lisp/emacs-async")
+
+
+#+end_src
+
+
 * Customizations
 
 Emacs has a bit of an annoying habit of adding things to your init
@@ -120,3 +164,146 @@ Like in customize, we need to keep things like passwords and API keys
 out of the main init file which is in a public github repo.
 
 The solution is to encrypt the file using gpg.
+
+* Load Init Files
+
+At the moment we are still loading tangled files.
+
+#+begin_src emacs-lisp
+
+;; Load literate Org files =================================
+
+(load "~/.emacs-helm")
+(load "~/.emacs-packages")
+(load "~/.emacs-hydra")
+(load "~/.emacs-mu4e")
+(load "~/.emacs-org")
+
+#+end_src
+
+
+* Browse Url Applications
+
+Open *EVERYTHING* in firefox.
+
+with attitide....
+
+#+begin_src emacs-lisp
+(defvar browse-url-firefox-program 'firefox)
+(defvar browse-url-kde-program 'firefox)
+(defvar browse-url-gnome-moz-program 'firefox)
+(defvar browse-url-mozilla-program 'firefox)
+(defvar browse-url-galeon-program 'firefox)
+(defvar browse-url-netscape-program 'firefox)
+(defvar browse-url-mosaic-program 'firefox)
+(defvar browse-url-xterm-program 'firefox)
+
+#+end_src
+
+* Browse Apropos 
+
+At the moment I don't have any of these bound to any keys, I've been
+using helm's surfraw integration.
+
+But I'm not giving up -- I may yet find a way of working it into my
+workflow.
+
+#+begin_src emacs-lisp
+
+;; Browse Apropos URL ======================================
+
+(require 'browse-apropos-url)
+(provide 'browse-url)
+(require 'thingatpt+)
+
+;; Choose commands that mirror DuckDuckGo !bang commands when
+;; possible.  !bang should go to search on a site.  !!bangbang should
+;; just be a shortcut to a url.  If it's not a search link, default
+;; both single and double bang prefix to home page.
+
+(setq apropos-url-alist
+      '( ;; DuckDuckGo is default search engine.
+	("^\??:? +\\(.*\\)" .       ;; "?" defaults to DuckDuckGo
+	 "http://duckduckgo.com/?q=\\1")
+	("^!ddg?:? +\\(.*\\)" .     ;; DuckDuckGo Search
+	 "http://duckduckgo.com/?q=\\1")
+        ("^!!ddg"                   ;; DuckDuckGo Home Page
+	 "http://duckduckgo.com")
+	("^!bang$" .                ;; DuckDuckGo !bang Page
+	 "http://duckduckgo.com/bang.html")
+        ;; Google Sites ;;;;;;;;;;;;;;;;;;;;;;
+	("^gw?:? +\\(.*\\)" .
+         "http://www.google.com/search?q=\\1")
+	("^!g?:? +\\(.*\\)" . 	    ;; Google Web Search
+	 "http://www.google.com/search?q=\\1")
+        ("^!!g$" . 	            ;; Google Home Page
+	 "http://google.com/")
+        ("^!reader?:? +\\(.*\\)" .  ;; Search Google Reader
+         "http://www.google.com/reader/view/#search/\\1")
+        ("^!!reader$" .             ;; Google Reader Home
+         "http://reader.google.com/")
+        ("^!!voice$" .              ;; Google Voice
+         "http://voice.google.com/")
+	("^!!gmail$" .              ;; GMail
+	 "http://mail.google.com/")
+	("^!gi:? +\\(.*\\)" .       ;; Google Images
+	 "http://images.google.com/images?sa=N&tab=wi&q=\\1")
+	("^!!gi$" .                 ;; Google Images
+	 "http://images.google.com/")
+	("^!gg:? +\\(.*\\)" .       ;; Google Groups
+	 "http://groups.google.com/groups?q=\\1")
+        ("^!gn:? +\\(.*\\)" .       ;; Google News Search
+         "http://news.google.com/news?sa=N&tab=dn&q=\\1")
+        ("^!!gn$" .                 ;; Google News Home
+         "http://news.google.com/")
+	;;Blekko ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ("^!blekko?:? +\\(.*\\)" .  ;; Blekko Search
+	 "http://blekko.com/ws/+\\1")
+	("^!!blekko$" .             ;; Blekko Home
+	 "http://blekko.com/")
+        ;; Tech News ;;;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!/\.$" . ;; Slashdot Home
+         "http://www.slashdot.org")
+	("^!!/\.$" . ;; Slashdot Home
+         "http://www.slashdot.org")
+        ("^!bb$" . ;; Boing Boing Home
+         "http://boingboing.net")
+        ("^!!bb$" . ;; Boing Boing Home
+         "http://boingboing.net")
+        ;; Emacs ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!emacs:? +\\(.*\\)" . ;; Emacs Wiki Search
+         "http://www.emacswiki.org/cgi-bin/wiki?search=\\1")
+        ("^!!emacs$" . ;; Emacs Wiki Home
+         "http://www.emacswiki.org")
+        ;;Hacker News ;;;;;;;;;;;;;;;;;;;;;;;;
+	("^!hn:? +\\(.*\\)" . ;; Hacker News Search
+	"http://www.hnsearch.com/search#request/all&q=\\1")
+	("^!!hn$" . ;; Hacker News Home
+	"http://news.ycombinator.com")
+	;;Torrent Search ;;;;;;;;;;;;;;;;;;;;
+	("^!tpb:? +\\(.*\\)" . ;;The Pirate Bay
+	"http://thepiratebay.com/search/\\1")
+	("^!demon:? +\\(.*\\)" . ;; Demonoid Search
+	"https://www.demonoid.me/files/?query=\\1" )
+	("^!demonoid:? +\\(.*\\)" . ;; Demonoid Search
+	"https://www.demonoid.me/files/?query=\\1" )
+	("^!isohunt:? +\\(.*\\)" . ;;ISOHunt
+	"https://isohunt.com/torrents/?ihq=\\1" )
+	("^!cheggit:? +\\(.*\\)" . ;;Cheggit Search
+	"http://cheggit.net/browsetorrents.php?filter=all%3A%5B\\1" )
+	("^!!cheggit:? +\\(.*\\)" . ;;Cheggit Home
+	"http://cheggit.net/browsetorrents.php" )
+	("^!jpop:? +\\(.*\\)" . ;; JPopSuki Artist Search
+	"http://jpopsuki.eu/torrents.php?action=advanced&artistname=\\1" )
+	;; Content Companies ;;;;;;;;;;;;;;;;;
+	("^!amazon:? +\\(.*\\)" . ;; Amazon
+	"http://www.amazon.com/s/?&field-keywords=\\1" )
+	("^!imdb:? +\\(.*\\)" . ;; IMDB
+	"http://www.imdb.com/find?s=all&q=\\1" )
+        ("^!tmdb:? +\\(.*\\)" . ;; The Movie Database
+	"http://www.themoviedb.org/search?search=\\1")
+        ;; Add Later
+
+	))
+
+#+end_src
