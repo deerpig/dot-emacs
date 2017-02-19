@@ -980,6 +980,7 @@ edit and then C-; and you're good to go.
 
 
  - [[http://cestlaz.github.io/posts/using-emacs-18-narrow/#.WKlrKLMxVph][Using Emacs - 18 - Narrowing and iedit]] | C'est la Z
+ - [[http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html][Emacs narrow-or-widen-dwim]] | Endless Parentheses
 
 #+begin_src emacs-lisp
 (use-package iedit

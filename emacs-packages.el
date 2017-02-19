@@ -330,29 +330,6 @@
   :ensure t
   )
 
-;; Lisp & Scheme Packages ==================================
-
-;; Quack ---------------------------------------------------
-
-(use-package quack
-  :ensure t
-  )
-
-;; Slime ---------------------------------------------------
-
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
-  (setq slime-contribs '(slime-fancy))
-  )
-
-;; Picolisp -------------------------------------------------
-
-(use-package picolisp-mode
-  :ensure t
-  )
-
 ;; findr ===================================================
 
 (use-package findr
@@ -415,3 +392,6 @@
 :ensure t
 :config
 (global-hungry-delete-mode))
+
+(use-package iedit
+  :ensure t)
