@@ -862,8 +862,7 @@ Move up with WebDev?
 
 #+end_src
 
-
-** Chef
+*** Chef
 
 #+begin_src emacs-lisp
 
@@ -875,7 +874,7 @@ Move up with WebDev?
 
 #+end_src
 
-** Cucumber
+*** Cucumber
 #+begin_src emacs-lisp
 
 ;; Cucumber ------------------------------------------------
@@ -893,7 +892,7 @@ Move up with WebDev?
 
 #+end_src
 
-** Cask
+*** Cask
 #+begin_src emacs-lisp
 
 ;; Cask ----------------------------------------------------
@@ -906,7 +905,7 @@ Move up with WebDev?
 #+end_src
 
 
-** Ecukes
+*** Ecukes
 
 #+begin_src emacs-lisp
 
