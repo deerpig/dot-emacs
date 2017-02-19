@@ -5,10 +5,434 @@
 
 * Introduction
 
-This code doesn't belong here.
-
-It's the dregs of what's left in my old .emacs file.
+This code doesn't belong here.  It's the dregs of what's left in my
+old .emacs file.
 
 When I finished sorting everything, this file is toast.
 
 
+#+begin_src emacs-lisp
+
+
+;; What the Fuck is this for? ==============================
+
+(defun my-minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun my-minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
+
+;; Message Mode ============================================
+
+;; work-around for error message:
+;;  ad-handle-definition: `tramp-read-passwd' got redefined
+(setq ad-redefinition-action 'accept)
+
+(add-hook 'message-mode-hook
+          (lambda () (auto-fill-mode 1) (setq fill-column 60)))
+
+;; send mail using message-mode when you're not in Gnus?
+
+(setq mail-user-agent 'message-user-agent)
+
+
+;; Window Splitting ========================================
+
+;; tried this and didn't like it....
+
+;; if you have a wide monitor, keep windows as tall and wide as
+;; possible and open stuff horizontally rather than vertically.
+
+;;  (setq split-height-threshold nil)
+;;  (setq split-width-threshold 0)
+
+
+;; Shell ===================================================
+;; use bash as the default shell
+
+(setq shell-file-name "bash")
+(setq explicit-shell-file-name shell-file-name)
+
+(defun bash ()
+  (interactive)
+  (let ((binary-process-input t)
+        (binary-process-output nil))
+    (shell)))
+
+(setq process-coding-system-alist (cons '("bash" . (raw-text-dos . raw-text-unix))
+                    process-coding-system-alist))
+
+
+;; Iconify Frame ===========================================
+
+(global-set-key (kbd "C-M-z") 'iconify-or-deiconify-frame)
+
+
+;; Delete Key ==============================================
+
+;; Set up the keyboard so the delete key on both the regular keyboard
+;; and the keypad delete the character under the cursor and to the right
+;; under X, instead of the default, backspace behavior.
+(global-set-key [delete] 'delete-char)
+(global-set-key [kp-delete] 'delete-char)
+
+(setq x-select-enable-clipboard t) ;; consult clipboard on yanking
+(menu-bar-enable-clipboard) ;; turn on the edit menus
+
+;; Require 'cl ==============================================
+
+(require 'cl)
+
+;; Delete selection on insert
+(delete-selection-mode +1)
+
+;; Bookmark Jump ===========================================
+
+(defadvice bookmark-jump (after bookmark-jump activate)
+  (let ((latest (bookmark-get-bookmark bookmark)))
+    (setq bookmark-alist (delq latest bookmark-alist))
+    (add-to-list 'bookmark-alist latest)))
+
+;; Find File as Root =======================================
+
+ (defun find-file-as-root ()
+  "Like `ido-find-file, but automatically edit the file with
+root-privileges (using tramp/sudo), if the file is not writable by
+user."
+  (interactive)
+  (let ((file (ido-read-file-name "Edit as root: ")))
+    (unless (file-writable-p file)
+      (setq file (concat "/sudo:root@localhost:" file)))
+    (find-file file)))
+
+;; or some other keybinding...
+(global-set-key (kbd "C-x F") 'find-file-as-root)
+
+;; Misc Settings ===========================================
+
+;; Visual feedback on selections
+(setq-default transient-mark-mode t)
+
+;; Always end a file with a newline
+(setq require-final-newline t)
+
+;; Stop at the end of the file, not just add lines
+(setq next-line-add-newlines nil)
+
+;; Enable wheelmouse support by default
+(cond (window-system
+       (mwheel-install)
+))
+
+;; MS Windows-Only Settings ================================
+
+;; Use aspell on Windows because I can't get hold of a compiled ispell
+;;(setq ispell-program-name "/usr/bin/aspell")
+
+;;for Windows only
+;;(setq compile-command "make.bat")
+
+
+;; =========================================================
+
+(defun smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(global-set-key [(shift return)] 'smart-open-line)
+
+;; =========================================================
+
+(setq reftex-default-bibliography "~/")
+
+          (setq reftex-texpath-environment-variables
+                '("~/"))
+          (setq reftex-bibpath-environment-variables
+                '("~/"))
+
+
+;; emacs-wget ==============================================
+(autoload 'wget "wget" "wget interface for Emacs." t)
+(autoload 'wget-web-page "wget" "wget interface to download whole web page." t)
+
+
+(setq time-stamp-format (concat "$Id %f %:y-%02m-%02dT%02H:%02M:%02S %u ("  
+                          (downcase user-work-location-name) ") $"))
+
+
+
+;; Set directory on startup ================================
+ (cd "~/")
+
+
+;; Load ReBuilder ==========================================
+;; create a defalias because I can never remember the -
+(load "re-builder")
+
+;; Default setting
+(setq default-major-mode 'text-mode)
+
+(setq-default transient-mark-mode t)
+;;(set-cursor-color "blue")
+
+
+(global-font-lock-mode)
+
+
+;; Recent files ============================================
+;; support for last-load files in [Files] menu
+(setq enable-recent-files t)
+
+(defun start-recent-files()
+  "Start recent files"
+  (progn
+    (require 'recentf)
+    (recentf-mode 1)))
+
+;; =========================================================
+
+;; Color theme
+(setq enable-colortheme t)
+
+
+;;(require 'scholia)
+(require 'burs)
+
+
+
+;; Useful functions ========================================
+
+;convert a buffer from dos ^M end of lines to unix end of lines
+(defun dos2unix ()
+  (interactive)
+    (goto-char (point-min))
+      (while (search-forward "\r" nil t) (replace-match "")))
+
+;vice versa
+(defun unix2dos ()
+  (interactive)
+    (goto-char (point-min))
+      (while (search-forward "\n" nil t) (replace-match "\r\n")))
+
+
+(defun numfix ()
+  (interactive)
+    (goto-char (point-min))
+      (while (re-search-forward "^\\([0-9].gif\\)" nil t)
+	(replace-match (concat "000" (match-string 0)))))
+
+
+
+;; Load TeX File Header  ===================================
+(load "filehdr.el" t t t)
+
+;; YubNub ==================================================
+
+(defun yub (command)
+  "submit a url-command to yub-nub and return results in a Web Browser."
+  (interactive "sCommand: ")
+  (browse-url (concat "http://yubnub.org/parser/parse?command=" command))
+
+  )
+
+;; Add numbers to lines in buffer ==========================
+
+  (defun numerotate-line ()
+    (interactive)
+    (let ((P (point))
+  	(max (count-lines (point-min)(point-max)))
+  	(line 1))
+      (goto-char (point-min))
+      (while (< line max)
+        (insert (format "%04d " line))
+        (beginning-of-line 2)
+        (setq line (+ line 1)))
+      (goto-char P)))
+
+
+;;(put 'narrow-to-region 'disabled nil)
+
+(defun print-list-of-numbers (num)
+  "print a list of numbers starting with one."
+  (interactive "nNumber: ")
+  (setq beg-num 1)
+  (while (<= beg-num num)
+    (insert (format "  %s. \n" beg-num))
+    (setq beg-num (1+ beg-num))))
+
+
+;; Loan Payment Calculator =================================
+
+(defun loan-payment-calculator (amount rate years)
+"Calculate what the payments for a loan of AMOUNT dollars when
+annual percentage rate is RATE and the term of the loan is
+YEARS years.  The RATE should expressed in terms of the percentage 
+\(i.e. \'8.9\' instead of \'.089\'\).  The total amount of
+interest charged over the life of the loan is also given."
+  (interactive "nLoan Amount: \nnAPR: \nnTerm (years): ")
+  (let ((payment (/ (* amount (/ rate 1200)) (- 1 (expt (+ 1 (/ rate 1200)) (* years -12.0))))))
+	 (message "%s payments of $%.2f. Total interest $%.2f" 
+                  (* years 12) payment (- (* payment years 12) amount))))
+
+
+;; UUID ====================================================
+;; UUID generating functions.
+;; use (insert-random-uuid)
+
+(require 'uuid)
+
+
+;; <font> Tags =============================================
+
+(defun syntax-highlight-region (start end)
+  "Adds <font> tags into the region that correspond to the
+current color of the text.  Throws the result into a temp
+buffer, so you don't dork the original."
+  (interactive "r")
+  (let ((text (buffer-substring start end)))
+    (with-output-to-temp-buffer "*html-syntax*"
+      (set-buffer standard-output)
+      (insert "<pre>")
+      (save-excursion (insert text))
+      (save-excursion (syntax-html-escape-text))
+      (while (not (eobp))
+	(let ((plist (text-properties-at (point)))
+	      (next-change
+	       (or (next-single-property-change
+		    (point) 'face (current-buffer))
+		   (point-max))))
+	  (syntax-add-font-tags (point) next-change)
+	  (goto-char next-change)))
+      (insert "\n</pre>"))))
+
+(defun syntax-add-font-tags (start end)
+  "Puts <font> tag around text between START and END."
+  (let (face color rgb name r g b)
+    (and
+     (setq face (get-text-property start 'face))
+     (or (if (listp face) (setq face (car face))) t)
+     (setq color (face-attribute face :foreground))
+     (setq rgb (assoc (downcase color) color-name-rgb-alist))
+     (destructuring-bind (name r g b) rgb
+       (let ((text (buffer-substring-no-properties start end)))
+	 (delete-region start end)
+	 (insert (format "<font color=#%.2x%.2x%.2x>" r g b))
+	 (insert text)
+	 (insert "</font>"))))))
+
+;; HTML Escapes ============================================
+
+(defun syntax-html-escape-text ()
+  "HTML-escapes all the text in the current buffer,
+starting at (point)."
+  (save-excursion (replace-string "<" "&lt;"))
+  (save-excursion (replace-string ">" "&gt;")))
+
+
+;; Lisp Paste ==============================================
+
+(require 'lisppaste)
+
+
+;; Multiple Yow ============================================
+;; Use as an alternative to Lorem Ipsum
+;; snarfed from Jon Philpott
+
+(defun insert-multiple-yow (n)
+  (interactive "nHow many: ")
+  (dotimes (i n)
+    (insert (yow))))
+
+;; longlines mode ==========================================
+
+(autoload 'longlines-mode "longlines.el"
+   "Minor mode for editing long lines." t)
+
+
+
+
+
+;; Footnote Mode ===========================================
+;; I always forget footnote commands start with a capital F!
+
+(footnote-mode)
+
+(defalias 'footnote-add-footnote 'Footnote-add-footnote)
+(defalias 'footadd 'Footnote-add-footnote)
+(defalias 'footback 'Footnote-back-to-message)
+(defalias 'footdelete 'Footnote-delete-footnote)
+(defalias 'footgoto  'Footnote-goto-footnote)
+(defalias 'footnumber 'Footnote-renumber-footnotes)
+
+;; Join Region =============================================
+
+(defun join-region (beg end)
+   "Apply join-line over region."
+   (interactive "r")
+   (if mark-active
+           (let ((beg (region-beginning))
+                         (end (copy-marker (region-end))))
+                 (goto-char beg)
+                 (while (< (point) end)
+                   (join-line 1)))))
+
+;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
+;;; Takes a multi-line paragraph and makes it into a single line of text.       
+    (defun unfill-paragraph ()
+      (interactive)
+      (let ((fill-column (point-max)))
+        (fill-paragraph nil)))
+
+(global-set-key "\M-#" 'unfill-paragraph)
+
+
+;; N3 mode =================================================
+(add-to-list 'load-path "~/emacs-lisp/n3-mode.el")
+(autoload 'n3-mode "n3-mode" "Major mode for OWL or N3 files" t)
+
+;; Turn on font lock when in n3 mode
+(add-hook 'n3-mode-hook
+          'turn-on-font-lock)
+
+(setq auto-mode-alist
+      (append
+       (list
+        '("\\.n3" . n3-mode)
+        '("\\.owl" . n3-mode)
+	'("\\.trig" . n3-mode))
+       auto-mode-alist))
+
+;; From Rodgrigo Lazo ======================================
+
+(defun insert-path (file)
+  "Inserts a path into the buffer with completion"
+  (interactive "Path: ")
+  (insert (expand-file-name file)))
+
+(defun kill-entire-line (n)
+  "Kill ARG entire lines starting from the one where point is."
+  (interactive "*p")
+  (beginning-of-line)
+  (kill-line n))
+(global-set-key "\M-k" 'kill-entire-line)
+
+;; Scratch =================================================
+
+;; scratch.el -- create scratch buffer with same major mode as
+;; buffer you created it from...
+
+(defun scratch ()
+  "Select the `*scratch*' buffer."
+  (interactive)
+  (pop-to-buffer "*scratch*"))
+
+ (autoload 'scratch "scratch" nil t)
+
+#+end_src
