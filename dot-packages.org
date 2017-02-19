@@ -921,6 +921,13 @@ Move up with WebDev?
 
 ** Expand-Region
 
+As Mike Zamansky promised, it's really easy to fall in love with this
+package.  People outside of emacs don't need to mark regions for
+anything accept cut and paste.  In Emacs that's just a common
+use-case.
+
+By default it is bound to C-=.
+
   - [[https://github.com/magnars/expand-region.el][Expand-Region.el]] | GitHub
   - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
 
@@ -929,6 +936,7 @@ Move up with WebDev?
 ;; Expand Region ===========================================
 ;; expand the marked region in semantic increments 
 ;; (negative prefix to reduce region)
+;; Bound to C-= by default
 
 (use-package expand-region
 :ensure t
@@ -943,6 +951,18 @@ t
 :END:
 
 ** Hungry Delete
+
+I had tried hungry delete a few years ago, or it might have been
+something else that did the same thing and didn't like.  I think it
+/was/ just a function that I found on EmacsWiki back in the day.
+
+The /package/ Hungry Delete adds a lot of smarts to concept, and
+mostly does what you intend to do.  But it does have a little learning
+curve.  If you have say four blank lines and you want to delete all
+but one, hungry delete will eat all four and you'll have to add in the
+extra line again.  That still saves three keystrokes.
+
+I'll try it out for a while and see if it's a keeper or not.
 
   - [[https://github.com/nflath/hungry-delete][hungry-delete]] | GitHub
   - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
@@ -965,6 +985,8 @@ t
 
 ** iEdit
 
+iEdit allows you to edit all instances of a marked region in a buffer.
+
 I've tried multiple cursors, but it is too finicky for my tastes, as
 Mike Zamansky said, /iedit combined with narrow region works very
 well.
@@ -978,11 +1000,15 @@ use all the time.  So, taken together, I am happy with the setup and
 all I have to remember is C-x n n/w to narrow, highlight the text to
 edit and then C-; and you're good to go.
 
-
+ - [[https://github.com/victorhge/iedit][iedit]] | GitHub
  - [[http://cestlaz.github.io/posts/using-emacs-18-narrow/#.WKlrKLMxVph][Using Emacs - 18 - Narrowing and iedit]] | C'est la Z
  - [[http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html][Emacs narrow-or-widen-dwim]] | Endless Parentheses
 
 #+begin_src emacs-lisp
+
+;; iEdit ===================================================
+;; edit all instances of a marked region in a buffer
+;; bound to C-;
 (use-package iedit
   :ensure t)
 #+end_src
