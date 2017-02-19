@@ -1060,6 +1060,9 @@ shows the famous pop-tart cat in your mode-line.  It's really not
 worth it.  But someone at work thought that nyan-cat was an emacs
 thing and I thought, no.  But I wouldn't be surprised it if was.
 
+Can't work out how to kill it.  Well, it won't be loaded when I
+reboot, so there is that....
+
 NOT tangled.
 
 #+begin_src emacs-lisp :tangle no
