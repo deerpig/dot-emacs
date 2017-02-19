@@ -82,6 +82,7 @@ Feedback Is Welcome!
  - Yassnippet
  - [[./dot-misc.org][Miscellaneous]]
 ** legacy code
+- [[./dot-sort.org][Sort]] :: for code that hasn't yet been sorted.
 - [[./emacs-burrs.org][BMF]]
 - Gnus
 - BBDB

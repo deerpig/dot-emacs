@@ -1,0 +1,14 @@
+#+TITLE:Dot Emacs:  Sort
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+PROPERTY: header-args    :results drawer  :tangle emacs-code.el
+
+* Introduction
+
+This code doesn't belong here.
+
+It's the dregs of what's left in my old .emacs file.
+
+When I finished sorting everything, this file is toast.
+
+
