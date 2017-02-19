@@ -167,29 +167,6 @@ this programically -- for now just doing it using (org-new-id)
 
 #+end_src
 
-** WC-Org
-
-Displays word count in modeline of org buffers.
-
-Can be customized using `defcustom wc-linemode-format'
-
-See http://ireal.blog/?p=6722
-
-
-#+begin_src emacs-lisp
-
-;; WC-Org ==================================================
-;; (add-hook 'org-mode-hook 'wc-mode)
-;; Displays word count in modeline of org buffers.
-;; Can be customized using `defcustom wc-linemode-format'
-;; See http://ireal.blog/?p=6722
-
-(use-package wc-mode
-  :ensure t
-  )
-
-#+end_src
-
 
 ** Powerline
 
@@ -274,6 +251,29 @@ Good places to start, when /playing/ around with it:
 ;;    (emms-default-players)
 ;;    (setq emms-playlist-buffer-name "Music-EMMS")
 ;;    (setq emms-source-file-default-directory "/media/deerpig/green/music")))
+
+#+end_src
+
+** WC-Org
+
+Displays word count in modeline of org buffers.
+
+Can be customized using `defcustom wc-linemode-format'
+
+See http://ireal.blog/?p=6722
+
+
+#+begin_src emacs-lisp
+
+;; WC-Org ==================================================
+;; (add-hook 'org-mode-hook 'wc-mode)
+;; Displays word count in modeline of org buffers.
+;; Can be customized using `defcustom wc-linemode-format'
+;; See http://ireal.blog/?p=6722
+
+(use-package wc-mode
+  :ensure t
+  )
 
 #+end_src
 
@@ -540,7 +540,16 @@ snippets for the mode you are in.
 
 #+end_src
 
-** PHP
+** Programing Languages
+
+#+begin_src emacs-lisp
+
+;; Programing Languages ====================================
+;; Except Lisp, which has it's own file.
+
+#+end_src
+
+*** PHP
 
 
 #+begin_src emacs-lisp
@@ -553,7 +562,7 @@ snippets for the mode you are in.
 
 #+end_src
 
-** Ruby
+*** Ruby
 
 #+begin_src emacs-lisp
 
@@ -566,7 +575,7 @@ snippets for the mode you are in.
 
 #+end_src
 
-** Python
+*** Python
 
 #+begin_example
 
@@ -684,16 +693,16 @@ the Gruvbox section.
 
 #+begin_src emacs-lisp
 
-;; HTML & XML Packages ================================
+;; HTML & XML Related Packages ================================
 
 #+end_src
 
-** nXML Mode
+*** nXML Mode
 
 nXML Mode should be now part of emacs -- mXML is still best for
 working with XML, but Web-Mode is better for WebDev.
 
-** HTML Tidy
+*** HTML Tidy
 
 #+begin_src emacs-lisp
 
@@ -705,7 +714,7 @@ working with XML, but Web-Mode is better for WebDev.
 
 #+end_src
 
-** RelaxNG
+*** RelaxNG
 
 
 #+begin_src emacs-lisp
@@ -718,7 +727,7 @@ working with XML, but Web-Mode is better for WebDev.
 
 #+end_src
 
-** Htmlize
+*** Htmlize
 
 #+begin_src emacs-lisp
 
@@ -731,7 +740,7 @@ working with XML, but Web-Mode is better for WebDev.
 #+end_src
 
 
-** Web Mode
+*** Web Mode
 
 #+begin_src emacs-lisp
 ;; Web-Mode ------------------------------------------------
@@ -756,15 +765,13 @@ working with XML, but Web-Mode is better for WebDev.
 
 #+end_src
 
-** CSS Packages 
-
-#+begin_src emacs-lisp
+** CSS Packages#+begin_src emacs-lisp
 
 ;; CSS Packages ============================================
 
 #+end_src
 
-** Rainbow Mode
+*** Rainbow Mode
 
 Once you start using it, you wonder how you every worked with CSS
 without it....
@@ -784,7 +791,7 @@ without it....
 
 #+end_src
 
-** CSS Mode
+*** CSS Mode
 
 
 #+begin_src emacs-lisp
