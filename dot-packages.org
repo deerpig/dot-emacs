@@ -1016,3 +1016,32 @@ edit and then C-; and you're good to go.
 :RESULTS:
 nil
 :END:
+
+** Beacon Mode
+
+Another tip from Mike Zamansky.  I had my doubts by it really is
+pretty cool and does help you keep track of the curser when you
+scroll.
+
+  - [[https://github.com/Malabarba/beacon][beacon]] | GitHub
+  - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
+
+#+begin_src emacs-lisp
+
+;; Beacon Mode =============================================
+;; flashes the cursor's line when you scroll
+
+(use-package beacon
+:ensure t
+:config
+(beacon-mode 1)
+; this color looks good for the zenburn theme but not for the one
+; I'm using for the videos
+(setq beacon-color "#666600")
+)
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
