@@ -963,4 +963,30 @@ t
 t
 :END:
 
+** iEdit
 
+I've tried multiple cursors, but it is too finicky for my tastes, as
+Mike Zamansky said, /iedit combined with narrow region works very
+well.
+
+However, I don't use the function from Endless Parenthesis, I had used
+it a few years ago -- but now that I'm using which-key, the whole
+narrowing keymap pops up using C-x n.
+
+In Org mode, I've set up to use speed keys to narrow-widen, which I
+use all the time.  So, taken together, I am happy with the setup and
+all I have to remember is C-x n n/w to narrow, highlight the text to
+edit and then C-; and you're good to go.
+
+
+ - [[http://cestlaz.github.io/posts/using-emacs-18-narrow/#.WKlrKLMxVph][Using Emacs - 18 - Narrowing and iedit]] | C'est la Z
+
+#+begin_src emacs-lisp
+(use-package iedit
+  :ensure t)
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
