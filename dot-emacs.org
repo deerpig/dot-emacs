@@ -403,11 +403,15 @@ At the moment we are still loading tangled files.
 
 (load "~/.emacs-user-info")
 (load "~/.emacs-helm")
+(load "~/.emacs-dired")
+(load "~/.emacs-org")
+(load "~/.emacs-mu4e")
 (load "~/.emacs-packages")
 (load "~/.emacs-hydra")
-(load "~/.emacs-mu4e")
-(load "~/.emacs-org")
-
+(load "~/.emacs-irc")
+(load "~/.emacs-misc")
+(load "~/.emacs-lisp")
+(load "~/.emacs-sort")
 #+end_src
 
 

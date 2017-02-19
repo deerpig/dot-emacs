@@ -19,6 +19,9 @@
 ;; no scroll bar
 (scroll-bar-mode -1)
 
+;; Disable the silly ring
+(setq ring-bell-function '(lambda()))
+
 ;; The follwing settings constitute a minimum .emacs file for using
 ;; emacs on remote servers.
 
@@ -148,10 +151,15 @@
 
 (load "~/.emacs-user-info")
 (load "~/.emacs-helm")
+(load "~/.emacs-dired")
+(load "~/.emacs-org")
+(load "~/.emacs-mu4e")
 (load "~/.emacs-packages")
 (load "~/.emacs-hydra")
-(load "~/.emacs-mu4e")
-(load "~/.emacs-org")
+(load "~/.emacs-irc")
+(load "~/.emacs-misc")
+(load "~/.emacs-lisp")
+(load "~/.emacs-sort")
 
 ;; Set the Default Browser =================================
 ;;
@@ -302,3 +310,31 @@
                 (shell-command-history    . 50)
                 tags-file-name
                 register-alist)))
+
+;; Save/Read the desktop
+(desktop-load-default)
+(desktop-read)
+
+;; Calendar Style
+(setq european-calendar-style t)
+
+;; work-around for error message:
+;;  void-function fancy-diary-display
+(setq diary-display-function 'diary-fancy-display)
+
+;; Regexp Info Manual ======================================
+(require 'info)
+(setq Info-default-directory-list 
+      (cons "~/emacs-lisp/regexp-info" Info-default-directory-list))
+
+(setq Info-default-directory-list 
+      (cons "~/emacs-lisp/burs" Info-default-directory-list))
+
+
+;; Elisp tutorial and manual ===============================
+(require 'info)
+(setq Info-default-directory-list 
+      (cons "/usr/local/info" Info-default-directory-list))
+
+(setq Info-default-directory-list 
+     (cons "~/emacs-lisp/docs" Info-default-directory-list))
