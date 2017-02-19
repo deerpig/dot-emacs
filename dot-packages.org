@@ -689,11 +689,11 @@ the Gruvbox section.
 
 #+end_src
 
-** HTML, XML & CSS Packages
+** WebDev Packages
 
 #+begin_src emacs-lisp
 
-;; HTML & XML Related Packages ================================
+;; WebDev ==================================================
 
 #+end_src
 
@@ -765,11 +765,6 @@ working with XML, but Web-Mode is better for WebDev.
 
 #+end_src
 
-** CSS Packages#+begin_src emacs-lisp
-
-;; CSS Packages ============================================
-
-#+end_src
 
 *** Rainbow Mode
 
@@ -1069,7 +1064,7 @@ NOT tangled.
 (use-package  nyan-mode
  :ensure 
  :config
-(nyan-mode nil))
+(nyan-mode 1))
 #+end_src
 
 #+RESULTS:
