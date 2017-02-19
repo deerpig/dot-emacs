@@ -1053,3 +1053,23 @@ annoying).
 :RESULTS:
 t
 :END:
+** Nyan Mode
+
+Okay, this was stupid, installed it because I was bored, and yes it
+shows the famous pop-tart cat in your mode-line.  It's really not
+worth it.  But someone at work thought that nyan-cat was an emacs
+thing and I thought, no.  But I wouldn't be surprised it if was.
+
+NOT tangled.
+
+#+begin_src emacs-lisp :tangle no
+(use-package  nyan-mode
+ :ensure 
+ :config
+(nyan-mode nil))
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
