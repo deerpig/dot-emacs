@@ -1021,7 +1021,8 @@ nil
 
 Another tip from Mike Zamansky.  I had my doubts by it really is
 pretty cool and does help you keep track of the curser when you
-scroll.
+scroll (when you scroll -- not when you move the cursor which would be
+annoying).
 
   - [[https://github.com/Malabarba/beacon][beacon]] | GitHub
   - [[http://cestlaz.github.io/posts/using-emacs-17-misc/#.WKhJdbMxVhE][Using Emacs 17 - misc small packages]] | C'est la Z
