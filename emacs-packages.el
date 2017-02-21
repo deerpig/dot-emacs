@@ -421,3 +421,16 @@
    (require 'calfw-org)
    (setq cfw:org-overwrite-default-keybinding t) )
    (setq cfw:org-agenda-schedule-args '(:timestamp))
+
+   (setq calendar-day-name-array
+      ["日" "月" "火" "水" "木" "金" "土"])
+
+   ;; Unicode characters
+   (setq cfw:fchar-junction ?╋
+         cfw:fchar-vertical-line ?┃
+         cfw:fchar-horizontal-line ?━
+         cfw:fchar-left-junction ?┣
+         cfw:fchar-right-junction ?┫
+         cfw:fchar-top-junction ?┯
+         cfw:fchar-top-left-corner ?┏
+         cfw:fchar-top-right-corner ?┓)

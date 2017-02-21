@@ -1076,6 +1076,8 @@ t
 There is a package available for GCal integration as well.
 
   - [[https://github.com/kiwanami/emacs-calfw][kiwanami/emacs-calfw]] | GitHub
+  - [[http://jameswilliams.be/blog/2016/01/11/Taming-Your-GCal.html][Taming Google Calendar With Org-Mode]]
+  - 
 
 #+begin_src emacs-lisp
 
@@ -1087,11 +1089,24 @@ There is a package available for GCal integration as well.
    (require 'calfw-org)
    (setq cfw:org-overwrite-default-keybinding t) )
    (setq cfw:org-agenda-schedule-args '(:timestamp))
+
+   (setq calendar-day-name-array
+      ["日" "月" "火" "水" "木" "金" "土"])
+
+   ;; Unicode characters
+   (setq cfw:fchar-junction ?╋
+         cfw:fchar-vertical-line ?┃
+         cfw:fchar-horizontal-line ?━
+         cfw:fchar-left-junction ?┣
+         cfw:fchar-right-junction ?┫
+         cfw:fchar-top-junction ?┯
+         cfw:fchar-top-left-corner ?┏
+         cfw:fchar-top-right-corner ?┓)
 #+end_src
 
 #+RESULTS:
 :RESULTS:
-t
+9491
 :END:
 
 
