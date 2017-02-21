@@ -21,6 +21,10 @@
 
 ** Prettify Symbols
 
+I like the idea, I have a function called /pretty lambdas/ which I've
+been using for years.  This makes it easy to do any number of
+character substitutions.
+
  - [[https://ekaschalk.github.io/post/prettify-mode/][Mathematical Notation in Emacs]] | Eric Kaschalk
  - [[http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/][A peek at Emacs 24.4: prettify-symbols-mode]] | Emacs Redux
 
