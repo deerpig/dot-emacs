@@ -46,16 +46,6 @@
   :ensure t
   )
 
-;; WC-Org ==================================================
-;; (add-hook 'org-mode-hook 'wc-mode)
-;; Displays word count in modeline of org buffers.
-;; Can be customized using `defcustom wc-linemode-format'
-;; See http://ireal.blog/?p=6722
-
-(use-package wc-mode
-  :ensure t
-  )
-
 ;; Powerline ===============================================
 (use-package powerline
   :ensure t
@@ -91,6 +81,16 @@
 ;;    (emms-default-players)
 ;;    (setq emms-playlist-buffer-name "Music-EMMS")
 ;;    (setq emms-source-file-default-directory "/media/deerpig/green/music")))
+
+;; WC-Org ==================================================
+;; (add-hook 'org-mode-hook 'wc-mode)
+;; Displays word count in modeline of org buffers.
+;; Can be customized using `defcustom wc-linemode-format'
+;; See http://ireal.blog/?p=6722
+
+(use-package wc-mode
+  :ensure t
+  )
 
 ;; Org-Ref =================================================
 ;; 
@@ -183,6 +183,9 @@
   ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
   )
 
+;; Programing Languages ====================================
+;; Except Lisp, which has it's own file.
+
 ;; PHP =====================================================
 
 (use-package php-mode
@@ -260,7 +263,7 @@
   :ensure t
   )
 
-;; HTML & XML Packages ================================
+;; WebDev ==================================================
 
 ;; HTML Tidy -----------------------------------------------
 
@@ -299,8 +302,6 @@
 
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-auto-quoting t))
-
-;; CSS Packages ============================================
 
 ;; Rainbow mode --------------------------------------------
 
@@ -380,6 +381,7 @@
 ;; Expand Region ===========================================
 ;; expand the marked region in semantic increments 
 ;; (negative prefix to reduce region)
+;; Bound to C-= by default
 
 (use-package expand-region
 :ensure t
@@ -393,5 +395,29 @@
 :config
 (global-hungry-delete-mode))
 
+;; iEdit ===================================================
+;; edit all instances of a marked region in a buffer
+;; bound to C-;
 (use-package iedit
   :ensure t)
+
+;; Beacon Mode =============================================
+;; flashes the cursor's line when you scroll
+
+(use-package beacon
+:ensure t
+:config
+(beacon-mode 1)
+; this color looks good for the zenburn theme but not for the one
+; I'm using for the videos
+(setq beacon-color "#666600")
+)
+
+;; Calfw ===================================================
+
+(use-package calfw
+  :ensure t 
+  :config
+   (require 'calfw-org)
+   (setq cfw:org-overwrite-default-keybinding t) )
+   (setq cfw:org-agenda-schedule-args '(:timestamp))
