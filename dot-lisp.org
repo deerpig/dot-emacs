@@ -21,7 +21,8 @@
 
 ** Prettify Symbols
 
-[[http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/][A peek at Emacs 24.4: prettify-symbols-mode]] | Emacs Redux
+ - [[https://ekaschalk.github.io/post/prettify-mode/][Mathematical Notation in Emacs]] | Eric Kaschalk
+ - [[http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/][A peek at Emacs 24.4: prettify-symbols-mode]] | Emacs Redux
 
 Not working at the moment -- will look into it at some point.
 
