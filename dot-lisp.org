@@ -64,8 +64,6 @@ t
 
 #+end_src
 
-
-
 ** Quack
 
 #+begin_src emacs-lisp
