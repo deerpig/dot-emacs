@@ -636,6 +636,32 @@ See:
 
 * Calendar & Diary
 
+** Calfw 
+
+There is a package available for GCal integration as well.
+
+  - [[https://github.com/kiwanami/emacs-calfw][kiwanami/emacs-calfw]] | GitHub
+
+#+begin_src emacs-lisp
+
+;; Calfw ===================================================
+
+(use-package calfw
+  :ensure t 
+  :config
+   (require 'calfw-org)
+   (setq cfw:org-overwrite-default-keybinding t) )
+   (setq cfw:org-agenda-schedule-args '(:timestamp))
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
+
+
+** Misc Settings
+
 #+begin_src emacs-lisp
 ;; Calendar Style
 (setq european-calendar-style t)
