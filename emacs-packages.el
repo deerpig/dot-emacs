@@ -419,8 +419,12 @@
   :ensure t 
   :config
    (require 'calfw-org)
-   (setq cfw:org-overwrite-default-keybinding t) )
+   (setq cfw:org-overwrite-default-keybinding t)
    ;;(setq cfw:org-agenda-schedule-args '(:timestamp))
+
+   (define-key global-map "\C-cq" 'cfw:open-org-calendar)
+)
+
 
    (setq calendar-day-name-array
       ["日" "月" "火" "水" "木" "金" "土"])
