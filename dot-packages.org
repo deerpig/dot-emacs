@@ -1114,6 +1114,8 @@ There is a package available for GCal integration as well.
  '(cfw:face-today-title ((t :background "red4" :weight bold)))
  '(cfw:face-today ((t :foreground: "cyan" :weight bold)))
  '(cfw:face-select ((t :background "blue4")))
+ '(cfw:face-toolbar-button-off ((t :foreground "cyan" :weight bold)))
+ '(cfw:face-toolbar-button-on ((t :foreground "Gray50" :weight bold)))
 ;;  '(cfw:face-grid ((t :foreground "DarkGrey")))
 ;;  '(cfw:face-default-day ((t :weight bold :inherit cfw:face-day-title)))
 ;;  '(cfw:face-annotation ((t :foreground "RosyBrown" :inherit cfw:face-day-title)))
