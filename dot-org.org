@@ -273,18 +273,18 @@ Set a bunch of variables:
 
 #+begin_src emacs-lisp
 
-;; org-weather ===============================================
-;; not on MELPA so we install the old fashioned way...
-;; :home: https://github.com/kautsig/org-weather
-;; :data: http://openweathermap.org/
+  ;; org-weather ===============================================
+  ;; not on MELPA so we install the old fashioned way...
+  ;; :home: https://github.com/kautsig/org-weather
+  ;; :data: http://openweathermap.org/
 
-(add-to-list 'load-path "~/emacs-lisp/org-weather")
-(require 'org-weather)
-;; Set your location and refresh the data
-(setq org-weather-location "Phnom Penh, Cambodia"
-      org-weather-api-key  "50bd25ab290db6c323c58439a8e6f41f"
-      org-weather-format "天氣: %desc, %tmin-%tmax%tu, %h%hu)
-(org-weather-refresh)
+  (add-to-list 'load-path "~/emacs-lisp/org-weather")
+  (require 'org-weather)
+  ;; Set your location and refresh the data
+  (setq org-weather-location "Phnom Penh, Cambodia"
+	org-weather-api-key  "50bd25ab290db6c323c58439a8e6f41f"
+	org-weather-format "天氣: %desc, %tmin-%tmax%tu, %h%hu)
+  (org-weather-refresh)
 
 #+end_src
 
