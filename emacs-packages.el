@@ -234,68 +234,72 @@
 
 ;; elfeed =================================================
 
-  ;;(setq elfeed-db-directory "~/Dropbox/shared/elfeeddb")
+(setq elfeed-db-directory "~/.elfeed")
 
-  (use-package elfeed
-    :ensure t
-    :bind (:map elfeed-search-mode-map
-		("q" . bjm/elfeed-save-db-and-bury)
-		("Q" . bjm/elfeed-save-db-and-bury)
-		("m" . elfeed-toggle-star)
-		("M" . elfeed-toggle-star))
-    :init
-    (setq elfeed-feeds
-    	'(("http://planet.emacsen.org/atom.xml" emacs)
-    	  ("http://feeds.arstechnica.com/arstechnica/index/" tech ars)
-    	  ("http://kk.org/cooltools/feed" tools)
-    	  ("http://xkcd.com/rss.xml" comic)
-    	  ("http://www.boingboing.net/atom.xml" tech boing)
-    	  ("http://sceper.ws/feed/" torrent)
-    	  ("http://feeds.feedburner.com/longnow" 10k longnow)
-    	  ("http://rss.slashdot.org/Slashdot/slashdotMain" tech slash)))
-)
-  (defun elfeed-mark-all-as-read ()
-	(interactive)
-	(mark-whole-buffer)
-	(elfeed-search-untag-all-unread))
+(use-package elfeed
+  :ensure t
+  :bind (:map elfeed-search-mode-map
+	      ("q" . bjm/elfeed-save-db-and-bury)
+	      ("Q" . bjm/elfeed-save-db-and-bury)
+	  ;;	("m" . elfeed-toggle-star)
+          ;;  ("j" . mz/make-and-run-elfeed-hydra)
+	  ;;	("M" . elfeed-toggle-star)
+          ;;  ("J" . mz/make-and-run-elfeed-hydra)
+          ))
+;;  :init
+;;   (setq elfeed-feeds
+;;     	'(("http://planet.emacsen.org/atom.xml" emacs)
+;;     	  ("http://feeds.arstechnica.com/arstechnica/index/" tech ars)
+;;     	  ("http://kk.org/cooltools/feed" tools)
+;;     	  ("http://xkcd.com/rss.xml" comic)
+;;     	  ("http://www.boingboing.net/atom.xml" tech boing)
+;;     	  ("http://sceper.ws/feed/" torrent)
+;;     	  ("http://feeds.feedburner.com/longnow" 10k longnow)
+;;     	  ("http://rss.slashdot.org/Slashdot/slashdotMain" tech slash)))
+;; )
 
-
-  ;;functions to support syncing .elfeed between machines
-  ;;makes sure elfeed reads index from disk before launching
-  (defun bjm/elfeed-load-db-and-open ()
-    "Wrapper to load the elfeed db from disk before opening"
-    (interactive)
-    (elfeed-db-load)
-    (elfeed)
-    (elfeed-search-update--force))
-
-  ;;write to disk when quiting
-  (defun bjm/elfeed-save-db-and-bury ()
-    "Wrapper to save the elfeed db to disk before burying buffer"
-    (interactive)
-    (elfeed-db-save)
-    (quit-window))
-
-  (defalias 'elfeed-toggle-star
-    (elfeed-expose #'elfeed-search-toggle-all 'star))
+(defun elfeed-mark-all-as-read ()
+      (interactive)
+      (mark-whole-buffer)
+      (elfeed-search-untag-all-unread))
 
 
-  ;; elfeed goodies ==========================================
+;;functions to support syncing .elfeed between machines
+;;makes sure elfeed reads index from disk before launching
+(defun bjm/elfeed-load-db-and-open ()
+  "Wrapper to load the elfeed db from disk before opening"
+  (interactive)
+  (elfeed-db-load)
+  (elfeed)
+  (elfeed-search-update--force))
 
-  (use-package elfeed-goodies
-    :ensure t
-    :init
-    (setq elfeed-goodies/entry-pane-position (quote bottom))
-    :config
-    (elfeed-goodies/setup))
+;;write to disk when quiting
+(defun bjm/elfeed-save-db-and-bury ()
+  "Wrapper to save the elfeed db to disk before burying buffer"
+  (interactive)
+  (elfeed-db-save)
+  (quit-window))
 
-  ;; elfeed-org
+;; (defalias 'elfeed-toggle-star
+;;   (elfeed-expose #'elfeed-search-toggle-all 'star))
 
-  (use-package elfeed-org
-    :ensure t
-    :config
-    (elfeed-org)
-    (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+
+;; elfeed goodies ======================================
+
+(use-package elfeed-goodies
+  :ensure t
+  :init
+  (setq elfeed-goodies/entry-pane-position (quote bottom))
+  :config
+  (elfeed-goodies/setup))
+
+;; elfeed-org ==========================================
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
 ;; Color Themes ============================================
 
