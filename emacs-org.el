@@ -115,7 +115,7 @@
 ;; Set your location and refresh the data
 (setq org-weather-location "Phnom Penh, Cambodia"
       org-weather-api-key  "50bd25ab290db6c323c58439a8e6f41f"
-      org-weather-format "天氣: %desc, %tmin-%tmax%tu, %h%hu)
+      org-weather-format "天氣: %desc, %tmin-%tmax%tu, %h%hu")
 (org-weather-refresh)
 
 ;; Refile Targets ------------------------------------------
