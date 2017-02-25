@@ -652,10 +652,10 @@ Triggers:
 
 ** Open Capture in Other Frame
 
-This has become a /very/ important part of my workflow.  I can no open a
-capture window using =<win>-r= outside of emacs.  This is very useful
-when adding references and contacts.  I've found that I am using
-capture far more than I did when it opened in an existing frame,
+This has become a /very/ important part of my workflow.  I can now
+open a capture window using =<win>-r= outside of emacs.  This is very
+useful when adding references and contacts.  I've found that I am
+using capture far more than I did when it opened in an existing frame,
 though I still do that as well when I am in emacs.
 
 See:
