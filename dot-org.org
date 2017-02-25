@@ -660,8 +660,8 @@ though I still do that as well when I am in emacs.
 
 See:
 
-  [[http://cestlaz.github.io/posts/using-emacs-24-capture-2/#.WKPa_NUxVpg][Org Capture 2]] | C'est la Z
-
+ - [[http://cestlaz.github.io/posts/using-emacs-24-capture-2/#.WKPa_NUxVpg][Org Capture 2]] | C'est la Z
+ - [[https://github.com/nicferrier/emacs-noflet][nicferrier/emacs-noflet]] | github
 
 #+begin_src emacs-lisp
 ;; Open Capture In Other Frame -----------------------------
