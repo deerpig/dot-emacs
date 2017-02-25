@@ -683,7 +683,8 @@ See:
   (if (equal "capture" (frame-parameter nil 'name))  
     (delete-frame)))
 
-;;(use-package nofletaa
+(use-package noflet
+  :ensure t)
 
 (defun make-capture-frame ()
   "Create a new frame and run org-capture."
