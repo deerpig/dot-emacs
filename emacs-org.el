@@ -1,3 +1,7 @@
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(use-package org-plus-contrib 
+  :ensure t)
+
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
 ;; Emacs Org Mode Configuration
 
@@ -287,7 +291,8 @@
   (if (equal "capture" (frame-parameter nil 'name))  
     (delete-frame)))
 
-;;(use-package nofletaa
+(use-package noflet
+  :ensure t)
 
 (defun make-capture-frame ()
   "Create a new frame and run org-capture."
