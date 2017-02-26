@@ -1205,3 +1205,43 @@ nil
 :END:
 
 
+** Chronos
+
+ - [[https://github.com/dxknight/chronos][dxknight/chronos: Chronos]] | Github
+
+#+begin_src emacs-lisp
+ (use-package chronos 
+   :ensure t
+   :init
+ (setq chronos-expiry-functions '(chronos-buffer-notify
+                                  chronos-dunstify))
+)
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
+
+** Helm-chronos
+
+ - [[https://github.com/dxknight/helm-chronos][dxknight/helm-chronos]] | GitHub
+
+#+begin_src emacs-lisp
+ (use-package helm-chronos
+   :ensure t
+   :init
+ (setq helm-chronos-standard-timers
+   '( "   1/You Win!"
+      "   2/Drink Beer!"
+      "   4/Soak noodles"
+      "  25/Pomodoro: Work on helm-chronos + 5/Pomodoro: Rest"))
+)
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
