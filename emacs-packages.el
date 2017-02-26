@@ -513,3 +513,22 @@
 ;;  '(cfw:face-default-day ((t :weight bold :inherit cfw:face-day-title)))
 ;;  '(cfw:face-annotation ((t :foreground "RosyBrown" :inherit cfw:face-day-title)))
  )
+
+;; Chronos =================================================
+ (use-package chronos 
+   :ensure t
+   :init
+ (setq chronos-expiry-functions '(chronos-buffer-notify
+                                  chronos-dunstify))
+)
+
+;; Helm Chronos ============================================
+ (use-package helm-chronos
+   :ensure t
+   :init
+ (setq helm-chronos-standard-timers
+   '( "   1/You Win!"
+      "   2/Drink Beer!"
+      "   4/Soak noodles"
+      "  25/Pomodoro: Work on helm-chronos + 5/Pomodoro: Rest"))
+)
