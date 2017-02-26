@@ -85,6 +85,7 @@ can start using triple-key chords eg. /1qa/, /2ws/, /3ed/....  I hope
 it won't come to that :)
 
 #+begin_src emacs-lisp
+
 ;; Key Chords =============================================
 
 (use-package key-chord
@@ -95,9 +96,9 @@ it won't come to that :)
     (setq key-chord-one-key-delay 0.16)
     (setq key-chord-two-key-delay 0.16)
     (key-chord-mode 1)
-    ;72(key-chord-define-global "1q"     ')
+    ;;(key-chord-define-global "1q"     ')
     (key-chord-define-global "2w"     'hydra-window/body)
-    (key-chord-define-global "3e"     'hydra-join-lines/body)
+    (key-chord-define-global "3e"     'hydra-elfeed/body)
     (key-chord-define-global "4r"     'hydra-rectangle/body)
     (key-chord-define-global "5t"     'hydra-twittering/body)
     (key-chord-define-global "6y"     'hydra-transpose/body)
@@ -107,6 +108,11 @@ it won't come to that :)
     (key-chord-define-global "0p"     'hydra-calendar/body)
     ))
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
 
 ** Window Management Hydra
 
@@ -676,3 +682,34 @@ I'm going to integrate.
       (goto-char mk))))
 #+end_src
 
+** Elfeed Hydra
+
+Hydra for the elfeed news reader.
+
+
+#+begin_src emacs-lisp
+(defhydra hydra-elfeed ()
+   "filter"
+   ("c" (elfeed-search-set-filter "@6-months-ago +comic")   "comics")
+   ("e" (elfeed-search-set-filter "@6-months-ago +emacs")   "emacs")
+   ("t" (elfeed-search-set-filter "@6-months-ago +tech")    "tech")
+
+   ("b" (elfeed-search-set-filter "@6-months-ago +boing")   "bb")
+   ("s" (elfeed-search-set-filter "@6-months-ago +slash")   "/.")
+   ("t" (elfeed-search-set-filter "@6-months-ago +ars")     "ars")
+   ("d" (elfeed-search-set-filter "@6-months-ago +torrent") "torrent")
+   ("t" (elfeed-search-set-filter "@6-months-ago +longnow") "long")
+
+   ("*" (elfeed-search-set-filter "@6-months-ago +star")  "Starred")
+   ;;("M" elfeed-toggle-star "Mark")
+   ("A" (elfeed-search-set-filter "@6-months-ago") "All")
+   ("T" (elfeed-search-set-filter "@1-day-ago") "Today")
+   ("Q" bjm/elfeed-save-db-and-bury "Quit Elfeed" :color blue)
+   ("q" nil "quit" :color blue)
+   )
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+hydra-elfeed/body
+:END:
