@@ -1210,6 +1210,8 @@ nil
  - [[https://github.com/dxknight/chronos][dxknight/chronos: Chronos]] | Github
 
 #+begin_src emacs-lisp
+
+;; Chronos =================================================
  (use-package chronos 
    :ensure t
    :init
@@ -1229,6 +1231,8 @@ nil
  - [[https://github.com/dxknight/helm-chronos][dxknight/helm-chronos]] | GitHub
 
 #+begin_src emacs-lisp
+
+;; Helm Chronos ============================================
  (use-package helm-chronos
    :ensure t
    :init
