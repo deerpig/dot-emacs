@@ -20,9 +20,9 @@
     (setq key-chord-one-key-delay 0.16)
     (setq key-chord-two-key-delay 0.16)
     (key-chord-mode 1)
-    ;72(key-chord-define-global "1q"     ')
+    ;;(key-chord-define-global "1q"     ')
     (key-chord-define-global "2w"     'hydra-window/body)
-    (key-chord-define-global "3e"     'hydra-join-lines/body)
+    (key-chord-define-global "3e"     'hydra-elfeed/body)
     (key-chord-define-global "4r"     'hydra-rectangle/body)
     (key-chord-define-global "5t"     'hydra-twittering/body)
     (key-chord-define-global "6y"     'hydra-transpose/body)
@@ -395,3 +395,34 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
     (let ((mk (mark)))
       (rectangle-mark-mode 1)
       (goto-char mk))))
+
+(defhydra hydra-elfeed (:color pink :hint nil)
+   "
+                                                                   ╭─────────┐
+                                                                   │ Elfeed  │
+ ╭───────────────────────────────────────────────────────────┬─────┴─────────╯
+  Tags :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
+ ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
+  Feeds: Boing Boing [_b_] Slashdot [_s_]   Ars Technica [_a_]     │   Starred [_*_]  
+          Cool Tools [_l_] Long Now [_l_]                        │    Marked [_M_]
+ ╭───────────────────────────────────────────────────────────┘ Quit/Save [_q_]
+  Quit [_<SPC>_]
+"
+   ("c" (elfeed-search-set-filter "@6-months-ago +comic"))
+   ("e" (elfeed-search-set-filter "@6-months-ago +emacs"))
+   ("t" (elfeed-search-set-filter "@6-months-ago +tech"))
+
+   ("b" (elfeed-search-set-filter "@6-months-ago +boing"))
+   ("s" (elfeed-search-set-filter "@6-months-ago +slash"))
+   ("a" (elfeed-search-set-filter "@6-months-ago +ars"))
+   ("d" (elfeed-search-set-filter "@6-months-ago +torrent"))
+   ("l" (elfeed-search-set-filter "@6-months-ago +longnow"))
+   ("o" (elfeed-search-set-filter "@6-months-ago +tools"))
+
+   ("*" (elfeed-search-set-filter "@6-months-ago +star"))
+   ("M" elfeed-toggle-star nil)
+   ("A" (elfeed-search-set-filter "@6-months-ago"))
+   ("T" (elfeed-search-set-filter "@1-day-ago"))
+   ("q" bjm/elfeed-save-db-and-bury nil :color blue)
+   ("<SPC>" nil nil)
+   )
