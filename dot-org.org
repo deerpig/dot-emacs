@@ -29,6 +29,11 @@ contrib directory when installing org by hand.
 
 #+end_src
 
+#+RESULTS:
+:RESULTS:
+nil
+:END:
+
 
 ** File Header
 
