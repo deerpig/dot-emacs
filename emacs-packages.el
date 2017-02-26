@@ -287,12 +287,12 @@
 
 ;; elfeed goodies ======================================
 
-;; (use-package elfeed-goodies
-;;   :ensure t
-;;   :init
-;;   (setq elfeed-goodies/entry-pane-position (quote bottom))
-;;   :config
-;;   (elfeed-goodies/setup))
+(use-package elfeed-goodies
+  :ensure t
+  :init
+  (setq elfeed-goodies/entry-pane-position (quote bottom))
+  :config
+  (elfeed-goodies/setup))
 
 ;; elfeed-org ==========================================
 
