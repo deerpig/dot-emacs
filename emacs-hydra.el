@@ -421,8 +421,8 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
 
    ("*" (elfeed-search-set-filter "@6-months-ago +star"))
    ("M" elfeed-toggle-star nil)
-   ("A" (elfeed-search-set-filter "@6-months-ago"))
-   ("T" (elfeed-search-set-filter "@1-day-ago"))
+   ("A" (elfeed-search-set-filter "@6-months-ago +unread"))
+   ("T" (elfeed-search-set-filter "@1-day-ago    +unread"))
    ("q" bjm/elfeed-save-db-and-bury nil :color blue)
    ("<SPC>" nil nil)
    )
