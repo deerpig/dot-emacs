@@ -691,6 +691,7 @@ Hydra for the elfeed news reader.
 
 
 #+begin_src emacs-lisp
+
 (defhydra hydra-elfeed (:color pink :hint nil)
    "
                                                                    ╭─────────┐
@@ -699,7 +700,7 @@ Hydra for the elfeed news reader.
   Tags :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
  ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
   Feeds: Boing Boing [_b_] Slashdot [_s_]   Ars Technica [_a_]     │   Starred [_*_]  
-          Cool Tools [_l_] Long Now [_l_]                        │    Marked [_M_]
+          Cool Tools [_o_] Long Now [_l_]                        │    Marked [_M_]
  ╭───────────────────────────────────────────────────────────┘ Quit/Save [_q_]
   Quit [_<SPC>_]
 "
