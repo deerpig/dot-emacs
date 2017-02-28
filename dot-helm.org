@@ -318,11 +318,11 @@ Look up BibTex entries in local BibTex database using helm interface.
 
 ** Helm Dictionary
 
-Never got this to work -- I filed a bug report and it looks like there
-is a conflict somewhere in my helm config.
+- [[https://github.com/emacs-helm/helm-dictionary][emacs-helm/helm-dictionary]] | GitHub
 
-I will eventually get this sorted out but until then it will stay
-commented out.
+Okay -- now it looks like it's working -- next step is load a
+dictionary and I'd like to use the merriam-webster dictionary
+mentioned in emacs blog post....
 
 #+begin_src emacs-lisp
 
@@ -333,6 +333,11 @@ commented out.
      )
 
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+nil
+:END:
 
 ** Helm Wordnet
 

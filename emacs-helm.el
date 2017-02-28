@@ -134,9 +134,9 @@
 
 ;; helm-dictionary -----------------------------------------
 
-;; (use-package helm-dictionary
-;;    :ensure t
-;;    )
+  (use-package helm-dictionary
+     :ensure t
+     )
 
 ;; helm-wordnet ---------------------------------------------
 ;; requires local install of wordnet
