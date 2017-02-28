@@ -692,28 +692,28 @@ Hydra for the elfeed news reader.
 
 #+begin_src emacs-lisp
 
-(defhydra hydra-elfeed (:color pink :hint nil)
+(defhydra hydra-elfeed (:color blue :hint nil)
    "
                                                                    ╭─────────┐
                                                                    │ Elfeed  │
  ╭───────────────────────────────────────────────────────────┬─────┴─────────╯
-  Tags :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
+  Tagos :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
  ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
   Feeds: Boing Boing [_b_] Slashdot [_s_]   Ars Technica [_a_]     │   Starred [_*_]  
           Cool Tools [_o_] Long Now [_l_]                        │    Marked [_M_]
  ╭───────────────────────────────────────────────────────────┘ Quit/Save [_q_]
   Quit [_<SPC>_]
 "
-   ("c" (elfeed-search-set-filter "@6-months-ago +comic"))
-   ("e" (elfeed-search-set-filter "@6-months-ago +emacs"))
-   ("t" (elfeed-search-set-filter "@6-months-ago +tech"))
+   ("c" (elfeed-search-set-filter "@6-months-ago  +unread  +comic"))
+   ("e" (elfeed-search-set-filter "@6-months-ago  +unread  +emacs"))
+   ("t" (elfeed-search-set-filter "@6-months-ago  +unread  +tech"))
 
-   ("b" (elfeed-search-set-filter "@6-months-ago +boing"))
-   ("s" (elfeed-search-set-filter "@6-months-ago +slash"))
-   ("a" (elfeed-search-set-filter "@6-months-ago +ars"))
-   ("d" (elfeed-search-set-filter "@6-months-ago +torrent"))
-   ("l" (elfeed-search-set-filter "@6-months-ago +longnow"))
-   ("o" (elfeed-search-set-filter "@6-months-ago +tools"))
+   ("b" (elfeed-search-set-filter "@6-months-ago  +unread  +boing"))
+   ("s" (elfeed-search-set-filter "@6-months-ago  +unread  +slash"))
+   ("a" (elfeed-search-set-filter "@6-months-ago  +unread  +ars"))
+   ("d" (elfeed-search-set-filter "@6-months-ago  +unread  +torrent"))
+   ("l" (elfeed-search-set-filter "@6-months-ago  +unread  +longnow"))
+   ("o" (elfeed-search-set-filter "@6-months-ago  +unread  +tools"))
 
    ("*" (elfeed-search-set-filter "@6-months-ago +star"))
    ("M" elfeed-toggle-star nil)
