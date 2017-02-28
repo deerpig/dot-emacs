@@ -328,9 +328,9 @@ commented out.
 
 ;; helm-dictionary -----------------------------------------
 
-;; (use-package helm-dictionary
-;;    :ensure t
-;;    )
+  (use-package helm-dictionary
+     :ensure t
+     )
 
 #+end_src
 

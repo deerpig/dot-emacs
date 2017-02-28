@@ -238,14 +238,15 @@
 
 (use-package elfeed
   :ensure t
+  :config
+  (setq elfeed-search-filter "@6-months-ago +unread")
   :bind (:map elfeed-search-mode-map
 	      ("q" . bjm/elfeed-save-db-and-bury)
 	      ("Q" . bjm/elfeed-save-db-and-bury)
 	      ("j" . hydra-elfeed/body)
 	      ("J" . hydra-elfeed/body)
 	      ("m" . elfeed-toggle-star)
-	      ("M" . elfeed-toggle-star)
-          ))
+	      ("M" . elfeed-toggle-star)))
 
 (defun elfeed-mark-all-as-read ()
       (interactive)
@@ -268,8 +269,8 @@
   (elfeed-db-save)
   (quit-window))
 
-(defalias 'elfeed-toggle-star
-  (elfeed-expose #'elfeed-search-toggle-all 'star))
+;; (defalias 'elfeed-toggle-star
+;;   (elfeed-expose #'elfeed-search-toggle-all 'star))
 
 
 ;; elfeed goodies ======================================
