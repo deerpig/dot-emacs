@@ -506,6 +506,28 @@ until I feel the need.
 
 #+end_src
 
+*** Git Time Machine
+
+ - [[https://github.com/pidu/git-timemachine][pidu/git-timemachine]] | GitHub
+
+
+  - p :: Visit previous historic version
+  - n :: Visit next historic version
+  - w :: Copy the abbreviated hash of the current historic version
+  - W :: Copy the full hash of the current historic version
+  - g :: Goto nth revision
+  - q :: Exit the time machine.
+
+#+begin_src emacs-lisp
+
+;; Git Timemachine -----------------------------------------
+
+(use-package  git-timemachine
+  :ensure t
+)
+
+#+end_src
+
 ** Yas-snippet 
 
 Clone AndreaCrotti's yasnippet collection:
