@@ -4,6 +4,12 @@
 #+PROPERTY: header-args    :results drawer  :tangle emacs-mu4e.el
 
 * Introduction
+
+  - [[http://www.djcbsoftware.nl/code/mu/mu4e.html][Mu4e]] | djcbsoftware
+  - [[http://irreal.org/blog/?p=4807][Mu4e and Org Mode]] | Irreal
+  - [[http://pragmaticemacs.com/emacs/master-your-inbox-with-mu4e-and-org-mode/][Master your inbox with mu4e and org-mode]] | Pragmatic Emacs
+  - [[http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/][A Complete Guide to Email in Emacs using Mu and Mu4e]]
+
 * Mu4e Config
 ** File Header
 
