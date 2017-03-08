@@ -791,3 +791,5 @@ have an id"
 	(insert ":Animated: \n")
 	(insert ":Unihan:   \n")
 	(insert ":Zongwhen: \n\n"))
+
+(setq org-image-actual-width nil)
