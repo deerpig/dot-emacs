@@ -166,6 +166,12 @@
 ;;   :after magit
 ;;   :config (magithub-feature-autoinject t))
 
+;; Git Timemachine -----------------------------------------
+
+(use-package  git-timemachine
+  :ensure t
+)
+
 ;; YASNIPPET ================================================
 
 (use-package yasnippet
