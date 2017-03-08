@@ -1516,3 +1516,10 @@ sunsetting the ones I don't use.
 insert-ideo
 :END:
 
+** Org Width
+
+Allow images width to be set in org buffers.
+
+#+begin_src emacs-lisp
+(setq org-image-actual-width nil)
+#+end_src
