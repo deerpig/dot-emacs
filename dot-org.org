@@ -1523,3 +1523,13 @@ Allow images width to be set in org buffers.
 #+begin_src emacs-lisp
 (setq org-image-actual-width nil)
 #+end_src
+** Pomidor
+
+  - [[https://github.com/TatriX/pomidor][TatriX/pomidor]] | GitHub
+
+Waiting for the package to show up in Melpa (it's in progress).
+
+#+begin_src emacs-lisp :tangle no
+(use-package pomidor
+  :ensure t)
+#+end_src
