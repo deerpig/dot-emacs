@@ -384,6 +384,20 @@ so for now not tangled.
 #+end_src
 ** Dired K
 
+Highlights contents of git repository directories in dired like in [[https://github.com/supercrabtree/k][k]]
+in z-shell.
+
+After you get used to git-gutter this is the next logical step.  I
+like it, but would almost prefer that there is the option of having
+the same highlights as in git-gutter, in the gutter of the window.
+
+I also like the human readable size colors which go from green to red,
+indicating the file size.  And having timestamps that gradually fade
+is very nice as well.
+
+- [[https://github.com/syohex/emacs-dired-k][syohex/emacs-dired-k]] | GitHub
+
+
 #+begin_src emacs-lisp
 (use-package dired-k
   :ensure t
