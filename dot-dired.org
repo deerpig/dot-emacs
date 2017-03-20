@@ -388,8 +388,8 @@ Highlights contents of git repository directories in dired like in [[https://git
 in z-shell.
 
 After you get used to git-gutter this is the next logical step.  I
-like it, but would almost prefer that there is the option of having
-the same highlights as in git-gutter, in the gutter of the window.
+like it, but would like to see the option of having a view mode that
+matched git-gutter.  But then again perhaps not.
 
 I also like the human readable size colors which go from green to red,
 indicating the file size.  And having timestamps that gradually fade
