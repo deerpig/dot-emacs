@@ -1529,7 +1529,7 @@ Allow images width to be set in org buffers.
 
 Waiting for the package to show up in Melpa (it's in progress).
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle yes
 (use-package pomidor
   :ensure t)
 #+end_src
