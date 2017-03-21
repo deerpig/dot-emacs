@@ -1527,7 +1527,7 @@ Allow images width to be set in org buffers.
 
   - [[https://github.com/TatriX/pomidor][TatriX/pomidor]] | GitHub
 
-Waiting for the package to show up in Melpa (it's in progress).
+Pomodomo timer
 
 #+begin_src emacs-lisp :tangle yes
 (use-package pomidor
