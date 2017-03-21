@@ -343,6 +343,8 @@ nil
 
 This works, I think....
 
+ - [[https://github.com/raghavgautam/helm-wordnet][raghavgautam/helm-wordnet]] | GitHub
+
 #+begin_src emacs-lisp
 
 ;; helm-wordnet ---------------------------------------------
