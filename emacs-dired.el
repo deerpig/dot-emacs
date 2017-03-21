@@ -136,21 +136,6 @@
               ("X" . dired-ranger-move)
               ("Y" . dired-ranger-paste)))
 
-;; Dired K =================================================
-
-(use-package dired-k
-  :ensure t
-  :config 
-  (setq dired-k-human-readable t)
-  (define-key dired-mode-map (kbd "K") 'dired-k)
-  ;; You can use dired-k alternative to revert-buffer
-  (define-key dired-mode-map (kbd "g") 'dired-k)
-
-  ;; always execute dired-k when dired buffer is opened
-  (add-hook 'dired-initial-position-hook 'dired-k)
-
-  (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
-
 ;; Dired Quick Sort ========================================
 
 (use-package  dired-quick-sort
