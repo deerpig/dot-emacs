@@ -136,6 +136,8 @@
               ("X" . dired-ranger-move)
               ("Y" . dired-ranger-paste)))
 
+;; Dired K =================================================
+
 (use-package dired-k
   :ensure t
   :config 
@@ -148,3 +150,10 @@
   (add-hook 'dired-initial-position-hook 'dired-k)
 
   (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
+
+;; Dired Quick Sort ========================================
+
+(use-package  dired-quick-sort
+  :ensure t
+  :config
+  (dired-quick-sort-setup))
