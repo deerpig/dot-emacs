@@ -382,39 +382,6 @@ so for now not tangled.
 )
 
 #+end_src
-** Dired K
-
-Highlights contents of git repository directories in dired like in [[https://github.com/supercrabtree/k][k]]
-in z-shell.
-
-After you get used to git-gutter this is the next logical step.  I
-like it, but would like to see the option of having a view mode that
-matched git-gutter.  But then again perhaps not.
-
-I also like the human readable size colors which go from green to red,
-indicating the file size.  And having timestamps that gradually fade
-is very nice as well.
-
-- [[https://github.com/syohex/emacs-dired-k][syohex/emacs-dired-k]] | GitHub
-
-
-#+begin_src emacs-lisp
-;; Dired K =================================================
-
-(use-package dired-k
-  :ensure t
-  :config 
-  (setq dired-k-human-readable t)
-  (define-key dired-mode-map (kbd "K") 'dired-k)
-  ;; You can use dired-k alternative to revert-buffer
-  (define-key dired-mode-map (kbd "g") 'dired-k)
-
-  ;; always execute dired-k when dired buffer is opened
-  (add-hook 'dired-initial-position-hook 'dired-k)
-
-  (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
-#+end_src
-
 ** Dired Quick Sort 
 
  - [[https://gitlab.com/xuhdev/dired-quick-sort][Hong / dired-quick-sort]] | GitLab
