@@ -414,3 +414,17 @@ is very nice as well.
 
   (add-hook 'dired-after-readin-hook #'dired-k-no-revert))
 #+end_src
+
+** Dired Quick Sort 
+
+ - [[https://gitlab.com/xuhdev/dired-quick-sort][Hong / dired-quick-sort]] | GitLab
+
+
+#+begin_src emacs-lisp
+;; Dired Quick Sort ========================================
+
+(use-package  dired-quick-sort
+  :ensure t
+  :config
+  (dired-quick-sort-setup))
+#+end_src
