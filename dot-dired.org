@@ -159,7 +159,7 @@ coming back to ls switches.  All other methods are commented out.
 
 *** ls Switches
 
-This is my most common way of showing/hiding files in dired lists.
+This is my prefered method for showing/hiding files in dired lists.
 There are other methods but this is as fast as the others and has most
 of the power of the ls command going for it.
 
