@@ -17,7 +17,7 @@ of those features you will finding your self using constantly.
 Another is to be able to run shell commands on marked files.
 
 #+begin_quote
-Of all the hidden gems in Dired, this is one of my favourites: the
+Of all the hidden gems in Dired, this is one of my favorites: the
 ability to run arbitrary shell commands on marked files – and if it’s
 a file extension known to Dired, it will suggest a default action:
 untarring .tar.gz files; displaying .pdf files; and much more!
