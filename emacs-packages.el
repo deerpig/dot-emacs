@@ -199,10 +199,11 @@
   (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/bootstrap")
   (setq warning-suppress-types '(yasnippet backquote-change))
   ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
-  (yas-reload-all)
   ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
   ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
   )
+
+  (yas-reload-all)
 
 ;; Programing Languages ====================================
 ;; Except Lisp, which has it's own file.
