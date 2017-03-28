@@ -139,6 +139,5 @@
 ;; Dired Quick Sort ========================================
 
 (use-package  dired-quick-sort
-  :ensure t
-  :config
-  (dired-quick-sort-setup))
+  :ensure t)
+  (dired-quick-sort-setup)
