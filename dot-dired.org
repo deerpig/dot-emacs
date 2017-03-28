@@ -394,4 +394,3 @@ so for now not tangled.
   :ensure t)
   (dired-quick-sort-setup)
 #+end_src
-

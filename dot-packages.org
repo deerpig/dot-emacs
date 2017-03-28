@@ -408,6 +408,12 @@ home: [[https://github.com/justbur/emacs-which-key][emacs-which-key]] | github
 #+begin_src emacs-lisp
 ;; GIT Packages ============================================
 #+end_src
+*** Git Library
+
+#+begin_src emacs-lisp
+(use-package git
+  :ensure t)
+#+end_src
 
 *** Magit
 
@@ -580,23 +586,23 @@ yas-reload-all.  M-x yasnippet-describe-tables will show available
 snippets for the mode you are in.
 
 #+begin_src emacs-lisp
-;; YASNIPPET ================================================
+  ;; YASNIPPET ================================================
 
-(use-package yasnippet
-  :ensure t
-  :init
-  (yas-global-mode 1)
-  :config
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/snippets")
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/yasmate")
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/bootstrap")
-  (setq warning-suppress-types '(yasnippet backquote-change))
-  ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
-  ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
-  ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
-  )
+  (use-package yasnippet
+    :ensure t
+    :config
+    ;; (setq yas-snippet-dirs
+    ;;   '("~/.dotfiles/emacs.d/yasnippets/snippets/"
+    ;;     "~/.dotfiles/emacs.d/yasnippets/yasmate/"
+    ;;     "~/.dotfiles/emacs.d/yasnippets/bootstrap/"))
+    (setq warning-suppress-types '(yasnippet backquote-change))
+    ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+    ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
+    ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
+    )
 
-  (yas-reload-all)
+    (yas-global-mode 1)
+    (yas-reload-all)
 #+end_src
 
 ** Programing Languages

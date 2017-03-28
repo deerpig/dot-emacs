@@ -136,6 +136,9 @@
 
 ;; GIT Packages ============================================
 
+(use-package git
+  :ensure t)
+
 ;; Magit ---------------------------------------------------
 
 (use-package magit
@@ -191,18 +194,18 @@
 
 (use-package yasnippet
   :ensure t
-  :init
-  (yas-global-mode 1)
   :config
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/snippets")
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/yasmate")
-  (add-to-list 'yas-snippet-dirs "~/.dotfiles/emacs.d/yasnippets/bootstrap")
+  ;; (setq yas-snippet-dirs
+  ;;   '("~/.dotfiles/emacs.d/yasnippets/snippets/"
+  ;;     "~/.dotfiles/emacs.d/yasnippets/yasmate/"
+  ;;     "~/.dotfiles/emacs.d/yasnippets/bootstrap/"))
   (setq warning-suppress-types '(yasnippet backquote-change))
   ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
   ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
   )
 
+  (yas-global-mode 1)
   (yas-reload-all)
 
 ;; Programing Languages ====================================
