@@ -85,7 +85,7 @@ I had forgotten about this command.  In Dired, apply shell command to
 marked files by pressing =!=.  This is a nice way of opening media
 files in an external application from inside Dired.
 
-  - [[https://masteringemacs.org/article/dired-shell-commands-find-xargs-replacement][Dired Shell Commands: The find & xargs replacement]] | Mastering Emacs]]
+  - [[https://masteringemacs.org/article/dired-shell-commands-find-xargs-replacement][Dired Shell Commands: The find & xargs replacement]] | Mastering Emacs
 
 #+begin_src emacs-lisp
 
