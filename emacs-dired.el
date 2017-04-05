@@ -15,6 +15,11 @@
                       ;; (setq dired-x-hands-off-my-keys nil)
                       )))
 
+;; Auto Revert Mode ========================================
+;; auto refresh dired when file changes
+
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
 ;; Guess Shell Command by file extension ===================
 
 ;;guess shell command by file extension.

@@ -69,6 +69,16 @@ Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki p
 
 #+end_src
 
+** Auto Revert Mode
+
+#+begin_src emacs-lisp
+;; Auto Revert Mode ========================================
+;; auto refresh dired when file changes
+
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+#+end_src
+
 ** Guess Shell Command 
 
 I had forgotten about this command.  In Dired, apply shell command to
