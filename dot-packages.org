@@ -611,10 +611,10 @@ snippets for the mode you are in.
   (use-package yasnippet
     :ensure t
     :config
-    ;; (setq yas-snippet-dirs
-    ;;   '("~/.dotfiles/emacs.d/yasnippets/snippets/"
-    ;;     "~/.dotfiles/emacs.d/yasnippets/yasmate/"
-    ;;     "~/.dotfiles/emacs.d/yasnippets/bootstrap/"))
+     (setq yas-snippet-dirs
+       '("~/.dotfiles/emacs.d/yasnippets/snippets/"
+         "~/.dotfiles/emacs.d/yasnippets/yasmate/"
+         "~/.dotfiles/emacs.d/yasnippets/bootstrap/"))
     (setq warning-suppress-types '(yasnippet backquote-change))
     ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
     ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
