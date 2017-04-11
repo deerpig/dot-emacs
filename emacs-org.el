@@ -183,6 +183,8 @@
 			    ("@email"  . ?m)
 			      )))
 
+;; Easy Templates ==========================================
+
 (add-to-list 'org-structure-template-alist '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
 (add-to-list 'org-structure-template-alist '("C" "#+begin_comment\n?\n#+end_comment"))
 
