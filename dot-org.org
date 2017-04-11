@@ -478,14 +478,15 @@ Notes upper case until there is a fix.
 
 #+begin_src emacs-lisp
 
-(add-to-list 'org-structure-template-alist
-	     '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
-
+(add-to-list 'org-structure-template-alist '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
+(add-to-list 'org-structure-template-alist '("C" "#+begin_comment\n?\n#+end_comment"))
 #+end_src
 
 #+RESULTS:
 :RESULTS:
-((n #+BEGIN_NOTES
+((C #+begin_comment
+?
+#+end_comment) (n #+BEGIN_NOTES
 ?
 #+END_NOTES) (s #+begin_src ?
 
