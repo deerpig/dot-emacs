@@ -27,6 +27,13 @@
   ;; wrap around at edges
   (setq windmove-wrap-around t))
 
+;; Buffer Move =============================================
+
+(use-package buffer-move
+  :ensure t
+  :config
+  )
+
 ;; Avy Jump Mode ===========================================
 
 (use-package avy
