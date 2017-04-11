@@ -133,6 +133,9 @@ The OpenBox + arrow key commands use <WIN> and Org-Mode uses arrow-key
 combination for moving stuff around, setting dates, priorities and
 toggling TODO states.
 
+The Buffer-Move package provides a nice way of swaping around buffers
+between windows which is bound in this hydra using M-<arrow> keys.
+
 This Hydra provides an interface for splitting windows and moving
 between windows using the arrow keys.
 
@@ -145,7 +148,7 @@ IRC.  Here is an example of the workflow:
     and the Slack irc gateway.  
   - Invoke the Hydra using the keychord '2w' and split the frame up to
     four to six different ways.
-  - Use the c-<arrow> keys to move to each window, and M-x b which
+  - Use the C-<arrow> keys to move to each window, and M-x b which
     opens the buffer list in Helm and to choose the chat room for each
     window.
   - Press the <SPC> key to exit the Hydra.
@@ -165,13 +168,13 @@ The <SPC> spacebar is used to exit the hydra.
 
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
-         Move                    Resize            Split
-╭─────────────────────────────────────────────────────────────┐
-         ^_<up>_^                    ^_C-<up>_^            [_v_]ertical
-          ^^▲^^                         ^^▲^^              [_h_]orizontal
- _<left>_ ◀   ▶ _<right>_    _C-<left>_ ◀   ▶ _C-<right>_
-          ^^▼^^                         ^^▼^^              ╭──────────┐
-        ^_<down>_^                  ^_C-<down>_^           quit : [_SPC_]
+         Move                    Resize                      Swap              Split
+╭─────────────────────────────────────────────────────────────────────────────────────────┐
+         ^_<up>_^                    ^_C-<up>_^                      ^_M-<up>_^            [_v_]ertical
+          ^^▲^^                         ^^▲^^                           ^^▲^^              [_h_]orizontal
+ _<left>_ ◀   ▶ _<right>_    _C-<left>_ ◀   ▶ _C-<right>_    _M-<left>_ ◀   ▶ _M-<right>_
+          ^^▼^^                         ^^▼^^                           ^^▼^^              ╭──────────┐
+        ^_<down>_^                  ^_C-<down>_^                    ^_M-<down>_^           quit : [_SPC_]
 "
   ("<left>" windmove-left)
   ("<down>" windmove-down)
@@ -183,11 +186,17 @@ The <SPC> spacebar is used to exit the hydra.
   ("C-<down>" hydra-move-splitter-down)
   ("C-<left>" hydra-move-splitter-left)
   ("C-<right>" hydra-move-splitter-right)
+  ("M-<up>" buf-move-up)
+  ("M-<down>" buf-move-down)
+  ("M-<left>" buf-move-left)
+  ("M-<right>" buf-move-right)
   ("SPC" nil))
 #+end_src
 
 #+RESULTS:
-: hydra-window/body
+:RESULTS:
+hydra-window/body
+:END:
 
 ** Unicode Character Hydra
 
