@@ -131,6 +131,22 @@ in all this theme is really fucking good.  YMMV.
 
 #+end_src
 
+
+** Buffer Move
+
+ - [[https://github.com/lukhas/buffer-move][lukhas/buffer-move]] | GitHub
+
+#+begin_src emacs-lisp
+
+;; Buffer Move =============================================
+
+(use-package buffer-move
+  :ensure t
+  :config
+  )
+#+end_src
+
+
 ** Avy Jump Mode
 
 #+begin_src emacs-lisp
