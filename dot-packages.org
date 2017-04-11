@@ -116,6 +116,8 @@ in all this theme is really fucking good.  YMMV.
 
 ** Winmove
 
+Use hydra for key-bindings
+
 #+begin_src emacs-lisp
 
 ;; Winmove =================================================
@@ -135,6 +137,8 @@ in all this theme is really fucking good.  YMMV.
 ** Buffer Move
 
  - [[https://github.com/lukhas/buffer-move][lukhas/buffer-move]] | GitHub
+
+Use hydra for key-bindings
 
 #+begin_src emacs-lisp
 
