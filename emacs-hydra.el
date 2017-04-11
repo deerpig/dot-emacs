@@ -38,13 +38,13 @@
 
 (defhydra hydra-window (:color pink :hint nil :timeout 20)
   "
-         Move                    Resize            Split
-╭─────────────────────────────────────────────────────────────┐
-         ^_<up>_^                    ^_C-<up>_^            [_v_]ertical
-          ^^▲^^                         ^^▲^^              [_h_]orizontal
- _<left>_ ◀   ▶ _<right>_    _C-<left>_ ◀   ▶ _C-<right>_
-          ^^▼^^                         ^^▼^^              ╭──────────┐
-        ^_<down>_^                  ^_C-<down>_^           quit : [_SPC_]
+         Move                    Resize                      Swap              Split
+╭─────────────────────────────────────────────────────────────────────────────────────────┐
+         ^_<up>_^                    ^_C-<up>_^                      ^_M-<up>_^            [_v_]ertical
+          ^^▲^^                         ^^▲^^                           ^^▲^^              [_h_]orizontal
+ _<left>_ ◀   ▶ _<right>_    _C-<left>_ ◀   ▶ _C-<right>_    _M-<left>_ ◀   ▶ _M-<right>_
+          ^^▼^^                         ^^▼^^                           ^^▼^^              ╭──────────┐
+        ^_<down>_^                  ^_C-<down>_^                    ^_M-<down>_^           quit : [_SPC_]
 "
   ("<left>" windmove-left)
   ("<down>" windmove-down)
@@ -56,6 +56,10 @@
   ("C-<down>" hydra-move-splitter-down)
   ("C-<left>" hydra-move-splitter-left)
   ("C-<right>" hydra-move-splitter-right)
+  ("M-<up>" buf-move-up)
+  ("M-<down>" buf-move-down)
+  ("M-<left>" buf-move-left)
+  ("M-<right>" buf-move-right)
   ("SPC" nil))
 
 ;; hydra unicode -------------------------------------------
