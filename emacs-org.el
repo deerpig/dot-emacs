@@ -183,8 +183,8 @@
 			    ("@email"  . ?m)
 			      )))
 
-(add-to-list 'org-structure-template-alist
-	     '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
+(add-to-list 'org-structure-template-alist '("n" "#+BEGIN_NOTES\n?\n#+END_NOTES"))
+(add-to-list 'org-structure-template-alist '("C" "#+begin_comment\n?\n#+end_comment"))
 
 ;; use the tag :ignore: on a heading and org will export the content
 ;; of a subheading but not export the title!  Very cool!
