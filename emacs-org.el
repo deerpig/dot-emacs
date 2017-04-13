@@ -799,6 +799,10 @@ have an id"
 
 (setq org-image-actual-width nil)
 
+;; Pomodomo Timer ==========================================
+(use-package pomidor
+  :ensure t)
+
 ;; Org Return ==============================================
 ;;
 (defun scimax/org-return ()
