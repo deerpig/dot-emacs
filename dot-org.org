@@ -1495,7 +1495,7 @@ enabled.
 
 Pomodomo timer
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp 
 
 ;; Pomodomo Timer ==========================================
 (use-package pomidor
