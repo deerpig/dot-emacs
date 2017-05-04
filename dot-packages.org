@@ -114,6 +114,14 @@ in all this theme is really fucking good.  YMMV.
 
 #+end_src
 
+
+** Set Some Faces
+
+#+begin_src emacs-lisp
+;; remove the strange white line between two fringes.
+(set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
+#+end_src
+
 ** Winmove
 
 Use hydra for key-bindings
