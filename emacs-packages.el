@@ -16,6 +16,9 @@
   :config
   (load-theme 'gruvbox t))
 
+;; remove the strange white line between two fringes.
+(set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
+
 ;; Winmove =================================================
 
 (use-package windmove
@@ -202,10 +205,9 @@
 (use-package yasnippet
   :ensure t
   :config
-   ;; (setq yas-snippet-dirs
-   ;;   '("~/.dotfiles/emacs.d/yasnippets/snippets/"
-   ;;     "~/.dotfiles/emacs.d/yasnippets/yasmate/"
-   ;;     "~/.dotfiles/emacs.d/yasnippets/bootstrap/"))
+    (setq yas-snippet-dirs
+      '("~/.emacs.d/yasmate/"))
+   ;;     "~/.emacs.d/bootstrap/"))
   (setq warning-suppress-types '(yasnippet backquote-change))
   ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
