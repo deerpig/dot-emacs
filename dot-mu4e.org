@@ -43,8 +43,11 @@ for many years without complaint.
 
 Set application names.
 
+When running mbsync, run it quietly so that we don't see it pop up
+every ten minutes in a new buffer.
+
 #+begin_src emacs-lisp
-(setq mu4e-get-mail-command "mbsync -a"
+(setq mu4e-get-mail-command "mbsync -aqV"
       mu4e-mu-binary (executable-find "mu"))
 
 #+end_src
@@ -102,12 +105,15 @@ Set up outgoing mail using /ssmtp/.
 
 #+end_src
 
-At the moment I don't automate downloads, but I will likely try to set
-this up again in the future.
+Check for new mail every 10 minutes.  I would like to check more
+often, but even when running asynchronously, it still slows things
+down.
 
 #+begin_src emacs-lisp
-(setq mu4e-update-interval nil
-      org-mu4e-link-query-in-header-mode nil)
+;; check mail every 15 minutes
+(setq
+ mu4e-change-filenames-when-moving t
+ mu4e-update-interval 900)
 #+end_src
 
 Open URLs in the default external browser by hitting <return> when the
