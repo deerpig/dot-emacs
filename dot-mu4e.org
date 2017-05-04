@@ -119,10 +119,16 @@ down.
 
 # Notifications
 
-Use mu4e-alert together with notify-send to pop up notifications on
-the desktop.
+Use mu4e-alert together with the external package notify-send to pop
+up notifications on the desktop.  You get a nice little envelope icon
+in the mode-line and an unread email count.
+
+ - [[https://github.com/iqbalansari/mu4e-alert]]
 
 #+begin_src emacs-lisp
+
+;; me4e-alert ----------------------------------------------
+
 (use-package mu4e-alert
   :ensure t
   :config
