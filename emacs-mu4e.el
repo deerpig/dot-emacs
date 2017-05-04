@@ -49,19 +49,39 @@
  mu4e-change-filenames-when-moving t
  mu4e-update-interval 900)
 
+(use-package mu4e-alert
+  :ensure t
+  :config
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-set-default-style 'libnotify)
+  (setq mu4e-alert-interesting-mail-query
+        (concat "(maildir:/chenla/INBOX AND date:today..now"
+                " OR maildir:/gmail/INBOX AND date:today..now"
+                " AND flag:unread"))
+
+  (alert-add-rule
+   :category "mu4e-alert"
+   :predicate (lambda (_) (string-match-p "^mu4e-" (symbol-name major-mode)))
+   :continue t)
+
+  ;; display stuff on modeline as well as notify
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
+  )
+
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
 
 ;; The bookmarks for the main screen
 (setq mu4e-bookmarks
           `(;;(,(mlh-mu4e-unread-mail-query) "New messages"         ?b)
-            ;;("maildir:/elastic/build"      "Build failures"       ?B)
-            ("date:today..now NOT T"       "Today's messages"     ?t)
+            ;;("maildir:/elastic/build"      "Build failures"       ?B) 
+           ("date:today..now NOT T"       "Today's messages"     ?t)
             ("date:7d..now NOT T"          "Last 7 days"          ?w)
             ("maildir:/chenla/INBOX"       "Chenla"               ?c)
             ("maildir:/gmail/INBOX"        "Deerpig"              ?d)
             ("maildir:/cas/github"         "Casnak"               ?n)
-            ("maildir:/path/INBOX"         "Pathmazing"           ?p)
+          ;;  ("maildir:/path/INBOX"         "Pathmazing"           ?p)
             ("maildir:/chenla/INBOX OR maildir:/gmail/INBOX OR maildir:/path/INBOX"
              "All Mail" ?a)))
 
