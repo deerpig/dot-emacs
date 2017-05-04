@@ -8,7 +8,7 @@
 (require 'mu4e)
 (require 'org-mu4e)
 
-(setq mu4e-get-mail-command "mbsync -a"
+(setq mu4e-get-mail-command "mbsync -aqV"
       mu4e-mu-binary (executable-find "mu"))
 
 (setq mu4e-attachment-dir  "~/Downloads")
@@ -44,8 +44,10 @@
       ;;message-sendmail-envelope-from 'header
 )
 
-(setq mu4e-update-interval nil
-      org-mu4e-link-query-in-header-mode nil)
+;; check mail every 15 minutes
+(setq
+ mu4e-change-filenames-when-moving t
+ mu4e-update-interval 900)
 
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
