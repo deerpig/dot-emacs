@@ -49,6 +49,8 @@
  mu4e-change-filenames-when-moving t
  mu4e-update-interval 900)
 
+;; me4e-alert ----------------------------------------------
+
 (use-package mu4e-alert
   :ensure t
   :config
@@ -93,3 +95,5 @@
 			       (buffer-string)))
 ;; message-signature-file NOT used by mu4e
 (setq message-signature-file "~/.dotfiles/signature")
+
+;;(mu4e t)
