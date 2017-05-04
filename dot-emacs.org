@@ -187,6 +187,9 @@ you are trying to debug a broken init file on startup....
   (require 'flash-paren)
   (flash-paren-mode 1)
 
+  ;; remove the strange white line between two fringes.
+  (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
+
 #+end_src
 
 That feels better already.
