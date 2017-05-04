@@ -41,6 +41,9 @@
 (require 'flash-paren)
 (flash-paren-mode 1)
 
+;; remove the strange white line between two fringes.
+(set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
+
 ;; Start the emacs-client ==================================
 (server-start)
 
@@ -59,38 +62,9 @@
 ;; External path search ====================================
 
 (add-to-list 'load-path "~/emacs-lisp")
-(add-to-list 'load-path "~/emacs-lisp/test")
 (add-to-list 'load-path "~/emacs-lisp/emacs-wiki-deerpig")
-(add-to-list 'load-path "~/emacs-lisp/docs")
-(add-to-list 'load-path "~/emacs-lisp/uri")
-(add-to-list 'load-path "~/emacs-lisp/remember")
-(add-to-list 'load-path "~/emacs-lisp/psgml")
-(add-to-list 'load-path "~/emacs-lisp/ecb")
-(add-to-list 'load-path "~/emacs-lisp/semantic")
-(add-to-list 'load-path "~/emacs-lisp/tex")
-(add-to-list 'load-path "~/emacs-lisp/ses")
 (add-to-list 'load-path "~/emacs-lisp/burr")
-(add-to-list 'load-path "~/emacs-lisp/sxml-mode")
-(add-to-list 'load-path "~/emacs-lisp/xpath")
-
-(add-to-list 'load-path (expand-file-name "~/emacs-lisp/w3/lisp"))
-(add-to-list 'load-path "~/emacs-lisp/elib-1.0")
-(add-to-list 'load-path "~/emacs-lisp/regexp-info")
-(add-to-list 'load-path "~/emacs-lisp/edb")
-(add-to-list 'load-path "~/emacs-lisp/xtla")
-(add-to-list 'load-path "~/emacs-lisp/wl/elmo")
-(add-to-list 'load-path "~/emacs-lisp/etask")
 (add-to-list 'load-path "~/emacs-lisp/burs")
-(add-to-list 'load-path "~/emacs-lisp/atom-blogger")
-
-(add-to-list 'load-path "~/emacs-lisp/emacs-atom-api")
-(add-to-list 'load-path "~/emacs-lisp/nxhtml")
-(add-to-list 'load-path "~/emacs-lisp/hyperbole")
-(add-to-list 'load-path "~/emacs-lisp/emacs-jabber")
-(add-to-list 'load-path "~/emacs-lisp/jd-el")
-(add-to-list 'load-path "~/emacs-lisp/google-contacts")
-(add-to-list 'load-path "~/emacs-lisp/multiple-cursors.el")
-(add-to-list 'load-path "~/emacs-lisp/emacs-async")
 
 ;; Prefer UTF-8 over Latin-1 ===============================
 
