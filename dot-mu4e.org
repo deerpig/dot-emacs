@@ -191,3 +191,13 @@ Finally set up sig files.
 (setq message-signature-file "~/.dotfiles/signature")
 
 #+end_src
+
+Load mu4e when emacs starts up.
+
+Commented out for now.  Email is already being checked and downloaded,
+so not sure why we need to start mu4e as well.  I don't mind typing
+M-x mu4e and there are many times I want to run emacs but not mu4e.
+
+#+begin_src emacs-lisp
+;;(mu4e t)
+#+end_src
