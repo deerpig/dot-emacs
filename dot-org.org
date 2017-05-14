@@ -787,30 +787,6 @@ insert-epoch
 
 
 
-** Org Jekyll
-
-I thought this was a new package -- should have looked at it more
-closely.  Not using it as my existing setup seems to do the job.
-
-- [[http://juanreyero.com/open/org-jekyll/][org-jekyll, export blog posts from org-mode]]
-
-
-#+begin_quote
-Do not finish an entry with #+end_quote
-
-It messes things up pretty bad. Add an empty line at the end. I don't
-know yet why this happens.
-
-#+end_quote
-
-#+begin_src emacs-lisp :tangle no
-(use-package org-jekyll
-  :ensure t
-  :config
-)
-  
-#+end_src
-
 ** Jekyll Projects
 
 This section needs to be broken up and better documented.
@@ -835,16 +811,10 @@ This section needs to be broken up and better documented.
 	       :base-directory "~/proj/chenla/chenla-org/"
 	       :base-extension "org"
 	       :publishing-directory  ,chenla-publish-blog-dir
-           :site-root  "http://chenla.org"
-           :jekyll-sanitize-permalinks t
 	       :recursive t
 	       :publishing-function org-html-publish-to-html
 	       :headline-levels 4
-           :section-numbers nil
            :table-of-contents nil
-           :auto-index nil
-           :auto-preamble nil
-           :body-only nil 
 	       :html-extension "html")
        
 	      ("chenla-static"
@@ -905,14 +875,30 @@ This section needs to be broken up and better documented.
 deploy
 :END:
 
+** Org-octopress
+
+[[https://github.com/yoshinari-nomura/org-octopress][ - GitHub - yoshinari-nomura/org-octopress: org-mode in octopress]]
+
+Required by org-subtree which uses ox-jekyll.el
+
+#+begin_src emacs-lisp
+(use-package org-octopress
+  :ensure t)
+#+end_src
 
 
 ** Export Subtree
 
+Code from:
+
+  - [[https://github.com/Malabarba/ox-jekyll-subtree/blob/master/ox-jekyll-subtree.el][Malabarba/ox-jekyll-subtree]] | GitHub
+
 #+begin_src emacs-lisp
 ;; Export for Jekyll subtrees ------------------------------
 
+
 (load-file "~/emacs-lisp/ox-jekyll-subtree.el")
+;;(load-file "~/emacs-lisp/ox-jekyll.el")
 (autoload 'endless/export-to-blog "jekyll-once")
 (setq org-jekyll-use-src-plugin t)
 
@@ -939,11 +925,6 @@ deploy
 (setq endless/blog-base-url "http://chenla.org/")
 (setq endless/blog-dir (expand-file-name "~/proj/chenla/chenla-org/"))
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-/home/deerpig/proj/chenla/chenla-org/
-:END:
 
 ** Whitespace
 
