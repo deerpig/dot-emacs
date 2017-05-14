@@ -785,6 +785,32 @@ This function will be used for setting version numbers in BMF.
 insert-epoch
 :END:
 
+
+
+** Org Jekyll
+
+
+- [[http://juanreyero.com/open/org-jekyll/][org-jekyll, export blog posts from org-mode]]
+
+
+#+begin_quote
+Do not finish an entry with #+end_quote
+
+It messes things up pretty bad. Add an empty line at the end. I don't
+know yet why this happens.
+
+#+end_quote
+
+
+
+#+begin_src emacs-lisp
+(use-package org-jekyll
+  :ensure t
+  :config
+)
+  
+#+end_src
+
 ** Jekyll Projects
 
 This section needs to be broken up and better documented.
@@ -792,44 +818,43 @@ This section needs to be broken up and better documented.
 #+begin_src emacs-lisp
 ;; Jekyll Projects =========================================
 
+(setq deerpig-publish-blog-dir "")
+(setq chenla-publish-blog-dir  "~/proj/chenla/build/chenla-html/")
+
+
 (setq org-html-htmlize-output-type 'css)
+
+
+;; unset for localization
+;;(setq org-jekyll-lang-subdirs '(("en" . "en/")))
+;;(setq org-jekyll-lang-subdirs '(("kh" . "kh/")))
 
 (require 'ox-publish)
 (setq org-publish-project-alist
-      (quote (("orgai-docs"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
+      (quote (("chenla-html"
+	       :base-directory "~/proj/chenla/chenla-org/"
 	       :base-extension "org"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-html-publish-to-html
-	       :headline-levels 6
-	       :html-extension "html")
-	      ("orgai-static"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
-	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-publish-attachment)
-
-	      ("orgai" :components ("orgai-docs" "orgai-static"))
-
-	      ("deerpig-docs"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
-	       :base-extension "org"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :publishing-directory  ,chenla-publish-blog-dir
+           :site-root  "http://chenla.org"
+           :jekyll-sanitize-permalinks t
 	       :recursive t
 	       :publishing-function org-html-publish-to-html
 	       :headline-levels 4
+           :section-numbers nil
+           :table-of-contents nil
+           :auto-index nil
+           :auto-preamble nil
+           :body-only nil 
 	       :html-extension "html")
        
-	      ("deerpig-static"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
+	      ("chenla-static"
+	       :base-directory "~/proj/chenla/chenla-org/"
 	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :publishing-directory ,chenla-publish-blog-dir
 	       :recursive t
 	       :publishing-function org-publish-attachment)
        
-	      ("deerpig" :components ("deerpig-docs" "deerpig-static"))
+	      ("chenla" :components ("chenla-html" "chenla-static"))
 
 
 	      ("core-docs"
@@ -879,6 +904,8 @@ This section needs to be broken up and better documented.
 :RESULTS:
 deploy
 :END:
+
+
 
 ** Export Subtree
 
