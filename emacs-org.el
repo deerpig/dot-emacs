@@ -342,44 +342,37 @@
 
 ;; Jekyll Projects =========================================
 
+(setq deerpig-publish-blog-dir "")
+(setq chenla-publish-blog-dir  "~/proj/chenla/build/chenla-html/")
+
+
 (setq org-html-htmlize-output-type 'css)
+
+
+;; unset for localization
+;;(setq org-jekyll-lang-subdirs '(("en" . "en/")))
+;;(setq org-jekyll-lang-subdirs '(("kh" . "kh/")))
 
 (require 'ox-publish)
 (setq org-publish-project-alist
-      (quote (("orgai-docs"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
+      (quote (("chenla-html"
+	       :base-directory "~/proj/chenla/chenla-org/"
 	       :base-extension "org"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-html-publish-to-html
-	       :headline-levels 6
-	       :html-extension "html")
-	      ("orgai-static"
-	       :base-directory "~/proj/path/ERP-Doc/org/"
-	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/path/orgai-www/"
-	       :recursive t
-	       :publishing-function org-publish-attachment)
-
-	      ("orgai" :components ("orgai-docs" "orgai-static"))
-
-	      ("deerpig-docs"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
-	       :base-extension "org"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :publishing-directory  ,chenla-publish-blog-dir
 	       :recursive t
 	       :publishing-function org-html-publish-to-html
 	       :headline-levels 4
+           :table-of-contents nil
 	       :html-extension "html")
        
-	      ("deerpig-static"
-	       :base-directory "~/proj/deerpig/deerpig-install/"
+	      ("chenla-static"
+	       :base-directory "~/proj/chenla/chenla-org/"
 	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
-	       :publishing-directory "~/proj/deerpig/deerpig-www/"
+	       :publishing-directory ,chenla-publish-blog-dir
 	       :recursive t
 	       :publishing-function org-publish-attachment)
        
-	      ("deerpig" :components ("deerpig-docs" "deerpig-static"))
+	      ("chenla" :components ("chenla-html" "chenla-static"))
 
 
 	      ("core-docs"
@@ -423,9 +416,14 @@
 ;; 	       (replace-match "---"))
 ;;   ))
 
+(use-package org-octopress
+  :ensure t)
+
 ;; Export for Jekyll subtrees ------------------------------
 
+
 (load-file "~/emacs-lisp/ox-jekyll-subtree.el")
+;;(load-file "~/emacs-lisp/ox-jekyll.el")
 (autoload 'endless/export-to-blog "jekyll-once")
 (setq org-jekyll-use-src-plugin t)
 
