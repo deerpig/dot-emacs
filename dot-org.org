@@ -789,6 +789,8 @@ insert-epoch
 
 ** Org Jekyll
 
+I thought this was a new package -- should have looked at it more
+closely.  Not using it as my existing setup seems to do the job.
 
 - [[http://juanreyero.com/open/org-jekyll/][org-jekyll, export blog posts from org-mode]]
 
@@ -801,9 +803,7 @@ know yet why this happens.
 
 #+end_quote
 
-
-
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package org-jekyll
   :ensure t
   :config
