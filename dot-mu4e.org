@@ -105,15 +105,15 @@ Set up outgoing mail using /ssmtp/.
 
 #+end_src
 
-Check for new mail every 10 minutes.  I would like to check more
+Check for new mail every 30 minutes.  I would like to check more
 often, but even when running asynchronously, it still slows things
 down.
 
 #+begin_src emacs-lisp
-;; check mail every 15 minutes
+;; check mail every 30 minutes
 (setq
  mu4e-change-filenames-when-moving t
- mu4e-update-interval 900)
+ mu4e-update-interval 1800)
 #+end_src
 
 
