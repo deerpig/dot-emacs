@@ -206,8 +206,8 @@
   :ensure t
   :config
     (setq yas-snippet-dirs
-      '("~/.emacs.d/yasmate/"))
-   ;;     "~/.emacs.d/bootstrap/"))
+      '("~/.emacs.d/yasmate/"
+        "~/.emacs.d/snippets/"))
   (setq warning-suppress-types '(yasnippet backquote-change))
   ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
