@@ -45,9 +45,9 @@
 )
 
 ;; check mail every 30 minutes
-(setq
- mu4e-change-filenames-when-moving t
- mu4e-update-interval 1800)
+;;(setq
+;; mu4e-change-filenames-when-moving t
+;; mu4e-update-interval 1800)
 
 ;; me4e-alert ----------------------------------------------
 
