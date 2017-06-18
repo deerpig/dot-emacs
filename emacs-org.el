@@ -265,7 +265,7 @@
 	     
 	     ("L" "Link" entry (file "~/org/refile.org") ;; create link
 	      "* LINK %? %^L %^g \n:PROPERTIES:\n:CREATED:   %T\n:ID:       %(org-id-new)\n:END:\n")
-	      ("b" "BibTex" plain (file "~/org/ref.org")
+	      ("b" "BibTex" plain (file "~/org/ref.bib")
                "\n\n\n\n%?")
 	      ("c" "Contacts" entry (file "~/org/contacts.org")
 	       "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n"))))
