@@ -334,22 +334,8 @@ org-ref: citations, cross-references, indexes, glossaries and bibtex
 utilities for org-mode
 #+end_quote
 
-And yet I'm not using it... yet.  But I have a good excuse :)
 
-References are an important part of what we will integrate into BMF.
-At present I maintain a BibTex database like many other scholars and
-scientists.  But my next step will be to convert the BibTex database
-into a literate BibTex database -- where each reference will be a
-separate heading and include a lot more information than you can
-presently keep inside BibTex.  The idea is to then tangle the file so
-that a traditional BibTex database is generated.  That's not
-difficult, but I am still not sure how this will interact with Org-Ref
-which is very much based on the BibTex textfile database world.  There
-are so many cool lookup tools in Org-Ref that I want to work out how
-to be able to add references from Org-Ref and still have a primary
-reference database that will be using BMF Literate References.
-
-When I do tackle it, this is where to begin:
+Where to begin:
 
   - [[https://github.com/jkitchin/org-ref][Org-Ref]] | jkitchin GitHub
   - [[https://www.youtube.com/watch?v=2t925KRBbFc][Org Ref]] | YouTube
