@@ -292,7 +292,7 @@ Look up unicode characters using helm interface
 Look up BibTex entries in local BibTex database using helm interface.
 
  - [[https://github.com/tmalsburg/helm-bibtex][tmalsburg/helm-bibtex: Search and manage bibliographies in Emacs]]
-
+ - [[https://github.com/cpitclaudel/biblio.el/blob/master/README.md][biblio.el/README.md at master · cpitclaudel/biblio.el]]
 
 #+begin_src emacs-lisp
 
