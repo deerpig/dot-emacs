@@ -383,6 +383,22 @@ When I do tackle it, this is where to begin:
 
 #+end_src
 
+** Interleave Mode
+
+[[https://github.com/rudolfochrist/interleave][rudolfochrist/interleave: Emacs minor mode to interleave notes and text books]]
+
+#+begin_src emacs-lisp
+
+;; Interleave Mode ==========================================
+
+;; Interleave org notes in pdf files
+
+  (use-package interleave
+    :ensure t
+    :config
+)
+#+end_src
+
 ** SSH
 
 #+begin_src emacs-lisp
