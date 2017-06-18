@@ -103,29 +103,29 @@
   )
 
 ;; Org-Ref =================================================
-;; 
+
 ;; Org-ref is for interactively adding references to org documents
 ;; as they are being composed and exported.
 
-;; (use-package org-ref
-;;   :ensure t
-;;   :config
-;;   (setq reftex-default-bibliography '("~/org/biblio.bib"))
-;;   (setq org-ref-ref-library 'org-ref-helm-cite)
-  
-;;   (setq org-ref-bibliography-notes    "~/org/biblio.bib"
-;; 	org-ref-default-bibliography  "~/org/bibtex-pdfs"
-;; 	org-ref-pdf-directory         "~/htdocs/lib")
+(use-package org-ref
+  :ensure t
+  :config
+  (setq reftex-default-bibliography '("~/org/biblio.bib"))
+  (setq org-ref-ref-library 'org-ref-helm-cite)
 
-;;   (setq bibtex-completion-bibliography "~/org/biblio.bib"
-;; 	bibtex-completion-library-path "~/htdocs/lib"
-;; 	bibtex-completion-notes-path   "~/org")
-  
-  ;; open pdf with system pdf viewer (works on mac)
+  (setq org-ref-bibliography-notes    "~/org/biblio.bib"
+	org-ref-default-bibliography  "~/org/bibtex-pdfs"
+	org-ref-pdf-directory         "~/htdocs/lib")
+
+  (setq bibtex-completion-bibliography "~/org/biblio.bib"
+	bibtex-completion-library-path "~/htdocs/lib"
+	bibtex-completion-notes-path   "~/org")
+
+ ;; open pdf with system pdf viewer (works on mac)
   ;; (setq bibtex-completion-pdf-open-function
   ;; 	(lambda (fpath)
   ;; 	  (start-process "open" "*open*" "open" fpath)))
-;;  )
+ )
 
 ;; SSH =====================================================
 
