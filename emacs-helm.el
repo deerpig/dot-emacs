@@ -120,7 +120,8 @@
   :ensure t
   :init
   (autoload 'helm-bibtex "helm-bibtex" "" t)
-  (setq bibtex-completion-bibliography '("~/org/biblio.bib" "~/org/ref.org"))
+  (setq helm-bibtex-bibliography '("~/org/biblio.bib" "~/org/ref.bib"))
+  (setq bibtex-completion-bibliography '("~/org/biblio.bib" "~/org/ref.bib"))
   (setq bibtex-completion-pdf-field "file")
   ;;(setq bibtex-completion-additional-search-fields '(keywords))
   (setq bibtex-completion-pdf-symbol "⌘")
