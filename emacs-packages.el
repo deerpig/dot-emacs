@@ -127,6 +127,15 @@
   ;; 	  (start-process "open" "*open*" "open" fpath)))
  )
 
+;; Interleave Mode ==========================================
+
+;; Interleave org notes in pdf files
+
+  (use-package interleave
+    :ensure t
+    :config
+)
+
 ;; SSH =====================================================
 
 ;; may or may not help emacs not prompt for ssh key passphrases
