@@ -29,8 +29,7 @@ etc. all fall into the same category.
 
 
 * Hydras
-ngle: emacs-hydra.el
-:EN
+
 ** File Header
 
 #+begin_src emacs-lisp
@@ -99,7 +98,7 @@ it won't come to that :)
     (setq key-chord-one-key-delay 0.16)
     (setq key-chord-two-key-delay 0.16)
     (key-chord-mode 1)
-    ;;(key-chord-define-global "1q"     ')
+    (key-chord-define-global "1q"     'hydra-badge/body)
     (key-chord-define-global "2w"     'hydra-window/body)
     (key-chord-define-global "3e"     'hydra-elfeed/body)
     (key-chord-define-global "4r"     'hydra-rectangle/body)
@@ -111,11 +110,6 @@ it won't come to that :)
     (key-chord-define-global "0p"     'hydra-calendar/body)
     ))
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-nil
-:END:
 
 ** Window Management Hydra
 
@@ -223,7 +217,7 @@ character is inserted and the hydra exits.
 #+begin_src emacs-lisp
 ;; hydra unicode -------------------------------------------
 
-(defhydra hydra-unicode (:color blue :hint nil)
+(defhydra hydra-unicode (:color pink :hint nil :timeout 20)
   "
                                                                          ╭─────────┐
                                                                          │ Unicode │
@@ -737,3 +731,51 @@ Hydra for the elfeed news reader.
 :RESULTS:
 hydra-elfeed/body
 :END:
+** Badge Hydra
+
+#+begin_src emacs-lisp
+(defhydra hydra-badge (:color pink :hint nil :timeout 20)
+  "
+                                                                         ╭─────────┐
+                                                                         │ Unicode │
+ ╭───────────────────────────────────────────────────────────────────────┴─────────╯
+  Misc     :  made-by  [_m_]   licence [_l_]
+  Category :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
+  Entity   :  tl;dr    [_et_]  pattern [_ea_]  place    [_eg_]  event [_ee_] 
+              person   [_ep_]  concept [_ec_]  material [_em_]  blob  [_eb_] 
+              TOC      [_eo_]
+  Type     :  bug      [_tb_]  feature [_tf_]  request  [_tr_]  wish [_tw_] 
+              moonshot [_tm_]
+  Tag      :  tag      [_tg_]
+"
+
+;; Misc
+("m"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]"))) ;; made-by
+("l"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]"))) ;; licence
+;; Category 
+("cp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-primer-56B4E9.svg?style=flat-square]]")))  ;; primer
+("cd" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-deploy-0072B2.svg?style=flat-square]]")))  ;; deploy
+("cj" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-project-D55E00.svg?style=flat-square]]"))) ;; project
+;; Entity Types
+("et" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-tl;dr-0072B2.svg?style=flat-square]]")))    ;; tl;dr
+("ea" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-pattern-0072B2.svg?style=flat-square]]")))  ;; pattern
+("eg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-place-0072B2.svg?style=flat-square]]")))    ;; place
+("ee" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-event-0072B2.svg?style=flat-square]]")))    ;; event
+("ep" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-person-0072B2.svg?style=flat-square]]")))   ;; person
+("ec" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-concept-0072B2.svg?style=flat-squae]]")))   ;; concept
+("em" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-material-0072B2.svg?style=flat-square]]"))) ;; material
+("eb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-blob-0072B2.svg?style=flat-square]]")))     ;; blob
+("eo" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]")))      ;; TOV
+;; Tag
+("tg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/tag-v1.0.1-0072B2.svg?style=flat-square]]")))      ;; tag 
+;; Type
+("tb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-bug-CC79A7.svg?style=flat-square]]")))        ;; bug
+("tf" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-feature-D55E00.svg?style=flat-square]]")))    ;; feature
+("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-request-56B4E9.svg?style=flat-square]]")))    ;; request
+("tw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-wish-D55E00.svg?style=flat-square]]")))       ;; wish
+("tm" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-moonshot-999999.svg?style=flat-square]]")))   ;; moonshot
+("<SPC>" nil nil))
+
+#+end_src
+
+
