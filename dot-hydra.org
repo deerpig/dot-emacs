@@ -737,15 +737,19 @@ hydra-elfeed/body
 (defhydra hydra-badge (:color pink :hint nil :timeout 20)
   "
                                                                          ╭─────────┐
-                                                                         │ Unicode │
+                                                                         │ Badges  │
  ╭───────────────────────────────────────────────────────────────────────┴─────────╯
   Misc     :  made-by  [_m_]   licence [_l_]
   Category :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
+
   Entity   :  tl;dr    [_et_]  pattern [_ea_]  place    [_eg_]  event [_ee_] 
-              person   [_ep_]  concept [_ec_]  material [_em_]  blob  [_eb_] 
-              TOC      [_eo_]
+              person   [_ep_]  concept [_ec_]  material [_em_]  blob  [_eb_]  TOC     [_eo_]
+
+  Status   :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
+
   Type     :  bug      [_tb_]  feature [_tf_]  request  [_tr_]  wish [_tw_] 
               moonshot [_tm_]
+
   Tag      :  tag      [_tg_]
 "
 
@@ -774,6 +778,12 @@ hydra-elfeed/body
 ("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-request-56B4E9.svg?style=flat-square]]")))    ;; request
 ("tw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-wish-D55E00.svg?style=flat-square]]")))       ;; wish
 ("tm" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-moonshot-999999.svg?style=flat-square]]")))   ;; moonshot
+;; Status
+("ss" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-stub-CC79A7.svg?style=flat-square]]")))      ;; stub
+("sw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]")))       ;; wip
+("sd" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-draft-E69F00.svg?style=flat-square]]")))     ;; draft
+("sr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-rfc-009E73.svg?style=flat-square]]")))       ;; rfc
+("sv" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-release-0072B2.svg?style=flat-square]]")))   ;; release
 ("<SPC>" nil nil))
 
 #+end_src
