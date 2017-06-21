@@ -740,9 +740,10 @@ hydra-elfeed/body
                                                                          │ Badges  │
  ╭───────────────────────────────────────────────────────────────────────┴─────────╯
   Misc     :  made-by  [_m_]   licence [_l_]
+
   Category :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
 
-  Entity   :  tl;dr    [_et_]  pattern [_ea_]  place    [_eg_]  event [_ee_] 
+  Entity   :  tl;dr    [_et_]  pattern [_ea_]  place    [_eg_]  event [_ee_]  README  [_er_]
               person   [_ep_]  concept [_ec_]  material [_em_]  blob  [_eb_]  TOC     [_eo_]
 
   Status   :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
@@ -769,7 +770,8 @@ hydra-elfeed/body
 ("ec" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-concept-0072B2.svg?style=flat-squae]]")))   ;; concept
 ("em" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-material-0072B2.svg?style=flat-square]]"))) ;; material
 ("eb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-blob-0072B2.svg?style=flat-square]]")))     ;; blob
-("eo" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]")))      ;; TOV
+("eo" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]")))      ;; TOC
+("er" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-readme-0072B2.svg?style=flat-square]]")))   ;; README
 ;; Tag
 ("tg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/tag-v1.0.1-0072B2.svg?style=flat-square]]")))      ;; tag 
 ;; Type
