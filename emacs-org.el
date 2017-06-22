@@ -248,7 +248,7 @@
                "* TODO %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:REF:      %a\n:END:\n")
               ("n" "Note" entry (file "~/org/refile.org")
                "* NOTES %T %?\n:PROPERTIES:\n:CREATED: %T\n:ID:      %(org-id-new)\n:REF:     %a\n:END:\n")
-	      ("q" "Quote" entry (file "~/org/refile.org")
+	          ("q" "Quote" entry (file "~/org/refile.org")
                "* QUOTE \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n\n#+begin_quote\n%?\n#+end_quote")
               ("j" "Journal" entry (file+datetree "~/org/diary.org")
                "* %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
@@ -258,19 +258,20 @@
                "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("e" "Email" entry (file "~/org/refile.org")
                "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n") 
-	     ("h" "Habit" entry (file "~/org/habits.org")
-	      "** NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
-	     ("l" "Link" entry (file "~/org/refile.org") ;; insert org link
-	      "* LINK %? %^C %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
-	     
-	     ("L" "Link" entry (file "~/org/refile.org") ;; create link
-	      "* LINK %? %^L %^g \n:PROPERTIES:\n:CREATED:   %T\n:ID:       %(org-id-new)\n:END:\n")
-	      ("b" "BibTex" plain (file "~/org/ref.bib")
+	          ("H" "Habit" entry (file "~/org/habits.org")
+	           "** NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
+              ("h" "Hoard" entry (file "~/proj/chenla/hoard/refile.org")
+               "* BURR %?\n")
+              ("h" "Hoard" entry (file "~/proj/chenla/hoard/refile.org")
+               "* BURR %?\n")
+              ("l" "Link" entry (file "~/org/refile.org") ;; insert org link
+	           "* LINK %? %^C %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+	          ("L" "Link" entry (file "~/org/refile.org") ;; create link
+	           "* LINK %? %^L %^g \n:PROPERTIES:\n:CREATED:   %T\n:ID:       %(org-id-new)\n:END:\n")
+	          ("b" "BibTex" plain (file "~/org/ref.bib")
                "\n\n\n\n%?")
-	      ("c" "Contacts" entry (file "~/org/contacts.org")
-	       "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n"))))
-
-
+	          ("c" "Contacts" entry (file "~/org/contacts.org")
+	           "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n"))))
 ;;	      ("c" "Contacts" entry (file "~/org/contacts.org")
 ;;	       "* %(org-contacts-template-name)\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:    %\1 %\1\n:EMAIL: %(org-contacts-template-email)\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
 
