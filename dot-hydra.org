@@ -741,45 +741,45 @@ hydra-elfeed/body
  ╭───────────────────────────────────────────────────────────────────────┴─────────╯
   Misc     :  made-by  [_m_]   licence [_l_]
 
-  Category :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
+  Class  :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
 
-  Entity   :  tl;dr    [_et_]  pattern [_ea_]  place    [_eg_]  event [_ee_]  README  [_er_]
-              person   [_ep_]  concept [_ec_]  material [_em_]  blob  [_eb_]  TOC     [_eo_]
+  Type   :  tl;dr    [_tt_]  pattern [_ta_]  place    [_tg_]  event [_te_]  README  [_tr_]
+            person   [_tp_]  concept [_tc_]  material [_tm_]  blob  [_tb_]  TOC     [_to_]
 
-  Status   :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
+  Status :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
 
-  Type     :  bug      [_tb_]  feature [_tf_]  request  [_tr_]  wish [_tw_] 
-              moonshot [_tm_]
+  Issue   : bug      [_ib_]  feature [_if_]  request  [_ir_]  wish [_iw_] 
+            moonshot [_im_]
 
-  Tag      :  tag      [_tg_]
+  Tag    :  tag      [_tg_]
 "
 
 ;; Misc
 ("m"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]"))) ;; made-by
 ("l"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]"))) ;; licence
 ;; Category 
-("cp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-primer-56B4E9.svg?style=flat-square]]")))  ;; primer
-("cd" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-deploy-0072B2.svg?style=flat-square]]")))  ;; deploy
-("cj" (lambda () (interactive) (insert "[[https://img.shields.io/badge/category-project-D55E00.svg?style=flat-square]]"))) ;; project
-;; Entity Types
-("et" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-tl;dr-0072B2.svg?style=flat-square]]")))    ;; tl;dr
-("ea" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-pattern-0072B2.svg?style=flat-square]]")))  ;; pattern
-("eg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-place-0072B2.svg?style=flat-square]]")))    ;; place
-("ee" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-event-0072B2.svg?style=flat-square]]")))    ;; event
-("ep" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-person-0072B2.svg?style=flat-square]]")))   ;; person
-("ec" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-concept-0072B2.svg?style=flat-squae]]")))   ;; concept
-("em" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-material-0072B2.svg?style=flat-square]]"))) ;; material
-("eb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-blob-0072B2.svg?style=flat-square]]")))     ;; blob
-("eo" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-TOC-0072B2.svg?style=flat-square]]")))      ;; TOC
-("er" (lambda () (interactive) (insert "[[https://img.shields.io/badge/entity-readme-0072B2.svg?style=flat-square]]")))   ;; README
+("cp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-primer-56B4E9.svg?style=flat-square]]")))  ;; primer
+("cd" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-deploy-0072B2.svg?style=flat-square]]")))  ;; deploy
+("cj" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-project-D55E00.svg?style=flat-square]]"))) ;; project
+;; Type
+("tt" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-tl;dr-0072B2.svg?style=flat-square]]")))    ;; tl;dr
+("ta" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-pattern-0072B2.svg?style=flat-square]]")))  ;; pattern
+("tg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-place-0072B2.svg?style=flat-square]]")))    ;; place
+("te" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-event-0072B2.svg?style=flat-square]]")))    ;; event
+("tp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-person-0072B2.svg?style=flat-square]]")))   ;; person
+("tc" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-concept-0072B2.svg?style=flat-squae]]")))   ;; concept
+("tm" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-material-0072B2.svg?style=flat-square]]"))) ;; material
+("tb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-blob-0072B2.svg?style=flat-square]]")))     ;; blob
+("to" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-TOC-0072B2.svg?style=flat-square]]")))      ;; TOC
+("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-readme-0072B2.svg?style=flat-square]]")))   ;; README
 ;; Tag
 ("tg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/tag-v1.0.1-0072B2.svg?style=flat-square]]")))      ;; tag 
-;; Type
-("tb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-bug-CC79A7.svg?style=flat-square]]")))        ;; bug
-("tf" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-feature-D55E00.svg?style=flat-square]]")))    ;; feature
-("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-request-56B4E9.svg?style=flat-square]]")))    ;; request
-("tw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-wish-D55E00.svg?style=flat-square]]")))       ;; wish
-("tm" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-moonshot-999999.svg?style=flat-square]]")))   ;; moonshot
+;; Issue Type
+("ib" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-bug-CC79A7.svg?style=flat-square]]")))        ;; bug
+("if" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-feature-D55E00.svg?style=flat-square]]")))    ;; feature
+("ir" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-request-56B4E9.svg?style=flat-square]]")))    ;; request
+("iw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-wish-D55E00.svg?style=flat-square]]")))       ;; wish
+("im" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-moonshot-999999.svg?style=flat-square]]")))   ;; moonshot
 ;; Status
 ("ss" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-stub-CC79A7.svg?style=flat-square]]")))      ;; stub
 ("sw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]")))       ;; wip
