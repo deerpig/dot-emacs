@@ -442,13 +442,14 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
 
   Type   :  tl;dr    [_tt_]  pattern [_ta_]  place    [_tg_]  event [_te_]  README  [_tr_]
             person   [_tp_]  concept [_tc_]  material [_tm_]  blob  [_tb_]  TOC     [_to_]
+            work     [_tw_]  exp     [_tx_]  man      [_tn_]  item  [_ti_]
 
   Status :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
 
   Issue   : bug      [_ib_]  feature [_if_]  request  [_ir_]  wish [_iw_] 
             moonshot [_im_]
 
-  Tag    :  tag      [_tg_]
+  Tag    :  tag      [_g_]
 "
 
 ;; Misc
@@ -469,8 +470,12 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
 ("tb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-blob-0072B2.svg?style=flat-square]]")))     ;; blob
 ("to" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-TOC-0072B2.svg?style=flat-square]]")))      ;; TOC
 ("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-readme-0072B2.svg?style=flat-square]]")))   ;; README
+("tw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]")))          ;; Work
+("tx" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-expresssion-0072B2.svg?style=flat-square]]")))   ;; Expression
+("tn" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-manifestation-0072B2.svg?style=flat-square]]"))) ;; Manifestation
+("ti" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-instance-0072B2.svg?style=flat-square]]")))      ;; Instance
 ;; Tag
-("tg" (lambda () (interactive) (insert "[[https://img.shields.io/badge/tag-v1.0.1-0072B2.svg?style=flat-square]]")))      ;; tag 
+("g"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/tag-v1.0.1-0072B2.svg?style=flat-square]]")))      ;; tag 
 ;; Issue Type
 ("ib" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-bug-CC79A7.svg?style=flat-square]]")))        ;; bug
 ("if" (lambda () (interactive) (insert "[[https://img.shields.io/badge/issue-feature-D55E00.svg?style=flat-square]]")))    ;; feature
