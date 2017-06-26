@@ -236,6 +236,14 @@ org-store-link
 org-toggle-timestamp-type
 :END:
 
+** Human Readable Timestamp
+
+#+begin_src emacs-lisp
+(setq human-readable-stamp (concat "@" user-work-location-name
+	      " (" user-work-latitude
+	      "-" user-work-longitude ")"))
+#+end_src
+
 ** Set Directories
 
 #+begin_src emacs-lisp
