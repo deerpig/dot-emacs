@@ -238,6 +238,8 @@ org-toggle-timestamp-type
 
 ** Human Readable Timestamp
 
+Used in burr/org headers.
+
 #+begin_src emacs-lisp
 (setq human-readable-stamp (concat "@" user-work-location-name
 	      " (" user-work-latitude
