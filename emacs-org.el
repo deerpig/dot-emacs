@@ -78,6 +78,10 @@
 ;; Toggle active/inactive timestamps
 (global-set-key "\C-c\C-x=" 'org-toggle-timestamp-type)
 
+(setq human-readable-stamp (concat "@" user-work-location-name
+	      " (" user-work-latitude
+	      "-" user-work-longitude ")"))
+
 (setq org-directory "~/org"
       org-default-notes-file "~/org/refile.org"
       org-agenda-diary-file  "~/org/diary.org")
@@ -341,6 +345,19 @@
    (delete-backward-char 1))
   )
 
+
+
+(defun epoch-J2000 ()
+  "Get time in seconds from the J2000.0 epoch in
+   sec.microseconds, by subtracting seconds unix-time
+   until year 2000"
+  (replace-regexp-in-string "\n\\'" "" 
+			    (concat 
+			     (number-to-string 
+			      (round (- (string-to-number
+					 (shell-command-to-string "date +%s")) 946727935)))
+			     (shell-command-to-string "date +.%N"))))
+
 ;; Jekyll Projects =========================================
 
 (setq deerpig-publish-blog-dir "")
@@ -464,12 +481,6 @@
 
 ;; add man page url -----------------------------------------
 (provide 'org-man)
-
-;; Use org-ids in org-links --------------------------------
-
-(setq org-id-track-globally t)
-(setq org-id-link-to-org-use-id 'use-existing)
-(org-id-update-id-locations) ;; updates id-index
 
 ;; Use org-ids in org-links --------------------------------
 
