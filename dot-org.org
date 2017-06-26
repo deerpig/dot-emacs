@@ -1023,18 +1023,6 @@ nil
 
 #+end_src
 
-** Org IDs in Links
-
-#+begin_src emacs-lisp  :results none
-;; Use org-ids in org-links --------------------------------
-
-(setq org-id-track-globally t)
-(setq org-id-link-to-org-use-id 'use-existing)
-(org-id-update-id-locations) ;; updates id-index
-
-#+end_src
-
-
 ** Function: Recursively Find org files
 
 Recursively find .org files in provided directory.
