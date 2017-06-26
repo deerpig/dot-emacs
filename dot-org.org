@@ -779,13 +779,20 @@ This function will be used for setting version numbers in BMF.
   (when (looking-at "^$") ; when shell command has extra newline, delete it
    (delete-backward-char 1))
   )
+
+
+
+(defun epoch-J2000 ()
+  "Get time in seconds from the J2000.0 epoch in
+   sec.microseconds, by subtracting seconds unix-time
+   until year 2000"
+  (replace-regexp-in-string "\n\\'" "" 
+			    (concat 
+			     (number-to-string 
+			      (round (- (string-to-number
+					 (shell-command-to-string "date +%s")) 946727935)))
+			     (shell-command-to-string "date +.%N"))))
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-insert-epoch
-:END:
-
 
 
 ** Jekyll Projects
