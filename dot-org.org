@@ -783,13 +783,7 @@ This function will be used for setting version numbers in BMF.
   "Insert time in seconds from the J2000.0 epoch in
    sec.microseconds, by subtracting unix-time"
   (interactive)
-  (insert
-  (replace-regexp-in-string "\n\\'" "" 
-			    (concat 
-			     (number-to-string 
-			      (round (- (string-to-number
-					 (shell-command-to-string "date +%s")) 946727935)))
-			     (shell-command-to-string "date +.%N")))))
+  (insert (epoch-J2000)))
 
 
 (defun epoch-J2000 ()
