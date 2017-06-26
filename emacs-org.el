@@ -338,13 +338,7 @@
   "Insert time in seconds from the J2000.0 epoch in
    sec.microseconds, by subtracting unix-time"
   (interactive)
-  (insert (number-to-string (round (- (string-to-number
-     (shell-command-to-string "date +%s")) 946727935))))
-  (insert (shell-command-to-string "date +.%N"))
-  (when (looking-at "^$") ; when shell command has extra newline, delete it
-   (delete-backward-char 1))
-  )
-
+  (insert (epoch-J2000)))
 
 
 (defun epoch-J2000 ()
