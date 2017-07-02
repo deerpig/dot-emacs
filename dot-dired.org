@@ -4,7 +4,7 @@
 #+AUTHOR: Brad Collins
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: filename
+#+PROPERTY: header-args    :results drawer  :tangle dired-dot.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-dired.org
