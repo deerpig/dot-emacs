@@ -1,7 +1,30 @@
-#+TITLE:Dot Emacs: Helm Settings
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Helm  | Deerpig's Dot Emacs
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
+#+STARTUP: showall
+#+TOC: headlines 4
 #+PROPERTY: header-args    :results drawer  :tangle emacs-helm.el
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-helm.org
+:Created:   2017-07-02T17:43@Prek Leap (11.642600N-104.919210W)
+:ID:        cbc8cc6c-fda4-4675-8179-def2b338b333
+:VER:       552264254.124283259
+:GEO:       48P-491193-1287029-15
+:BXID:      pig:OLQ3-2536
+:Class:     deploy
+:Type:      work
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 * Introduction
 
