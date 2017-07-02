@@ -756,6 +756,9 @@ hydra-elfeed/body
 :END:
 ** Badge Hydra
 
+Used for inserting badges into project files.  This is designed to
+work closely with my yassnippet templates.
+
 #+begin_src emacs-lisp
 (defhydra hydra-badge (:color pink :hint nil :timeout 20)
   "
