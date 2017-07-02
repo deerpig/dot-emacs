@@ -5,7 +5,7 @@
 #+EMAIL: brad@chenla.la
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args    :results drawer  :tangle emacs-burrs.el
+#+PROPERTY: header-args    :results drawer  :tangle none
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/dot-emacs/emacs-burrs.org
@@ -49,8 +49,9 @@ those problems.
 
 A lot of this stuff required muse-mode and planner mode.
 
-It's not being tangled at the moment but I will keep it around in case
-I need to look at the code in the future and figure out how it worked.
+It's not being tangled or loaded at the moment but I will keep it
+around in case I need to look at the code in the future and figure out
+how it worked.
 
 #+begin_src emacs-lisp  :tangle no
 
