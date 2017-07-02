@@ -15,7 +15,7 @@
 :GEO:       48P-491193-1287029-15
 :BXID:      pig:OLQ3-2536
 :Class:     dotemacs
-:Type:      litprog
+:Type:      literate-program
 :Status:    wip
 :Licence:   MIT/CC BY-SA 4.0
 :END:
