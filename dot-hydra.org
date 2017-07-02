@@ -750,10 +750,6 @@ Hydra for the elfeed news reader.
    )
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-hydra-elfeed/body
-:END:
 ** Badge Hydra
 
 Used for inserting badges into project files.  This is designed to
