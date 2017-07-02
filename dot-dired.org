@@ -1,3 +1,31 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Dired | Deerpig's Dot Emacs
+#+AUTHOR: Brad Collins
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: filename
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-dired.org
+:Created:   2016-02-22@Prek Leap (11.642600N-104.919210W)
+:ID:        8d474a00-d8b9-4504-a949-13afad2c2be7
+:VER:       552263255.841293859
+:GEO:       48P-491193-1287029-15
+:BXID:      pig:XWA8-6411
+:Class:     deploy
+:Type:      work
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-deploy-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+
 #+TITLE:Dot Emacs: Dired
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
