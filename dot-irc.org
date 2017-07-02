@@ -1,7 +1,30 @@
-#+TITLE:Dot Emacs: IRC
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: IRC  | Deerpig's Dot Emacs
 #+AUTHOR: Brad Collins
 #+EMAIL: brad@chenla.la
+#+STARTUP: showall
+#+TOC: headlines 4
 #+PROPERTY: header-args    :results drawer  :tangle emacs-irc.el
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-irc.org
+:Created:   2017-07-02T18:00@Prek Leap (11.642600N-104.919210W)
+:ID:        7f15b1a6-35cb-41c5-9d12-774887bae1b2
+:VER:       552265324.660711695
+:GEO:       48P-491193-1287029-15
+:BXID:      pig:ERY6-5066
+:Class:     dotemacs
+:Type:      literate-program
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-literate%20program-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
 * Rcirc
 
