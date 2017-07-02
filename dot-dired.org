@@ -25,12 +25,6 @@
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
 
-
-#+TITLE:Dot Emacs: Dired
-#+AUTHOR: Brad Collins
-#+EMAIL: brad@chenla.la
-#+PROPERTY: header-args    :results drawer  :tangle emacs-dired.el
-
 * Dired
 
 Dired is a big deal in Emacs.  It's a full featured file manager that
