@@ -20,7 +20,7 @@
 :END:
 
 [[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
-[[https://img.shields.io/badge/class-deploy-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
 [[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]
 [[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
 [[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
