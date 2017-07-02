@@ -1,0 +1,33 @@
+#   -*- mode: org; fill-column: 60 -*-
+#+STARTUP: showall
+
+* README | Deerpig's Dotemacs
+:PROPERTIES:
+:CUSTOM_ID:
+:Name:     /home/deerpig/proj/deerpig/dot-emacs/README.org
+:Created:  2017-07-02T18:13@Prek Leap (11.642600N-104.919210W)
+:ID:       57bbbd4f-238c-4887-b9bd-f05e591687a7
+:VER:      552266054.256239396
+:GEO:      48P-491193-1287029-15
+:BXID:     pig:WGL4-6617
+:Class:    dotemacs
+:Type:     readme
+:Status:   wip
+:Licence:  MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-readme-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]] 
+
+
+This is my personal Dotemacs config.  This is not complete in any
+sense of the word.  I still haven't moved entirely over.  So it likely
+won't work if you try and run the whole thing as a complete config.
+But most of the files are being used as is.
+
+I am planning on doing a rebuild of my main desktop box in the near
+future and will use the opportunity to do a complete clean install of
+emacs and do the final work to get this complete.
