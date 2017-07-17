@@ -135,12 +135,17 @@
 	  (org-buffer-list 'files)))
 
 (setq org-refile-targets
-      '(;;(nil :maxlevel . 3)
-	;;(deerpig/org-buffer-files :maxlevel . 1)
-	("~/org/notes.org" :maxlevel . 1)
-	("~/org/quotes.org" :maxlevel . 1)
-	(org-agenda-files . (:maxlevel . 1))
-	))
+'((nil :maxlevel . 1)
+("~/org/notes.org" :maxlevel . 1)
+("~/org/quotes.org" :maxlevel . 1)
+("~/org/todo.org" :maxlevel . 1)
+("~/org/pnca.org" :maxlevel . 1)
+("~/org/repozit.org" :maxlevel . 1)
+("~/org/chenla.org" :maxlevel . 1)
+("~/org/farm.org" :maxlevel . 1)
+;;(deerpig/org-buffer-files :maxlevel . 1)
+;;(org-agenda-files . (:maxlevel . 1))
+))
 
 ;; Enable habit tracking (and a bunch of other modules)
 
