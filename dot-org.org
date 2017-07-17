@@ -494,6 +494,7 @@ org-toggle-iimage-in-org
 			    ("@blog"   . ?b)
 			    ("@work"   . ?w)
 			    ("@home"   . ?h)
+                        ("@farm"   . ?f)
 			    ("@road"   . ?r)
 			    ("@call"   . ?c)
 			    ("@email"  . ?m)
@@ -568,11 +569,6 @@ Set Keywords:
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-((sequence TODO(t) NEXT(x) | WORK(w) DONE(d)) (sequence WAITING(w@/!) HOLD(h@/!) | CANCELLED(c@/!) PHONE MEETING DELEGATED) (sequence NOTES(n) QUOTE(q) EMAIL LINK))
-:END:
-
 Set Faces for keywords:
 
 #+begin_src emacs-lisp
@@ -593,11 +589,6 @@ Set Faces for keywords:
 	))
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-((TODO :foreground red :weight bold) (NEXT :foreground blue :weight bold) (DONE :foreground green :weight bold) (NOTES . shadow) (DRAFT :foreground purple :weight bold) (CANCELLED :foreground OrangeRed :weight bold) (MEETING :foreground spring green :weight bold) (PHONE :foreground spring green :weight bold) (DELEGATED :foreground spring green :weight bold) (QUOTE :foreground yellow :weight bold) (WORK :foreground gold :weight bold) (LINK :foreground tan2 :weight bold))
-:END:
 
 Triggers:
 
