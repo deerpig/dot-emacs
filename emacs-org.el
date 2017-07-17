@@ -147,6 +147,10 @@
 ;;(org-agenda-files . (:maxlevel . 1))
 ))
 
+;; Set this if you want to use helm to choose refile-targets
+(setq org-outline-path-complete-in-steps nil)
+(setq org-completion-use-ido nil)
+
 ;; Enable habit tracking (and a bunch of other modules)
 
 (require 'org-habit)
