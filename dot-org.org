@@ -383,6 +383,12 @@ nil
 
 ** Refile Targets
 
+If you include 'org-agenda-files' it will pull up refile
+targets from your org-agenda refile file list.  I used this
+for a while but it was too messy.  I've gone back to
+specifically listing all files I want to use as targets.
+
+
 #+begin_src emacs-lisp
 ;; Refile Targets ------------------------------------------
 ;;; Use agenda files as primary refile targets
@@ -393,12 +399,17 @@ nil
 	  (org-buffer-list 'files)))
 
 (setq org-refile-targets
-      '(;;(nil :maxlevel . 3)
-	;;(deerpig/org-buffer-files :maxlevel . 1)
-	("~/org/notes.org" :maxlevel . 1)
-	("~/org/quotes.org" :maxlevel . 1)
-	(org-agenda-files . (:maxlevel . 1))
-	))
+'((nil :maxlevel . 1)
+("~/org/notes.org" :maxlevel . 1)
+("~/org/quotes.org" :maxlevel . 1)
+("~/org/todo.org" :maxlevel . 1)
+("~/org/pnca.org" :maxlevel . 1)
+("~/org/repozit.org" :maxlevel . 1)
+("~/org/chenla.org" :maxlevel . 1)
+("~/org/farm.org" :maxlevel . 1)
+;;(deerpig/org-buffer-files :maxlevel . 1)
+;;(org-agenda-files . (:maxlevel . 1))
+))
 
 #+end_src
 
