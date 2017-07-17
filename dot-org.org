@@ -411,6 +411,10 @@ specifically listing all files I want to use as targets.
 ;;(org-agenda-files . (:maxlevel . 1))
 ))
 
+;; Set this if you want to use helm to choose refile-targets
+(setq org-outline-path-complete-in-steps nil)
+(setq org-completion-use-ido nil)
+
 #+end_src
 
 #+RESULTS:
