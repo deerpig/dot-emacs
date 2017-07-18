@@ -135,7 +135,7 @@
 	  (org-buffer-list 'files)))
 
 (setq org-refile-targets
-'((nil :maxlevel . 1)
+'(
 ("~/org/notes.org" :maxlevel . 1)
 ("~/org/quotes.org" :maxlevel . 1)
 ("~/org/todo.org" :maxlevel . 1)
