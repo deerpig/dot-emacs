@@ -5,7 +5,7 @@
 #+EMAIL: brad@chenla.la
 #+STARTUP: showall
 #+TOC: headlines 4
-#+PROPERTY: header-args    :results drawer  :tangle emacs-org.el
+#+PROPERTY: header-args :results silent  :tangle emacs-org.el
 :PROPERTIES:
 :CUSTOM_ID: 
 :Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-org.org
@@ -53,12 +53,6 @@ contrib directory when installing org by hand.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-nil
-:END:
-
-
 ** File Header
 
 #+begin_src emacs-lisp :results none
@@ -96,10 +90,6 @@ modules.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-(org-bbdb org-bibtex org-crypt org-gnus org-id org-info org-bullets org-habit org-inlinetask org-irc org-mew org-mhe org-protocol org-rmail org-vm org-wl org-w3m)
-:END:
 
 ** Babel Language Evaluation
 
@@ -127,10 +117,6 @@ modules.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-((dot . graphviz-dot) (ocaml . tuareg) (elisp . emacs-lisp) (ditaa . artist) (asymptote . asy) (dot . fundamental) (sqlite . sql) (calc . fundamental) (C . c) (cpp . c++) (C++ . c++) (screen . shell-script) (shell . sh) (bash . sh))
-:END:
 ** Org Bullets
 
 Use Org Bullets with some funky unicode bullets:
@@ -163,11 +149,6 @@ Change the default bullet list and ellipsis. See:
     (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷
 #+end_src
 
-#+RESULTS:
-:RESULTS:
- ⤵
-:END:
-
 ** Key Bindings
 
 #+begin_src emacs-lisp
@@ -175,11 +156,6 @@ Change the default bullet list and ellipsis. See:
 (define-key global-map "\C-ca" 'org-agenda)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-org-agenda
-:END:
 
 ** Open Agenda Other Window
 
@@ -195,11 +171,6 @@ org-agenda
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-other-window
-:END:
-
 ** Org Speed Commands
 
 #+begin_src emacs-lisp
@@ -208,11 +179,6 @@ other-window
 (setq org-speed-commands-user (quote (("S" . widen))))
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-((S . widen))
-:END:
 
 ** Helm Org
 
@@ -226,11 +192,6 @@ other-window
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-helm-org
-:END:
-
 ** Store Links
 
 This is not only useful in Org, I use this in mu4e buffers as well.
@@ -242,11 +203,6 @@ This is not only useful in Org, I use this in mu4e buffers as well.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-org-store-link
-:END:
-
 ** Timestamps
 
 #+begin_src emacs-lisp
@@ -254,11 +210,6 @@ org-store-link
 (global-set-key "\C-c\C-x=" 'org-toggle-timestamp-type)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-org-toggle-timestamp-type
-:END:
 
 ** Human Readable Timestamp
 
@@ -279,14 +230,7 @@ Used in burr/org headers.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-~/org/diary.org
-:END:
-
 ** Misc Settings
-
-I'm sure there is cruft lurking somewhere in there here variables....
 
 Set a bunch of variables:
 
@@ -320,11 +264,6 @@ Set a bunch of variables:
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-((daily today remove-match) ---------------- (900 1100 1300 1500 1700))
-:END:
-
 ** Org Weather
 
 #+begin_src emacs-lisp
@@ -343,11 +282,6 @@ Set a bunch of variables:
   (org-weather-refresh)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-t
-:END:
 
 ** Function: Narrow/Widen Subtree
 
@@ -375,11 +309,6 @@ Commenting out for now....
 ;;  )
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-nil
-:END:
 
 ** Refile Targets
 
@@ -417,11 +346,6 @@ specifically listing all files I want to use as targets.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-((~/org/notes.org :maxlevel . 1) (~/org/quotes.org :maxlevel . 1) (org-agenda-files :maxlevel . 1))
-:END:
-
 ** Org-mode in message buffers
 
 This sounded like a good idea, but in practice is got in the way more
@@ -439,11 +363,6 @@ Commented out.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-nil
-:END:
-
 ** Habits
 
 
@@ -459,11 +378,6 @@ nil
 (setq org-habit-graph-column 50)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-50
-:END:
 
 ** Display Images
 
@@ -496,11 +410,6 @@ nil
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-org-toggle-iimage-in-org
-:END:
-
 ** Org Tag List
 
 #+begin_src emacs-lisp
@@ -515,11 +424,6 @@ org-toggle-iimage-in-org
 			    ("@email"  . ?m)
 			      )))
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-((@errand . 101) (@blog . 98) (@work . 119) (@home . 104) (@road . 114) (@call . 99) (@email . 109))
-:END:
 
 ** Org Easy Templates
 
@@ -548,11 +452,6 @@ subheading but not export the title!  Very cool!
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-nil
-:END:
-
 ** Single Tags
 
 Allow setting single tags without the menu
@@ -565,11 +464,6 @@ Allow setting single tags without the menu
   (setq org-agenda-tags-todo-honor-ignore-options t)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-t
-:END:
 
 ** Todo Keywords, Faces & Triggers
 
@@ -623,11 +517,6 @@ Triggers:
 ;;               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-((CANCELLED (ARCHIVE . t)))
-:END:
 
 ** Org Capture
 
@@ -721,11 +610,6 @@ See:
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-make-capture-frame
-:END:
-
 ** Org Contacts
 
 Change to use-package?
@@ -737,11 +621,6 @@ Change to use-package?
 (require 'org-contacts)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-org-contacts
-:END:
 
 ** Open Agenda in Other Window
 
@@ -759,11 +638,6 @@ screen it's easier to work with if agenda opens in the frame on the left.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-other-window
-:END:
-
 ** BibTex Mode
 
 Why is this in the emacs-org file?
@@ -776,10 +650,6 @@ Why is this in the emacs-org file?
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-4
-:END:
 ** Org Abbreviations
 
 This is very useful.  But I will have to revisit how I use them as we
@@ -798,11 +668,6 @@ headings and headings as well.
          ("rfc"  . "http://tools.ietf.org/html/")))
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-((bug . http://bugs.chenla.org/support/issue) (gh . https://github.com/) (rfc . http://tools.ietf.org/html/))
-:END:
 
 ** Insert Epoch
 
@@ -912,11 +777,6 @@ This section needs to be broken up and better documented.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-deploy
-:END:
-
 ** Org-octopress
 
 [[https://github.com/yoshinari-nomura/org-octopress][ - GitHub - yoshinari-nomura/org-octopress: org-mode in octopress]]
@@ -986,10 +846,6 @@ Haven't used this in a while -- perhaps it should be put into a hydra?
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-whack-whitespace
-:END:
 ** Org Man Page
 
 Does this work?
@@ -999,11 +855,6 @@ Does this work?
 (provide 'org-man)
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-org-man
-:END:
 
 ** Org Word Count
 
@@ -1020,10 +871,6 @@ Commented out.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-nil
-:END:
 ** Org MIME
 
 This code converts org markup into proper mime multipart
@@ -1040,11 +887,6 @@ See:
 ;; org mime -------------------------------------
 ;; http://kitchingroup.cheme.cmu.edu/blog/2016/10/29/Sending-html-emails-from-org-mode-with-org-mime/
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-nil
-:END:
 
 ** Org IDs in Links
 
@@ -1110,11 +952,6 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-(/home/deerpig/org/weather.org /home/deerpig/org/todo.org /home/deerpig/org/repozit.org /home/deerpig/org/refile.org /home/deerpig/org/ref.org /home/deerpig/org/quotes.org /home/deerpig/org/pnca.org /home/deerpig/org/pinboard.org /home/deerpig/org/path.org /home/deerpig/org/pat.org /home/deerpig/org/notes.org /home/deerpig/org/man.org /home/deerpig/org/links.org /home/deerpig/org/kinto.org /home/deerpig/org/key.org /home/deerpig/org/holidays.org /home/deerpig/org/habits.org /home/deerpig/org/docs/100Articles/index.org /home/deerpig/org/docs/100Articles/Wallace-FedererasReligiousExperience.org /home/deerpig/org/docs/100Articles/Didion-FarewelltotheEnchantedCity.org /home/deerpig/org/docs/AnalyticalLanguageJohwnWilkins.org /home/deerpig/org/docs/Brad_Collins-TedX-Bio.org /home/deerpig/org/docs/BrightSide.org /home/deerpig/org/docs/Careless_Love.org /home/deerpig/org/docs/ChenlaProspectus.org /home/deerpig/org/docs/ChenlaProspectusBrief.org /home/deerpig/org/docs/DerekM9Presentation.org /home/deerpig/org/docs/InternetEverythingYouNeedToKnow.org /home/deerpig/org/docs/IsGoogleMakingUsStupid.org /home/deerpig/org/docs/LonesomeRoad.org /home/deerpig/org/docs/MadDogsEnglishmen.org /home/deerpig/org/docs/SugarPalmIntroCambodia.org /home/deerpig/org/docs/TEDTalk-Philip-K-Howard.org /home/deerpig/org/docs/TheFCCSong.org /home/deerpig/org/docs/Wat_Phnom_Centre.org /home/deerpig/org/docs/asean-proposal-1.0.org /home/deerpig/org/docs/asean-proposal.org /home/deerpig/org/docs/asian-plants.org /home/deerpig/org/docs/biz/example.org /home/deerpig/org/docs/biz/ass.org /home/deerpig/org/docs/bmf/typ.org /home/deerpig/org/docs/bmf/rel.org /home/deerpig/org/docs/bmf/patt.org /home/deerpig/org/docs/bmf/guide.org /home/deerpig/org/docs/bmf/ent.org /home/deerpig/org/docs/bmf/elem.org /home/deerpig/org/docs/bmf/con.org /home/deerpig/org/docs/bmf/att.org /home/deerpig/org/docs/bmf-email-example.org /home/deerpig/org/docs/bmf-outline.org /home/deerpig/org/docs/bob-allen-talking-points.org /home/deerpig/org/docs/bunsen-install.org /home/deerpig/org/docs/burr.org /home/deerpig/org/docs/chenla-10-year-scope.org /home/deerpig/org/docs/chenla-10yr-scope-ex-sum.org /home/deerpig/org/docs/chenla-300ha-proposal.org /home/deerpig/org/docs/chenla-agroforestry-roadmap.org /home/deerpig/org/docs/chenla-agroforrestry-roadmap.org /home/deerpig/org/docs/chenla-consortia.org /home/deerpig/org/docs/chenla-ecovillage-exec-sum.org /home/deerpig/org/docs/chenla-long-boat.org /home/deerpig/org/docs/chenla-master-2014-Nov.org /home/deerpig/org/docs/chenla-ni-usaid-intro.org /home/deerpig/org/docs/chenla-opensoft-lab.org /home/deerpig/org/docs/chenla-org-and-office.org /home/deerpig/org/docs/chenla-plan-d.org /home/deerpig/org/docs/chenla-projects-2016.org /home/deerpig/org/docs/chenla-prolog.org /home/deerpig/org/docs/chenla-transactive-man.org /home/deerpig/org/docs/chenla.org /home/deerpig/org/docs/cluetrain.org /home/deerpig/org/docs/command.org /home/deerpig/org/docs/dairy-proposal-2.org /home/deerpig/org/docs/deck.org /home/deerpig/org/docs/diary.org /home/deerpig/org/docs/discog/dexter_gordan-discog.org /home/deerpig/org/docs/dropbox-at-a-glance.org /home/deerpig/org/docs/e-gov.org /home/deerpig/org/docs/eco-village-proposal.org /home/deerpig/org/docs/exercise.org /home/deerpig/org/docs/ext/steve-yegge-google-rant.org /home/deerpig/org/docs/ext/pessimist-coupland.org /home/deerpig/org/docs/ext/emacs-v-vi.org /home/deerpig/org/docs/ext/The_Case_for_Working_with_your_Hands.org /home/deerpig/org/docs/ext/TEDTalk-Michael-Pollan-Omnivores-Dilemma-transcript.org /home/deerpig/org/docs/ext/Stross-A_Working_Hypothesis.org /home/deerpig/org/docs/ext/SterlingLastViridian.org /home/deerpig/org/docs/ext/SmallIsBeautifulSchumacher.org /home/deerpig/org/docs/ext/ReportFromIronMountain.org /home/deerpig/org/docs/ext/PG526-Heart_of_Darkness.org /home/deerpig/org/docs/ext/FringeWareMission.org /home/deerpig/org/docs/ext/Clay-Shirky-Institutions-vs-collaborations.org /home/deerpig/org/docs/ext/Clay-Shirky-How-Social-Media-Can-Make-History.org /home/deerpig/org/docs/ext/Clay-Shirky-Cognitive-Surplus.org /home/deerpig/org/docs/ext/Bruce-Schneier-The-security-mirage.org /home/deerpig/org/docs/ext/Alain_de_Botton_Atheism_2.org /home/deerpig/org/docs/flagged.org /home/deerpig/org/docs/funds.org /home/deerpig/org/docs/garage.org /home/deerpig/org/docs/hanzi-grade.org /home/deerpig/org/docs/hanzi-list.org /home/deerpig/org/docs/holidays.org /home/deerpig/org/docs/how-big-is-your-vision.org /home/deerpig/org/docs/incubator-overview.org /home/deerpig/org/docs/index.org /home/deerpig/org/docs/intro-to-linux.org /home/deerpig/org/docs/jazz-top-199.org /home/deerpig/org/docs/kampot-pepper-plan-06.org /home/deerpig/org/docs/kampot-pepper-plan-07.org /home/deerpig/org/docs/kampot-pepper-plan.org /home/deerpig/org/docs/kanji-list.org /home/deerpig/org/docs/kh-whitepaper.org /home/deerpig/org/docs/kinto-biz-ver-02.org /home/deerpig/org/docs/kinto-biz-ver-03.org /home/deerpig/org/docs/kinto-biz.org /home/deerpig/org/docs/kinto-micro-service-overview.org /home/deerpig/org/docs/knight-library.org /home/deerpig/org/docs/knight-ridder.org /home/deerpig/org/docs/lyrics/YesWeHaveNoBanas.org /home/deerpig/org/docs/lyrics/SophieMadeleine.org /home/deerpig/org/docs/magazine-pp-01.org /home/deerpig/org/docs/mcd-placemat-notes.org /home/deerpig/org/docs/mekong-2-concept-paper-2.org /home/deerpig/org/docs/mekong-2-concept-paper.org /home/deerpig/org/docs/mekong-2-summary.org /home/deerpig/org/docs/ministers-meeting.org /home/deerpig/org/docs/mobiweb.org /home/deerpig/org/docs/mother-earth-mother-board.org /home/deerpig/org/docs/notes.org /home/deerpig/org/docs/opsec.org /home/deerpig/org/docs/org-mode-setup.org /home/deerpig/org/docs/org-mode.org /home/deerpig/org/docs/org-project-planning.org /home/deerpig/org/docs/path-erp.org /home/deerpig/org/docs/pathmazing-homepage.org /home/deerpig/org/docs/pg/pg5350.org /home/deerpig/org/docs/planner-notes.org /home/deerpig/org/docs/podcast-net-v2.org /home/deerpig/org/docs/podcast-net.org /home/deerpig/org/docs/prek_leap-eco_village_master_plan.org /home/deerpig/org/docs/prekleap-apnic.org /home/deerpig/org/docs/prekleap-quote-misc.org /home/deerpig/org/docs/prim/ref.org /home/deerpig/org/docs/prim/pro.org /home/deerpig/org/docs/prim/pro-todo.org /home/deerpig/org/docs/prim/pro-setup.org /home/deerpig/org/docs/prim/prim.org /home/deerpig/org/docs/prim/patt.org /home/deerpig/org/docs/prim/notes.org /home/deerpig/org/docs/prim/cddr.org /home/deerpig/org/docs/prim/cddr-setup.org /home/deerpig/org/docs/proj/mekong-trek/mekong-trek.org /home/deerpig/org/docs/proj/bento-o/bento-boxen-overview.org /home/deerpig/org/docs/proj/bento-o/bento-boxen.org /home/deerpig/org/docs/proj.org /home/deerpig/org/docs/projective_verse.org /home/deerpig/org/docs/refile.org /home/deerpig/org/docs/s5/villagecore.org /home/deerpig/org/docs/s5/studyhall.org /home/deerpig/org/docs/s5/s5.org /home/deerpig/org/docs/s5/oss-media.org /home/deerpig/org/docs/scip/scip.org /home/deerpig/org/docs/scraps.org /home/deerpig/org/docs/shall/shall.org /home/deerpig/org/docs/shall/java-rant.org /home/deerpig/org/docs/study-hall-doc-centre.org /home/deerpig/org/docs/studyhall-draft.org /home/deerpig/org/docs/studyhall-overview.org /home/deerpig/org/docs/studyhall-proposal.org /home/deerpig/org/docs/studyhall-summary.org /home/deerpig/org/docs/studyhall-template.org /home/deerpig/org/docs/syll/overview.org /home/deerpig/org/docs/telco-reg-kh-paper.org /home/deerpig/org/docs/tingting/tingting.org /home/deerpig/org/docs/todo.org /home/deerpig/org/docs/trackers.org /home/deerpig/org/docs/tut-syllabus.org /home/deerpig/org/docs/uron-install.org /home/deerpig/org/docs/viz-center-moe.org /home/deerpig/org/docs/viz-center-pics.org /home/deerpig/org/docs/viz-center-support-moe.org /home/deerpig/org/docs/viz-center-support-prekleap.org /home/deerpig/org/docs/www.org /home/deerpig/org/diary.org /home/deerpig/org/contacts.org /home/deerpig/org/chenla.org /home/deerpig/org/blog.org /home/deerpig/org/bibnotes.org /home/deerpig/proj/pnca/pnca-org/pnca.org /home/deerpig/proj/pnca/pnca-reach-research-management.org /home/deerpig/proj/pnca/pnca-reach-research-objectives.org /home/deerpig/proj/pnca/pnca-reach-submission-2016.org /home/deerpig/proj/path/ERP-Doc/org/core-architecture.org /home/deerpig/proj/path/ERP-Doc/org/doc-handbook.org /home/deerpig/proj/path/ERP-Doc/org/engineering.org /home/deerpig/proj/path/ERP-Doc/org/functional-requirements.org /home/deerpig/proj/path/ERP-Doc/org/handbook.org /home/deerpig/proj/path/ERP-Doc/org/img/README.org /home/deerpig/proj/path/ERP-Doc/org/index.org /home/deerpig/proj/path/ERP-Doc/org/user-requirements.org /home/deerpig/proj/path/ERP-Doc/img/README.org /home/deerpig/proj/path/ERP-Doc/drafts/ORGAI--proof-of-concept-proposal.org /home/deerpig/proj/path/ERP-Doc/drafts/Savada--Leaflet-Agenda.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--bibliography.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--competition.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--core_overview.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--functional_requirements.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--global_modules.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--hr_case_study.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--human_resources.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--milestones.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--platform_overview.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--process_model.org /home/deerpig/proj/path/ERP-Doc/drafts/erp-core--project_info_contacts.org /home/deerpig/proj/path/ERP-Doc/drafts/index.org /home/deerpig/proj/path/ERP-Doc/drafts/orgai--backend_architecture.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--bibliography.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--competition.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--core_overview.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--functional_requirements.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--global_modules.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--hr_case_study.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--human_resources.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--milestones.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--platform_overview-old.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--process_model.org /home/deerpig/proj/path/ERP-Doc.bak/src/erp-core--project_info_contacts.org /home/deerpig/proj/path/ERP-Doc.bak/src/orgai--backend_architecture.org /home/deerpig/proj/path/ERP-Doc.bak/img/README.org /home/deerpig/proj/path/path-org/path.org /home/deerpig/proj/path/path-org/manual.org /home/deerpig/proj/deerpig/deerpig-install/rb-tracker-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-screencasts.org /home/deerpig/proj/deerpig/deerpig-install/rb-opensis-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-new-website-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-new-vm-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-neo4j-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-ircd-install.org /home/deerpig/proj/deerpig/deerpig-install/rb-git-mirror.org /home/deerpig/proj/deerpig/deerpig-install/rb-desktop-install.org /home/deerpig/proj/deerpig/deerpig-install/index.org /home/deerpig/proj/deerpig/deerpig-install/inc/crumb.org /home/deerpig/proj/deerpig/deerpig-install/inc/head.org /home/deerpig/proj/deerpig/deerpig-install/inc/links.org /home/deerpig/proj/deerpig/deerpig-install/inc/macros.org /home/deerpig/proj/deerpig/deerpig-install/cb-cookbook.org /home/deerpig/proj/deerpig/deerpig-install/README.org /home/deerpig/proj/deerpig/dot-emacs/index.org /home/deerpig/proj/deerpig/dot-emacs/dot-packages.org /home/deerpig/proj/deerpig/dot-emacs/dot-org.org /home/deerpig/proj/deerpig/dot-emacs/dot-mu4e.org /home/deerpig/proj/deerpig/dot-emacs/dot-hydra.org /home/deerpig/proj/deerpig/dot-emacs/dot-helm.org /home/deerpig/proj/deerpig/org-macros/README.org /home/deerpig/proj/deerpig/org-spec/sections/appendix-build-doc.org /home/deerpig/proj/deerpig/org-spec/sections/appendix-glossary.org /home/deerpig/proj/deerpig/org-spec/sections/comms.org /home/deerpig/proj/deerpig/org-spec/sections/diagrams.org /home/deerpig/proj/deerpig/org-spec/sections/intro.org /home/deerpig/proj/deerpig/org-spec/sections/sys-arch.org /home/deerpig/proj/deerpig/org-spec/index.org /home/deerpig/proj/deerpig/org-spec/README.org /home/deerpig/proj/chenla/bmf/index.org /home/deerpig/proj/chenla/bmf/inc/crumb.org /home/deerpig/proj/chenla/bmf/inc/head.org /home/deerpig/proj/chenla/bmf/inc/links.org /home/deerpig/proj/chenla/bmf/inc/macros.org /home/deerpig/proj/chenla/decks/template.org /home/deerpig/proj/chenla/decks/b-i-intro.org /home/deerpig/proj/chenla/decks/README.org /home/deerpig/proj/chenla/docs/index.org /home/deerpig/proj/chenla/docs/inc/crumb.org /home/deerpig/proj/chenla/docs/inc/head.org /home/deerpig/proj/chenla/docs/inc/links.org /home/deerpig/proj/chenla/docs/inc/macros.org /home/deerpig/proj/chenla/docs/howto-video-conference.org /home/deerpig/proj/chenla/docs/howto-create-gifs.org /home/deerpig/proj/chenla/docs/hb-workflow.org /home/deerpig/proj/chenla/docs/hb-style-guides.org /home/deerpig/proj/chenla/docs/hb-methodologies.org /home/deerpig/proj/chenla/docs/hb-meetings.org /home/deerpig/proj/chenla/docs/hb-doc-production.org /home/deerpig/proj/chenla/docs/hb-conventions.org /home/deerpig/proj/chenla/docs/hb-communications.org /home/deerpig/proj/chenla/docs/hb-collaboration.org /home/deerpig/proj/chenla/docs/coc-contributor-covenant.org /home/deerpig/proj/chenla/docs/_site/README.org /home/deerpig/proj/chenla/docs/_site/hb-collaboration.org /home/deerpig/proj/chenla/docs/_site/hb-conventions.org /home/deerpig/proj/chenla/docs/_site/hb-doc-production.org /home/deerpig/proj/chenla/docs/_site/hb-style-guides.org /home/deerpig/proj/chenla/docs/_site/hb-workflow.org /home/deerpig/proj/chenla/docs/_site/inc/macros.org /home/deerpig/proj/chenla/docs/_site/inc/links.org /home/deerpig/proj/chenla/docs/_site/inc/head.org /home/deerpig/proj/chenla/docs/_site/inc/crumb.org /home/deerpig/proj/chenla/docs/_site/index.org /home/deerpig/proj/chenla/docs/_site/master-plan.org /home/deerpig/proj/chenla/docs/README.org /home/deerpig/proj/chenla/hoard/inc/crumb.org /home/deerpig/proj/chenla/hoard/inc/head.org /home/deerpig/proj/chenla/hoard/inc/links.org /home/deerpig/proj/chenla/hoard/inc/macros.org /home/deerpig/proj/chenla/primer/prim-name-conventions.org /home/deerpig/proj/chenla/primer/prim-introduction.org /home/deerpig/proj/chenla/primer/index.org /home/deerpig/proj/chenla/primer/inc/crumb.org /home/deerpig/proj/chenla/primer/inc/head.org /home/deerpig/proj/chenla/primer/inc/links.org /home/deerpig/proj/chenla/primer/inc/macros.org /home/deerpig/proj/chenla/prolog/prolog-transactive.org /home/deerpig/proj/chenla/prolog/prolog-scope.org /home/deerpig/proj/chenla/prolog/prolog-process.org /home/deerpig/proj/chenla/prolog/prolog-pace.org /home/deerpig/proj/chenla/prolog/prolog-identity.org /home/deerpig/proj/chenla/prolog/prolog-holon.org /home/deerpig/proj/chenla/prolog/prolog-cosmos.org /home/deerpig/proj/chenla/prolog/notes.org /home/deerpig/proj/chenla/prolog/index.org /home/deerpig/proj/chenla/prolog/inc/crumb.org /home/deerpig/proj/chenla/prolog/inc/head.org /home/deerpig/proj/chenla/prolog/inc/links.org /home/deerpig/proj/chenla/prolog/inc/macros.org /home/deerpig/proj/chenla/prolog/README.org /home/deerpig/proj/chenla/trivium/triv-notes.org /home/deerpig/proj/chenla/trivium/triv-mastery.org /home/deerpig/proj/chenla/trivium/triv-introduction.org /home/deerpig/proj/chenla/trivium/index.org /home/deerpig/proj/chenla/trivium/inc/crumb.org /home/deerpig/proj/chenla/trivium/inc/head.org /home/deerpig/proj/chenla/trivium/inc/links.org /home/deerpig/proj/chenla/trivium/inc/macros.org /home/deerpig/proj/canby/camby-www/canby.org)
-:END:
-
 
 ** Function: Add Org-Id to all headings in a file
 
@@ -1140,11 +977,6 @@ have an id"
   )
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-deerpig/org-add-id-to-headings
-:END:
 
 ** Org Reveal
 
@@ -1176,11 +1008,6 @@ and will become by default method for creating presentations.
 ;; note that htmlize has already been loaded elsewhere...
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-t
-:END:
 
 ** Beamer Presentations
 
@@ -1241,8 +1068,6 @@ I'm no longer using Beamer, but the code may be of use someday:
 ;;      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 #+end_src
-
-#+RESULTS:
 
 ** Insert Functions
 
@@ -1509,11 +1334,6 @@ sunsetting the ones I don't use.
 
 
 #+end_src
-
-#+RESULTS:
-:RESULTS:
-insert-ideo
-:END:
 
 ** Org Width
 
