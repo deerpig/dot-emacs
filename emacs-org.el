@@ -192,6 +192,7 @@
 			    ("@work"   . ?w)
 			    ("@home"   . ?h)
                         ("@farm"   . ?f)
+                        ("@campus" . ?c)
 			    ("@road"   . ?r)
 			    ("@call"   . ?c)
 			    ("@email"  . ?m)
