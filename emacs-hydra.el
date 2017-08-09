@@ -10,7 +10,7 @@
 (require 'hydra-examples) ;; needed for hydra-move-splitter
 )
 
-;; Key Chords =============================================
+;; Key Chords ==============================================
 
 (use-package key-chord
   :ensure t
@@ -31,6 +31,18 @@
     (key-chord-define-global "9o"     'hydra-greek/body)
     (key-chord-define-global "0p"     'hydra-calendar/body)
     ))
+
+;; Key Bindings ============================================
+    ;; set same hydras using super key which is maped to Caps_Lock
+    (global-set-key (kbd "s-1") 'hydra-badge/body)
+    (global-set-key (kbd "s-2") 'hydra-window/body)
+    (global-set-key (kbd "s-3") 'hydra-elfeed/body)
+    (global-set-key (kbd "s-4") 'hydra-twittering/body)
+    (global-set-key (kbd "s-6") 'hydra-transpose/body)
+    (global-set-key (kbd "s-7") 'hydra-unicode/body)
+    (global-set-key (kbd "s-8") 'hydra-logic/body)
+    (global-set-key (kbd "s-9") 'hydra-greek/body)
+    (global-set-key (kbd "s-0") 'hydra-calendar/body)
 
 ;; hydra-window --------------------------------------------
 ;;

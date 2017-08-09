@@ -15,6 +15,7 @@
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 
 (global-set-key (kbd "<menu>") 'helm-command-prefix)
+(global-set-key (kbd "<menu>") 'helm-command-prefix)
 
 ;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
