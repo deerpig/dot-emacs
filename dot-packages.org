@@ -1352,3 +1352,19 @@ nil
 :RESULTS:
 nil
 :END:
+** Eyebrowse
+
+Workspaces creation and switching.
+
+ - [[https://github.com/wasamasa/eyebrowse][wasamasa/eyebrowse: A simple-minded way of managing window configs in emacs]]
+
+#+begin_src sh
+(use-package eyebrowse
+  :ensure t
+  :config
+  (validate-setq eyebrowse-mode-line-separator " "
+                 eyebrowse-new-workspace t)
+
+  (eyebrowse-mode t))
+
+#+end_src
