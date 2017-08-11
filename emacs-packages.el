@@ -1,3 +1,11 @@
+(use-package eyebrowse
+  :ensure t
+  :config
+  (validate-setq eyebrowse-mode-line-separator " "
+                 eyebrowse-new-workspace t)
+
+  (eyebrowse-mode t))
+
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
 ;; Use-Package
 
