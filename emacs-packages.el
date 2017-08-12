@@ -1,8 +1,10 @@
 (use-package eyebrowse
   :ensure t
   :config
-  (validate-setq eyebrowse-mode-line-separator " "
-                 eyebrowse-new-workspace t)
+
+  (setq eyebrowse-keymap-prefix (kbd "H-w"))
+  ;;(global-set-key (kbd "H-w") 'eyebrowse-keymap-prefix)
+  ;;(global-unset-key (kbd "C-c C-w"))
 
   (eyebrowse-mode t))
 
