@@ -417,31 +417,32 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
                                                                    ╭─────────┐
                                                                    │ Elfeed  │
  ╭───────────────────────────────────────────────────────────┬─────┴─────────╯
-  Tagos :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
+  Tags :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
+            Space    [_s_]                                     |
  ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
-  Feeds: Boing Boing [_b_] Slashdot [_s_]   Ars Technica [_a_]     │   Starred [_*_]  
+  Feeds: Boing Boing [_b_] Slashdot [_/_]   Ars Technica [_a_]     │   Starred [_*_]  
           Cool Tools [_o_] Long Now [_l_]                        │    Marked [_M_]
  ╭───────────────────────────────────────────────────────────┘ Quit/Save [_q_]
   Quit [_<SPC>_]
 "
-   ("c" (elfeed-search-set-filter "@6-months-ago  +unread  +comic"))
-   ("e" (elfeed-search-set-filter "@6-months-ago  +unread  +emacs"))
-   ("t" (elfeed-search-set-filter "@6-months-ago  +unread  +tech"))
+   ("c" (elfeed-search-set-filter "@1-months-ago  +unread  +comic"))
+   ("e" (elfeed-search-set-filter "@1-months-ago  +unread  +emacs"))
+   ("t" (elfeed-search-set-filter "@1-months-ago  +unread  +tech"))
+   ("s" (elfeed-search-set-filter "@1-months-ago  +unread  +space"))
 
-   ("b" (elfeed-search-set-filter "@6-months-ago  +unread  +boing"))
-   ("s" (elfeed-search-set-filter "@6-months-ago  +unread  +slash"))
-   ("a" (elfeed-search-set-filter "@6-months-ago  +unread  +ars"))
-   ("d" (elfeed-search-set-filter "@6-months-ago  +unread  +torrent"))
-   ("l" (elfeed-search-set-filter "@6-months-ago  +unread  +longnow"))
-   ("o" (elfeed-search-set-filter "@6-months-ago  +unread  +tools"))
+   ("b" (elfeed-search-set-filter "@1-months-ago  +unread  +boing"))
+   ("/" (elfeed-search-set-filter "@1-months-ago  +unread  +slash"))
+   ("a" (elfeed-search-set-filter "@1-months-ago  +unread  +ars"))
+   ("d" (elfeed-search-set-filter "@1-months-ago  +unread  +torrent"))
+   ("l" (elfeed-search-set-filter "@1-months-ago  +unread  +longnow"))
+   ("o" (elfeed-search-set-filter "@1-months-ago  +unread  +tools"))
 
-   ("*" (elfeed-search-set-filter "@6-months-ago +star"))
+   ("*" (elfeed-search-set-filter "@1-months-ago +star"))
    ("M" elfeed-toggle-star nil)
-   ("A" (elfeed-search-set-filter "@6-months-ago +unread"))
-   ("T" (elfeed-search-set-filter "@1-day-ago    +unread"))
+   ("A" (elfeed-search-set-filter "@1-months-ago +unread"))
+   ("T" (elfeed-search-set-filter "@2-day-ago    +unread"))
    ("q" bjm/elfeed-save-db-and-bury nil :color blue)
-   ("<SPC>" nil nil)
-   )
+   ("<SPC>" nil nil))
 
 (defhydra hydra-badge (:color pink :hint nil :timeout 20)
   "
