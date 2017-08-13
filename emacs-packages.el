@@ -2,7 +2,7 @@
   :ensure t
   :config
 
-  (setq eyebrowse-keymap-prefix (kbd "H-w"))
+  ;;(setq eyebrowse-keymap-prefix (kbd "H-w"))
   ;;(global-set-key (kbd "H-w") 'eyebrowse-keymap-prefix)
   ;;(global-unset-key (kbd "C-c C-w"))
 
