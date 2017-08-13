@@ -1358,7 +1358,7 @@ Workspaces creation and switching.
 
  - [[https://github.com/wasamasa/eyebrowse][wasamasa/eyebrowse: A simple-minded way of managing window configs in emacs]]
 
-#+begin_src sh
+#+begin_src emacs-lisp
 (use-package eyebrowse
   :ensure t
   :config
