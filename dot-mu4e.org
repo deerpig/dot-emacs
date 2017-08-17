@@ -173,6 +173,7 @@ in the mode-line and an unread email count.
   )
 #+end_src
 
+Set a couple of keybindings:
 
 Open URLs in the default external browser by hitting <return> when the
 point is on a link.
@@ -180,8 +181,19 @@ point is on a link.
 #+begin_src emacs-lisp
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
-
 #+end_src
+
+org-store-link creates an org link to the email in view mode
+but I find the default (C-c M-s) to be awkward and difficult
+to remember.  In mu4e, bind it to 'l' which matches what I
+am using in elfeed.
+
+#+begin_src emacs-lisp
+;; re-map org-store-link to match command used in elfeed.
+(define-key mu4e-view-mode-map (kbd "l") 'org-store-link)
+#+end_src
+
+
 
 Now set up the bookmarks that are shown on the main screen:
 
