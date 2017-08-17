@@ -269,7 +269,7 @@
                "* %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("m" "Meeting" entry (file "~/org/refile.org")
                "* MEETING with %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
-              ("p" "Phone call" entry (file "~/org/refile.org")
+              ("p" "Phone call" entry (file+headline "~/org/refile.org")
                "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("e" "Email" entry (file "~/org/refile.org")
                "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n") 
