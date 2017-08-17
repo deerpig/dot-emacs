@@ -188,6 +188,10 @@ but I find the default (C-c M-s) to be awkward and difficult
 to remember.  In mu4e, bind it to 'l' which matches what I
 am using in elfeed.
 
+I suppose we could try to do something similar to
+elfeed-show-link title so the link is in the clipboard, so
+you don't have to remember C-c C-l to paste the link.
+
 #+begin_src emacs-lisp
 ;; re-map org-store-link to match command used in elfeed.
 (define-key mu4e-view-mode-map (kbd "l") 'org-store-link)
