@@ -62,6 +62,15 @@ for many years without complaint.
 (require 'mu4e)
 (require 'org-mu4e)
 
+Use org-mu4e to add links to emails in org-capture templates.
+
+#+begin_src emacs-lisp
+;;store org-mode links to messages
+;;store link to message if in header view, not to header query
+(setq org-mu4e-link-query-in-headers-mode t)
+#+end_src
+
+
 #+end_src
 
 Set application names.
@@ -172,17 +181,6 @@ in the mode-line and an unread email count.
   (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
   )
 #+end_src
-
-Use org-mu4e to add links to emails in org-capture templates.
-
-#+begin_src emacs-lisp
-;;store org-mode links to messages
-(require 'org-mu4e)
-;;store link to message if in header view, not to header query
-(setq org-mu4e-link-query-in-headers-mode nil)
-#+end_src
-
-
 
 Set a couple of keybindings:
 
