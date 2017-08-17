@@ -74,6 +74,9 @@
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
 
+;; re-map org-store-link to match command used in elfeed.
+(define-key mu4e-view-mode-map (kbd "l") 'org-store-link)
+
 ;; The bookmarks for the main screen
 (setq mu4e-bookmarks
           `(;;(,(mlh-mu4e-unread-mail-query) "New messages"         ?b)
