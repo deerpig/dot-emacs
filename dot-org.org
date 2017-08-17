@@ -542,7 +542,7 @@ Triggers:
                "* MEETING with %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("p" "Phone call" entry (file "~/org/refile.org")
                "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
-              ("e" "Email" entry (file+headline "~/org/refile.org")
+              ("e" "Email" entry (file "~/org/refile.org")
                "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n") 
 	          ("H" "Habit" entry (file "~/org/habits.org")
 	           "** NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
