@@ -71,6 +71,11 @@
   (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
   )
 
+;;store org-mode links to messages
+(require 'org-mu4e)
+;;store link to message if in header view, not to header query
+(setq org-mu4e-link-query-in-headers-mode nil)
+
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
 
