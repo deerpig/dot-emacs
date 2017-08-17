@@ -8,6 +8,13 @@
 (require 'mu4e)
 (require 'org-mu4e)
 
+Use org-mu4e to add links to emails in org-capture templates.
+
+#+begin_src emacs-lisp
+;;store org-mode links to messages
+;;store link to message if in header view, not to header query
+(setq org-mu4e-link-query-in-headers-mode nil)
+
 (setq mu4e-get-mail-command "mbsync -aqV"
       mu4e-mu-binary (executable-find "mu"))
 
@@ -70,11 +77,6 @@
   (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
   (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
   )
-
-;;store org-mode links to messages
-(require 'org-mu4e)
-;;store link to message if in header view, not to header query
-(setq org-mu4e-link-query-in-headers-mode nil)
 
 ;; <RET> Opens URLs in external browsers
 (define-key mu4e-view-mode-map (kbd "RET") 'mu4e~view-browse-url-from-binding)
