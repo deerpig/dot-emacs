@@ -8,12 +8,16 @@
 (require 'mu4e)
 (require 'org-mu4e)
 
-Use org-mu4e to add links to emails in org-capture templates.
-
-#+begin_src emacs-lisp
 ;;store org-mode links to messages
 ;;store link to message if in header view, not to header query
 (setq org-mu4e-link-query-in-headers-mode nil)
+
+;; use shr for html emails and make gray/gray emails
+;; more readable.
+(require 'mu4e-contrib)
+(setq mu4e-html2text-command 'mu4e-shr2text) 
+(setq shr-color-visible-luminance-min 80) 
+(setq shr-color-visible-distance-min 5)
 
 (setq mu4e-get-mail-command "mbsync -aqV"
       mu4e-mu-binary (executable-find "mu"))
