@@ -272,7 +272,7 @@
               ("p" "Phone call" entry (file "~/org/refile.org")
                "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("e" "Email" entry (file "~/org/refile.org")
-               "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n") 
+               "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n:url: %a\n") 
 	          ("H" "Habit" entry (file "~/org/habits.org")
 	           "** NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
               ("h" "Hoard" entry (file "~/proj/chenla/hoard/refile.org")
