@@ -785,7 +785,7 @@ it won't work.
   (use-package elfeed
     :ensure t
     :init
-    (setq elfeed-search-filter "@1-months-ago +unread")
+    (setq-default elfeed-search-filter "@1-month-ago +unread")
     :bind (:map elfeed-search-mode-map
 		("q" . bjm/elfeed-save-db-and-bury)
 		("Q" . bjm/elfeed-save-db-and-bury)
