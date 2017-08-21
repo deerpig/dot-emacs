@@ -1,13 +1,3 @@
-(use-package eyebrowse
-  :ensure t
-  :config
-
-  ;;(setq eyebrowse-keymap-prefix (kbd "H-w"))
-  ;;(global-set-key (kbd "H-w") 'eyebrowse-keymap-prefix)
-  ;;(global-unset-key (kbd "C-c C-w"))
-
-  (eyebrowse-mode t))
-
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
 ;; Use-Package
 
@@ -291,13 +281,74 @@
 
 (use-package elfeed
   :ensure t
-;;  :config
-;;  (setq elfeed-search-filter "@6-months-ago +unread")
+  :init
+  (setq-default elfeed-search-filter "@1-month-ago +unread")
   :bind (:map elfeed-search-mode-map
 	      ("q" . bjm/elfeed-save-db-and-bury)
 	      ("Q" . bjm/elfeed-save-db-and-bury)
 	      ("j" . hydra-elfeed/body)
-	      ("J" . hydra-elfeed/body)))
+	      ("J" . hydra-elfeed/body))
+   :config
+     (elfeed-org)
+
+     (defun elfeed-link-title (entry)
+       "Copy the entry title and URL as org link to the clipboard."
+       (interactive)
+       (let* ((link (elfeed-entry-link entry))
+              (title (elfeed-entry-title entry))
+              (titlelink (concat "[[" link "][" title "]]")))
+         (when titlelink
+           (kill-new titlelink)
+           (x-set-selection 'PRIMARY titlelink)
+           (message "Yanked: %s" titlelink))))
+
+     ;; show mode
+
+     (defun elfeed-show-link-title ()
+       "Copy the current entry title and URL as org link to the clipboard."
+       (interactive)
+       (elfeed-link-title elfeed-show-entry))
+
+     (defun elfeed-show-quick-url-note ()
+       "Fastest way to capture entry link to org agenda from elfeed show mode"
+       (interactive)
+       (elfeed-link-title elfeed-show-entry)
+       (org-capture nil "n")
+       (yank)
+       (org-capture-finalize))
+
+     (bind-keys :map elfeed-show-mode-map
+                ("l" . elfeed-show-link-title)
+                ("v" . elfeed-show-quick-url-note))
+
+     ;; search mode
+
+     (defun elfeed-search-link-title ()
+       "Copy the current entry title and URL as org link to the clipboard."
+       (interactive)
+       (let ((entries (elfeed-search-selected)))
+         (cl-loop for entry in entries
+                  when (elfeed-entry-link entry)
+                  do (elfeed-link-title entry))))
+
+     (defun elfeed-search-quick-url-note ()
+       "In search mode, capture the title and link for the selected
+   entry or entries in org aganda."
+       (interactive)
+       (let ((entries (elfeed-search-selected)))
+         (cl-loop for entry in entries
+                  do (elfeed-untag entry 'unread)
+                  when (elfeed-entry-link entry)
+                  do (elfeed-link-title entry)
+                  do (org-capture nil "n")
+                  do (yank)
+                  do (org-capture-finalize)
+                  (mapc #'elfeed-search-update-entry entries))
+         (unless (use-region-p) (forward-line))))
+
+     (bind-keys :map elfeed-search-mode-map
+                ("l" . elfeed-search-link-title)
+                ("v" . elfeed-search-quick-url-note)))
 
 	      ;;("m" . elfeed-toggle-star)
 	      ;;("M" . elfeed-toggle-star)
@@ -575,3 +626,13 @@
       "   4/Soak noodles"
       "  25/Pomodoro: Work on helm-chronos + 5/Pomodoro: Rest"))
 )
+
+(use-package eyebrowse
+  :ensure t
+  :config
+
+  ;;(setq eyebrowse-keymap-prefix (kbd "H-w"))
+  ;;(global-set-key (kbd "H-w") 'eyebrowse-keymap-prefix)
+  ;;(global-unset-key (kbd "C-c C-w"))
+
+  (eyebrowse-mode t))
