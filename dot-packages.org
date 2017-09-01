@@ -564,6 +564,32 @@ until I feel the need.
 
 #+end_src
 
+*** nov.el
+
+Emacs epub reader.
+
+[[https://github.com/wasamasa/nov.el/blob/master/nov.el][wasamasa/nov.el]] | github
+[[https://github.com/tali713/esxml/tree/css-select][tali713/esxml at css-select]] | github
+
+#+begin_src emacs-lisp
+;; nov.el --------------------------------------------------
+;; epub reader
+;; requires the esxml library with css-select checked out.
+
+(add-to-list 'load-path "~/.emacs.d/esxml")
+(require 'esxml)
+(load "~/.emacs.d/nov/nov.el")
+(setq nov-unzip-program "/usr/bin/unzip")
+(push '("\\.epub\\'" . nov-mode) auto-mode-alist)
+
+
+#+end_src
+
+
+
+
+
+
 *** Git Time Machine
 
  - [[https://github.com/pidu/git-timemachine][pidu/git-timemachine]] | GitHub
