@@ -188,6 +188,16 @@
 ;;   :after magit
 ;;   :config (magithub-feature-autoinject t))
 
+;; nov.el --------------------------------------------------
+;; epub reader
+;; requires the esxml library with css-select checked out.
+
+(add-to-list 'load-path "~/.emacs.d/esxml")
+(require 'esxml)
+(load "~/.emacs.d/nov/nov.el")
+(setq nov-unzip-program "/usr/bin/unzip")
+(push '("\\.epub\\'" . nov-mode) auto-mode-alist)
+
 ;; Git Timemachine -----------------------------------------
 
 (use-package  git-timemachine
