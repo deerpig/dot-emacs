@@ -1456,6 +1456,7 @@ Workspaces creation and switching.
  - [[https://github.com/wasamasa/eyebrowse][wasamasa/eyebrowse: A simple-minded way of managing window configs in emacs]]
 
 #+begin_src emacs-lisp
+;;; Eyebrowse window manager -------------------------------
 (use-package eyebrowse
   :ensure t
   :config
@@ -1467,3 +1468,59 @@ Workspaces creation and switching.
   (eyebrowse-mode t))
 
 #+end_src
+
+** Rainbow Delimiters
+
+ - [[https://github.com/Fanael/rainbow-delimiters][Emacs rainbow delimiters mode]] | github
+
+#+begin_src emacs-lisp
+;;; Rainbow Delimeters ------------------------------------
+
+(use-package rainbow-delimiters
+ :ensure t
+ :config )
+#+end_src
+
+
+** AucTex
+
+- [[http://nasseralkmim.github.io/notes/2016/08/21/my-latex-environment/][My LaTeX environment]] | Nasser Alkmim
+
+#+begin_src emacs-lisp
+;;; AucTex -------------------------------------------------
+
+(use-package tex-site
+  :ensure auctex
+  :mode ("\\.tex\\'" . latex-mode)
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+  (add-hook 'LaTeX-mode-hook
+            (lambda ()
+              (rainbow-delimiters-mode)
+              (smartparens-mode)
+              (turn-on-reftex)
+              (setq reftex-plug-into-AUCTeX t)
+              (reftex-isearch-minor-mode)
+              (setq TeX-PDF-mode t)
+              (setq TeX-source-correlate-method 'synctex)
+              (setq TeX-source-correlate-start-server t)))
+
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+           #'TeX-revert-document-buffer)
+
+;; to use pdfview with auctex
+(add-hook 'LaTeX-mode-hook 'pdf-tools-install)
+
+;; to use pdfview with auctex
+(setq TeX-view-program-selection '((output-pdf "pdf-tools"))
+       TeX-source-correlate-start-server t)
+(setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view"))))
+
+#+end_src
+
+
+
+
