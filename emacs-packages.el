@@ -252,20 +252,29 @@
   :mode "\\.rb\\'"
   :interpreter "ruby")
 
-;; Dictionaries and Word Definitions =======================
+;; Dictionaries and Word Definitions ==========================
 
-;; Define Word 
+;; Dictionary -------------------------------------------------
 ;; looks up definition online in word-nik
 ;; (use-package define-word
 ;;   :ensure t
 ;;   )
  (use-package dictionary
    :ensure t
+   :config
+   (global-set-key (kbd "H-w") 'dictionary-search)
    )
+
+;; emacs scvd-mode ----------------------------------------------
+;;  major mode to view output of dictionary search of sdcv
+;;  requires sdcv and dictionaries in ~/.stardict/dic
+
+(load "~/.emacs.d/emacs-sdcv/sdcv-mode.el")
+(global-set-key (kbd "H-d") 'sdcv-search)
 
 ;; Boxquote =================================================
 
-(use-package boxquote
+(use-package boxquoteh
   :ensure t )
 
 ;; Lorem ipsum ==============================================
