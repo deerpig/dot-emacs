@@ -729,18 +729,35 @@ snippets for the mode you are in.
 
 #+begin_src emacs-lisp
 
-;; Dictionaries and Word Definitions =======================
+;; Dictionaries and Word Definitions ==========================
 
-;; Define Word 
+;; Dictionary -------------------------------------------------
 ;; looks up definition online in word-nik
 ;; (use-package define-word
 ;;   :ensure t
 ;;   )
  (use-package dictionary
    :ensure t
+   :config
+   (global-set-key (kbd "H-w") 'dictionary-search)
    )
-
 #+end_src
+
+- [[http://jsomers.net/blog/dictionary][You’re probably using the wrong dictionary « the jsomers.net blog]]
+- [[http://mbork.pl/2017-01-14_I'm_now_using_the_right_dictionary][Marcin Borkowski: 2017-01-14 I'm now using the right dictionary]]
+- [[https://github.com/gucong/emacs-sdcv][gucong/emacs-sdcv: forked version of sdcv.el or sdcv-mode.el]]
+- [[http://simonwiles.net/projects/cc-cedict/][cc-cedict]] | simonwiles.net
+- [[http://kdr2.com/resource/stardict.html][Resources for Stardict]]
+
+#+begin_src emacs-lisp
+;; emacs scvd-mode ----------------------------------------------
+;;  major mode to view output of dictionary search of sdcv
+;;  requires sdcv and dictionaries in ~/.stardict/dic
+
+(load "~/.emacs.d/emacs-sdcv/sdcv-mode.el")
+(global-set-key (kbd "H-d") 'sdcv-search)
+#+end_src
+
 
 ** Boxquote
 
@@ -748,7 +765,7 @@ snippets for the mode you are in.
 
 ;; Boxquote =================================================
 
-(use-package boxquote
+(use-package boxquoteh
   :ensure t )
 
 #+end_src
@@ -1520,7 +1537,4 @@ Workspaces creation and switching.
 (setq TeX-view-program-list '(("pdf-tools" "TeX-pdf-tools-sync-view"))))
 
 #+end_src
-
-
-
 
