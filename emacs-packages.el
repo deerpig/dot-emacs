@@ -81,6 +81,11 @@
 (setq eshell-visual-subcommands
       '(("git" "log" "l" "diff" "show")))
 
+(add-to-list 'tramp-default-proxies-alist
+                   '(nil "\\`root\\'" "/ssh:%h:"))
+      (add-to-list 'tramp-default-proxies-alist
+                   '((regexp-quote (system-name)) nil nil))
+
 ;; emms ====================================================
 
 ;;(use-package emms
@@ -274,7 +279,7 @@
 
 ;; Boxquote =================================================
 
-(use-package boxquoteh
+(use-package boxquote
   :ensure t )
 
 ;; Lorem ipsum ==============================================
