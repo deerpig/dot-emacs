@@ -275,6 +275,21 @@ to start:
 
 #+end_src
 
+
+** Tramp
+
+This allows you to use tramp to open files on remote hosts
+using the sudo command:  so =/sudo:host:/etc/hosts= should
+now work.
+
+#+begin_src emacs-lisp
+(add-to-list 'tramp-default-proxies-alist
+                   '(nil "\\`root\\'" "/ssh:%h:"))
+      (add-to-list 'tramp-default-proxies-alist
+                   '((regexp-quote (system-name)) nil nil))
+#+end_src
+
+
 ** EMMS
 
 EMMS is the Emacs Multi-Media System.  EMMS has been around a while
@@ -765,7 +780,7 @@ snippets for the mode you are in.
 
 ;; Boxquote =================================================
 
-(use-package boxquoteh
+(use-package boxquote
   :ensure t )
 
 #+end_src
