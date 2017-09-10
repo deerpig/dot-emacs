@@ -1,7 +1,7 @@
 #   -*- mode: org; fill-column: 60 -*-
 #+STARTUP: showall
 
-* README | Deerpig's Dotemacs
+* README | Deerpig's Dot Emacs
 :PROPERTIES:
 :CUSTOM_ID:
 :Name:     /home/deerpig/proj/deerpig/dot-emacs/README.org
