@@ -1486,18 +1486,22 @@ nil
 Workspaces creation and switching.
 
  - [[https://github.com/wasamasa/eyebrowse][wasamasa/eyebrowse: A simple-minded way of managing window configs in emacs]]
+ - [[http://pragmaticemacs.com/emacs/easily-manage-emacs-workspaces-with-eyebrowse/][Pragmatic Emacs: Easily manage Emacs workspaces with eyebrowse]]
 
 #+begin_src emacs-lisp
 ;;; Eyebrowse window manager -------------------------------
 (use-package eyebrowse
   :ensure t
-  :config
-
-  ;;(setq eyebrowse-keymap-prefix (kbd "H-w"))
-  ;;(global-set-key (kbd "H-w") 'eyebrowse-keymap-prefix)
-  ;;(global-unset-key (kbd "C-c C-w"))
-
-  (eyebrowse-mode t))
+  :diminish eyebrowse-mode
+  :config 
+  (progn
+    (define-key eyebrowse-mode-map (kbd "H-1") 'eyebrowse-switch-to-window-config-1)
+    (define-key eyebrowse-mode-map (kbd "H-2") 'eyebrowse-switch-to-window-config-2)
+    (define-key eyebrowse-mode-map (kbd "H-3") 'eyebrowse-switch-to-window-config-3)
+    (define-key eyebrowse-mode-map (kbd "H-4") 'eyebrowse-switch-to-window-config-4)
+    (define-key eyebrowse-mode-map (kbd "H-5") 'eyebrowse-switch-to-window-config-5)
+    (define-key eyebrowse-mode-map (kbd "H-6") 'eyebrowse-switch-to-window-config-6)
+    (setq eyebrowse-new-workspace t)))
 
 #+end_src
 
