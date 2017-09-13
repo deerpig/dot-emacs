@@ -776,13 +776,13 @@ work closely with my yassnippet templates.
                                                                          ╭─────────┐
                                                                          │ Badges  │
  ╭───────────────────────────────────────────────────────────────────────┴─────────╯
-  Misc     :  made-by  [_m_]   licence [_l_]
+  Misc     :  chenla  [_m_]   deerpig [_d_]   licence [_l_]
 
   Class  :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
 
   Type   :  tl;dr    [_tt_]  pattern [_ta_]  place    [_tg_]  event [_te_]  README  [_tr_]
             person   [_tp_]  concept [_tc_]  material [_tm_]  blob  [_tb_]  TOC     [_to_]
-            work     [_tw_]  exp     [_tx_]  man      [_tn_]  item  [_ti_]
+            work     [_tw_]  exp     [_tx_]  man      [_tn_]  item  [_ti_]  runbook [_tb_]
 
   Status :  stub     [_ss_]  wip     [_sw_]  draft    [_sd_]  rfc   [_sr_]  release [_sv_]
 
@@ -793,7 +793,8 @@ work closely with my yassnippet templates.
 "
 
 ;; Misc
-("m"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]"))) ;; made-by
+("d"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]]"))) ;; made-by deerpig
+("m"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]"))) ;; made-by chenla
 ("l"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]"))) ;; licence
 ;; Category 
 ("cp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-primer-56B4E9.svg?style=flat-square]]")))  ;; primer
@@ -811,6 +812,7 @@ work closely with my yassnippet templates.
 ("to" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-TOC-0072B2.svg?style=flat-square]]")))      ;; TOC
 ("tr" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-readme-0072B2.svg?style=flat-square]]")))   ;; README
 ("tw" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-work-0072B2.svg?style=flat-square]]")))          ;; Work
+("tb" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-runbook-0072B2.svg?style=flat-square]]")))       ;; Runbook
 ("tx" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-expresssion-0072B2.svg?style=flat-square]]")))   ;; Expression
 ("tn" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-manifestation-0072B2.svg?style=flat-square]]"))) ;; Manifestation
 ("ti" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-instance-0072B2.svg?style=flat-square]]")))      ;; Instance
@@ -831,5 +833,10 @@ work closely with my yassnippet templates.
 ("<SPC>" nil nil))
 
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+hydra-badge/body
+:END:
 
 
