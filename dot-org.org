@@ -558,11 +558,31 @@ Triggers:
                "\n\n\n\n%?")
 	          ("c" "Contacts" entry (file "~/org/contacts.org")
 	           "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n"))))
+              ("B" "Blog Post" plain (file (capture-blog-post-file))
+                    (file "tlp-blog-post.org"))
 ;;	      ("c" "Contacts" entry (file "~/org/contacts.org")
 ;;	       "* %(org-contacts-template-name)\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:    %\1 %\1\n:EMAIL: %(org-contacts-template-email)\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
 
 #+end_src
 
+
+
+- [[https://www.superloopy.io/articles/2017/blogging-with-org-mode.html][Blogging with Org mode]] | Superloopy
+
+#+begin_src emacs-lisp
+;;; Capture Blog Post --------------------------------------
+
+(defun capture-blog-post-file ()
+  (let* ((title (read-string "Post Title: "))
+         (slug (replace-regexp-in-string "[^a-z]+" "-" (downcase title))))
+    (expand-file-name
+     (format "~/proj/sites/chenla.org/_posts/%s-%s.org"
+             (format-time-string "%Y-%m-%d" (current-time))
+             slug))))
+
+#+end_src
+
+(capture-blog-post-file)
 
 ** Open Capture in Other Frame
 
