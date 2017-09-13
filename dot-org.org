@@ -557,9 +557,11 @@ Triggers:
 	          ("b" "BibTex" plain (file "~/org/ref.bib")
                "\n\n\n\n%?")
 	          ("c" "Contacts" entry (file "~/org/contacts.org")
-	           "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n"))))
-              ("B" "Blog Post" plain (file (capture-blog-post-file))
-                    (file "tlp-blog-post.org"))
+	           "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
+              ("B" "Chenla Blog" entry (file "~/org/blog.org")
+               "** TODO %?\n%T\n"))))
+
+;;       ("B" "Blog Post" plain (file (capture-blog-post-file)) (file "tlp-blog-post.org"))
 ;;	      ("c" "Contacts" entry (file "~/org/contacts.org")
 ;;	       "* %(org-contacts-template-name)\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:    %\1 %\1\n:EMAIL: %(org-contacts-template-email)\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
 
@@ -570,19 +572,17 @@ Triggers:
 - [[https://www.superloopy.io/articles/2017/blogging-with-org-mode.html][Blogging with Org mode]] | Superloopy
 
 #+begin_src emacs-lisp
-;;; Capture Blog Post --------------------------------------
+  ;;; Capture Blog Post --------------------------------------
 
-(defun capture-blog-post-file ()
-  (let* ((title (read-string "Post Title: "))
-         (slug (replace-regexp-in-string "[^a-z]+" "-" (downcase title))))
-    (expand-file-name
-     (format "~/proj/sites/chenla.org/_posts/%s-%s.org"
-             (format-time-string "%Y-%m-%d" (current-time))
-             slug))))
+  ;; (defun capture-blog-post-file ()
+  ;;   (let* ((title (read-string "Post Title: "))
+  ;;          (slug (replace-regexp-in-string "[^a-z]+" "-" (downcase title))))
+  ;;     (expand-file-name
+  ;;      (format "~/proj/sites/chenla.org/_posts/%s-%s.org"
+  ;;              (format-time-string "%Y-%m-%d" (current-time))
+  ;;              slug))))
 
 #+end_src
-
-(capture-blog-post-file)
 
 ** Open Capture in Other Frame
 
@@ -723,7 +723,7 @@ This section needs to be broken up and better documented.
 ;; Jekyll Projects =========================================
 
 (setq deerpig-publish-blog-dir "")
-(setq chenla-publish-blog-dir  "~/proj/chenla/build/chenla-html/")
+(setq chenla-publish-blog-dir  "~/proj/sites/chenla.org/")
 
 
 (setq org-html-htmlize-output-type 'css)
@@ -736,7 +736,7 @@ This section needs to be broken up and better documented.
 (require 'ox-publish)
 (setq org-publish-project-alist
       (quote (("chenla-html"
-	       :base-directory "~/proj/chenla/chenla-org/"
+	       :base-directory "~/proj/sites/chenla.org/"
 	       :base-extension "org"
 	       :publishing-directory  ,chenla-publish-blog-dir
 	       :recursive t
@@ -746,7 +746,7 @@ This section needs to be broken up and better documented.
 	       :html-extension "html")
        
 	      ("chenla-static"
-	       :base-directory "~/proj/chenla/chenla-org/"
+	       :base-directory "~/proj/sites/chenla.org/"
 	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
 	       :publishing-directory ,chenla-publish-blog-dir
 	       :recursive t
@@ -846,7 +846,7 @@ Code from:
 
 ;; Obviously, these two need to be changed for your blog.
 (setq endless/blog-base-url "http://chenla.org/")
-(setq endless/blog-dir (expand-file-name "~/proj/chenla/chenla-org/"))
+(setq endless/blog-dir (expand-file-name "~/proj/sites/chenla.org/"))
 #+end_src
 
 ** Whitespace
