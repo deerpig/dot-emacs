@@ -1501,7 +1501,8 @@ Workspaces creation and switching.
     (define-key eyebrowse-mode-map (kbd "H-4") 'eyebrowse-switch-to-window-config-4)
     (define-key eyebrowse-mode-map (kbd "H-5") 'eyebrowse-switch-to-window-config-5)
     (define-key eyebrowse-mode-map (kbd "H-6") 'eyebrowse-switch-to-window-config-6)
-    (setq eyebrowse-new-workspace t)))
+    (setq eyebrowse-new-workspace t))
+    (eyebrowse-mode t))
 
 #+end_src
 
