@@ -158,10 +158,10 @@ often, but even when running asynchronously, it still slows things
 down.
 
 #+begin_src emacs-lisp 
-;; check mail every 30 minutes
-(setq
-   mu4e-change-filenames-when-moving t
-   mu4e-update-interval 1800)
+  ;; check mail every 30 minutes
+  ;; (setq
+  ;;    mu4e-change-filenames-when-moving t
+  ;;    mu4e-update-interval 1800)
 #+end_src
 
 
