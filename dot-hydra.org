@@ -778,7 +778,7 @@ work closely with my yassnippet templates.
  ╭───────────────────────────────────────────────────────────────────────┴─────────╯
   Misc     :  chenla  [_m_]   deerpig [_d_]   licence [_l_]
 
-  Class  :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]
+  Class  :  primer   [_cp_]  deploy  [_cd_]  project  [_cj_]  docs  [_cm_]
 
   Type   :  tl;dr    [_tt_]  pattern [_ta_]  place    [_tg_]  event [_te_]  README  [_tr_]
             person   [_tp_]  concept [_tc_]  material [_tm_]  blob  [_tb_]  TOC     [_to_]
@@ -796,10 +796,11 @@ work closely with my yassnippet templates.
 ("d"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]]"))) ;; made-by deerpig
 ("m"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/made%20by-Chenla%20Institute-999999.svg?style=flat-square]]"))) ;; made-by chenla
 ("l"  (lambda () (interactive) (insert "[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]"))) ;; licence
-;; Category 
+;; Class 
 ("cp" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-primer-56B4E9.svg?style=flat-square]]")))  ;; primer
 ("cd" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-deploy-0072B2.svg?style=flat-square]]")))  ;; deploy
 ("cj" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-project-D55E00.svg?style=flat-square]]"))) ;; project
+("cm" (lambda () (interactive) (insert "[[https://img.shields.io/badge/class-docs-56B4E9.svg?style=flat-square]]")))    ;; docs
 ;; Type
 ("tt" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-tl;dr-0072B2.svg?style=flat-square]]")))    ;; tl;dr
 ("ta" (lambda () (interactive) (insert "[[https://img.shields.io/badge/type-pattern-0072B2.svg?style=flat-square]]")))  ;; pattern
