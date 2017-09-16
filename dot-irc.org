@@ -52,9 +52,9 @@ From the code, it's pretty easy to see who I am and where I hang out....
 	`(("irc.freenode.net" :password ,(cadr (auth-source-user-and-password "irc.freenode.net")) 
                                       :channels ("#emacs" "#chenla"))
   	  ("irc.chenla.org"             :channels ("#chenla"))
-        ("keyelementsg.irc.slack.com" :port 6697 :encryption tls
-   	         :password ,(cadr (auth-source-user-and-password "keyelementsg.irc.slack.com"))
-   	         :channels ("#general" "random"))
+        ;;("keyelementsg.irc.slack.com" :port 6697 :encryption tls
+   	  ;;       :password ,(cadr (auth-source-user-and-password "keyelementsg.irc.slack.com"))
+   	  ;;      :channels ("#general" "random"))
                  ))
 
 #+end_src
