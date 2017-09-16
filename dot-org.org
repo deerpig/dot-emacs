@@ -135,7 +135,9 @@ Change the default bullet list and ellipsis. See:
 #+begin_src emacs-lisp
 ;; Org Bullets ---------------------------------------------
 
-(require 'org-bullets)
+(use-package org-bullets
+   :ensure t
+   :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
     ;; Change bullet list
@@ -146,7 +148,7 @@ Change the default bullet list and ellipsis. See:
     ;; Change the ellipsis that indicates hidden content
     ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
     (set-face-attribute 'org-ellipsis nil :underline nil)
-    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷
+    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷)
 #+end_src
 
 ** Key Bindings
