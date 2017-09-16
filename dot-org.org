@@ -148,7 +148,8 @@ Change the default bullet list and ellipsis. See:
     ;; Change the ellipsis that indicates hidden content
     ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
     (set-face-attribute 'org-ellipsis nil :underline nil)
-    (setq org-ellipsis " ⤵") ;; ⤵ ↴ ⬎ ⤷)
+    ;; ⤵ ↴ ⬎ ⤷
+    (setq org-ellipsis " ⤵"))
 #+end_src
 
 ** Key Bindings
