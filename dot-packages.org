@@ -1379,7 +1379,7 @@ This has been a
   (use-package calfw
     :ensure t 
     :config
-     (require 'calfw-org)
+     ;(require 'calfw-org)
      (setq cfw:org-overwrite-default-keybinding t)
      ;;(setq cfw:org-agenda-schedule-args '(:timestamp))
 
