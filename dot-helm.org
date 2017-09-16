@@ -63,8 +63,14 @@ we'll leave this as is for now.
 #+begin_src emacs-lisp
 ;; Helm ====================================================
 
-(require 'helm)
+(use-package helm
+  :ensure t 
+  :init )
+
+
+;;(require 'helm)
 (require 'helm-config)
+
 
 #+end_src
 
