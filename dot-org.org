@@ -276,7 +276,7 @@ Set a bunch of variables:
   ;; :home: https://github.com/kautsig/org-weather
   ;; :data: http://openweathermap.org/
 
-  (add-to-list 'load-path "~/emacs-lisp/org-weather")
+  (add-to-list 'load-path "~/.emacs.d/org-weather")
   (require 'org-weather)
   ;; Set your location and refresh the data
   (setq org-weather-location "Phnom Penh, Cambodia"
