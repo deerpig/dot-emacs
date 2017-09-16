@@ -823,7 +823,7 @@ Code from:
 ;; Export for Jekyll subtrees ------------------------------
 
 
-(load-file "~/emacs.d/ox-jekyll-subtree.el")
+(load-file "~/.emacs.d/ox-jekyll-subtree.el")
 ;;(load-file "~/emacs-lisp/ox-jekyll.el")
 (autoload 'endless/export-to-blog "jekyll-once")
 (setq org-jekyll-use-src-plugin t)
