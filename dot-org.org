@@ -1375,14 +1375,18 @@ enabled.
 #+end_src
 ** Pomidor- [[https://github.com/TatriX/pomidor][TatriX/pomidor]] | GitHub
 
-Pomodomo timer
+Pomodomo timer.
+
+Compile problems when installing from Melpa, so commenting
+out for now.
 
 #+begin_src emacs-lisp 
 
 ;; Pomodomo Timer ==========================================
-(use-package pomidor
-  :ensure t)
+;;(use-package pomidor
+;;  :ensure t)
 #+end_src
+
 ** A Better Return
 
  - [[http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/?utm_source=feedburner&utm_medium=twitter&utm_campaign=Feed:+TheKitchinResearchGroup+(The+Kitchin+Research+Group)][A better return in org-mode]]
