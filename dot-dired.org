@@ -149,7 +149,9 @@ helps keep the number of Dired buffers down....
 #+begin_src emacs-lisp
 ;; Dired Single ============================================
 
-(require 'dired-single)
+(use-package dired-single
+   :ensure t
+   :config      )
 
 (defun my-dired-init ()
   "Bunch of stuff to run for dired, either immediately or when it's
@@ -222,7 +224,10 @@ Commented out for now.
 
 ;; Dired Details ===========================================
 
-;; (require 'dired-details)
+(use-package dired-details
+  :ensure t
+  :config    )
+
 ;; (dired-details-install)
 
 #+end_src
