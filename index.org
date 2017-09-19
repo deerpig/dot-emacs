@@ -86,6 +86,7 @@ Feedback Is Welcome!
 - [[./emacs-burrs.org][BMF]]
 - Gnus
 - BBDB
+- Burs
 
 * Endgame
 
