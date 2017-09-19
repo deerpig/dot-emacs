@@ -1,0 +1,92 @@
+#   -*- mode: org; fill-column: 60 -*-
+
+#+TITLE: Burrs  | Deerpig's Dot Emacs
+#+AUTHOR: Brad Collins
+#+EMAIL: brad@chenla.la
+#+STARTUP: showall
+#+TOC: headlines 4
+#+PROPERTY: header-args    :results drawer  :tangle emacs-burs.el
+:PROPERTIES:
+:CUSTOM_ID: 
+:Name:      /home/deerpig/proj/deerpig/dot-emacs/dot-burs.org
+:Created:   2017-07-02T18:09@Prek Leap (11.642600N-104.919210W)
+:ID:        d0038295-7d2f-404b-8109-2336f0453f14
+:VER:       552265823.642324124
+:GEO:       48P-491193-1287029-15
+:BXID:      pig:VCQ8-1625
+:Class:     dotemacs
+:Type:      literate-program
+:Status:    wip
+:Licence:   MIT/CC BY-SA 4.0
+:END:
+
+[[https://img.shields.io/badge/made%20by-Deerpig-999999.svg?style=flat-square]] 
+[[https://img.shields.io/badge/class-dotemacs-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/type-literate%20program-0072B2.svg?style=flat-square]]
+[[https://img.shields.io/badge/status-wip-D55E00.svg?style=flat-square]]
+[[https://img.shields.io/badge/licence-MIT%2FCC%20BY--SA%204.0-000000.svg?style=flat-square]]
+
+* BMF Development
+
+Burr mode wasn't half bad.  But this was before OrgMode.  I wanted to
+use muse/planner to compose burrs, but we ended up only using it to
+display them.  Everything was encoded in XML and then converted for
+display into muse.
+
+I am starting to rewrite this from scratch as an extension to org-mode
+with no plans to use XML at all.  Well, that's not entirely true --
+there will eventually be export to XML for interoperability and
+possible use an archival format.
+
+I also began work on using Skribe as a composition format, but I could
+never get Skribe working in Scheme and even today, I've never had any
+luck getting the new Guile port to work on any of my boxes.
+
+I like the idea of using Org as the composition format and then
+lisp property lists for the index.  Skribe ended up being as complex
+a composition syntax as xml.  Using a wiki language solves a lot of
+those problems.
+
+A lot of this stuff required muse-mode and planner mode.
+
+It's not being tangled or loaded at the moment but I will keep it
+around in case I need to look at the code in the future and figure out
+how it worked.
+
+#+begin_src emacs-lisp 
+
+;; Burr Mode ===============================================
+
+(load "~/.emacs.d/burs/burs-utilities.el")
+
+;; Load YAML Mode for Burrs
+;;(require 'burr-mode)
+;;(require 'burr-to-html)
+;;(require 'burr-to-blosxom)
+;;(require 'chenla-config)
+;;(require 'yaml-mode)
+;;(require 'burr-vc)
+;;(require 'burr-pg-convert)
+;;(require 'burr-langcode)
+;;(require 'scribe-to-sxml)
+;;(require 'scribe)
+
+;;(autoload 'skribe-mode "skribe.el" "Skribe mode." t)
+
+;; this variable requires a trailing slash....
+;;(setq planner-bxid-path "~/work/bram/")
+
+;;(global-set-key "\C-h\C-b" 'burr-subfield-help)
+;;(global-set-key [(control f12)] 'burr-mode)
+;;(global-set-key [(control f11)] 'planner-mode)
+;;(global-set-key [(control f5)] 'insert-bxid-planner-links)
+
+;;(autoload 'burr-mode "burr-mode" "YAML Burr Editing Mode" t)
+;;(add-to-list 'auto-mode-alist '("\\.yml$" . burr-mode))
+;;(add-to-list 'auto-mode-alist '("\\.wiki$" . moinmoin-mode))
+;;(add-to-list 'auto-mode-alist '("\\.wikm$" . wikipedia-mode))
+;;(add-to-list 'auto-mode-alist '("\\.skb$" . scribe-mode))
+;;(add-to-list 'auto-mode-alist '("\\.bmf$" . emacs-lisp-mode))
+;;(add-hook 'burr-mode-user-hook 'turn-on-font-lock)
+
+#+end_src
