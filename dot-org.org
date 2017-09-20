@@ -28,12 +28,11 @@
 
 * Introduction
 
-The file '~/.emacs-org' that the code in this file uses is getting
-quite long in the tooth.  I know that things are getting more than a
-little crufty here.
-
-Once we get things ported and tangled and confirm that I haven't
-broken anything I'll slowly go through and uncruft.
+I try to keep all org mode related stuff here.  But org is
+now so entwined with so many things in emacs that sometimes
+it's difficult to know if it's an org package or, a dired,
+or mu4e or whatever file that is provides some org
+interoperability.
 
 * Org Mode
 
@@ -116,6 +115,17 @@ modules.
 (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
 
 #+end_src
+
+** LaTex Syntax Higlighting
+
+- [[http://pragmaticemacs.com/emacs/highlight-latex-text-in-org-mode/][Highlight latex text in org mode]] | Pragmatic Emacs
+
+#+begin_src emacs-lisp
+;;; Highlight LaTex code in org files ----------------------
+
+(setq org-highlight-latex-and-related '(latex))
+#+end_src
+
 
 ** Org Bullets
 
