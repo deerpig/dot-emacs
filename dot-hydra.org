@@ -740,7 +740,8 @@ Hydra for the elfeed news reader.
             Space    [_s_]                                     |
  ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
   Feeds: Boing Boing [_b_] Slashdot [_/_]   Ars Technica [_a_]     │   Starred [_*_]  
-          Cool Tools [_o_] Long Now [_l_]   Planet Emacs [_p_]     │   Marked [_M_]
+          Cool Tools [_o_] Long Now [_l_]   Planet Emacs [_p_]     │    Marked [_M_]
+              Robots [_r_]    Wired [_w_]                        │
  ╭───────────────────────────────────────────────────────────┘ Quit/Save [_q_]
   Quit [_<SPC>_]
 "
@@ -756,6 +757,8 @@ Hydra for the elfeed news reader.
    ("l" (elfeed-search-set-filter "@1-months-ago  +unread  +longnow"))
    ("o" (elfeed-search-set-filter "@1-months-ago  +unread  +tools"))
    ("p" (elfeed-search-set-filter "@1-months-ago  +unread  +planet"))
+   ("r" (elfeed-search-set-filter "@1-months-ago  +unread  +robot"))
+   ("w" (elfeed-search-set-filter "@1-months-ago  +unread  +wired"))
 
    ("*" (elfeed-search-set-filter "@1-months-ago +star"))
    ("M" elfeed-toggle-star nil)
