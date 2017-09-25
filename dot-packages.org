@@ -229,15 +229,33 @@ config...
 
 #+begin_src emacs-lisp
 
-;; Powerline ===============================================
-(use-package powerline
-  :ensure t
-  :init
-  (powerline-default-theme)
-  (setq powerline-color1 "#C05800")
-  (setq powerline-color2 "#839496")
-  (setq powerline-arrow-shape 'arrow))
+  ;; Powerline ===============================================
+  ;; (use-package powerline
+  ;;   :ensure t
+  ;;   :init
+  ;;   (powerline-default-theme)
+  ;;   (setq powerline-color1 "#C05800")
+  ;;   (setq powerline-color2 "#839496")
+  ;;   (setq powerline-arrow-shape 'arrow))
 
+#+end_src
+
+** Spaceline
+
+ - [[https://github.com/TheBB/spaceline][TheBB/spaceline: Powerline theme from Spacemacs]]
+ - [[http://pragmaticemacs.com/emacs/get-that-spacemacs-look-without-spacemacs/][Get that spacemacs look without spacemacs]] | Pragmatic Emacs
+ - [[http://amitp.blogspot.com/2017/01/emacs-spaceline-mode-line.html][Amit's Thoughts: Emacs spaceline mode line]]
+
+#+begin_src emacs-lisp
+(use-package spaceline
+  :ensure t
+  :demand t
+  :init
+  (setq powerline-default-separator 'arrow-fade)
+  :config
+  (require 'spaceline-config)
+  (spaceline-helm-mode 1)
+  (spaceline-spacemacs-theme))
 #+end_src
 
 ** eShell
