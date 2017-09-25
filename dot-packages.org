@@ -221,6 +221,8 @@ this programically -- for now just doing it using (org-new-id)
 
 ** Powerline
 
+I've switched to Spaceline and this section will be deleted soon.
+
 Powerline can be thought of as eye-candy, but it's very nice eye-candy
 that (at least for me) makes the command line far more readable.  I
 remember when I first installed it, before packages, and it took me
@@ -242,6 +244,13 @@ config...
 
 ** Spaceline
 
+
+Powerline was getting more than a bit long in the tooth and
+wasn't playing nice with a lot of my config.  Spaceline
+seems to be everything powerline was and a lot more.  Very
+good integration with eyebrowse and helm, which are both
+very near and dear to my heart.
+
  - [[https://github.com/TheBB/spaceline][TheBB/spaceline: Powerline theme from Spacemacs]]
  - [[http://pragmaticemacs.com/emacs/get-that-spacemacs-look-without-spacemacs/][Get that spacemacs look without spacemacs]] | Pragmatic Emacs
  - [[http://amitp.blogspot.com/2017/01/emacs-spaceline-mode-line.html][Amit's Thoughts: Emacs spaceline mode line]]
@@ -249,14 +258,16 @@ config...
 #+begin_src emacs-lisp
 (use-package spaceline
   :ensure t
-  :demand t
   :init
-  (setq powerline-default-separator 'arrow-fade)
+  (setq powerline-default-separator 'wave)
   :config
   (require 'spaceline-config)
+  (setq spaceline-workspace-numbers-unicode t)
+  (setq spaceline-window-numbers-unicode t)
   (spaceline-helm-mode 1)
   (spaceline-spacemacs-theme))
 #+end_src
+
 
 ** eShell
 
