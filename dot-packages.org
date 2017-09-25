@@ -282,9 +282,11 @@ very near and dear to my heart.
 
 (use-package projectile
   :ensure t
+  :init
+  (setq-default projectile-keymap-prefix (kbd "H-,"))
   :config
   (projectile-global-mode)
-(setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'helm))
 
 ;;; Helm Projectile ----------------------------------------
 
@@ -294,7 +296,6 @@ very near and dear to my heart.
   (helm-projectile-on))
 
 #+end_src
-
 
 ** eShell
 
