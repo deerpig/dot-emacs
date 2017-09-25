@@ -295,10 +295,6 @@ very near and dear to my heart.
 
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-t
-:END:
 
 ** eShell
 
