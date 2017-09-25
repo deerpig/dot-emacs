@@ -256,6 +256,8 @@ very near and dear to my heart.
  - [[http://amitp.blogspot.com/2017/01/emacs-spaceline-mode-line.html][Amit's Thoughts: Emacs spaceline mode line]]
 
 #+begin_src emacs-lisp
+;;; Spaceline ----------------------------------------------
+
 (use-package spaceline
   :ensure t
   :init
@@ -268,6 +270,35 @@ very near and dear to my heart.
   (spaceline-spacemacs-theme))
 #+end_src
 
+
+** Projectile and Helm Projectile
+
+ - [[http://cestlaz.github.io/posts/using-emacs-33-projectile-jump/#.Wchi9qsxVpg][Using Emacs - 33 - projectile, dumb-jump]] | C'est la Z
+ - [[https://github.com/bbatsov/projectile/blob/master/README.md][bbatsov/projectile]] | GitHub
+
+
+#+begin_src emacs-lisp
+;;; Projectile ---------------------------------------------
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode)
+(setq projectile-completion-system 'ivy))
+
+;;; Helm Projectile ----------------------------------------
+
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on))
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
 
 ** eShell
 
