@@ -479,6 +479,22 @@ Allow setting single tags without the menu
 
 #+end_src
 
+
+** Markdown export
+
+#+begin_src emacs-lisp
+(require 'ox-md)
+#+end_src
+
+** EPUB export
+
+#+begin_src emacs-lisp
+(use-package ox-epub
+  :ensure t
+)
+#+end_src
+
+
 ** Todo Keywords, Faces & Triggers
 
 Set Keywords:
