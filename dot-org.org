@@ -489,9 +489,10 @@ Allow setting single tags without the menu
 ** EPUB export
 
 #+begin_src emacs-lisp
-(use-package ox-epub
-  :ensure t
-)
+  ;; (use-package ox-epub
+  ;;   :ensure t
+  ;;   :config
+  ;; )
 #+end_src
 
 
