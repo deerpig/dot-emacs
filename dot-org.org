@@ -267,14 +267,6 @@ Set a bunch of variables:
       ;; Display tags farther right
       org-agenda-tags-column -102)
 
-;; Enable display of the time grid so we can see the 
-;; marker for the current time
-
-(setq org-agenda-time-grid 
-     (quote ((daily today remove-match)
-     #("----------------" 0 16 (org-heading t))
-     (0900 1100 1300 1500 1700))))
-
 #+end_src
 
 ** Org Weather
