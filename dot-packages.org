@@ -577,6 +577,15 @@ starting places:
  
 
 #+begin_src emacs-lisp
+;;disable version control
+
+(setq vc-handled-backends nil)
+
+
+#+end_src
+
+
+#+begin_src emacs-lisp
 
 ;; Magit ---------------------------------------------------
 
