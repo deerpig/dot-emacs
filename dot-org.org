@@ -563,26 +563,32 @@ Triggers:
                "* %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
               ("m" "Meeting" entry (file "~/org/refile.org")
                "* MEETING with %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
-              ("p" "Phone call" entry (file "~/org/refile.org")
-               "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+             ;;("p" "Phone call" entry (file "~/org/refile.org")
+             ;;  "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+              ("p" "Protocol" entry (file+headline "~/org/refile.org")
+               "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
               ("e" "Email" entry (file "~/org/refile.org")
                "* EMAIL %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n:url: %a\n") 
 	          ("H" "Habit" entry (file "~/org/habits.org")
 	           "** NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
               ("h" "Hoard" entry (file "~/proj/chenla/hoard/refile.org")
                "* BURR %?\n")
-              ("h" "Hoard" entry (file "~/proj/chenla/hoard/refile.org")
-               "* BURR %?\n")
+	         ;;("L" "Protocol Link" entry (file+headline  "~/org/refile.org")
+             ;; "* %? [[%:link][%:description]] \nCaptured On: %U")
               ("l" "Link" entry (file "~/org/refile.org") ;; insert org link
 	           "* LINK %? %^C %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
-	          ("L" "Link" entry (file "~/org/refile.org") ;; create link
-	           "* LINK %? %^L %^g \n:PROPERTIES:\n:CREATED:   %T\n:ID:       %(org-id-new)\n:END:\n")
 	          ("b" "BibTex" plain (file "~/org/ref.bib")
                "\n\n\n\n%?")
 	          ("c" "Contacts" entry (file "~/org/contacts.org")
 	           "* %?%:fromname\n:PROPERTIES:\n:ID:        %(org-id-new)\n:CREATED:   %T\n:NAME:      %:fromname\n:EMAIL:     %:fromaddress\n:PHONE:    \n:ALIAS:    \n:NICKNAME: \n:IGNORE:   \n:ICON:     \n:NOTE:     \n:ADDRESS:  \n:BIRTHDAY: \n:END:\n")
               ("B" "Chenla Blog" entry (file "~/org/blog.org")
                "** TODO %?\n%T\n"))))
+
+             ;; ("p" "Phone call" entry (file "~/org/refile.org")
+             ;;  "* PHONE %?\n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+             ;;("l" "Link" entry (file "~/org/refile.org") ;; insert org link
+	         ;; "* LINK %? %^C %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+
 
 ;;       ("B" "Blog Post" plain (file (capture-blog-post-file)) (file "tlp-blog-post.org"))
 ;;	      ("c" "Contacts" entry (file "~/org/contacts.org")
