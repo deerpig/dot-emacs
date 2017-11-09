@@ -148,14 +148,14 @@ that are not listed here which are build into helm.
 #+begin_src emacs-lisp
 
 ;; helm-command-map key-bindings ---------------------------
-;; h -- org agenda headings
+;; H -- org agenda headings
 ;; r -- regexp
 ;; f -- open file
 ;; s -- search
 ;; m -- man pages
 ;; l -- locate
 ;; y -- yasnippet
-(define-key helm-command-map (kbd "h") 'helm-org-agenda-files-headings)
+(define-key helm-command-map (kbd "H") 'helm-org-agenda-files-headings)
 (define-key helm-command-map (kbd "b") 'helm-bibtex)
 (define-key helm-command-map (kbd "z") 'helm-select-action) ;list actions
 (define-key helm-command-map (kbd "j") 'helm-bookmarks)
