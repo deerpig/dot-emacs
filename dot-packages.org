@@ -1640,6 +1640,16 @@ research.
   - [[http://mbork.pl/2017-10-30_Pdf-tools_and_follow_mode][2017-10-30 Pdf-tools and follow mode]] | Marcin Borkowski
 
 
+First install libpoppler
+
+#+begin_src sh :tangle no
+sudo aptitude install libpng-dev zlib1g-dev
+sudo aptitude install libpoppler-glib-dev
+sudo aptitude install libpoppler-private-dev
+#+end_src
+
+
+
 #+begin_src emacs-lisp
 (use-package pdf-tools
  :pin manual ;; manually update
