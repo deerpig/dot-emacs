@@ -1626,3 +1626,87 @@ Workspaces creation and switching.
 
 #+end_src
 
+
+** PDF Tools
+
+PDFTools turns emacs into the best PDF viewer for doing
+research. 
+
+  - [[https://github.com/politza/pdf-tools][politza/pdf-tools: Emacs support library for PDF
+    files.]] | GitHub
+  - [[http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/][View and annotate PDFs in Emacs with PDF-tools]] | Pragmatic Emacs
+  - [[http://pragmaticemacs.com/emacs/more-pdf-tools-tweaks/?utm_content=buffer61399&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer][More PDF-tools tweaks]] | Pragmatic Emacs
+  - [[http://babbagefiles.blogspot.com/2017/11/more-pdf-tools-tricks.html][The Babbage Files: More pdf-tools tricks]]
+  - [[http://mbork.pl/2017-10-30_Pdf-tools_and_follow_mode][2017-10-30 Pdf-tools and follow mode]] | Marcin Borkowski
+
+
+#+begin_src emacs-lisp
+(use-package pdf-tools
+ :pin manual ;; manually update
+ :config
+ ;; open pdfs scaled to fit page
+ (setq-default pdf-view-display-size 'fit-page)
+ ;; automatically annotate highlights
+ (setq pdf-annot-activate-created-annotations t)
+ ;; use normal isearch
+ (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+ ;; turn off cua so copy works
+ (add-hook 'pdf-view-mode-hook (lambda () (cua-mode 0)))
+ ;; more fine-grained zooming
+ (setq pdf-view-resize-factor 1.1)
+ ;; keyboard shortcuts
+ (define-key pdf-view-mode-map (kbd "h") 'pdf-annot-add-highlight-markup-annotation)
+ (define-key pdf-view-mode-map (kbd "t") 'pdf-annot-add-text-annotation)
+ (define-key pdf-view-mode-map (kbd "D") 'pdf-annot-delete)
+
+(pdf-tools-install)
+
+
+
+;; midnite mode hook
+ (add-hook 'pdf-view-mode-hook (lambda ()
+                                 (pdf-view-midnight-minor-mode))) ; automatically turns on midnight-mode for pdfs
+
+(setq pdf-view-midnight-colors '("#ff9900" . "#0a0a12" )) ; set the amber profile as default (see below)
+
+(defun bms/pdf-no-filter ()
+  "View pdf without colour filter."
+  (interactive)
+  (pdf-view-midnight-minor-mode -1)
+  )
+
+;; change midnite mode colours functions
+(defun bms/pdf-midnite-original ()
+  "Set pdf-view-midnight-colors to original colours."
+  (interactive)
+  (setq pdf-view-midnight-colors '("#839496" . "#002b36" )) ; original values
+  (pdf-view-midnight-minor-mode)
+  )
+
+(defun bms/pdf-midnite-amber ()
+  "Set pdf-view-midnight-colors to amber on dark slate blue."
+  (interactive)
+  (setq pdf-view-midnight-colors '("#ff9900" . "#0a0a12" )) ; amber
+  (pdf-view-midnight-minor-mode)
+  )
+
+(defun bms/pdf-midnite-green ()
+  "Set pdf-view-midnight-colors to green on black."
+  (interactive)
+  (setq pdf-view-midnight-colors '("#00B800" . "#000000" )) ; green 
+  (pdf-view-midnight-minor-mode)
+  )
+
+(defun bms/pdf-midnite-colour-schemes ()
+  "Midnight mode colour schemes bound to keys"
+        (local-set-key (kbd "!") (quote bms/pdf-no-filter))
+        (local-set-key (kbd "@") (quote bms/pdf-midnite-amber)) 
+        (local-set-key (kbd "#") (quote bms/pdf-midnite-green))
+            (local-set-key (kbd "$") (quote bms/pdf-midnite-original))
+ )  
+
+(add-hook 'pdf-view-mode-hook 'bms/pdf-midnite-colour-schemes)
+
+)
+#+end_src
+
