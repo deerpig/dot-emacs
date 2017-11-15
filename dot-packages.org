@@ -1639,6 +1639,11 @@ research.
   - [[http://babbagefiles.blogspot.com/2017/11/more-pdf-tools-tricks.html][The Babbage Files: More pdf-tools tricks]]
   - [[http://mbork.pl/2017-10-30_Pdf-tools_and_follow_mode][2017-10-30 Pdf-tools and follow mode]] | Marcin Borkowski
 
+More tweeks for annotation, but annotation crashes on my box
+so will implement later.
+
+  - [[http://pragmaticemacs.com/emacs/even-more-pdf-tools-tweaks/][Pragmatic Emacs: Even more PDF-tools tweaks]] | 
+
 
 First install libpoppler
 
