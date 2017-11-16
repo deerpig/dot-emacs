@@ -166,6 +166,9 @@ that are not listed here which are build into helm.
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
 (define-key helm-command-map (kbd "u") 'helm-tramp)
 (define-key helm-command-map (kbd "T") 'helm-world-time)
+(define-key helm-command-map (kbd "F") 'helm-multi-files)
+(define-key helm-command-map (kbd "f") 'helm-firefox-bookmarks)
+
 #+end_src
 
 Use <tab> to perform persistent action
@@ -490,3 +493,33 @@ will only see org snippets.  Very helpful.
   (global-set-key (kbd "C-c y") 'helm-yas-complete))
 
 #+end_src
+
+** Helm Firefox Bookmarks
+
+ - [[https://github.com/emacs-helm/helm-firefox][Helm-Firefox]] | GitHub
+
+Follow the instructions.
+
+  - about:config  set bookmarks-autoexport to true
+     
+     M-x firefox-protocol-installer-install RET ffbookmarks RET /path/to/ffbookmarks
+
+  - create bookmarklet
+
+   - Add a bookmark named ffbookmarks in your personal bar
+     in firefox.
+   - Right click on it and add:
+     javascript:location.href='ffbookmarks://localhost' as
+     url.
+
+  - place ffbookmark script in your path and make executible
+  - install firefox-protocol -- download from github and
+    save in .emacs.d/firefox-protocol.el
+  - M-x firefox-protocol-installer-install RET ffbookmarks RET /path/to/ffbookmarks
+
+If it doesn't work look to see if firefox has exported
+bookmarks and there is a file called bookmarks.html
+
+delete /places.sqlite/ in:
+
+  ./mozilla/firefox/<profile>
