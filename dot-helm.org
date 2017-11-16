@@ -328,7 +328,6 @@ Look up BibTex entries in local BibTex database using helm interface.
  - [[https://github.com/cpitclaudel/biblio.el/blob/master/README.md][biblio.el/README.md at master · cpitclaudel/biblio.el]]
 
 #+begin_src emacs-lisp
-
 ;; Helm-bibtex ---------------------------------------------
 
 ;;"~/org/ref.bib"
@@ -338,7 +337,7 @@ Look up BibTex entries in local BibTex database using helm interface.
   :init
   (autoload 'helm-bibtex "helm-bibtex" "" t)
   (setq helm-bibtex-bibliography '("~/org/biblio.bib" "~/org/ref.bib"))
-  (setq bibtex-completion-bibliography '("~/org/biblio.bib" "~/org/ref.bib"))
+  (setq bibtex-completion-bibliography '("/home/deerpig/org/biblio.bib" "/home/deerpig/org/ref.bib"))
   (setq bibtex-completion-pdf-field "file")
   ;;(setq bibtex-completion-additional-search-fields '(keywords))
   (setq bibtex-completion-pdf-symbol "⌘")
