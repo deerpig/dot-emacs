@@ -1729,6 +1729,10 @@ sudo aptitude install libpoppler-private-dev
 
 Emacs TLDR interface for TLDR documentation.
 
+For some reason M-x tldr doesn't work for me, but M-x
+helm-tldr does.  That's find by me, because I use nearly
+everything through helm.
+
 #+begin_src emacs-lisp
 (use-package tldr
  :ensure t
