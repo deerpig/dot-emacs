@@ -1725,3 +1725,12 @@ sudo aptitude install libpoppler-private-dev
 )
 #+end_src
 
+** TLDR
+
+Emacs TLDR interface for TLDR documentation.
+
+#+begin_src emacs-lisp
+(use-package tldr
+ :ensure t
+ :config ) 
+#+end_src
