@@ -166,6 +166,7 @@ that are not listed here which are build into helm.
 (define-key helm-command-map (kbd "y") 'helm-yas-complete)
 (define-key helm-command-map (kbd "u") 'helm-tramp)
 (define-key helm-command-map (kbd "T") 'helm-world-time)
+(define-key helm-command-map (kbd "t") 'helm-tldr)
 (define-key helm-command-map (kbd "F") 'helm-multi-files)
 (define-key helm-command-map (kbd "f") 'helm-firefox-bookmarks)
 
