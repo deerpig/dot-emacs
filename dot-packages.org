@@ -595,6 +595,8 @@ starting places:
   ("C-x g" . magit-status)
   ("C-x M-g" . magit-dispatch-popup))
 
+(global-set-key (kbd "H-h") 'magit-log-buffer-file)
+
 #+end_src
 
 *** Git Gutter
