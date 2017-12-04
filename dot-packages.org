@@ -80,6 +80,9 @@ Literate Computing...
 
 * Packages
 ** File Header 
+:PROPERTIES:
+:ID:       5c452ffb-2cb8-4556-8c63-df447db69ed1
+:END:
 
 #+begin_src emacs-lisp
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
@@ -87,6 +90,9 @@ Literate Computing...
 #+end_src
 
 ** Unicode Fonts
+:PROPERTIES:
+:ID:       92bef879-4601-4f50-9089-952aed56f3cb
+:END:
 
 We use the `unicode-fonts' package to set everything up. Beware that
 the `unicode-fonts-setup' function takes a while to run, which is why
@@ -108,6 +114,9 @@ work. See https://github.com/rolandwalker/unicode-fonts/#quickstart
 
 
 ** Color Theme: Gruvbox
+:PROPERTIES:
+:ID:       7953bec4-274c-4c4c-a9fa-1f28cb99b55c
+:END:
 
 Emacs packages provided a nice way to add color schemes to Emacs.
 Previously there was a theme manager application which bundled a lot
@@ -139,13 +148,33 @@ in all this theme is really fucking good.  YMMV.
 
 
 ** Set Some Faces
+:PROPERTIES:
+:ID:       3b16868d-1cfb-4f87-a126-18152d00e768
+:END:
 
 #+begin_src emacs-lisp
 ;; remove the strange white line between two fringes.
 (set-face-attribute 'vertical-border nil :foreground (face-attribute 'fringe :background))
 #+end_src
 
+
+** EXWM
+:PROPERTIES:
+:ID:       1ed6a925-5e2c-4118-a90a-3bec65d79891
+:END:
+
+#+begin_src emacs-lisp
+(use-package exwm :ensure t
+    :config 
+    (use-package exwm-config
+        :config (exwm-config-default)))
+
+#+end_src
+
 ** Winmove
+:PROPERTIES:
+:ID:       a19fa59c-d130-4d07-9344-78e7df23c6dc
+:END:
 
 Use hydra for key-bindings
 
@@ -166,6 +195,9 @@ Use hydra for key-bindings
 
 
 ** Buffer Move
+:PROPERTIES:
+:ID:       c1bc6e2a-d772-40f9-b614-d424218ca4f6
+:END:
 
  - [[https://github.com/lukhas/buffer-move][lukhas/buffer-move]] | GitHub
 
@@ -183,6 +215,9 @@ Use hydra for key-bindings
 
 
 ** Avy Jump Mode
+:PROPERTIES:
+:ID:       abf3134e-8884-43a5-935d-c5e33bf9943b
+:END:
 
 #+begin_src emacs-lisp
 
@@ -198,6 +233,9 @@ Use hydra for key-bindings
 #+end_src
 
 ** UUID Generators
+:PROPERTIES:
+:ID:       e9aa7b87-260a-4985-ac4c-c938e24e5010
+:END:
 
 See [[rfc:4122][RFC4122]]
 
@@ -220,6 +258,9 @@ this programically -- for now just doing it using (org-new-id)
 
 
 ** Powerline
+:PROPERTIES:
+:ID:       9db01df2-8b67-472f-819a-bc18809a362f
+:END:
 
 I've switched to Spaceline and this section will be deleted soon.
 
@@ -243,6 +284,9 @@ config...
 #+end_src
 
 ** Spaceline
+:PROPERTIES:
+:ID:       7b9ec49b-f6ce-4f34-b349-a10988e7b1ba
+:END:
 
 
 Powerline was getting more than a bit long in the tooth and
@@ -272,6 +316,9 @@ very near and dear to my heart.
 
 
 ** Projectile and Helm Projectile
+:PROPERTIES:
+:ID:       c644613d-72ad-4b6d-9e2a-dff4ca93b077
+:END:
 
  - [[http://cestlaz.github.io/posts/using-emacs-33-projectile-jump/#.Wchi9qsxVpg][Using Emacs - 33 - projectile, dumb-jump]] | C'est la Z
  - [[https://github.com/bbatsov/projectile/blob/master/README.md][bbatsov/projectile]] | GitHub
@@ -298,6 +345,9 @@ very near and dear to my heart.
 #+end_src
 
 ** eShell
+:PROPERTIES:
+:ID:       29e92d29-98d4-446c-a02c-1b855584cbf2
+:END:
 
 I am one of those people who admire eshell and yet have never gotten
 into the habit of using it on a regular basis. I now use [[https://github.com/Guake/guake][Guake]]
@@ -334,6 +384,9 @@ to start:
 
 
 ** Tramp
+:PROPERTIES:
+:ID:       a0b4ba0b-c294-459d-a9da-7c7122ad8739
+:END:
 
 This allows you to use tramp to open files on remote hosts
 using the sudo command:  so =/sudo:host:/etc/hosts= should
@@ -348,6 +401,9 @@ now work.
 
 
 ** EMMS
+:PROPERTIES:
+:ID:       077cbd7e-2600-44bf-86c7-56933a0c55a3
+:END:
 
 EMMS is the Emacs Multi-Media System.  EMMS has been around a while
 and is still in active development.  I've played with it a couple of
@@ -378,6 +434,9 @@ Good places to start, when /playing/ around with it:
 #+end_src
 
 ** WC-Org
+:PROPERTIES:
+:ID:       addc0ceb-4923-478a-aefa-2fd200e8abaf
+:END:
 
 Displays word count in modeline of org buffers.
 
@@ -421,6 +480,9 @@ See http://ireal.blog/?p=6722
 
 
 ** Org Ref
+:PROPERTIES:
+:ID:       b48c80ce-d8fb-49ea-82fe-983b4880d9a4
+:END:
 
 Org-Ref is nothing short of mindblowing!  
 
@@ -445,16 +507,16 @@ Where to begin:
   (use-package org-ref
     :ensure t
     :config
-    (setq reftex-default-bibliography '("~/org/biblio.bib"))
+    (setq reftex-default-bibliography '("~/proj/chenla/hoard/bib.bib"))
     (setq org-ref-ref-library 'org-ref-helm-cite)
 
-    (setq org-ref-bibliography-notes    "~/org/biblio.bib"
-	  org-ref-default-bibliography  "~/org/bibtex-pdfs"
-	  org-ref-pdf-directory         "~/htdocs/lib")
+    (setq org-ref-bibliography-notes    "~/proj/chenla/bib/read.org"
+	  org-ref-default-bibliography  "~/proj/chenla/hoard/bib.bib"
+	  org-ref-pdf-directory         "~/proj/chenla/hoard/lib")
 
-    (setq bibtex-completion-bibliography "~/org/biblio.bib"
-	  bibtex-completion-library-path "~/htdocs/lib"
-	  bibtex-completion-notes-path   "~/org")
+    (setq bibtex-completion-bibliography "~/proj/chenla/hoard/bib.bib"
+	  bibtex-completion-library-path "~/proj/chenla/hoard/lib"
+	  bibtex-completion-notes-path   "~/proj/chenla/hoard")
 
    ;; open pdf with system pdf viewer (works on mac)
     ;; (setq bibtex-completion-pdf-open-function
@@ -464,7 +526,15 @@ Where to begin:
 
 #+end_src
 
+#+RESULTS:
+:RESULTS:
+t
+:END:
+
 ** Interleave Mode
+:PROPERTIES:
+:ID:       9fc127a3-1d1f-4a51-a5e0-439090dd6aca
+:END:
 
 [[https://github.com/rudolfochrist/interleave][rudolfochrist/interleave: Emacs minor mode to interleave notes and text books]]
 
@@ -481,6 +551,9 @@ Where to begin:
 #+end_src
 
 ** SSH
+:PROPERTIES:
+:ID:       5cbae530-a69e-42aa-9f6d-112d248b957d
+:END:
 
 #+begin_src emacs-lisp
 
@@ -497,6 +570,9 @@ Where to begin:
 #+end_src
 
 ** Which Key
+:PROPERTIES:
+:ID:       8967b5c9-46f4-427d-a7f1-326ed2510c7a
+:END:
 
 which-key is a minor mode for Emacs that displays the key bindings
 following your currently entered incomplete command (a prefix) in a
@@ -522,6 +598,9 @@ home: [[https://github.com/justbur/emacs-which-key][emacs-which-key]] | github
 : t
 
 ** Git Packages
+:PROPERTIES:
+:ID:       6011bfa4-2472-4513-aee8-513ef9f6fd20
+:END:
 
  - [[http://www.wikemacs.org/wiki/Git#Colorize_Dired_output_depending_on_the_file_git_status][Git]] | WikEmacs
 
@@ -530,6 +609,9 @@ home: [[https://github.com/justbur/emacs-which-key][emacs-which-key]] | github
 ;; GIT Packages ============================================
 #+end_src
 *** Git Library
+:PROPERTIES:
+:ID:       9921e384-7daa-43a1-99a9-51911227d509
+:END:
 
 #+begin_src emacs-lisp
 (use-package git
@@ -537,6 +619,9 @@ home: [[https://github.com/justbur/emacs-which-key][emacs-which-key]] | github
 #+end_src
 
 *** Magit
+:PROPERTIES:
+:ID:       4a87ed14-14d0-4c37-be54-42bc1003393a
+:END:
 
 Magit, along with Orgmode and Helm have transformed the way I use
 Emacs more than perhaps any other.  But there is a learning curve --
@@ -600,6 +685,9 @@ starting places:
 #+end_src
 
 *** Git Gutter
+:PROPERTIES:
+:ID:       3ccf9ace-23b1-44f2-8005-e9255099ff32
+:END:
 
 Git gutter is a minor mode that indicates lines, in the left-side
 /gutter/ of the window that have been added or deleted or changed
@@ -626,6 +714,9 @@ you ever lived without it.
 #+end_src
 
 *** Magithub
+:PROPERTIES:
+:ID:       890a3c37-e10a-4f71-9d7d-7869da0054e7
+:END:
 
 Magithub allows you to create new repos in GitHub from within emacs.
 I haven't really felt the need for this, though lately I'm been
@@ -648,6 +739,9 @@ until I feel the need.
 #+end_src
 
 *** nov.el
+:PROPERTIES:
+:ID:       c142f5b0-f087-4ff2-bd26-a7a36a0fd151
+:END:
 
 Emacs epub reader.
 
@@ -674,6 +768,9 @@ Emacs epub reader.
 
 
 *** Git Time Machine
+:PROPERTIES:
+:ID:       2b6a7bbd-257f-4e99-b5b2-4cc6ca550cd2
+:END:
 
  - [[https://github.com/pidu/git-timemachine][pidu/git-timemachine]] | GitHub
 
@@ -695,6 +792,9 @@ Emacs epub reader.
 
 #+end_src
 *** Dired K
+:PROPERTIES:
+:ID:       6fb67724-ca2f-46db-bf52-ee28e88054ae
+:END:
 
 Highlights contents of git repository directories in dired like in [[https://github.com/supercrabtree/k][k]]
 in z-shell.
@@ -729,6 +829,9 @@ is very nice as well.
 
 
 ** Yas-snippet
+:PROPERTIES:
+:ID:       c3491a11-1d69-469c-8168-2efc01506b03
+:END:
 
 
 Clone AndreaCrotti's yasnippet collection:
@@ -763,6 +866,9 @@ snippets for the mode you are in.
 #+end_src
 
 ** Programing Languages
+:PROPERTIES:
+:ID:       92290dfc-e3d7-4257-80a3-6d4077c0cfe2
+:END:
 
 #+begin_src emacs-lisp
 
@@ -772,6 +878,9 @@ snippets for the mode you are in.
 #+end_src
 
 *** PHP
+:PROPERTIES:
+:ID:       078ea8f9-1c7e-40a6-8c74-1ba1e3711626
+:END:
 
 
 #+begin_src emacs-lisp
@@ -785,6 +894,9 @@ snippets for the mode you are in.
 #+end_src
 
 *** Ruby
+:PROPERTIES:
+:ID:       02d16922-25b2-4e32-9e9a-55b34f3f7e96
+:END:
 
 #+begin_src emacs-lisp
 
@@ -809,6 +921,9 @@ snippets for the mode you are in.
 #+end_example
 
 ** Dictionaries
+:PROPERTIES:
+:ID:       860f4841-9e8c-425d-83f9-7750ed841486
+:END:
 
 #+begin_src emacs-lisp
 
@@ -843,6 +958,9 @@ snippets for the mode you are in.
 
 
 ** Boxquote
+:PROPERTIES:
+:ID:       6a9ca78e-3879-465b-96a6-cdb067cb79ca
+:END:
 
 #+begin_src emacs-lisp
 
@@ -854,6 +972,9 @@ snippets for the mode you are in.
 #+end_src
 
 ** Lorem ipsum
+:PROPERTIES:
+:ID:       50e2115d-d2b2-46c7-8191-3715886d2986
+:END:
 
 #+begin_src emacs-lisp
 
@@ -865,6 +986,9 @@ snippets for the mode you are in.
 #+end_src
 
 ** Twittering Mode
+:PROPERTIES:
+:ID:       bd10c1e8-6965-4e68-b941-e028e4a60951
+:END:
 
 #+begin_src emacs-lisp
 
@@ -883,6 +1007,9 @@ snippets for the mode you are in.
 #+end_src
 
 ** Elfeed
+:PROPERTIES:
+:ID:       e5f0ea27-102d-463c-9175-2a15b23b3ec2
+:END:
 
 
  - [[https://github.com/skeeto/elfeed][skeeto/elfeed]]  | Github
@@ -1033,6 +1160,9 @@ t
 :END:
 
 ** Color Themes
+:PROPERTIES:
+:ID:       2a89acfd-b99c-4b1d-a786-4e168fbb61c6
+:END:
 
 Do I really need this anymore?  If I do this should be moved up with
 the Gruvbox section.
@@ -1049,6 +1179,9 @@ the Gruvbox section.
 #+end_src
 
 ** WebDev Packages
+:PROPERTIES:
+:ID:       6396b25d-76b6-471a-99e7-e8eb7f4b554e
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1062,6 +1195,9 @@ nXML Mode should be now part of emacs -- mXML is still best for
 working with XML, but Web-Mode is better for WebDev.
 
 *** HTML Tidy
+:PROPERTIES:
+:ID:       0d6e470d-f893-44ac-8003-ea9769548378
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1074,6 +1210,9 @@ working with XML, but Web-Mode is better for WebDev.
 #+end_src
 
 *** RelaxNG
+:PROPERTIES:
+:ID:       d8cad95d-09d4-4896-922f-721ec56b82ab
+:END:
 
 
 #+begin_src emacs-lisp
@@ -1087,6 +1226,9 @@ working with XML, but Web-Mode is better for WebDev.
 #+end_src
 
 *** Htmlize
+:PROPERTIES:
+:ID:       70a4aef6-0b21-4e0c-8815-c6e06d0cf602
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1100,6 +1242,9 @@ working with XML, but Web-Mode is better for WebDev.
 
 
 *** Web Mode
+:PROPERTIES:
+:ID:       1ac72321-5d51-4309-bd57-826b2e3c41fc
+:END:
 
 #+begin_src emacs-lisp
 ;; Web-Mode ------------------------------------------------
@@ -1126,6 +1271,9 @@ working with XML, but Web-Mode is better for WebDev.
 
 
 *** Rainbow Mode
+:PROPERTIES:
+:ID:       421a3bd7-7152-4873-8eff-4c65789bd899
+:END:
 
 Once you start using it, you wonder how you every worked with CSS
 without it....
@@ -1146,6 +1294,9 @@ without it....
 #+end_src
 
 *** CSS Mode
+:PROPERTIES:
+:ID:       9630e8ab-fc9a-492a-b930-c75cd77e03ac
+:END:
 
 
 #+begin_src emacs-lisp
@@ -1164,6 +1315,9 @@ without it....
 #+end_src
 
 ** CSV Mode
+:PROPERTIES:
+:ID:       34ac5645-4d97-49b0-bb54-361598c10163
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1176,6 +1330,9 @@ without it....
 #+end_src
 
 ** Findr
+:PROPERTIES:
+:ID:       d313604c-cc4e-4a90-9b70-f6b7ecaeb3c7
+:END:
 
 Do we need this?  Using Helm as find interface
 
@@ -1191,6 +1348,9 @@ Do we need this?  Using Helm as find interface
 
 
 ** WWTime
+:PROPERTIES:
+:ID:       1e2102a5-035f-4be1-8b12-603c1abdb5e7
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1202,6 +1362,9 @@ Do we need this?  Using Helm as find interface
 #+end_src
 
 ** JSON 
+:PROPERTIES:
+:ID:       e5d3713c-7035-495f-a4bd-dcc3cb3337f9
+:END:
 
 Move up with WebDev?
 
@@ -1217,6 +1380,9 @@ Move up with WebDev?
 #+end_src
 
 ** Chef & Cucumber
+:PROPERTIES:
+:ID:       e409f8b0-67dd-4763-9cb5-dc0450b21e0d
+:END:
 #+begin_src emacs-lisp
 
 ;; Chef & Cucumber =========================================
@@ -1224,6 +1390,9 @@ Move up with WebDev?
 #+end_src
 
 *** Chef
+:PROPERTIES:
+:ID:       c0d6aa36-e511-4853-83cc-7e92bb076548
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1236,6 +1405,9 @@ Move up with WebDev?
 #+end_src
 
 *** Cucumber
+:PROPERTIES:
+:ID:       2f7344fd-30e9-43a4-ac87-741a31f102ed
+:END:
 #+begin_src emacs-lisp
 
 ;; Cucumber ------------------------------------------------
@@ -1247,6 +1419,9 @@ Move up with WebDev?
 #+end_src
 
 ** Emacs Lisp Development
+:PROPERTIES:
+:ID:       6c8540de-961e-4f7d-a405-8e4dd26afb51
+:END:
 #+begin_src emacs-lisp
 
 ;; Emacs Lisp Development ==================================
@@ -1254,6 +1429,9 @@ Move up with WebDev?
 #+end_src
 
 *** Cask
+:PROPERTIES:
+:ID:       036f1a51-e090-4b36-b7d6-781d96fb76f8
+:END:
 #+begin_src emacs-lisp
 
 ;; Cask ----------------------------------------------------
@@ -1267,6 +1445,9 @@ Move up with WebDev?
 
 
 *** Ecukes
+:PROPERTIES:
+:ID:       322582dd-44e7-4572-a893-e631d6dabac8
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1280,6 +1461,9 @@ Move up with WebDev?
 #+end_src
 
 ** Expand-Region
+:PROPERTIES:
+:ID:       7e4154ff-fffc-4c7d-9389-a711bfb1a656
+:END:
 
 As Mike Zamansky promised, it's really easy to fall in love with this
 package.  People outside of emacs don't need to mark regions for
@@ -1311,6 +1495,9 @@ t
 :END:
 
 ** Hungry Delete
+:PROPERTIES:
+:ID:       62eba4cb-90e6-496c-bc71-0fba89a69ffe
+:END:
 
 I had tried hungry delete a few years ago, or it might have been
 something else that did the same thing and didn't like.  I think it
@@ -1344,6 +1531,9 @@ t
 :END:
 
 ** iEdit
+:PROPERTIES:
+:ID:       8aa2c5a4-fc66-4f71-9b95-d94a0c83c743
+:END:
 
 iEdit allows you to edit all instances of a marked region in a buffer.
 
@@ -1379,6 +1569,9 @@ nil
 :END:
 
 ** Beacon Mode
+:PROPERTIES:
+:ID:       0ad19450-0bcd-4414-82b8-c1a3ad90daf1
+:END:
 
 Another tip from Mike Zamansky.  I had my doubts by it really is
 pretty cool and does help you keep track of the curser when you
@@ -1431,6 +1624,9 @@ NOT tangled.
 t
 :END:
 ** Calfw 
+:PROPERTIES:
+:ID:       81974f2e-c2f0-474d-ba39-c52c9530f768
+:END:
 
 There is a package available for GCal integration as well.
 
@@ -1506,6 +1702,9 @@ nil
 
 
 ** Chronos
+:PROPERTIES:
+:ID:       8a41f27c-7a39-4f00-a90e-22d87ddb85b8
+:END:
 
  - [[https://github.com/dxknight/chronos][dxknight/chronos: Chronos]] | Github
 
@@ -1527,6 +1726,9 @@ nil
 :END:
 
 ** Helm-chronos
+:PROPERTIES:
+:ID:       6dcaa0f2-dbbc-43b1-9e89-964402cb3d44
+:END:
 
  - [[https://github.com/dxknight/helm-chronos][dxknight/helm-chronos]] | GitHub
 
@@ -1550,6 +1752,9 @@ nil
 nil
 :END:
 ** Eyebrowse
+:PROPERTIES:
+:ID:       9f519c6d-501f-40f1-8a39-fd899a498dd1
+:END:
 
 Workspaces creation and switching.
 
@@ -1577,6 +1782,9 @@ Workspaces creation and switching.
 #+end_src
 
 ** Rainbow Delimiters
+:PROPERTIES:
+:ID:       0e2ce13f-5790-4be6-80f7-3ea7ec20e16b
+:END:
 
  - [[https://github.com/Fanael/rainbow-delimiters][Emacs rainbow delimiters mode]] | github
 
@@ -1590,6 +1798,9 @@ Workspaces creation and switching.
 
 
 ** AucTex
+:PROPERTIES:
+:ID:       9e513801-6e65-428f-9214-a41d75755256
+:END:
 
 - [[http://nasseralkmim.github.io/notes/2016/08/21/my-latex-environment/][My LaTeX environment]] | Nasser Alkmim
 
@@ -1630,6 +1841,9 @@ Workspaces creation and switching.
 
 
 ** PDF Tools
+:PROPERTIES:
+:ID:       7e35193d-c615-454c-9c00-45f1c91deeec
+:END:
 
 PDFTools turns emacs into the best PDF viewer for doing
 research. 
@@ -1728,6 +1942,9 @@ sudo aptitude install libpoppler-private-dev
 #+end_src
 
 ** TLDR
+:PROPERTIES:
+:ID:       68cc0ecf-52c8-4cb5-bcd9-887d55f0d213
+:END:
 
 Emacs TLDR interface for TLDR documentation.
 
@@ -1740,3 +1957,4 @@ everything through helm.
  :ensure t
  :config ) 
 #+end_src
+

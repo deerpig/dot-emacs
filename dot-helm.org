@@ -337,15 +337,15 @@ Look up BibTex entries in local BibTex database using helm interface.
   :ensure t
   :init
   (autoload 'helm-bibtex "helm-bibtex" "" t)
-  (setq helm-bibtex-bibliography '("~/org/biblio.bib" "~/org/ref.bib"))
-  (setq bibtex-completion-bibliography '("/home/deerpig/org/biblio.bib" "/home/deerpig/org/ref.bib"))
+  (setq helm-bibtex-bibliography '("~/proj/chenla/hoard/bib.bib"))
+  (setq bibtex-completion-bibliography '("~/proj/chenla/hoard/bib.bib"))
   (setq bibtex-completion-pdf-field "file")
   ;;(setq bibtex-completion-additional-search-fields '(keywords))
   (setq bibtex-completion-pdf-symbol "⌘")
   (setq bibtex-completion-notes-symbol "✎")
-  (setq bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (call-process "okular" nil 0 nil fpath)))
+;;  (setq bibtex-completion-pdf-open-function pdf-tools)
+;;	(lambda (fpath)
+;;	  (call-process "okular" nil 0 nil fpath)))
   (setq bibtex-completion-notes-path "~/org/bibnotes.org")
   (setq bibtex-completion-additional-search-fields '(tags))
   )
@@ -523,3 +523,13 @@ bookmarks and there is a file called bookmarks.html
 delete /places.sqlite/ in:
 
   ./mozilla/firefox/<profile>
+
+** Helm EXWM
+
+ - [[emacs-helm/helm-exwm][https://github.com/emacs-helm/helm-exwm]] | GitHub
+
+#+begin_src emacs-lisp
+;;(use-package helm-exwm
+;;:ensure t
+;;:config   )
+#+end_src

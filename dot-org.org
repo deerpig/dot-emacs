@@ -37,6 +37,9 @@ interoperability.
 * Org Mode
 
 ** Org Plus Contrib
+:PROPERTIES:
+:ID:       0c2768ed-3257-4ff4-ab52-be45fd1fb1f9
+:END:
 
 I'm adding org-elpa here until I finalize moving from the old 
 .emacs file.
@@ -53,6 +56,9 @@ contrib directory when installing org by hand.
 #+end_src
 
 ** File Header
+:PROPERTIES:
+:ID:       c7112e5f-ac2d-41b0-9f48-2fdc2e665baa
+:END:
 
 #+begin_src emacs-lisp :results none
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
@@ -61,6 +67,9 @@ contrib directory when installing org by hand.
 #+end_src
 
 ** Load Orgmode
+:PROPERTIES:
+:ID:       ec7c1d90-def4-4171-a31e-f074de5fad31
+:END:
 
 At present we're running a local copy of Org, we will move over to the
 MELPA version soon....
@@ -79,6 +88,9 @@ Load org mode
 (require 'org)
 #+end_src
 ** Enable Modules
+:PROPERTIES:
+:ID:       98775cfc-0192-4b2a-82e4-b6e8d9453019
+:END:
 
 We need to go through this list and weed out unused or obsolete
 modules.
@@ -91,6 +103,9 @@ modules.
 
 
 ** Babel Language Evaluation
+:PROPERTIES:
+:ID:       443b3051-dda7-479b-92f4-bf6d662b5987
+:END:
 
 #+begin_src emacs-lisp
 ;; Enable language evulation in Org Babel
@@ -117,6 +132,9 @@ modules.
 #+end_src
 
 ** LaTex Syntax Higlighting
+:PROPERTIES:
+:ID:       e55958a2-85cc-435d-a179-8d60eb0e78e2
+:END:
 
 - [[http://pragmaticemacs.com/emacs/highlight-latex-text-in-org-mode/][Highlight latex text in org mode]] | Pragmatic Emacs
 
@@ -128,6 +146,9 @@ modules.
 
 
 ** Org Bullets
+:PROPERTIES:
+:ID:       289289b2-7dde-4ef6-affe-c8793abac407
+:END:
 
 Use Org Bullets with some funky unicode bullets:
 
@@ -163,6 +184,9 @@ Change the default bullet list and ellipsis. See:
 #+end_src
 
 ** Key Bindings
+:PROPERTIES:
+:ID:       d15d339d-14b2-4da0-ad26-3d4d79f57894
+:END:
 
 #+begin_src emacs-lisp
 (define-key global-map "\M-\C-r" 'org-capture)
@@ -171,6 +195,9 @@ Change the default bullet list and ellipsis. See:
 #+end_src
 
 ** Open Agenda Other Window
+:PROPERTIES:
+:ID:       10a6895c-eaeb-48b1-9c3e-1ba7c8f513e1
+:END:
 
 #+begin_src emacs-lisp
 
@@ -185,6 +212,9 @@ Change the default bullet list and ellipsis. See:
 #+end_src
 
 ** Org Speed Commands
+:PROPERTIES:
+:ID:       dfd55ab7-ca8f-46e9-91c8-0f246661f5f3
+:END:
 
 #+begin_src emacs-lisp
 ;; Org Speed Commands --------------------------------------
@@ -194,6 +224,9 @@ Change the default bullet list and ellipsis. See:
 #+end_src
 
 ** Helm Org
+:PROPERTIES:
+:ID:       02533d85-f289-4135-aa83-a861aebef72f
+:END:
 
 #+begin_src emacs-lisp
 ;; Helm Org ------------------------------------------------
@@ -206,6 +239,9 @@ Change the default bullet list and ellipsis. See:
 #+end_src
 
 ** Store Links
+:PROPERTIES:
+:ID:       bc0721d0-8119-4504-b36f-d8b1c47cc2b7
+:END:
 
 This is not only useful in Org, I use this in mu4e buffers as well.
 
@@ -217,6 +253,9 @@ This is not only useful in Org, I use this in mu4e buffers as well.
 #+end_src
 
 ** Timestamps
+:PROPERTIES:
+:ID:       ee8fcd30-6d17-4a04-9025-64b47bcfce58
+:END:
 
 #+begin_src emacs-lisp
 ;; Toggle active/inactive timestamps
@@ -225,6 +264,9 @@ This is not only useful in Org, I use this in mu4e buffers as well.
 #+end_src
 
 ** Human Readable Timestamp
+:PROPERTIES:
+:ID:       397c9d81-0db4-41ef-ac0f-85770a244236
+:END:
 
 Used in burr/org headers.
 
@@ -235,6 +277,9 @@ Used in burr/org headers.
 #+end_src
 
 ** Set Directories
+:PROPERTIES:
+:ID:       820e7e4c-d87b-4279-ae14-38d7cddba32f
+:END:
 
 #+begin_src emacs-lisp
 (setq org-directory "~/org"
@@ -244,6 +289,9 @@ Used in burr/org headers.
 #+end_src
 
 ** Misc Settings
+:PROPERTIES:
+:ID:       bbd1fffe-983c-4c19-846a-1c871ba3697c
+:END:
 
 Set a bunch of variables:
 
@@ -270,6 +318,9 @@ Set a bunch of variables:
 #+end_src
 
 ** Org Weather
+:PROPERTIES:
+:ID:       48ec20b7-9b34-4d1b-83a4-a8a7e213744a
+:END:
 
 #+begin_src emacs-lisp
 
@@ -316,6 +367,9 @@ Commenting out for now....
 #+end_src
 
 ** Refile Targets
+:PROPERTIES:
+:ID:       576ccf88-a629-4401-9a7f-b1e685e7c77c
+:END:
 
 If you include 'org-agenda-files' it will pull up refile
 targets from your org-agenda refile file list.  I used this
@@ -370,6 +424,9 @@ Commented out.
 #+end_src
 
 ** Habits
+:PROPERTIES:
+:ID:       e0b9e6d4-e064-405d-a6b5-b6cda401e858
+:END:
 
 
 #+begin_src emacs-lisp
@@ -386,6 +443,9 @@ Commented out.
 #+end_src
 
 ** Display Images
+:PROPERTIES:
+:ID:       50cbb6ab-7f2e-4c44-a08a-ab947bd1b49d
+:END:
 
 #+begin_src emacs-lisp
 
@@ -417,6 +477,9 @@ Commented out.
 #+end_src
 
 ** Org Tag List
+:PROPERTIES:
+:ID:       0d70332e-4f98-4c4f-994f-644590849b30
+:END:
 
 #+begin_src emacs-lisp
 (setq org-tag-alist (quote (
@@ -433,6 +496,9 @@ Commented out.
 #+end_src
 
 ** Org Easy Templates
+:PROPERTIES:
+:ID:       25244288-9a50-4f34-9530-387945bb9eb1
+:END:
 
 There is a bug in org-reveal that only allows upper case NOTES.  make
 Notes upper case until there is a fix.
@@ -446,6 +512,9 @@ Notes upper case until there is a fix.
 #+end_src
 
 ** Ignore Heading
+:PROPERTIES:
+:ID:       9c949477-fe5a-46d0-a065-2f0743b6dd1c
+:END:
 
 Use the tag :ignore: on a heading and org will export the content of a
 subheading but not export the title!  Very cool!
@@ -460,6 +529,9 @@ subheading but not export the title!  Very cool!
 #+end_src
 
 ** Single Tags
+:PROPERTIES:
+:ID:       a2ffe3cb-2c48-47bb-a605-f0209a9a6ad6
+:END:
 
 Allow setting single tags without the menu
 
@@ -474,12 +546,18 @@ Allow setting single tags without the menu
 
 
 ** Markdown export
+:PROPERTIES:
+:ID:       0ce5345d-5ac1-4a1a-8cd1-7f9c07d591b0
+:END:
 
 #+begin_src emacs-lisp
 (require 'ox-md)
 #+end_src
 
 ** EPUB export
+:PROPERTIES:
+:ID:       6f10d495-def1-468c-b814-82376faf51dc
+:END:
 
 #+begin_src emacs-lisp
   ;; (use-package ox-epub
@@ -490,6 +568,9 @@ Allow setting single tags without the menu
 
 
 ** Todo Keywords, Faces & Triggers
+:PROPERTIES:
+:ID:       2e830275-249a-4e90-80fa-24d164061bf1
+:END:
 
 Set Keywords:
 
@@ -543,6 +624,9 @@ Triggers:
 #+end_src
 
 ** Org Capture
+:PROPERTIES:
+:ID:       815f8576-f505-4fc0-8dca-d7ad59454bfa
+:END:
 
 #+begin_src emacs-lisp  :results silent  ;; results create nested drawers
 ;; Org Capture =============================================
@@ -614,6 +698,9 @@ Triggers:
 #+end_src
 
 ** Open Capture in Other Frame
+:PROPERTIES:
+:ID:       781ee021-3048-4e35-a33f-e956f35c18d2
+:END:
 
 This has become a /very/ important part of my workflow.  I can now
 open a capture window using =<win>-r= outside of emacs.  This is very
@@ -661,6 +748,9 @@ See:
 #+end_src
 
 ** Org Contacts
+:PROPERTIES:
+:ID:       ebf1862d-e23b-436e-8a5a-20f3f08aac05
+:END:
 
 Change to use-package?
 
@@ -673,6 +763,9 @@ Change to use-package?
 #+end_src
 
 ** Open Agenda in Other Window
+:PROPERTIES:
+:ID:       4e7709e4-f65b-41c9-8f36-5c9a92d5f512
+:END:
 
 For years I opened agenda in a separate frame.  But when using a large
 screen it's easier to work with if agenda opens in the frame on the left.
@@ -689,6 +782,9 @@ screen it's easier to work with if agenda opens in the frame on the left.
 #+end_src
 
 ** BibTex Mode
+:PROPERTIES:
+:ID:       10d18e3c-67eb-4cc3-8cb0-c680d80fe93e
+:END:
 
 Why is this in the emacs-org file?
 
@@ -701,6 +797,9 @@ Why is this in the emacs-org file?
 #+end_src
 
 ** Org Abbreviations
+:PROPERTIES:
+:ID:       49528295-f8a9-4714-bb29-30de45177b7d
+:END:
 
 This is very useful.  But I will have to revisit how I use them as we
 start integrating BMF topicspaces into the config.
@@ -720,6 +819,9 @@ headings and headings as well.
 #+end_src
 
 ** Insert Epoch
+:PROPERTIES:
+:ID:       b10bfec0-6458-4d9b-8ce6-e17d35669e9a
+:END:
 
 This function will be used for setting version numbers in BMF.
 
@@ -745,6 +847,9 @@ This function will be used for setting version numbers in BMF.
 
 
 ** Jekyll Projects
+:PROPERTIES:
+:ID:       4022e571-ed87-483f-a31e-5073c753836b
+:END:
 
 This section needs to be broken up and better documented.
 
@@ -828,6 +933,9 @@ This section needs to be broken up and better documented.
 #+end_src
 
 ** Org-octopress
+:PROPERTIES:
+:ID:       e0e523ce-1836-4291-b9aa-514dc02add41
+:END:
 
 [[https://github.com/yoshinari-nomura/org-octopress][ - GitHub - yoshinari-nomura/org-octopress: org-mode in octopress]]
 
@@ -840,6 +948,9 @@ Required by org-subtree which uses ox-jekyll.el
 
 
 ** Export Subtree
+:PROPERTIES:
+:ID:       dc255eb6-d081-4f0c-b54c-37a943ea16f8
+:END:
 
 Code from:
 
@@ -879,6 +990,9 @@ Code from:
 #+end_src
 
 ** Whitespace
+:PROPERTIES:
+:ID:       eb25fd1d-3e4d-4d9f-a786-3f94deeed7c6
+:END:
 
 Haven't used this in a while -- perhaps it should be put into a hydra?
 
@@ -897,6 +1011,9 @@ Haven't used this in a while -- perhaps it should be put into a hydra?
 #+end_src
 
 ** Org Man Page
+:PROPERTIES:
+:ID:       f9fde23d-ab1b-4ed1-8527-e5157e226b14
+:END:
 
 Does this work?
 
@@ -939,17 +1056,23 @@ See:
 #+end_src
 
 ** Org IDs in Links
+:PROPERTIES:
+:ID:       71f43889-370f-4ae5-8cbb-a495f38c6c37
+:END:
 
 #+begin_src emacs-lisp  :results none ;; DON'T 
 ;; Use org-ids in org-links --------------------------------
 
 (setq org-id-track-globally t)
-(setq org-id-link-to-org-use-id 'use-existing)
+(setq org-id-link-to-org-use-id t)
 (org-id-update-id-locations) ;; updates id-index
 
 #+end_src
 
 ** Function: Recursively Find org files
+:PROPERTIES:
+:ID:       032e4774-77b9-43b5-96db-9e6688dbf4a6
+:END:
 
 Recursively find .org files in provided directory.
 
@@ -987,6 +1110,9 @@ If FILEXT is provided, return files with extension FILEXT instead."
 #+end_src
 
 ** Search Extra Files
+:PROPERTIES:
+:ID:       8d6cad14-9c9d-420b-b759-30b33d6bbe3a
+:END:
 
 #+begin_src emacs-lisp
 
@@ -1004,6 +1130,9 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 
 ** Function: Add Org-Id to all headings in a file
+:PROPERTIES:
+:ID:       2bcc2ac4-0988-4d61-9e98-37a6e5ae3761
+:END:
 
 Snarfed this from:
 
@@ -1029,6 +1158,9 @@ have an id"
 #+end_src
 
 ** Org Reveal
+:PROPERTIES:
+:ID:       5a85e0f7-d2d1-4c46-95b7-171bca12417c
+:END:
 
 Reveal is a powerful HTML presentation framework.  Org Reveal makes it
 easy to create Reveal presentations using orgmode.
@@ -1120,6 +1252,9 @@ I'm no longer using Beamer, but the code may be of use someday:
 #+end_src
 
 ** Insert Functions
+:PROPERTIES:
+:ID:       953ba5a3-2cb0-43df-94b5-b0bcb1434a9a
+:END:
 
 I'll be going through all of this and moving most into yasnippets or
 sunsetting the ones I don't use.
@@ -1386,6 +1521,9 @@ sunsetting the ones I don't use.
 #+end_src
 
 ** Org Width
+:PROPERTIES:
+:ID:       deaef821-2df1-4569-9c7a-e812dc18879a
+:END:
 
 Allow images width to be set in org buffers.
 
@@ -1400,6 +1538,9 @@ enabled.
 (setq org-image-actual-width nil)
 #+end_src
 ** Pomidor- [[https://github.com/TatriX/pomidor][TatriX/pomidor]] | GitHub
+:PROPERTIES:
+:ID:       bb1b5df0-32ba-4253-8474-cc9dabc596b7
+:END:
 
 Pomodomo timer.
 
