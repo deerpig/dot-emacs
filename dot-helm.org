@@ -47,6 +47,9 @@ shake a stick at.  These should get you started though:
 
 * Helm Settings
 ** File Header
+:PROPERTIES:
+:ID:       5e128446-cb96-47f5-bc0a-f09e516e6319
+:END:
 
 #+begin_src emacs-lisp
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
@@ -55,6 +58,9 @@ shake a stick at.  These should get you started though:
 #+end_src
 
 ** Load Helm
+:PROPERTIES:
+:ID:       2ea3eca2-c24d-4145-b094-37fb1101b8f1
+:END:
 
 This should be changed to use-package -- but I think I had issues
 before with version conflicts in MELPA and the package manager, so
@@ -75,6 +81,9 @@ we'll leave this as is for now.
 #+end_src
 
 ** Set default window
+:PROPERTIES:
+:ID:       dc7cfc3c-f7ec-498b-8843-671605627097
+:END:
 
 Set the default window for helm buffer to display results on the left
 side.  This works well if you have a large screen, if you are using a
@@ -94,6 +103,9 @@ left
 :END:
 
 ** Set key-bindings.
+:PROPERTIES:
+:ID:       ae8a515b-ec8b-47aa-930e-62de803ca185
+:END:
 
 In install instructions, I've seen the following comment a number of
 times:
@@ -181,6 +193,9 @@ Use <tab> to perform persistent action
 #+end_src
 
 ** Helm Mini
+:PROPERTIES:
+:ID:       291d7188-d47a-421a-b3ce-6425a8fbb73e
+:END:
 
 I had set this key-binding above for recent buffers and here it is
 rebound for helm mini.  Commenting out until I work out a new
@@ -191,6 +206,9 @@ key-binding for mini -- if I actually need it....
 #+end_src
 
 ** Set matching options
+:PROPERTIES:
+:ID:       44f4ad02-b20e-451b-9625-26cc5c4d3b4a
+:END:
 
 #+begin_src emacs-lisp
 (setq helm-M-x-fuzzy-match t 
@@ -202,6 +220,9 @@ key-binding for mini -- if I actually need it....
 #+end_src
 
 ** Surfraw
+:PROPERTIES:
+:ID:       f514b621-f6ae-47d6-afa8-64296420ba11
+:END:
 
 Set up helm to use the external application /surfraw/ and set up to
 use the /Duck Duck Go/ search engine
@@ -212,6 +233,9 @@ use the /Duck Duck Go/ search engine
 #+end_src
 
 ** External applications
+:PROPERTIES:
+:ID:       17cc7dfe-7035-465e-a3d4-44044c171037
+:END:
 
 External applications for opening media.
 
@@ -240,6 +264,9 @@ Open file using external program using C-c C-x
 #+end_src
 
 ** Misc
+:PROPERTIES:
+:ID:       3f132379-382a-44c6-a30d-c232c2dc23d6
+:END:
 
 Might need to unset this some time in the future.
 
@@ -247,6 +274,9 @@ Might need to unset this some time in the future.
 ;;(helm-mode 1)
 #+end_src
 ** Helm Tramp
+:PROPERTIES:
+:ID:       1815cab9-4528-46fe-8a8f-94a442d965e5
+:END:
 
 Lists hosts in ~/.ssh/config and allows you to connect.
 
@@ -265,6 +295,9 @@ See [[https://github.com/masasam/emacs-helm-tramp][masasam/emacs-helm-tramp: Tra
 t
 :END:
 ** Helm World Time
+:PROPERTIES:
+:ID:       354e4cb2-82ee-40ce-9ac7-c4105e88f604
+:END:
 
 Displays list of time zones and their current times.
 
@@ -290,6 +323,9 @@ Displays list of time zones and their current times.
 
 #+end_src
 ** HELM Related Packages
+:PROPERTIES:
+:ID:       1e7b903c-13ef-4c5e-ad2e-d9537b4e5523
+:END:
 
 Helm will have a whole file dedicated to helm stuff.  When I first
 started this file, I wanted a place to put helm packages that were
@@ -307,6 +343,9 @@ plunge.
 #+end_src
 
 ** Helm Unicode
+:PROPERTIES:
+:ID:       6e75fc34-6afc-45f8-a361-19601971c581
+:END:
 
 Look up unicode characters using helm interface
 
@@ -322,6 +361,9 @@ Look up unicode characters using helm interface
 #+end_src
 
 ** Helm Bibtex
+:PROPERTIES:
+:ID:       943f5d1a-a74e-46bd-a239-2bf7cbada4e9
+:END:
 
 Look up BibTex entries in local BibTex database using helm interface.
 
@@ -337,22 +379,25 @@ Look up BibTex entries in local BibTex database using helm interface.
   :ensure t
   :init
   (autoload 'helm-bibtex "helm-bibtex" "" t)
-  (setq helm-bibtex-bibliography '("~/proj/chenla/hoard/bib.bib"))
+  (setq helm-bibtex-bibliography       '("~/proj/chenla/hoard/bib.bib"))
   (setq bibtex-completion-bibliography '("~/proj/chenla/hoard/bib.bib"))
   (setq bibtex-completion-pdf-field "file")
   ;;(setq bibtex-completion-additional-search-fields '(keywords))
   (setq bibtex-completion-pdf-symbol "⌘")
   (setq bibtex-completion-notes-symbol "✎")
-;;  (setq bibtex-completion-pdf-open-function pdf-tools)
+  (setq bibtex-completion-pdf-open-function "pdf-tools")
 ;;	(lambda (fpath)
 ;;	  (call-process "okular" nil 0 nil fpath)))
-  (setq bibtex-completion-notes-path "~/org/bibnotes.org")
+  (setq bibtex-completion-notes-path "~/proj/chenla/hoard/")
   (setq bibtex-completion-additional-search-fields '(tags))
   )
 
 #+end_src
 
 ** Helm Dictionary
+:PROPERTIES:
+:ID:       da12b330-ab36-436d-96e4-4737287adfb5
+:END:
 
 - [[https://github.com/emacs-helm/helm-dictionary][emacs-helm/helm-dictionary]] | GitHub
 
@@ -376,6 +421,9 @@ nil
 :END:
 
 ** Helm Wordnet
+:PROPERTIES:
+:ID:       c376771f-89af-483c-8048-480b78e064f9
+:END:
 
 This works, I think....
 
@@ -393,6 +441,9 @@ This works, I think....
 #+end_src
 
 ** Helm Recoll
+:PROPERTIES:
+:ID:       0099d98f-19ee-485b-bcf8-e40a7d10ec70
+:END:
 
 This took more than a little tweaking to get to work.
 
@@ -429,6 +480,9 @@ Open file using external program using C-c C-x
 #+end_src
 
 ** Helm Dash
+:PROPERTIES:
+:ID:       a0e699aa-efd1-4ceb-af8c-3d5999f64a44
+:END:
 
 #+begin_src emacs-lisp
 
@@ -448,6 +502,9 @@ Open file using external program using C-c C-x
 #+end_src
 
 ** Helm Swoop
+:PROPERTIES:
+:ID:       70355aa9-a540-41ff-ad0c-696e9c7c84b0
+:END:
 
 #+begin_src emacs-lisp
 
@@ -477,6 +534,9 @@ Open file using external program using C-c C-x
 #+end_src
 
 ** Helm Yasnippet
+:PROPERTIES:
+:ID:       5ab0fa0e-1225-4931-b34d-f583d6353403
+:END:
 
 I've found that if you've drunk the helm cool-aid, this is easier to
 use than trying to remember snippet names.  Snippets are listed
@@ -525,6 +585,9 @@ delete /places.sqlite/ in:
   ./mozilla/firefox/<profile>
 
 ** Helm EXWM
+:PROPERTIES:
+:ID:       98369a0b-efaf-4cd2-874a-bbe73f75b498
+:END:
 
  - [[emacs-helm/helm-exwm][https://github.com/emacs-helm/helm-exwm]] | GitHub
 

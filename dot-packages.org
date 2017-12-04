@@ -510,20 +510,13 @@ Where to begin:
     (setq reftex-default-bibliography '("~/proj/chenla/hoard/bib.bib"))
     (setq org-ref-ref-library 'org-ref-helm-cite)
 
-    (setq org-ref-bibliography-notes    "~/proj/chenla/bib/read.org"
-	  org-ref-default-bibliography  "~/proj/chenla/hoard/bib.bib"
-	  org-ref-pdf-directory         "~/proj/chenla/hoard/lib")
+    (setq org-ref-bibliography-notes    "~/proj/chenla/hoard/read.org"
+	  org-ref-default-bibliography      "~/proj/chenla/hoard/bib.bib"
+	  org-ref-pdf-directory             "~/proj/chenla/hoard/lib")
 
     (setq bibtex-completion-bibliography "~/proj/chenla/hoard/bib.bib"
-	  bibtex-completion-library-path "~/proj/chenla/hoard/lib"
-	  bibtex-completion-notes-path   "~/proj/chenla/hoard")
-
-   ;; open pdf with system pdf viewer (works on mac)
-    ;; (setq bibtex-completion-pdf-open-function
-    ;; 	(lambda (fpath)
-    ;; 	  (start-process "open" "*open*" "open" fpath)))
-   )
-
+	  bibtex-completion-library-path     "~/proj/chenla/hoard/lib"
+	  bibtex-completion-notes-path       "~/proj/chenla/hoard"))
 #+end_src
 
 #+RESULTS:
@@ -1958,3 +1951,17 @@ everything through helm.
  :config ) 
 #+end_src
 
+** Pandoc Mode
+:PROPERTIES:
+:ID:       95c6ee6e-7ceb-4633-9f5e-31e6eb5653c1
+:END:
+
+ - https://joostkremers.github.io/pandoc-mode/
+
+M-x pandoc-mode then C-c/ to bring up the hydra menu.q
+
+#+begin_src emacs-lisp
+(use-package pandoc-mode
+ :ensure t
+ :config ) 
+#+end_src

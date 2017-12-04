@@ -54,12 +54,18 @@ etc. all fall into the same category.
 * Hydras
 
 ** File Header
+:PROPERTIES:
+:ID:       184c2ad9-3f3f-41d0-8c7f-7b059620b02d
+:END:
 
 #+begin_src emacs-lisp
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
 ;; Emacs Hydra Files
 #+end_src
 ** Hydra Package
+:PROPERTIES:
+:ID:       8a83fa27-13ae-4ba6-94c1-d7725dd08564
+:END:
 
 Homepage:  [[https://github.com/abo-abo/hydra#awesome-docstring][Hydra | Github]]
 
@@ -80,6 +86,9 @@ Install the Hydra Package:
 : t
 
 ** Key Chords
+:PROPERTIES:
+:ID:       32489c4b-f058-4da0-a2ba-1662de184fa2
+:END:
 
 The biggest challenge with Hydra is coming up with key-bindings for
 each Hydra and then remembering those key-bindings... This is a
@@ -131,6 +140,7 @@ it won't come to that :)
     (key-chord-define-global "8i"     'hydra-logic/body)
     (key-chord-define-global "9o"     'hydra-greek/body)
     (key-chord-define-global "0p"     'hydra-calendar/body)
+    (key-chord-define-global "qa"     'org-ref-bibtex-hydra/body)
     ))
 
 ;; Key Bindings ============================================
@@ -144,10 +154,19 @@ it won't come to that :)
     (global-set-key (kbd "s-8") 'hydra-logic/body)
     (global-set-key (kbd "s-9") 'hydra-greek/body)
     (global-set-key (kbd "s-0") 'hydra-calendar/body)
+    (global-set-key (kbd "s-a") 'org-ref-bibtex-hydra-key-binding)
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+org-ref-bibtex-hydra-key-binding
+:END:
 
 
 ** Window Management Hydra
+:PROPERTIES:
+:ID:       2a8a0da9-0d9b-4ada-8bd0-0dde7d2fd957
+:END:
 
 I use /Bunsen Labs Linux/ (formally known as CrunchBang Linux)
 which is Debian running OpenBox window manager with some very nice
@@ -229,6 +248,9 @@ hydra-window/body
 :END:
 
 ** Unicode Character Hydra
+:PROPERTIES:
+:ID:       fa1fe5d0-f511-4d1a-b0ac-4494ad03513c
+:END:
 
 Everyone has a set of odd characters they need to insert into
 documents from time to time.  I not only write code, but work with a
@@ -305,6 +327,9 @@ character is inserted and the hydra exits.
 #+end_src
 
 ** Calendar & Weekdays Hydra
+:PROPERTIES:
+:ID:       3c1aa21a-b09b-4acf-ac5b-6c64c7e999a4
+:END:
 
 This hydra is designed for entering a Hanzi/Kanji date string within
 the hydra.  To make this work we explicitly set numbers in the hydra
@@ -397,6 +422,9 @@ This hydra uses the pink /color/ that doesn't exit until you press
 #+end_src
  
 ** Greek Alphabet Hydra
+:PROPERTIES:
+:ID:       fc4a9ac3-2e39-444f-8195-1582ef279f43
+:END:
 
 This hydra is largely untested, the key-bindings are based on several
 key-mappings I used before for greek characters.  I expect to need to
@@ -481,6 +509,9 @@ strings.
 #+end_src
 
 ** Math & Logic Hydra
+:PROPERTIES:
+:ID:       d6da1dad-715f-4392-9103-194e71f76b67
+:END:
 
 I typically don't use a lot of math symbols in running text, if I need
 to include a formula, LaTex is the way to go.  However, I often use
@@ -543,6 +574,9 @@ timeout that exits the hydra if nothing is chosen.
 #+end_src
 
 ** Twittering Mode Hydra
+:PROPERTIES:
+:ID:       11576448-ea21-41b0-bad3-b609201eb5f1
+:END:
 
 I tend to use Twitter in bursts, and even then, mostly when I tweet
 breaking news that is happening in Cambodia.  The noise level on
@@ -625,6 +659,9 @@ Mode.
 #+end_src
 
 ** Rectangle Mode Hydra
+:PROPERTIES:
+:ID:       30fe57f8-112b-4a4c-b910-cb0f2e457d90
+:END:
 
 Emacs rectangle editing is one of the things that sets emacs apart
 from nearly any other tool.  I don't rectangles that often but when I
@@ -679,6 +716,9 @@ _h_   _l_   _o_k        _y_ank       /,`.-'`'   .‗  \-;;,‗
 #+end_src
 
 ** Hydra Join Lines (placeholder)
+:PROPERTIES:
+:ID:       822f82b0-4fd1-4be4-a3c8-249896820a9f
+:END:
 
 This hydra is from the Hydra Wiki.  Still needs to be integrated into
 my workflow.
@@ -695,6 +735,9 @@ my workflow.
 #+end_src
 
 ** Emacs Transpose (placeholder)
+:PROPERTIES:
+:ID:       6c000ad7-94ee-43a7-aade-84b9839895fc
+:END:
 
 This hydra is from the Hydra Wiki.  Good stuff, but still not sure how
 I'm going to integrate.
@@ -725,6 +768,9 @@ I'm going to integrate.
 #+end_src
 
 ** Elfeed Hydra
+:PROPERTIES:
+:ID:       c2878059-5d4e-4e8f-a0dd-1559df7dfb39
+:END:
 
 Hydra for the elfeed news reader.
 
@@ -769,6 +815,9 @@ Hydra for the elfeed news reader.
 #+end_src
 
 ** Badge Hydra
+:PROPERTIES:
+:ID:       da60e1c6-55dd-4064-bdeb-be5789358958
+:END:
 
 Used for inserting badges into project files.  This is designed to
 work closely with my yassnippet templates.
