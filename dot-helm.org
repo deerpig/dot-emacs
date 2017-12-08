@@ -385,7 +385,7 @@ Look up BibTex entries in local BibTex database using helm interface.
   ;;(setq bibtex-completion-additional-search-fields '(keywords))
   (setq bibtex-completion-pdf-symbol "⌘")
   (setq bibtex-completion-notes-symbol "✎")
-  (setq bibtex-completion-pdf-open-function "pdf-tools")
+;; (setq bibtex-completion-pdf-open-function "pdf-tools")
 ;;	(lambda (fpath)
 ;;	  (call-process "okular" nil 0 nil fpath)))
   (setq bibtex-completion-notes-path "~/proj/chenla/hoard/")
