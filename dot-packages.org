@@ -514,17 +514,15 @@ Where to begin:
 	  org-ref-default-bibliography      "~/proj/chenla/hoard/bib.bib"
 	  org-ref-pdf-directory             "~/proj/chenla/hoard/lib")
 
-    (setq bibtex-completion-bibliography "~/proj/chenla/hoard/bib.bib"
-	  bibtex-completion-library-path     "~/proj/chenla/hoard/lib"
-	  bibtex-completion-notes-path       "~/proj/chenla/hoard")
-
+    (setq org-ref-note-title-format "** %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n  :INTERLEAVE_PDF: %k.pdf\n:END:\n\n")
 
     ;; Tell org-ref to let helm-bibtex find notes for it
-    (setq org-ref-notes-function
-       (lambda (thekey)
-         (let ((bibtex-completion-bibliography (org-ref-find-bibliography)))
-            (bibtex-completion-edit-notes
-              (list (car (org-ref-get-bibtex-key-and-file thekey))))))) )
+    ;;(setq org-ref-notes-function
+    ;;   (lambda (thekey)
+    ;;     (let ((bibtex-completion-bibliography (org-ref-find-bibliography)))
+    ;;        (bibtex-completion-edit-notes
+    ;;          (list (car (org-ref-get-bibtex-key-and-file thekey)))))))
+ )
 #+end_src
 
 #+RESULTS:

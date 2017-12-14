@@ -377,15 +377,20 @@ Look up BibTex entries in local BibTex database using helm interface.
 
 (use-package helm-bibtex
   :ensure t
-  :init
+  :config
   (autoload 'helm-bibtex "helm-bibtex" "" t)
-  (setq helm-bibtex-bibliography       '("~/proj/chenla/hoard/bib.bib")
+  (setq bibtex-completion-library-path "~/proj/chenla/hoard/lib"
+        helm-bibtex-bibliography       '("~/proj/chenla/hoard/bib.bib")
         bibtex-completion-bibliography '("~/proj/chenla/hoard/bib.bib")
-        bibtex-completion-pdf-field "file"
-        bibtex-completion-pdf-symbol "⌘"
-        helm-bibtex-notes-path         '("~/proj/chenla/hoard/bib.bib")
+        bibtex-completion-pdf-field    "file"
+        bibtex-completion-pdf-symbol   "⌘"
         bibtex-completion-notes-symbol "✎"
-        bibtex-completion-additional-search-fields '(tags)))
+        helm-bibtex-notes-path         "~/proj/chenla/hoard/read.org"
+        bibtex-completion-notes-path   "~/proj/chenla/hoard/read.org"
+        bibtex-completion-additional-search-fields '(tags))
+
+  (setq bibtex-completion-notes-template-one-file "** (${year} - ${title}\n")
+)
 
 
 #+end_src
