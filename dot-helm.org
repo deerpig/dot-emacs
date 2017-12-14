@@ -369,6 +369,7 @@ Look up BibTex entries in local BibTex database using helm interface.
 
  - [[https://github.com/tmalsburg/helm-bibtex][tmalsburg/helm-bibtex: Search and manage bibliographies in Emacs]]
  - [[https://github.com/cpitclaudel/biblio.el/blob/master/README.md][biblio.el/README.md at master · cpitclaudel/biblio.el]]
+ -  [[Https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][Org-mode workflow for taking notes]] | Stack Exchange
 
 #+begin_src emacs-lisp
 ;; Helm-bibtex ---------------------------------------------
@@ -389,9 +390,8 @@ Look up BibTex entries in local BibTex database using helm interface.
         bibtex-completion-notes-path   "~/proj/chenla/hoard/read.org"
         bibtex-completion-additional-search-fields '(tags))
 
-  (setq bibtex-completion-notes-template-one-file "** (${year} - ${title}\n")
+  (setq bibtex-completion-notes-template-one-file "** ${year} - ${title}\n")
 )
-
 
 #+end_src
 

@@ -496,6 +496,8 @@ Where to begin:
 
   - [[https://github.com/jkitchin/org-ref][Org-Ref]] | jkitchin GitHub
   - [[https://www.youtube.com/watch?v=2t925KRBbFc][Org Ref]] | YouTube
+  - [[Https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][Org-mode workflow for taking notes]] | Stack Exchange
+
 
 #+begin_src emacs-lisp
 
@@ -506,13 +508,18 @@ Where to begin:
 
   (use-package org-ref
     :ensure t
+    :init 
+     (require 'org-ref-pdf)
+     (require 'org-ref-latex)
+     (require 'org-ref-url-utils)
     :config
     (setq reftex-default-bibliography '("~/proj/chenla/hoard/bib.bib"))
     (setq org-ref-ref-library 'org-ref-helm-cite)
 
-    (setq org-ref-bibliography-notes    "~/proj/chenla/hoard/read.org"
-	  org-ref-default-bibliography      "~/proj/chenla/hoard/bib.bib"
-	  org-ref-pdf-directory             "~/proj/chenla/hoard/lib")
+    (setq org-ref-notes-directory       "~/proj/chenla/hoard/"
+          org-ref-bibliography-notes    "~/proj/chenla/hoard/read.org"
+  	      org-ref-default-bibliography  "~/proj/chenla/hoard/bib.bib"
+	      org-ref-pdf-directory         "~/proj/chenla/hoard/lib")
 
     (setq org-ref-note-title-format "** %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n  :INTERLEAVE_PDF: %k.pdf\n:END:\n\n")
 
