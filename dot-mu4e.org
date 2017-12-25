@@ -35,6 +35,9 @@
 
 * Mu4e Config
 ** File Header
+:PROPERTIES:
+:ID:       e8673578-ea7d-4e85-9a74-01653e687b94
+:END:
 
 #+begin_src emacs-lisp
 ;; -*- mode: EMACS-LISP; fill-column: 75; comment-column: 50; -*-
@@ -43,6 +46,9 @@
 #+end_src
 
 ** Mu4e Package
+:PROPERTIES:
+:ID:       fa5512fc-6cd8-4a80-b4c8-d1b3ea3c041f
+:END:
 
 Follow instructions to download and install the /mu/ search engine which
 is bundled with /mu4e/:
@@ -95,7 +101,7 @@ When running mbsync, run it quietly so that we don't see it pop up
 every ten minutes in a new buffer.
 
 #+begin_src emacs-lisp
-(setq mu4e-get-mail-command "mbsync -aqV"
+(setq mu4e-get-mail-command "mbsync chenla-inbox"
       mu4e-mu-binary (executable-find "mu"))
 
 #+end_src
@@ -158,10 +164,10 @@ often, but even when running asynchronously, it still slows things
 down.
 
 #+begin_src emacs-lisp 
-  ;; check mail every 30 minutes
-  ;; (setq
-  ;;    mu4e-change-filenames-when-moving t
-  ;;    mu4e-update-interval 1800)
+  ;; check mail every 5 minutes
+  (setq
+      mu4e-change-filenames-when-moving t
+      mu4e-update-interval 300)
 #+end_src
 
 
