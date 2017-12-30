@@ -58,6 +58,9 @@ recommend spending some time reading the Info Manual for Dired,
 Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki page]] for Dired.
 
 ** Header
+:PROPERTIES:
+:ID:       558b46a1-6f8a-49e9-8c45-76ff77fa211a
+:END:
 
 #+begin_src emacs-lisp
 ;;  DIRED ==================================================
@@ -65,6 +68,9 @@ Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki p
 #+end_src
 
 ** Dired+
+:PROPERTIES:
+:ID:       596ee779-0cfa-4199-a9b7-5ba78fce0a53
+:END:
 
 #+begin_src emacs-lisp
 
@@ -74,6 +80,9 @@ Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki p
 #+end_src
 
 ** Dired-x
+:PROPERTIES:
+:ID:       2e3ce901-21cc-49e2-9ab9-546d2e936a2b
+:END:
 
 #+begin_src emacs-lisp
 
@@ -92,6 +101,9 @@ Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki p
 #+end_src
 
 ** Auto Revert Mode
+:PROPERTIES:
+:ID:       158ea8a3-a4a2-4573-b207-25590615228c
+:END:
 
 #+begin_src emacs-lisp
 ;; Auto Revert Mode ========================================
@@ -102,6 +114,9 @@ Dired+, Dired-x and the [[https://www.emacswiki.org/emacs/DiredMode][EmacsWiki p
 #+end_src
 
 ** Guess Shell Command 
+:PROPERTIES:
+:ID:       139190bf-caca-496a-9726-0999c2ff3205
+:END:
 
 I had forgotten about this command.  In Dired, apply shell command to
 marked files by pressing =!=.  This is a nice way of opening media
@@ -115,11 +130,11 @@ files in an external application from inside Dired.
 
 ;;guess shell command by file extension.
 (setq dired-guess-shell-alist-user
-      '(("\\.pdf\\'"    "evince")
-  	    ("\\.ps\\'"     "evince")
+      '(("\\.pdf\\'"    "pdftools")
+  	    ("\\.ps\\'"     "pdftools")
 	    ("\\.djvu\\'"   "djview")
-	    ("\\.mobi\\'"   "fbreader")
-	    ("\\.epub\\'"   "fbreader")
+	    ("\\.mobi\\'"   "ebook-viewer")
+	    ("\\.epub\\'"   "ebook-viewer")
 	    ("\\.gif\\'"    "evince")
 	    ("\\.jpg\\'"    "viewnior")
 	    ("\\.jpeg\\'"   "viewnior")
@@ -130,6 +145,9 @@ files in an external application from inside Dired.
 #+end_src
 
 ** Dired Single
+:PROPERTIES:
+:ID:       a98a22ff-520b-49f2-aa82-9f834eeac426
+:END:
 
 #+begin_quote
 ;;;; Commentary: 
@@ -182,6 +200,9 @@ Over the years I have revisited this problem over and over, but keep
 coming back to ls switches.  All other methods are commented out.
 
 *** Show Details by Default
+:PROPERTIES:
+:ID:       c432729f-91d3-4d24-a3bc-5ef786833eb4
+:END:
 
 #+begin_src emacs-lisp
 
@@ -192,6 +213,9 @@ coming back to ls switches.  All other methods are commented out.
 #+end_src
 
 *** ls Switches
+:PROPERTIES:
+:ID:       3cd21a66-6be3-4bde-9e15-01c700196081
+:END:
 
 This is my prefered method for showing/hiding files in dired lists.
 There are other methods but this is as fast as the others and has most
@@ -214,6 +238,9 @@ human readable.  Adding an `a' will show hidden dot-files.
 #+end_src
 
 *** Dired Details
+:PROPERTIES:
+:ID:       b457f572-d6e2-4686-b3d5-a9e5988c8b7b
+:END:
 
 I've tried this a number of times and keep going back to using ls
 switches.  
@@ -233,6 +260,9 @@ Commented out for now.
 #+end_src
 
 *** Uninteresting Files
+:PROPERTIES:
+:ID:       2af08729-ede5-4d6e-bd81-6567cff9cace
+:END:
 
 I've also played around with this on several occasions and in the end
 keep going back to ls switches.
@@ -252,6 +282,9 @@ Commented Out.
 
 #+end_src
 ** Recursive Delete
+:PROPERTIES:
+:ID:       55835968-62cb-41da-8104-7a59efa19688
+:END:
 
 I believe that `top' is the default setting, but I am leaving this
 here to remind me....
@@ -275,6 +308,9 @@ deletion command, and delete its subdirectories without asking.
 #+end_src
 
 ** Dired Sort Menu
+:PROPERTIES:
+:ID:       f5763be9-c54a-4032-a308-105485a13abe
+:END:
 
 #+begin_src emacs-lisp
 
@@ -289,6 +325,9 @@ deletion command, and delete its subdirectories without asking.
 #+end_src
 
 ** Open file in Browser
+:PROPERTIES:
+:ID:       bc2ac8b7-c982-4b17-a247-bba7999d81ae
+:END:
 
 Useful if I can /ever/ remember the bloody key-binding... perhaps it
 should be moved into a hydra?
@@ -330,6 +369,9 @@ to invoke it every time....
 #+end_src
 
 ** Make Parent Directory
+:PROPERTIES:
+:ID:       e4be2ad6-231f-49a7-8eeb-27bd5db56c59
+:END:
 
 #+begin_src emacs-lisp
 
@@ -344,6 +386,9 @@ to invoke it every time....
 #+end_src
 
 ** List Directories First
+:PROPERTIES:
+:ID:       5155367e-e3ca-4b11-9c9f-df20c1472b53
+:END:
 
 #+begin_src emacs-lisp
 
@@ -365,6 +410,9 @@ to invoke it every time....
 #+end_src
 
 ** Dired Ranger
+:PROPERTIES:
+:ID:       9a3faaa2-6052-4198-ab4e-1815de588bc1
+:END:
 
 I have been a long-time user of the kde orthodox filemanger called
 Krusader.  But I'm finding myself using Dired more than Krusader.  The
@@ -398,6 +446,9 @@ emacs to finish before doing something else.
 #+end_src
 
 ** Set Copy Target to other window.
+:PROPERTIES:
+:ID:       e95e7dfe-45ce-4d48-8558-9cf2ce63db68
+:END:
 
 
 #+begin_src emacs-lisp
@@ -427,6 +478,9 @@ so for now not tangled.
 
 #+end_src
 ** Dired Quick Sort 
+:PROPERTIES:
+:ID:       7093b0ad-19a8-459b-aa1f-6b32459324be
+:END:
 
  - [[https://gitlab.com/xuhdev/dired-quick-sort][Hong / dired-quick-sort]] | GitLab
 

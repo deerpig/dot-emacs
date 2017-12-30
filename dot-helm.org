@@ -388,7 +388,8 @@ Look up BibTex entries in local BibTex database using helm interface.
         bibtex-completion-notes-symbol "✎"
         helm-bibtex-notes-path         "~/proj/chenla/hoard/read.org"
         bibtex-completion-notes-path   "~/proj/chenla/hoard/read.org"
-        bibtex-completion-additional-search-fields '(tags))
+        bibtex-completion-additional-search-fields '(tags)
+        bibtex-completion-pdf-extenaion '(".pdf" ".epub" ".djvu"))
 
   (setq bibtex-completion-notes-template-one-file "** ${year} - ${title}\n")
 )
