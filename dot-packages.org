@@ -1978,3 +1978,17 @@ M-x pandoc-mode then C-c/ to bring up the hydra menu.q
  :ensure t
  :config ) 
 #+end_src
+
+** Org-mac-grab-link
+
+tweak org-mac-grab-link to be cross platform and point to a
+bash script instead of an applescript...
+
+http://irreal.org/blog/?p=6924
+https://www.semicomplete.com/projects/xdotool 
+
+#+begin_src emacs-lisp
+;;(use-package grab-x-link
+;;  :ensure t
+;;  :config )
+#+end_src

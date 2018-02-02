@@ -660,7 +660,7 @@ Triggers:
 	         ;;("L" "Protocol Link" entry (file+headline  "~/org/refile.org")
              ;; "* %? [[%:link][%:description]] \nCaptured On: %U")
               ("l" "Link" entry (file "~/org/refile.org") ;; insert org link
-	           "* LINK %? %^C %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
+	           "* LINK %?   %^g \n:PROPERTIES:\n :CREATED: %T\n :ID:      %(org-id-new)\n:END:\n")
 	          ("b" "BibTex" plain (file "~/org/ref.bib")
                "\n\n\n\n%?")
 	          ("c" "Contacts" entry (file "~/org/contacts.org")
