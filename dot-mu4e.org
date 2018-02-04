@@ -141,6 +141,22 @@ Misc settings.
 
 #+end_src
 
+
+** Set format=flowed
+:PROPERTIES:
+:ID:       15f8a428-298d-419d-a86a-fb4d90edef0c
+:END:
+
+#+begin_src emacs-lisp
+;; Set format=flowed
+;; mu4e sets up visual-line-mode and also fill (M-q) to do the right thing
+;; each paragraph is a single long line; at sending, emacs will add the
+;; special line continuation characters.
+
+ (setq mu4e-compose-format-flowed t)
+#+end_src
+
+
 Set up outgoing mail using /ssmtp/.
 
 #+begin_src emacs-lisp
