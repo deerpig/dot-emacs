@@ -544,8 +544,8 @@ Open file using external program using C-c C-x
 Helm interface to The Silver Searcher
 
 #+begin_src emacs-lisp
-(use-package helm-ag
-  :ensure t)
+;;(use-package helm-ag
+;;  :ensure t)
 #+end_src
 
 
