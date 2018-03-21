@@ -782,8 +782,8 @@ Hydra for the elfeed news reader.
                                                                    ╭─────────┐
                                                                    │ Elfeed  │
  ╭───────────────────────────────────────────────────────────┬─────┴─────────╯
-  Tags :    Torrents [_d_]   Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
-            Space    [_s_]                                     |
+  Tags :      Torrents [_d_] Comics [_c_] Emacs [_e_| Tech [_t_]     |       All [_A_]  
+               Science [_s_] Space  [_S_]                        |
  ╭───────────────────────────────────────────────────────────┤     Today [_T_]  
   Feeds: Boing Boing [_b_] Slashdot [_/_]   Ars Technica [_a_]     │   Starred [_*_]  
           Cool Tools [_o_] Long Now [_l_]   YouTube      [_y_]     │    Marked [_M_]
@@ -794,8 +794,8 @@ Hydra for the elfeed news reader.
    ("c" (elfeed-search-set-filter "@1-months-ago  +unread  +comic"))
    ("e" (elfeed-search-set-filter "@1-months-ago  +unread  +emacs"))
    ("t" (elfeed-search-set-filter "@1-months-ago  +unread  +tech"))
-   ("s" (elfeed-search-set-filter "@1-months-ago  +unread  +space"))
-
+   ("s" (elfeed-search-set-filter "@1-months-ago  +unread  +sci"))
+   ("S" (elfeed-search-set-filter "@1-months-ago  +unread  +space"))
    ("b" (elfeed-search-set-filter "@1-months-ago  +unread  +boing"))
    ("/" (elfeed-search-set-filter "@1-months-ago  +unread  +slash"))
    ("a" (elfeed-search-set-filter "@1-months-ago  +unread  +ars"))
@@ -815,6 +815,11 @@ Hydra for the elfeed news reader.
    ("q" bjm/elfeed-save-db-and-bury nil :color blue)
    ("<SPC>" nil nil))
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+hydra-elfeed/body
+:END:
 
 ** Badge Hydra
 :PROPERTIES:
