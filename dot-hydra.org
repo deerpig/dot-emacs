@@ -899,4 +899,34 @@ work closely with my yassnippet templates.
 hydra-badge/body
 :END:
 
+** Org-Mode Hydra
 
+Once a upon a time, more than a year ago, I took a part-time
+gig where at least in the beginning it looked like a good
+idea to keep tabs on how much time I was spending on
+different projects.  Turned out they didn't really give a
+shit, but it did teach me how useful org-clock is.  It also
+taught me that I would never remember the key-bindings for
+using it unless I used it every day.  This neat little Hydra
+from Marcin Borkowski will ensure that if I need to use
+org-clock it's the learning curve is already in place.
+
+Snarfed from:
+ 
+  [[http://mbork.pl/2018-03-18_My_Org-mode_hydra][Marcin Borkowski: 2018-03-18 My Org-mode hydra]]
+
+
+
+#+begin_src emacs-lisp
+(defhydra hydra-org (:color blue :timeout 12 :columns 4)
+  "Org commands"
+  ("i" (lambda () (interactive) (org-clock-in '(4))) "Clock in")
+  ("o" org-clock-out "Clock out")
+  ("q" org-clock-cancel "Cancel a clock")
+  ("<f10>" org-clock-in-last "Clock in the last task")
+  ("j" (lambda () (interactive) (org-clock-goto '(4))) "Go to a clock") 
+  ("m" make-this-message-into-an-org-todo-item "Flag and capture this message"))
+(global-set-key (kbd "<f10>") 'hydra-org/body)
+
+
+#+end_src
