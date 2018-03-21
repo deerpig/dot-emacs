@@ -928,15 +928,22 @@ Snarfed from:
 
 ;; hydra-org ----------------------------------------------------
 
-(defhydra hydra-org (:color blue :timeout 12 :columns 4)
-  "Org commands"
-  ("i" (lambda () (interactive) (org-clock-in '(4))) "Clock in")
-  ("o" org-clock-out "Clock out")
-  ("q" org-clock-cancel "Cancel a clock")
-  ("<f10>" org-clock-in-last "Clock in the last task")
-  ("j" (lambda () (interactive) (org-clock-goto '(4))) "Go to a clock") 
-  ("m" make-this-message-into-an-org-todo-item "Flag and capture this message"))
-(global-set-key (kbd "<f10>") 'hydra-org/body)
+(defhydra hydra-org (:color pink :timeout 12 :hint nil)
+  "
+                                                                      ╭──────────┐
+                                                                      │ Org Mode │
+ ╭────────────────────────────────────────────────────────────────────┴──────────╯
+
+  Clock In  [_i_]  Cancel a clock [_q_]  Go to a clock [_j_] Clock in last task [_<f10>_]
+  Clock Out [_o_]  Create TODO    [_m_]                                  Quit [_<SPC>_] 
+"
+  ("i" (lambda () (interactive) (org-clock-in '(4))))
+  ("o" org-clock-out)
+  ("q" org-clock-cancel )
+  ("<f10>" org-clock-in-last )
+  ("j" (lambda () (interactive) (org-clock-goto '(4))) ) 
+  ("m" make-this-message-into-an-org-todo-item )
+  ("<SPC>" nil nil))
 
 
 #+end_src
