@@ -132,10 +132,10 @@ it won't come to that :)
     (key-chord-mode 1)
     (key-chord-define-global "1q"     'hydra-badge/body)
     (key-chord-define-global "2w"     'hydra-window/body)
-    (key-chord-define-global "3e"     'hydra-elfeed/body)
+    (key-chord-define-global "3e"     'hydra-org/body)
     (key-chord-define-global "4r"     'hydra-rectangle/body)
     (key-chord-define-global "5t"     'hydra-twittering/body)
-    (key-chord-define-global "6y"     'hydra-transpose/body)
+    (key-chord-define-global "6y"     'hydra-org/body)
     (key-chord-define-global "7u"     'hydra-unicode/body)
     (key-chord-define-global "8i"     'hydra-logic/body)
     (key-chord-define-global "9o"     'hydra-greek/body)
@@ -147,9 +147,10 @@ it won't come to that :)
     ;; set same hydras using super key which is maped to Caps_Lock
     (global-set-key (kbd "s-1") 'hydra-badge/body)
     (global-set-key (kbd "s-2") 'hydra-window/body)
-    (global-set-key (kbd "s-3") 'hydra-elfeed/body)
-    (global-set-key (kbd "s-4") 'hydra-twittering/body)
-    (global-set-key (kbd "s-6") 'hydra-transpose/body)
+    (global-set-key (kbd "s-3") 'hydra-org/body)
+    (global-set-key (kbd "s-4") 'hydra-rectangle/body)
+    (global-set-key (kbd "s-5") 'hydra-twittering/body)
+    (global-set-key (kbd "s-6") 'hydra-org/body)
     (global-set-key (kbd "s-7") 'hydra-unicode/body)
     (global-set-key (kbd "s-8") 'hydra-logic/body)
     (global-set-key (kbd "s-9") 'hydra-greek/body)
@@ -777,6 +778,8 @@ Hydra for the elfeed news reader.
 
 #+begin_src emacs-lisp
 
+;; hydra-elfeed ---------------------------------------------
+
 (defhydra hydra-elfeed (:color blue :hint nil)
    "
                                                                    ╭─────────┐
@@ -830,6 +833,9 @@ Used for inserting badges into project files.  This is designed to
 work closely with my yassnippet templates.
 
 #+begin_src emacs-lisp
+
+;; hydra-badge ------------------------------------------------
+
 (defhydra hydra-badge (:color pink :hint nil :timeout 20)
   "
                                                                          ╭─────────┐
@@ -900,6 +906,9 @@ hydra-badge/body
 :END:
 
 ** Org-Mode Hydra
+:PROPERTIES:
+:ID:       deece4aa-a396-49d7-b433-dcdd8c0a1f83
+:END:
 
 Once a upon a time, more than a year ago, I took a part-time
 gig where at least in the beginning it looked like a good
@@ -915,9 +924,10 @@ Snarfed from:
  
   [[http://mbork.pl/2018-03-18_My_Org-mode_hydra][Marcin Borkowski: 2018-03-18 My Org-mode hydra]]
 
-
-
 #+begin_src emacs-lisp
+
+;; hydra-org ----------------------------------------------------
+
 (defhydra hydra-org (:color blue :timeout 12 :columns 4)
   "Org commands"
   ("i" (lambda () (interactive) (org-clock-in '(4))) "Clock in")
@@ -930,3 +940,8 @@ Snarfed from:
 
 
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+hydra-org/body
+:END:
