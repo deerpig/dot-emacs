@@ -521,7 +521,7 @@ Where to begin:
   	      org-ref-default-bibliography  "~/proj/chenla/hoard/bib.bib"
 	      org-ref-pdf-directory         "~/proj/chenla/hoard/lib")
 
-    (setq org-ref-note-title-format "** %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n  :INTERLEAVE_PDF: %k.pdf\n:END:\n\n")
+    (setq org-ref-note-title-format "** %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n  :INTERLEAVE_PDF: ./lib/%k.pdf\n:END:\n\n")
 
     ;; Tell org-ref to let helm-bibtex find notes for it
     ;;(setq org-ref-notes-function
@@ -1965,6 +1965,11 @@ sudo aptitude install libpoppler-private-dev
        :ensure t))
 
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+t
+:END:
 
 ** TLDR
 :PROPERTIES:
