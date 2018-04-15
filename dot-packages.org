@@ -2019,3 +2019,15 @@ https://www.semicomplete.com/projects/xdotool
   :ensure t
   :config )
 #+end_src
+
+** Firefox-Controller
+
+https://github.com/cute-jumper/emacs-firefox-controller
+
+Not supported in Quantum
+
+#+begin_src emacs-lisp
+#(use-package firefox-controller
+#  :ensure t
+#  :config )
+#+end_src
