@@ -187,8 +187,7 @@ down.
 )
 #+end_src
 
-
-# Notifications
+** Notifications
 
 Use mu4e-alert together with the external package notify-send to pop
 up notifications on the desktop.  You get a nice little envelope icon
