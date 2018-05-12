@@ -142,6 +142,7 @@ it won't come to that :)
     (key-chord-define-global "0p"     'hydra-calendar/body)
     (key-chord-define-global "qa"     'org-ref-bibtex-hydra/body)
     (key-chord-define-global "ws"     'hydra-pdftools/body)
+    (key-chord-define-global "tg"     'help/hydra/timestamp/body)
     )) 
 
 ;; Key Bindings ============================================
@@ -1023,4 +1024,103 @@ No surprise that this came from the ever prolific Abo-Abo:
 #+RESULTS:
 :RESULTS:
 hydra-pdftools/body
+:END:
+
+** Hydra Timestamps
+
+https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-timestamps
+
+
+#+begin_src emacs-lisp
+(defhydra help/hydra/timestamp (:color blue :hint nil)
+  "
+Timestamps: (_s_pace)
+  Date: _i_so, _u_s, US With _y_ear and _d_ashes, US In _W_ords
+   Date/Time: _n_o Colons or _w_ith
+    Org Active: _R_ight Now or _C_hoose
+    Org Inactive: _r_ight Now or _c_hoose
+"
+  ("s" nil)
+
+  ("i" help/insert-datestamp)
+  ("u" help/insert-datestamp-us)
+  ("y" help/insert-datestamp-us-full-year)
+  ("d" help/insert-datestamp-us-full-year-and-dashes)
+  ("W" help/insert-datestamp-us-words)
+
+  ("N" help/insert-timestamp-no-colons)
+  ("w" help/insert-timestamp)
+
+
+  ("R" help/org-time-stamp-with-seconds-now)
+  ("C" org-time-stamp)
+  ("r" help/org-time-stamp-inactive-with-seconds-now)
+  ("c" org-time-stamp-inactive))
+(global-set-key (kbd "C-t") #'help/hydra/timestamp/body)
+(defun help/insert-datestamp ()
+  "Produces and inserts a partial ISO 8601 format timestamp."
+  (interactive)
+  (insert (format-time-string "%F")))
+(defun help/insert-datestamp-us ()
+  "Produces and inserts a US datestamp."
+  (interactive)
+  (insert (format-time-string "%m/%d/%y")))
+(defun help/insert-datestamp-us-full-year-and-dashes ()
+  "Produces and inserts a US datestamp with full year and dashes."
+  (interactive)
+  (insert (format-time-string "%m-%d-%Y")))
+(defun help/insert-datestamp-us-full-year ()
+  "Produces and inserts a US datestamp with full year."
+  (interactive)
+  (insert (format-time-string "%m/%d/%Y")))
+(defun help/insert-datestamp-us-words ()
+  "Produces and inserts a US datestamp using words."
+  (interactive)
+  (insert (format-time-string "%A %B %d, %Y")))
+(defun help/insert-timestamp-no-colons ()
+  "Inserts a full ISO 8601 format timestamp with colons replaced by hyphens."
+  (interactive)
+  (insert (help/get-timestamp-no-colons)))
+(defun help/insert-datestamp ()
+  "Produces and inserts a partial ISO 8601 format timestamp."
+  (interactive)
+  (insert (format-time-string "%F")))
+(defun help/get-timestamp-no-colons ()
+  "Produces a full ISO 8601 format timestamp with colons replaced by hyphens."
+  (interactive)
+  (let* ((timestamp (help/get-timestamp))
+         (timestamp-no-colons (replace-regexp-in-string ":" "-" timestamp)))
+    timestamp-no-colons))
+(defun help/get-timestamp ()
+  "Produces a full ISO 8601 format timestamp."
+  (interactive)
+  (let* ((timestamp-without-timezone (format-time-string "%Y-%m-%dT%T"))
+         (timezone-name-in-numeric-form (format-time-string "%z"))
+         (timezone-utf-offset
+          (concat (substring timezone-name-in-numeric-form 0 3)
+                  ":"
+                  (substring timezone-name-in-numeric-form 3 5)))
+         (timestamp (concat timestamp-without-timezone
+                            timezone-utf-offset)))
+    timestamp))
+(defun help/insert-timestamp ()
+  "Inserts a full ISO 8601 format timestamp."
+  (interactive)
+  (insert (help/get-timestamp)))
+
+(defun help/org-time-stamp-with-seconds-now ()
+  (interactive)
+  (let ((current-prefix-arg '(16)))
+    (call-interactively 'org-time-stamp)))
+
+(defun help/org-time-stamp-inactive-with-seconds-now ()
+  (interactive)
+  (let ((current-prefix-arg '(16)))
+    (call-interactively 'org-time-stamp-inactive)))
+
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+help/org-time-stamp-inactive-with-seconds-now
 :END:
