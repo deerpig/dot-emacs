@@ -1040,27 +1040,28 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
                                                          │ Timestamps │
  ╭───────────────────────────────────────────────────────┴────────────╯
                                                          Quit [_<SPC>_] 
-  ISO         : date   [_d_]  
-  U.S.        : date   [_/_]  year   [_y_]  dashes: [_-_]  words [_w_]
-  Stamp       : UTC    [_s_]  
-  Epoch       : unix   [_u_]  J2000  [_m_]
-  Org Active  : date   [_a_]  pick   [_p_]
-  Org Inactive: date   [_i_]  choose [_c_]
+  ISO         : date [_d_]  
+  U.S.        : date [_/_]  year   [_y_] dashes [_-_]  words [_w_]
+  Stamp       : UTC  [_s_]  
+  Epoch       : unix [_u_]  J2000  [_m_] geo    [_g_] 
+  Org Active  : date [_a_]  pick   [_p_]
+  Org Inactive: date [_i_]  choose [_c_]
 "
   ("d" help/insert-datestamp)                         ; 2018-05-12
   ("/" help/insert-datestamp-us)                      ; 05/12/18 
-  ("y" help/insert-datestamp-us-full-year)            : 05/12/2018
-  ("-" help/insert-datestamp-us-full-year-and-dashes) : 05-12-2018
-  ("w" help/insert-datestamp-us-words)                : Saturday May 12, 2018
+  ("y" help/insert-datestamp-us-full-year)            ; 05/12/2018
+  ("-" help/insert-datestamp-us-full-year-and-dashes) ; 05-12-2018
+  ("w" help/insert-datestamp-us-words)                ; Saturday May 12, 2018
 
-  ("s" help/insert-timestamp)                         : 2018-05-12T11:50:01+07:00
+  ("s" help/insert-timestamp)                         ; 2018-05-12T11:50:01+07:00
 
-  ("u" help/insert-unix-time)                         : 
-  ("m" insert-epoch)                                  : 579372688.143557080
+  ("u" help/insert-unix-time)                         ; 1526100829
+  ("m" insert-epoch)                                  ; 579372688.143557080
+  ("g" help/insert-utm)                               ; 48P-491193-1287029-15
 
-  ("a" help/org-time-stamp-with-seconds-now)          : <2018-05-12 Sat 11:50>
+  ("a" help/org-time-stamp-with-seconds-now)          ; <2018-05-12 Sat 11:50>
   ("p" org-time-stamp)
-  ("i" help/org-time-stamp-inactive-with-seconds-now) : [2018-05-12 Sat 11:50]
+  ("i" help/org-time-stamp-inactive-with-seconds-now) ; [2018-05-12 Sat 11:50]
   ("c" org-time-stamp-inactive)
   ("<SPC>" nil))
 
@@ -1103,9 +1104,15 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
 
 (defun help/insert-unix-time ()
   "Produce seconds since 1970-01-01 00:00:00 UTC"
-   (insert (format-time-string "%s")))
+  (interactive) 
+  (insert (format-time-string "%s")))
 
 ;; insert-epoch seconds.microseconds from year 2000
+
+(defun help/insert-utm ()
+ "Insert location in UTM"
+ (interactive)
+ (insert user-work-utm))
 
 (defun help/get-timestamp ()
   "Produces a full ISO 8601 format timestamp."
