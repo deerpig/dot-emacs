@@ -1042,7 +1042,7 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
                                                          Quit [_<SPC>_] 
   ISO         : date [_d_]  
   U.S.        : date [_/_]  year   [_y_] dashes [_-_]  words [_w_]
-  Stamp       : UTC  [_s_]  
+  Stamp       : UTC  [_s_]  human  [_h_]
   Epoch       : unix [_u_]  J2000  [_m_] geo    [_g_] 
   Org Active  : date [_a_]  pick   [_p_]
   Org Inactive: date [_i_]  choose [_c_]
@@ -1054,6 +1054,7 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
   ("w" help/insert-datestamp-us-words)                ; Saturday May 12, 2018
 
   ("s" help/insert-timestamp)                         ; 2018-05-12T11:50:01+07:00
+  ("h" help/insert-human-stamp) ; 2018-05-12T12:36@Prek Leap (11.642600N-104.919210W)
 
   ("u" help/insert-unix-time)                         ; 1526100829
   ("m" insert-epoch)                                  ; 579372688.143557080
@@ -1113,6 +1114,15 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
  "Insert location in UTM"
  (interactive)
  (insert user-work-utm))
+
+(defun help/insert-human-stamp ()
+  "insert human readable time and place stamp"
+  (interactive)
+(insert
+  (concat 
+     (format-time-string "%Y-%02m-%02dT%02H:%02M")
+     human-readable-stamp)))
+
 
 (defun help/get-timestamp ()
   "Produces a full ISO 8601 format timestamp."
