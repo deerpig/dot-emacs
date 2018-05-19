@@ -492,3 +492,16 @@ so for now not tangled.
   :ensure t)
   (dired-quick-sort-setup)
 #+end_src
+
+
+** Gnus Dired Mode
+
+https://www.reddit.com/r/emacs/comments/8kdl29/how_to_properly_attach_files_when_sending_emails/
+
+gnus-dired-attach
+
+To attach file to an email from dired, C-c RET C-a
+
+#+begin_src 
+(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+#+end_src
