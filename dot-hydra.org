@@ -143,6 +143,7 @@ it won't come to that :)
     (key-chord-define-global "qa"     'org-ref-bibtex-hydra/body)
     (key-chord-define-global "ws"     'hydra-pdftools/body)
     (key-chord-define-global "tg"     'help/hydra/timestamp/body)
+    (key-chord-define-global "ed"     'hydra-macron/body)
     )) 
 
 ;; Key Bindings ============================================
@@ -1161,3 +1162,33 @@ https://www.wisdomandwonder.com/article/10763/emacsorg-mode-hydra-to-insert-time
 :RESULTS:
 help/org-time-stamp-inactive-with-seconds-now
 :END:
+
+
+** Macron Hydra
+:PROPERTIES:
+:ID:       f6f4f5d3-41f5-4a5f-b7a7-2123cf264c4f
+:END:
+
+#+begin_src emacs-lisp
+(defhydra hydra-macron (:color blue :hint nil)
+  "
+                                                                ╭────────┐
+                                                                │ Macron │
+ ╭──────────────────────────────────────────────────────────────┴────────╯
+  ā [_a_] ē [_e_] ī [_i_] ō [_o_] ū [_u_]
+  Ā [_A_] Ē [_E_] Ī [_I_] Ō [_O_] Ū [_U_]                   Quit [_<SPC>_]
+"
+  ("a" (lambda () (interactive) (insert "ā")))
+  ("e" (lambda () (interactive) (insert "ē")))
+  ("i" (lambda () (interactive) (insert "ī")))
+  ("o" (lambda () (interactive) (insert "ō")))
+  ("u" (lambda () (interactive) (insert "ū")))
+  ("A" (lambda () (interactive) (insert "Ā")))
+  ("E" (lambda () (interactive) (insert "Ē")))
+  ("I" (lambda () (interactive) (insert "Ī")))
+  ("O" (lambda () (interactive) (insert "Ō")))
+  ("U" (lambda () (interactive) (insert "Ū")))
+  ("<SPC>" nil))
+#+end_src 
+
+
