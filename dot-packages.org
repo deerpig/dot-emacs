@@ -862,6 +862,7 @@ snippets for the mode you are in.
         '("~/.emacs.d/yasmate/"
           "~/.emacs.d/snippets/"))
     (setq warning-suppress-types '(yasnippet backquote-change))
+    (setq yas-indent-line 'nil)
     ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
     ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
     ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
@@ -2021,6 +2022,9 @@ https://www.semicomplete.com/projects/xdotool
 #+end_src
 
 ** Firefox-Controller
+:PROPERTIES:
+:ID:       73a7a2d7-47de-434d-b83c-da0036dc6e6c
+:END:
 
 https://github.com/cute-jumper/emacs-firefox-controller
 
