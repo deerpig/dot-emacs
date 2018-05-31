@@ -862,7 +862,7 @@ snippets for the mode you are in.
         '("~/.emacs.d/yasmate/"
           "~/.emacs.d/snippets/"))
     (setq warning-suppress-types '(yasnippet backquote-change))
-    (setq yas-indent-line 'nil)
+    (setq yas-indent-line nil)
     ;;(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
     ;;(define-key yas-minor-mode-map (kbd "<tab>") 'yas-expand)
     ;;(define-key yas-minor-mode-map (kbd "TAB") 'yas-expand)
@@ -2031,7 +2031,7 @@ https://github.com/cute-jumper/emacs-firefox-controller
 Not supported in Quantum
 
 #+begin_src emacs-lisp
-#(use-package firefox-controller
-#  :ensure t
-#  :config )
+;;(use-package firefox-controller
+;;  :ensure t
+;;  :config )
 #+end_src
