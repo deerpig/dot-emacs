@@ -960,7 +960,7 @@ snippets for the mode you are in.
 ;;  requires sdcv and dictionaries in ~/.stardict/dic
 
 (load "~/.emacs.d/emacs-sdcv/sdcv-mode.el")
-(global-set-key (kbd "H-d") 'sdcv-search)
+(global-set-key (kbd "H-W") 'sdcv-search)
 #+end_src
 
 
