@@ -279,7 +279,7 @@ character is inserted and the hydra exits.
 #+begin_src emacs-lisp
 ;; hydra unicode -------------------------------------------
 
-(defhydra hydra-unicode (:color pink :hint nil :timeout 20)
+(defhydra hydra-unicode (:color blue :hint nil :timeout 20)
   "
                                                                          ╭─────────┐
                                                                          │ Unicode │
@@ -329,6 +329,11 @@ character is inserted and the hydra exits.
   ("8" (lambda () (interactive) (insert "©"))) ;; copyright
   ("<SPC>" nil nil))
 #+end_src
+
+#+RESULTS:
+:RESULTS:
+hydra-unicode/body
+:END:
 
 ** Calendar & Weekdays Hydra
 :PROPERTIES:
