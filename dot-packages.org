@@ -690,6 +690,25 @@ starting places:
 
 #+end_src
 
+
+*** Magit-todos
+:PROPERTIES:
+:ID:       2d00f0ec-4ceb-4290-84d2-da29f1d4f44a
+:END:
+
+  - https://github.com/alphapapa/magit-todos
+
+#+begin_src emacs-lisp
+
+;; Magit-todos -----------------------------------------------
+
+(use-package magit-todos
+  :ensure t
+  :bind)
+#+end_src
+
+
+
 *** Git Gutter
 :PROPERTIES:
 :ID:       3ccf9ace-23b1-44f2-8005-e9255099ff32
