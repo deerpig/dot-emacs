@@ -698,13 +698,14 @@ starting places:
 
   - https://github.com/alphapapa/magit-todos
 
+I love the idea of this package but it's still a bit rough.
+
 #+begin_src emacs-lisp
 
 ;; Magit-todos -----------------------------------------------
 
 (use-package magit-todos
-  :ensure t
-  :bind)
+  :ensure t)
 #+end_src
 
 
